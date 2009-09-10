@@ -1,0 +1,15 @@
+The simple and really dumb IC protocol:
+
+well it's just plain dumb strings. atm supported:
+
+none <- no operation. send this if there's no controll message in queue
+stop <- stops playback
+pause <- pauses playback
+play <- starts/resumes playback
+next <- jump to next track in playlist
+prev <- jump to previous track in playlist
+vol_dec <- decreases the volume by 10 units (out of 100 which is max vol)
+vol_inc <- increases the volume by 10 units
+mute_unmute <- toggles mute
+
+don't send any http/html data. just the words. 

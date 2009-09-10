@@ -1,0 +1,6 @@
+Simple PHP Server for itunes control
+
+needs a MySQL db for message queuing. (see config/config.php)
+
+
+more at: http://github.com/jsz/itunes-control/
