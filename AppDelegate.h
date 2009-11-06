@@ -7,34 +7,33 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "RegistrationWindowController.h"
+#import <Sparkle/Sparkle.h>
+#import "iTunes.h"
+#import "Adium.h"
 
 @interface AppDelegate : NSObject 
 {
-	BOOL isMuted;
-	int previousVolume;
-	
-	NSTimer *pollTimer;
-	BOOL isPolling;
-	
 	NSStatusItem *statusItem;
+	
+	BOOL isRegistered;
+	RegistrationWindowController *registrationWindowController;
+	
+	IBOutlet SUUpdater *sparkle;
+	
+	NSMenuItem *adiumMenuItem;
+	
+	iTunesApplication *iTunes;
+	AdiumApplication *adium;
 }
 
-#pragma mark -
-#pragma mark iTunes Controll Methods
-- (void) toggleMute;
-- (void) increaseVolume;
-- (void) decreaseVolume;
-- (void) startPlayback;
-- (void) stopPlayback;
-- (void) pausePlayback;
-- (void) nextTrack;
-- (void) previousTrack;
+@property (readonly, assign) BOOL isRegistered;
 
 #pragma mark -
 #pragma mark public IB accessable methods
 - (IBAction) startPolling: (id) sender;
 - (IBAction) stopPolling: (id) sender;
+- (IBAction) openRegistrationWindow: (id) sender;
 - (IBAction) quitAppByMenu : (id) sender;
 
 
@@ -49,5 +48,6 @@
 #pragma mark Application Delegate Methods
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification;
 
+- (void) checkRegistration;
 
 @end

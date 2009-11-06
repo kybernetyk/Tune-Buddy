@@ -7,7 +7,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "EyeTunes.h"
 
 int main(int argc, char *argv[])
 {
