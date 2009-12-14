@@ -53,6 +53,8 @@
 
 - (IBAction) openPreferencesWindow: (id) sender
 {
+	[NSApp activateIgnoringOtherApps: YES];
+	
 	if (preferencesWindowController)
 	{
 		[preferencesWindowController showPreferencesWindow];
@@ -70,6 +72,7 @@
 	// Show the preferences window.
 	[preferencesWindowController showPreferencesWindow];
 	
+
 	
 }
 

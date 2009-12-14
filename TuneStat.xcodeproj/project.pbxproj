@@ -63,28 +63,28 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 03BDFC5F10D6BA0500487180 /* GeneralPreferencePane */;
+			remoteGlobalIDString = 03BDFC5F10D6BA0500487180;
 			remoteInfo = GeneralPreferencePane;
 		};
 		03BDFCD310D6BB7600487180 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 03BDFCB110D6BB2B00487180 /* Updating Preference Pane */;
+			remoteGlobalIDString = 03BDFCB110D6BB2B00487180;
 			remoteInfo = "Updating Preference Pane";
 		};
 		03BDFD2310D6BD5000487180 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 03BDFD1810D6BD3A00487180 /* TwitterPreferencePane */;
+			remoteGlobalIDString = 03BDFD1810D6BD3A00487180;
 			remoteInfo = TwitterPreferencePane;
 		};
 		03BDFDE910D6C39C00487180 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 03BDFDD610D6C38000487180 /* RegistrationPreferencePane */;
+			remoteGlobalIDString = 03BDFDD610D6C38000487180;
 			remoteInfo = RegistrationPreferencePane;
 		};
 /* End PBXContainerItemProxy section */
