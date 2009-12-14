@@ -10,7 +10,7 @@
 #import "iTunes.h"
 #import "Adium.h"
 #import "NSString+Search.h"
-
+#import "MGTwitterEngine.h"
 
 
 
@@ -20,10 +20,63 @@
 #pragma mark -
 #pragma mark public IB accessable methods
 
+- (IBAction) sendCurrentTrackToTwitter: (id) sender
+{
+	NSLog(@"sending track to twitter!");
+	
+	if (lastConnectionIdentifier)
+	{
+		NSLog(@"won't send as we're sending already!");
+		
+		return;
+	}
+		
+	
+	[twitterEngine release];
+	twitterEngine = nil;
+	
+	// Create a TwitterEngine and set our login details.
+    twitterEngine = [[MGTwitterEngine alloc] initWithDelegate:self];
+	[twitterEngine setClearsCookies: YES];
+	[twitterEngine setUsesSecureConnection: YES];
+	[twitterEngine setClientName:@"µTweet" version:@"0.1" URL:@"http://www.fluxforge.com" token:@"mutweet"];
+    
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	NSString *user = [defaults stringForKey: @"twitterUsername"];
+	NSString *pass = [defaults stringForKey: @"twitterPassword"];
+	
+	[twitterEngine setUsername: user password: pass];
+	
+	lastConnectionIdentifier = [twitterEngine sendUpdate: [self longDisplayString]];
+	
+}
+
+- (IBAction) openPreferencesWindow: (id) sender
+{
+	if (preferencesWindowController)
+	{
+		[preferencesWindowController showPreferencesWindow];
+		return;
+	}
+	
+	// Determine path to the sample preference panes
+	NSString *pathToPanes = [[NSString stringWithFormat:@"%@/Contents/Resources/", [[NSBundle mainBundle] bundlePath]]
+							 stringByStandardizingPath];
+	
+	preferencesWindowController = [[SS_PrefsController alloc] initWithPanesSearchPath:pathToPanes bundleExtension:@"bundle"];
+	
+	// Set which panes are included, and their order.
+	[preferencesWindowController setPanesOrder:[NSArray arrayWithObjects:@"General",@"Twitter",@"Updating",@"Registration", nil]];
+	// Show the preferences window.
+	[preferencesWindowController showPreferencesWindow];
+	
+	
+}
+
 // starts the poll Timer that will fetch new commands every 1.0 secs
 - (IBAction) startPolling: (id) sender
 {
-	[NSTimer scheduledTimerWithTimeInterval: 0.5
+	[NSTimer scheduledTimerWithTimeInterval: 1.0
 												  target: self
 												selector: @selector(handlePollTimer:)
 												userInfo: nil
@@ -144,18 +197,28 @@
 	
 	[menu addItemWithTitle:@"Copy To Clip Board" action:@selector(copyCurrentTrackInfoToClipBoard:) keyEquivalent: [NSString string]];
 	
+
+	//transformer for hidden = !xxxEnabled
+	NSValueTransformer *tran = [NSValueTransformer valueTransformerForName: NSNegateBooleanTransformerName];
+	NSDictionary *opts = [NSDictionary dictionaryWithObject: tran forKey: @"NSValueTransformer"];
 	
 	
-	[menu addItemWithTitle:@"Send To Active Adium Chat" action:@selector(sendCurrentTrackToAdium:) keyEquivalent: [NSString string]];
-	adiumMenuItem = [menu itemWithTitle: @"Send To Active Adium Chat"];
+	adiumMenuItem = [menu addItemWithTitle:@"Send To Active Adium Chat" action:@selector(sendCurrentTrackToAdium:) keyEquivalent: [NSString string]];
+	[twitterMenuItem bind: @"hidden" toObject: [NSUserDefaultsController sharedUserDefaultsController] withKeyPath:@"values.adiumEnabled" options:opts];
+	
+
+	twitterMenuItem = [menu addItemWithTitle:@"Send To Twitter" action:@selector(sendCurrentTrackToTwitter:) keyEquivalent: [NSString string]];
+	[twitterMenuItem bind: @"hidden" toObject: [NSUserDefaultsController sharedUserDefaultsController] withKeyPath:@"values.twitterEnabled" options:opts];
+
 	
 	[menu addItem:[NSMenuItem separatorItem]];
 	
+	[menu addItemWithTitle:@"Preferences" action:@selector(openPreferencesWindow:) keyEquivalent: [NSString string]];
 	
-	[menu addItemWithTitle:@"Check For Updates" action:@selector(checkForUpdates:) keyEquivalent: [NSString string]];
+	//[menu addItemWithTitle:@"Check For Updates" action:@selector(checkForUpdates:) keyEquivalent: [NSString string]];
 
 				
-	[menu addItemWithTitle:@"Registration" action:@selector(openRegistrationWindow:) keyEquivalent:[NSString string]];
+//	[menu addItemWithTitle:@"Registration" action:@selector(openRegistrationWindow:) keyEquivalent:[NSString string]];
 
 		[menu addItem:[NSMenuItem separatorItem]];
 	[menu addItemWithTitle:@"Quit" action:@selector(quitAppByMenu:) keyEquivalent:[NSString string]];
@@ -209,10 +272,10 @@
 	
 	if ([currentTrack exists] && [iTunes isRunning])
 	{
-		trackName = [[currentTrack name] copy];	
-		artistName = [[currentTrack artist] copy];
- 		kind = [[currentTrack kind] copy];
-		streamTitle = [[iTunes currentStreamTitle] copy];
+		trackName = [[[currentTrack name] copy] autorelease];	
+		artistName = [[[currentTrack artist] copy] autorelease];
+ 		kind = [[[currentTrack kind] copy] autorelease];
+		streamTitle = [[[iTunes currentStreamTitle] copy] autorelease];
 		playerState = [iTunes playerState];
 		trackExists = YES;
 	}
@@ -433,6 +496,8 @@
 	NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
 						  [NSNumber numberWithBool: YES], @"trimDisplayStringLength",
 						  [NSNumber numberWithInt: 64], @"maxDisplayLength",
+						  [NSNumber numberWithBool: NO], @"twitterEnabled",
+						  [NSNumber numberWithBool: YES], @"adiumEnabled",
 						  nil];
 	
 	[defaults registerDefaults: dict];
@@ -456,6 +521,74 @@
 	
 	//starts the poll timer that will fetch new commands every 1.0 secs
 	[self startPolling: self];
+}
+
+
+
+#pragma mark ---
+#pragma mark MGTwitterEngineDelegate methods
+- (void)requestSucceeded:(NSString *)connectionIdentifier
+{
+	  NSLog(@"Request succeeded for connectionIdentifier = %@", connectionIdentifier);
+	lastConnectionIdentifier = nil;
+}
+
+
+- (void)requestFailed:(NSString *)connectionIdentifier withError:(NSError *)error
+{
+    NSLog(@"Request failed for connectionIdentifier = %@, error = %@ (%@)", 
+	 connectionIdentifier, 
+	 [error localizedDescription], 
+	 [error userInfo]);
+	
+	lastConnectionIdentifier = nil;
+}
+
+
+- (void)statusesReceived:(NSArray *)statuses forRequest:(NSString *)connectionIdentifier
+{
+}
+
+
+- (void)directMessagesReceived:(NSArray *)messages forRequest:(NSString *)connectionIdentifier
+{
+	  NSLog(@"Got direct messages for %@:\r%@", connectionIdentifier, messages);
+}
+
+
+- (void)userInfoReceived:(NSArray *)userInfo forRequest:(NSString *)connectionIdentifier
+{
+	    NSLog(@"Got user info for %@:\r%@", connectionIdentifier, userInfo);
+}
+
+
+- (void)miscInfoReceived:(NSArray *)miscInfo forRequest:(NSString *)connectionIdentifier
+{
+		NSLog(@"Got misc info for %@:\r%@", connectionIdentifier, miscInfo);
+}
+
+- (void)searchResultsReceived:(NSArray *)searchResults forRequest:(NSString *)connectionIdentifier
+{
+		NSLog(@"Got search results for %@:\r%@", connectionIdentifier, searchResults);
+}
+
+
+- (void)imageReceived:(NSImage *)image forRequest:(NSString *)connectionIdentifier
+{
+	  NSLog(@"Got an image for %@: %@", connectionIdentifier, image);
+    
+    // Save image to the Desktop.
+    //NSString *path = [[NSString stringWithFormat:@"~/Desktop/%@.tiff", connectionIdentifier] stringByExpandingTildeInPath];
+    //[[image TIFFRepresentation] writeToFile:path atomically:NO];
+}
+
+- (void)connectionFinished
+{
+	if ([twitterEngine numberOfConnections] == 0)
+	{
+		NSLog(@"connection finished. %i open connections left ...",[twitterEngine numberOfConnections]);
+		//[NSApp terminate:self];
+	}
 }
 
 

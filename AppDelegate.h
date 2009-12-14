@@ -11,6 +11,8 @@
 #import <Sparkle/Sparkle.h>
 #import "iTunes.h"
 #import "Adium.h"
+#import "MGTwitterEngine.h"
+#import "SS_PrefsController.h"
 
 @interface AppDelegate : NSObject 
 {
@@ -18,10 +20,15 @@
 	
 	BOOL isRegistered;
 	RegistrationWindowController *registrationWindowController;
+	SS_PrefsController *preferencesWindowController;
+	
+	MGTwitterEngine *twitterEngine;
+	NSString *lastConnectionIdentifier;
 	
 	IBOutlet SUUpdater *sparkle;
 	
 	NSMenuItem *adiumMenuItem;
+	NSMenuItem *twitterMenuItem;
 	
 	iTunesApplication *iTunes;
 	AdiumApplication *adium;
@@ -34,7 +41,11 @@
 - (IBAction) startPolling: (id) sender;
 - (IBAction) stopPolling: (id) sender;
 - (IBAction) openRegistrationWindow: (id) sender;
+- (IBAction) openPreferencesWindow: (id) sender;
 - (IBAction) quitAppByMenu : (id) sender;
+- (IBAction) copyCurrentTrackInfoToClipBoard: (id) sender;
+- (IBAction) sendCurrentTrackToAdium: (id) sender;
+- (IBAction) sendCurrentTrackToTwitter: (id) sender;
 
 
 #pragma mark -

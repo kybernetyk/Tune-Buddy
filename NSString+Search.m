@@ -29,7 +29,7 @@
 
 + (NSString *)rot13:(NSString *)theText 
 {
-    NSMutableString *holder = [[NSMutableString alloc] init];
+    NSMutableString *holder = [[[NSMutableString alloc] init] autorelease];
     unichar theChar;
     int i;
     
@@ -56,7 +56,7 @@
         }
     }
     
-    return [NSString stringWithString:holder];
+    return [NSString stringWithString: holder];
 }
 
 @end
