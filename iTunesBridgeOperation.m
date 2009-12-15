@@ -178,15 +178,19 @@
 		{
 			//NSLog(@"current track changed to: %@",currentDisplayString);
 			[delegate performSelectorOnMainThread:@selector(iTunesTrackDidChangeTo:) withObject: currentDisplayString waitUntilDone: YES];
-			
+
 		}
 
 		poolKillCounter ++;
-		if (poolKillCounter >= 10)
+		if (poolKillCounter >= 20) //after 10 seconds
 		{
 			[localPool release];
 			localPool = [[NSAutoreleasePool alloc] init];
 			poolKillCounter = 0;
+			
+			//reset itunes to reconnect 
+			[iTunes release];
+			iTunes = nil;
 		}
 		
 		usleep(kRefreshFrequencyInMicroseconds);

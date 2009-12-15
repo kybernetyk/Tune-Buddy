@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		0329233E1055104F00D30E83 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B97324FDCFA39411CA2CEA /* AppKit.framework */; };
 		032923801055129800D30E83 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0329237F1055129800D30E83 /* icon.icns */; };
+		0370B01710D85551001B0FE9 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0370B01610D85551001B0FE9 /* Sparkle.framework */; };
+		0370B02B10D85555001B0FE9 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0370B01610D85551001B0FE9 /* Sparkle.framework */; };
 		03743D3F109D91F200B3B221 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03743D3E109D91F200B3B221 /* ScriptingBridge.framework */; };
 		03743E8E109D987300B3B221 /* NSString+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 03743E8D109D987300B3B221 /* NSString+Search.m */; };
-		03743FF7109DB1C100B3B221 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03743FF6109DB1C100B3B221 /* Sparkle.framework */; };
-		03744000109DB1CE00B3B221 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03743FF6109DB1C100B3B221 /* Sparkle.framework */; };
 		0374404B109DDAA200B3B221 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 0374404A109DDAA200B3B221 /* dsa_pub.pem */; };
 		03B0E80110D7BCDC00D8B185 /* iTunesBridgeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0E80010D7BCDC00D8B185 /* iTunesBridgeOperation.m */; };
 		03B0E8CA10D7C87700D8B185 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0E8C910D7C87700D8B185 /* PFMoveApplication.m */; };
@@ -43,7 +43,6 @@
 		03BDFCD610D6BB8100487180 /* UpdatingPreferencePane.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 03BDFCB210D6BB2B00487180 /* UpdatingPreferencePane.bundle */; };
 		03BDFD2610D6BD5E00487180 /* TwitterPreferencePane.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 03BDFD1910D6BD3A00487180 /* TwitterPreferencePane.bundle */; };
 		03BDFD7810D6BEE600487180 /* Twitter_Prefs.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 03BDFD7310D6BEE600487180 /* Twitter_Prefs.tiff */; };
-		03BDFD7910D6BEE600487180 /* TwitterPreferencePane-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03BDFD7410D6BEE600487180 /* TwitterPreferencePane-Info.plist */; };
 		03BDFD7A10D6BEE600487180 /* TwitterPreferencePaneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFD7610D6BEE600487180 /* TwitterPreferencePaneController.m */; };
 		03BDFD7B10D6BEE600487180 /* TwitterPreferencePaneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03BDFD7710D6BEE600487180 /* TwitterPreferencePaneView.xib */; };
 		03BDFDFF10D6C3CE00487180 /* Registration_Prefs.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 03BDFDFA10D6C3CE00487180 /* Registration_Prefs.tiff */; };
@@ -112,7 +111,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				03744000109DB1CE00B3B221 /* Sparkle.framework in CopyFiles */,
+				0370B02B10D85555001B0FE9 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,11 +119,11 @@
 
 /* Begin PBXFileReference section */
 		0329237F1055129800D30E83 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
+		0370B01610D85551001B0FE9 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		03743D39109D91E100B3B221 /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
 		03743D3E109D91F200B3B221 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = /System/Library/Frameworks/ScriptingBridge.framework; sourceTree = "<absolute>"; };
 		03743E8C109D987300B3B221 /* NSString+Search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Search.h"; sourceTree = "<group>"; };
 		03743E8D109D987300B3B221 /* NSString+Search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Search.m"; sourceTree = "<group>"; };
-		03743FF6109DB1C100B3B221 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		0374404A109DDAA200B3B221 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		037440A1109E267900B3B221 /* Adium.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Adium.h; sourceTree = "<group>"; };
 		03B0E7FF10D7BCDC00D8B185 /* iTunesBridgeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunesBridgeOperation.h; sourceTree = "<group>"; };
@@ -274,9 +273,9 @@
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				0329233E1055104F00D30E83 /* AppKit.framework in Frameworks */,
 				03743D3F109D91F200B3B221 /* ScriptingBridge.framework in Frameworks */,
-				03743FF7109DB1C100B3B221 /* Sparkle.framework in Frameworks */,
 				03BDFBDA10D6B6A400487180 /* libxml2.dylib in Frameworks */,
 				03B0E8D010D7C8E900D8B185 /* Security.framework in Frameworks */,
+				0370B01710D85551001B0FE9 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,7 +457,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				03743FF6109DB1C100B3B221 /* Sparkle.framework */,
+				0370B01610D85551001B0FE9 /* Sparkle.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				03743D3E109D91F200B3B221 /* ScriptingBridge.framework */,
 			);
@@ -682,7 +681,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				03BDFD7810D6BEE600487180 /* Twitter_Prefs.tiff in Resources */,
-				03BDFD7910D6BEE600487180 /* TwitterPreferencePane-Info.plist in Resources */,
 				03BDFD7B10D6BEE600487180 /* TwitterPreferencePaneView.xib in Resources */,
 				03EAFBCE10D8074300B715D0 /* Twitter_Prefs.png in Resources */,
 			);
@@ -1044,6 +1042,8 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../Desktop/eyetunes/build/Release\"",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../../../Usefull Stuff/Sparkle 1/With Garbage Collection\"",
+					"\"$(SRCROOT)/../../../Usefull Stuff/Sparkle 1\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -1066,6 +1066,8 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../Desktop/eyetunes/build/Release\"",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../../../Usefull Stuff/Sparkle 1/With Garbage Collection\"",
+					"\"$(SRCROOT)/../../../Usefull Stuff/Sparkle 1\"",
 				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1083,6 +1085,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -1091,7 +1094,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx10.5;
 			};
 			name = Debug;
 		};
