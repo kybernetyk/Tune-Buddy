@@ -11,11 +11,12 @@
 		032923801055129800D30E83 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0329237F1055129800D30E83 /* icon.icns */; };
 		03743D3F109D91F200B3B221 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03743D3E109D91F200B3B221 /* ScriptingBridge.framework */; };
 		03743E8E109D987300B3B221 /* NSString+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 03743E8D109D987300B3B221 /* NSString+Search.m */; };
-		03743F15109DA42A00B3B221 /* RegistrationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03743F14109DA42A00B3B221 /* RegistrationWindowController.m */; };
-		03743F17109DA43A00B3B221 /* RegistrationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03743F16109DA43A00B3B221 /* RegistrationWindow.xib */; };
 		03743FF7109DB1C100B3B221 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03743FF6109DB1C100B3B221 /* Sparkle.framework */; };
 		03744000109DB1CE00B3B221 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03743FF6109DB1C100B3B221 /* Sparkle.framework */; };
 		0374404B109DDAA200B3B221 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 0374404A109DDAA200B3B221 /* dsa_pub.pem */; };
+		03B0E80110D7BCDC00D8B185 /* iTunesBridgeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0E80010D7BCDC00D8B185 /* iTunesBridgeOperation.m */; };
+		03B0E8CA10D7C87700D8B185 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0E8C910D7C87700D8B185 /* PFMoveApplication.m */; };
+		03B0E8D010D7C8E900D8B185 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B0E8CF10D7C8E900D8B185 /* Security.framework */; };
 		03BDFBB410D6B37500487180 /* MGTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFB8910D6B37500487180 /* MGTwitterEngine.m */; };
 		03BDFBB510D6B37500487180 /* MGTwitterHTTPURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFB8D10D6B37500487180 /* MGTwitterHTTPURLConnection.m */; };
 		03BDFBB610D6B37500487180 /* MGTwitterLibXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFB8F10D6B37500487180 /* MGTwitterLibXMLParser.m */; };
@@ -108,12 +109,14 @@
 		03743D3E109D91F200B3B221 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = /System/Library/Frameworks/ScriptingBridge.framework; sourceTree = "<absolute>"; };
 		03743E8C109D987300B3B221 /* NSString+Search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Search.h"; sourceTree = "<group>"; };
 		03743E8D109D987300B3B221 /* NSString+Search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Search.m"; sourceTree = "<group>"; };
-		03743F13109DA42A00B3B221 /* RegistrationWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationWindowController.h; sourceTree = "<group>"; };
-		03743F14109DA42A00B3B221 /* RegistrationWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationWindowController.m; sourceTree = "<group>"; };
-		03743F16109DA43A00B3B221 /* RegistrationWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationWindow.xib; sourceTree = "<group>"; };
 		03743FF6109DB1C100B3B221 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		0374404A109DDAA200B3B221 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		037440A1109E267900B3B221 /* Adium.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Adium.h; sourceTree = "<group>"; };
+		03B0E7FF10D7BCDC00D8B185 /* iTunesBridgeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunesBridgeOperation.h; sourceTree = "<group>"; };
+		03B0E80010D7BCDC00D8B185 /* iTunesBridgeOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iTunesBridgeOperation.m; sourceTree = "<group>"; };
+		03B0E8C810D7C87700D8B185 /* PFMoveApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFMoveApplication.h; sourceTree = "<group>"; };
+		03B0E8C910D7C87700D8B185 /* PFMoveApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFMoveApplication.m; sourceTree = "<group>"; };
+		03B0E8CF10D7C8E900D8B185 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		03BDFB8810D6B37500487180 /* MGTwitterEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTwitterEngine.h; sourceTree = "<group>"; };
 		03BDFB8910D6B37500487180 /* MGTwitterEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTwitterEngine.m; sourceTree = "<group>"; };
 		03BDFB8A10D6B37500487180 /* MGTwitterEngineDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTwitterEngineDelegate.h; sourceTree = "<group>"; };
@@ -163,14 +166,12 @@
 		03BDFCCB10D6BB6500487180 /* UpdatingPreferencePaneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdatingPreferencePaneController.m; sourceTree = "<group>"; };
 		03BDFCCC10D6BB6500487180 /* UpdatingPreferencePaneView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatingPreferencePaneView.xib; sourceTree = "<group>"; };
 		03BDFD1910D6BD3A00487180 /* TwitterPreferencePane.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwitterPreferencePane.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		03BDFD1A10D6BD3A00487180 /* TwitterPreferencePane-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TwitterPreferencePane-Info.plist"; sourceTree = "<group>"; };
 		03BDFD7310D6BEE600487180 /* Twitter_Prefs.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Twitter_Prefs.tiff; sourceTree = "<group>"; };
 		03BDFD7410D6BEE600487180 /* TwitterPreferencePane-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TwitterPreferencePane-Info.plist"; sourceTree = "<group>"; };
 		03BDFD7510D6BEE600487180 /* TwitterPreferencePaneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterPreferencePaneController.h; sourceTree = "<group>"; };
 		03BDFD7610D6BEE600487180 /* TwitterPreferencePaneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterPreferencePaneController.m; sourceTree = "<group>"; };
 		03BDFD7710D6BEE600487180 /* TwitterPreferencePaneView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwitterPreferencePaneView.xib; sourceTree = "<group>"; };
 		03BDFDD710D6C38000487180 /* RegistrationPreferencePane.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RegistrationPreferencePane.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		03BDFDD810D6C38000487180 /* RegistrationPreferencePane-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RegistrationPreferencePane-Info.plist"; sourceTree = "<group>"; };
 		03BDFDFA10D6C3CE00487180 /* Registration_Prefs.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Registration_Prefs.tiff; sourceTree = "<group>"; };
 		03BDFDFB10D6C3CE00487180 /* RegistrationPreferencePane-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RegistrationPreferencePane-Info.plist"; sourceTree = "<group>"; };
 		03BDFDFC10D6C3CE00487180 /* RegistrationPreferencePaneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationPreferencePaneController.h; sourceTree = "<group>"; };
@@ -230,12 +231,50 @@
 				03743D3F109D91F200B3B221 /* ScriptingBridge.framework in Frameworks */,
 				03743FF7109DB1C100B3B221 /* Sparkle.framework in Frameworks */,
 				03BDFBDA10D6B6A400487180 /* libxml2.dylib in Frameworks */,
+				03B0E8D010D7C8E900D8B185 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03B0E7FC10D7BC8C00D8B185 /* Prefs Controller */ = {
+			isa = PBXGroup;
+			children = (
+				03BDFC2910D6B96600487180 /* SS_PreferencePaneProtocol.h */,
+				03BDFC2A10D6B96600487180 /* SS_PrefsController.h */,
+				03BDFC2B10D6B96600487180 /* SS_PrefsController.m */,
+			);
+			name = "Prefs Controller";
+			sourceTree = "<group>";
+		};
+		03B0E7FD10D7BC9E00D8B185 /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				EF247D5F0EEC653B002FB82F /* AppDelegate.h */,
+				EF247D600EEC653B002FB82F /* AppDelegate.m */,
+			);
+			name = "App Delegate";
+			sourceTree = "<group>";
+		};
+		03B0E7FE10D7BCA800D8B185 /* Bridge Operation */ = {
+			isa = PBXGroup;
+			children = (
+				03B0E7FF10D7BCDC00D8B185 /* iTunesBridgeOperation.h */,
+				03B0E80010D7BCDC00D8B185 /* iTunesBridgeOperation.m */,
+			);
+			name = "Bridge Operation";
+			sourceTree = "<group>";
+		};
+		03B0E8C610D7C86900D8B185 /* Move App to Apps folder */ = {
+			isa = PBXGroup;
+			children = (
+				03B0E8C810D7C87700D8B185 /* PFMoveApplication.h */,
+				03B0E8C910D7C87700D8B185 /* PFMoveApplication.m */,
+			);
+			name = "Move App to Apps folder";
+			sourceTree = "<group>";
+		};
 		03BDFB8710D6B37500487180 /* TwitterEngine */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,13 +365,10 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				03BDFC2910D6B96600487180 /* SS_PreferencePaneProtocol.h */,
-				03BDFC2A10D6B96600487180 /* SS_PrefsController.h */,
-				03BDFC2B10D6B96600487180 /* SS_PrefsController.m */,
-				EF247D5F0EEC653B002FB82F /* AppDelegate.h */,
-				EF247D600EEC653B002FB82F /* AppDelegate.m */,
-				03743F13109DA42A00B3B221 /* RegistrationWindowController.h */,
-				03743F14109DA42A00B3B221 /* RegistrationWindowController.m */,
+				03B0E8C610D7C86900D8B185 /* Move App to Apps folder */,
+				03B0E7FE10D7BCA800D8B185 /* Bridge Operation */,
+				03B0E7FD10D7BC9E00D8B185 /* App Delegate */,
+				03B0E7FC10D7BC8C00D8B185 /* Prefs Controller */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -381,8 +417,6 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				03BDFD1A10D6BD3A00487180 /* TwitterPreferencePane-Info.plist */,
-				03BDFDD810D6C38000487180 /* RegistrationPreferencePane-Info.plist */,
 			);
 			name = "itunes control";
 			sourceTree = "<group>";
@@ -411,7 +445,6 @@
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
-				03743F16109DA43A00B3B221 /* RegistrationWindow.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -422,6 +455,7 @@
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 				03BDFBD910D6B6A400487180 /* libxml2.dylib */,
+				03B0E8CF10D7C8E900D8B185 /* Security.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -592,7 +626,6 @@
 				03C64D30102EEB950081A12C /* Play.png in Resources */,
 				03C64D31102EEB950081A12C /* Pause.png in Resources */,
 				032923801055129800D30E83 /* icon.icns in Resources */,
-				03743F17109DA43A00B3B221 /* RegistrationWindow.xib in Resources */,
 				0374404B109DDAA200B3B221 /* dsa_pub.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -639,7 +672,6 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				EF247D610EEC653B002FB82F /* AppDelegate.m in Sources */,
 				03743E8E109D987300B3B221 /* NSString+Search.m in Sources */,
-				03743F15109DA42A00B3B221 /* RegistrationWindowController.m in Sources */,
 				03BDFBB410D6B37500487180 /* MGTwitterEngine.m in Sources */,
 				03BDFBB510D6B37500487180 /* MGTwitterHTTPURLConnection.m in Sources */,
 				03BDFBB610D6B37500487180 /* MGTwitterLibXMLParser.m in Sources */,
@@ -655,6 +687,8 @@
 				03BDFBC610D6B37500487180 /* NSData+Base64.m in Sources */,
 				03BDFBC710D6B37500487180 /* NSString+UUID.m in Sources */,
 				03BDFC2C10D6B96600487180 /* SS_PrefsController.m in Sources */,
+				03B0E80110D7BCDC00D8B185 /* iTunesBridgeOperation.m in Sources */,
+				03B0E8CA10D7C87700D8B185 /* PFMoveApplication.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

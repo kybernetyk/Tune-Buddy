@@ -7,7 +7,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "RegistrationWindowController.h"
 #import <Sparkle/Sparkle.h>
 #import "iTunes.h"
 #import "Adium.h"
@@ -19,7 +18,6 @@
 	NSStatusItem *statusItem;
 	
 	BOOL isRegistered;
-	RegistrationWindowController *registrationWindowController;
 	SS_PrefsController *preferencesWindowController;
 	
 	MGTwitterEngine *twitterEngine;
@@ -30,11 +28,15 @@
 	NSMenuItem *adiumMenuItem;
 	NSMenuItem *twitterMenuItem;
 	
-	iTunesApplication *iTunes;
 	AdiumApplication *adium;
+	
+	NSString *longDisplayString;
+	
+	NSOperationQueue *backgroundOperationQueue;
 }
 
 @property (readonly, assign) BOOL isRegistered;
+@property (readwrite, copy) NSString *longDisplayString;
 
 #pragma mark -
 #pragma mark public IB accessable methods
