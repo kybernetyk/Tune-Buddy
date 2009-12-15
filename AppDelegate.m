@@ -32,6 +32,7 @@
 						  [NSNumber numberWithBool: YES], @"trimDisplayStringLength",
 						  [NSNumber numberWithInt: 64], @"maxDisplayLength",
 						  [NSNumber numberWithBool: NO], @"twitterEnabled",
+						  [NSNumber numberWithBool: YES], @"enableMusicMonday",
 						  [NSNumber numberWithBool: YES], @"adiumEnabled",
 						  nil];
 	
@@ -143,8 +144,11 @@
 #pragma mark MGTwitterEngineDelegate methods
 - (void)requestSucceeded:(NSString *)connectionIdentifier
 {
-	  NSLog(@"Request succeeded for connectionIdentifier = %@", connectionIdentifier);
+//	  NSLog(@"Request succeeded for connectionIdentifier = %@", connectionIdentifier);
 	lastConnectionIdentifier = nil;
+	
+	[twitterEngine autorelease];
+	twitterEngine = nil;
 }
 
 
@@ -156,6 +160,9 @@
 	 [error userInfo]);
 	
 	lastConnectionIdentifier = nil;
+	
+	[twitterEngine autorelease];
+	twitterEngine = nil;
 }
 
 
@@ -166,30 +173,30 @@
 
 - (void)directMessagesReceived:(NSArray *)messages forRequest:(NSString *)connectionIdentifier
 {
-	  NSLog(@"Got direct messages for %@:\r%@", connectionIdentifier, messages);
+//	  NSLog(@"Got direct messages for %@:\r%@", connectionIdentifier, messages);
 }
 
 
 - (void)userInfoReceived:(NSArray *)userInfo forRequest:(NSString *)connectionIdentifier
 {
-	    NSLog(@"Got user info for %@:\r%@", connectionIdentifier, userInfo);
+	  //  NSLog(@"Got user info for %@:\r%@", connectionIdentifier, userInfo);
 }
 
 
 - (void)miscInfoReceived:(NSArray *)miscInfo forRequest:(NSString *)connectionIdentifier
 {
-		NSLog(@"Got misc info for %@:\r%@", connectionIdentifier, miscInfo);
+	//	NSLog(@"Got misc info for %@:\r%@", connectionIdentifier, miscInfo);
 }
 
 - (void)searchResultsReceived:(NSArray *)searchResults forRequest:(NSString *)connectionIdentifier
 {
-		NSLog(@"Got search results for %@:\r%@", connectionIdentifier, searchResults);
+	//	NSLog(@"Got search results for %@:\r%@", connectionIdentifier, searchResults);
 }
 
 
 - (void)imageReceived:(NSImage *)image forRequest:(NSString *)connectionIdentifier
 {
-	  NSLog(@"Got an image for %@: %@", connectionIdentifier, image);
+	// NSLog(@"Got an image for %@: %@", connectionIdentifier, image);
     
     // Save image to the Desktop.
     //NSString *path = [[NSString stringWithFormat:@"~/Desktop/%@.tiff", connectionIdentifier] stringByExpandingTildeInPath];
@@ -200,7 +207,7 @@
 {
 	if ([twitterEngine numberOfConnections] == 0)
 	{
-		NSLog(@"connection finished. %i open connections left ...",[twitterEngine numberOfConnections]);
+		//NSLog(@"connection finished. %i open connections left ...",[twitterEngine numberOfConnections]);
 		//[NSApp terminate:self];
 	}
 }
@@ -209,18 +216,12 @@
 #pragma mark public IB accessable methods
 - (IBAction) sendCurrentTrackToTwitter: (id) sender
 {
-	NSLog(@"sending track to twitter!");
-	
 	if (lastConnectionIdentifier)
 	{
 		NSLog(@"won't send as we're sending already!");
 		
 		return;
 	}
-	
-	
-	[twitterEngine release];
-	twitterEngine = nil;
 	
 	// Create a TwitterEngine and set our login details.
     twitterEngine = [[MGTwitterEngine alloc] initWithDelegate:self];
@@ -234,8 +235,20 @@
 	
 	[twitterEngine setUsername: user password: pass];
 	
-	lastConnectionIdentifier = [twitterEngine sendUpdate: [self longDisplayString]];
+	NSCalendar *gregorian = [[NSCalendar alloc]	initWithCalendarIdentifier:NSGregorianCalendar];
+	NSDateComponents *weekdayComponents = [gregorian components:NSWeekdayCalendarUnit fromDate: [NSDate date]];
+	NSInteger weekday = [weekdayComponents weekday];
+	[gregorian release];
 	
+	if ([defaults boolForKey: @"enableMusicMonday"] && weekday == 2) //mondays!
+	{
+		NSString *tstr = [NSString stringWithFormat: @"%@ #musicmonday",[self longDisplayString]];
+		lastConnectionIdentifier = [twitterEngine sendUpdate: tstr];
+	}
+	else
+	{
+		lastConnectionIdentifier = [twitterEngine sendUpdate: [self longDisplayString]];
+	}
 }
 
 - (IBAction) openPreferencesWindow: (id) sender

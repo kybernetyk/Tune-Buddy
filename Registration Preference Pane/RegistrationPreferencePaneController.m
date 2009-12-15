@@ -34,7 +34,7 @@
 - (NSImage *)paneIcon
 {
     return [[[NSImage alloc] initWithContentsOfFile:
-        [[NSBundle bundleForClass:[self class]] pathForImageResource:@"Registration_Prefs"]
+        [[NSBundle bundleForClass:[self class]] pathForImageResource:@"Registration_Prefs.png"]
         ] autorelease];
 }
 

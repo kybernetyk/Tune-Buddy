@@ -40,16 +40,25 @@
 	}
 	
 	iTunesTrack *currentTrack = [iTunes currentTrack];
-	
+		
 	
 	if ([currentTrack exists] && [iTunes isRunning])
 	{
-		trackName = [[[currentTrack name] copy] autorelease];	
-		artistName = [[[currentTrack artist] copy] autorelease];
- 		kind = [[[currentTrack kind] copy] autorelease];
-		streamTitle = [[[iTunes currentStreamTitle] copy] autorelease];
+		if ([currentTrack name])
+			trackName	= [NSString stringWithString: [currentTrack name]];
+
+		if ([currentTrack artist])
+			artistName = [NSString stringWithString: [currentTrack artist]];
+		
+		if ([currentTrack kind])
+			kind = [NSString stringWithString: [currentTrack kind]];
+		
+		if ([iTunes currentStreamTitle])
+			streamTitle	= [NSString stringWithString: [iTunes currentStreamTitle]];
+
 		playerState = [iTunes playerState];
 		trackExists = YES;
+		
 	}
 	else
 	{
@@ -104,7 +113,7 @@
 			}
 			else
 			{
-				NSLog(@"no stream title!");
+				//NSLog(@"no stream title!");
 			}
 		}
 	}
@@ -154,21 +163,32 @@
 	NSAutoreleasePool *thePool = [[NSAutoreleasePool alloc] init];
 	NSString *previousDisplayString = nil;
 	
+	
+	NSAutoreleasePool *localPool = [[NSAutoreleasePool alloc] init];	
+	int poolKillCounter = 0;
+	
 	while (![self isCancelled])
 	{
-		NSAutoreleasePool *localPool = [[NSAutoreleasePool alloc] init];
 		[previousDisplayString release];
 		previousDisplayString = [currentDisplayString retain];
 		
 		[self fetchCurrentTrackFromItunes];
-		
+	
 		if (![currentDisplayString isEqualToString: previousDisplayString])
 		{
 			//NSLog(@"current track changed to: %@",currentDisplayString);
 			[delegate performSelectorOnMainThread:@selector(iTunesTrackDidChangeTo:) withObject: currentDisplayString waitUntilDone: YES];
 			
 		}
-		[localPool release];
+
+		poolKillCounter ++;
+		if (poolKillCounter >= 10)
+		{
+			[localPool release];
+			localPool = [[NSAutoreleasePool alloc] init];
+			poolKillCounter = 0;
+		}
+		
 		usleep(kRefreshFrequencyInMicroseconds);
 	}
 	
