@@ -7,6 +7,7 @@
 //
 
 #import "iTunesBridgeOperation.h"
+#import "NSString+Search.h"
 
 #define kRefreshFrequencyInMicroseconds 500000
 
@@ -18,6 +19,7 @@
 //returns the string that will be displayed/copied to pasteboard
 - (void) fetchCurrentTrackFromItunes
 {
+	[self setCurrentDisplayString: nil];
 	NSString *playStatus = @"⌽ ";
 	NSString *trackName = nil; //@"...";
 	NSString *artistName = nil;// @"";
@@ -31,7 +33,24 @@
 	
 	
 	if (!iTunes)
-		iTunes = [[SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"] retain];
+	{	
+		@try
+		{
+			iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+			[iTunes setTimeout: 10];
+		//	[iTunes setDelegate: self];
+			[iTunes retain];
+		}
+		@catch(NSException *e)
+		{
+			NSLog(@"#1 Exception:%@ Reason: %@ Callstack: %@ userInfo: %@",e, [e reason], [e callStackSymbols],[e userInfo] );
+			[self setCurrentDisplayString: [NSString stringWithFormat:@"%@",playStatus]];
+			return;
+
+		}
+		
+
+	}
 	
 	if (![iTunes isRunning])
 	{	
@@ -39,26 +58,56 @@
 		return;
 	}
 	
-	iTunesTrack *currentTrack = [iTunes currentTrack];
+	iTunesTrack *currentTrack = nil;
+	@try
+	{
+		currentTrack = [[iTunes currentTrack] get];
+	}
+	@catch(NSException *e)
+	{
+		NSLog(@"#2 Exception:%@ Reason: %@ Callstack: %@ userInfo: %@",e, [e reason], [e callStackSymbols],[e userInfo] );
+		[self setCurrentDisplayString: [NSString stringWithFormat:@"%@",playStatus]];
+		return;
+
+	}
 		
 	
 	if ([currentTrack exists] && [iTunes isRunning])
 	{
-		if ([currentTrack name])
-			trackName	= [NSString stringWithString: [currentTrack name]];
+		@try 
+		{
+			trackName = [currentTrack name];
+			if (trackName != nil)
+				trackName= [NSString stringWithString: trackName];
 
-		if ([currentTrack artist])
-			artistName = [NSString stringWithString: [currentTrack artist]];
+			artistName = [currentTrack artist];
+			if (artistName != nil)
+				artistName = [NSString stringWithString: artistName];
 		
-		if ([currentTrack kind])
-			kind = [NSString stringWithString: [currentTrack kind]];
+			kind = [currentTrack kind];
+			if (kind != nil)
+				kind = [NSString stringWithString: kind];
 		
-		if ([iTunes currentStreamTitle])
-			streamTitle	= [NSString stringWithString: [iTunes currentStreamTitle]];
+			streamTitle = [iTunes currentStreamTitle];
+			if (streamTitle != nil)
+				streamTitle	= [NSString stringWithString: streamTitle];
 
-		playerState = [iTunes playerState];
-		trackExists = YES;
-		
+			playerState = [iTunes playerState];
+			trackExists = YES;
+		}
+		@catch (NSException *e) 
+		{
+			NSLog(@"#3 Exception:%@ Reason: %@ Callstack: %@ userInfo: %@",e, [e reason], [e callStackSymbols],[e userInfo] );
+			
+			
+			NSLog(@"name: %@", trackName);
+			NSLog(@"artist: %@", artistName);
+			NSLog(@"kind: %@", kind);
+			NSLog(@"stream: %@", streamTitle);
+			
+			[self setCurrentDisplayString: [NSString stringWithFormat:@"%@",playStatus]];
+			return;
+		}
 	}
 	else
 	{
@@ -154,7 +203,6 @@
 	
 	[self setCurrentDisplayString: [NSString stringWithFormat:@"%@%@%@%@",playStatus,artistName,delimiter,trackName]];
 	return;
-	
 }
 
 
@@ -167,6 +215,15 @@
 	NSAutoreleasePool *localPool = [[NSAutoreleasePool alloc] init];	
 	int poolKillCounter = 0;
 	
+	double resolution = 0.75;
+	BOOL endRunLoop = NO;
+	BOOL isRunning;
+	
+	NSPort *aPort = [NSPort port];
+    [[NSRunLoop currentRunLoop] addPort:aPort forMode:NSDefaultRunLoopMode];
+	
+	NSLog (@"current thread: %@",[NSThread currentThread]);
+	
 	while (![self isCancelled])
 	{
 		[previousDisplayString release];
@@ -176,11 +233,16 @@
 	
 		if (![currentDisplayString isEqualToString: previousDisplayString])
 		{
-			//NSLog(@"current track changed to: %@",currentDisplayString);
+			NSLog(@"current track changed to: %@",currentDisplayString);
 			[delegate performSelectorOnMainThread:@selector(iTunesTrackDidChangeTo:) withObject: currentDisplayString waitUntilDone: YES];
 
 		}
 
+		NSDate* next = [NSDate dateWithTimeIntervalSinceNow:resolution];
+		isRunning = [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:next];
+		//NSLog(@"%i", isRunning);
+		
+		
 		poolKillCounter ++;
 		if (poolKillCounter >= 20) //after 10 seconds
 		{
@@ -189,14 +251,27 @@
 			poolKillCounter = 0;
 			
 			//reset itunes to reconnect 
-			[iTunes release];
-			iTunes = nil;
+			//[iTunes release];
+			//iTunes = nil;
 		}
 		
-		usleep(kRefreshFrequencyInMicroseconds);
+		//usleep(kRefreshFrequencyInMicroseconds);
+	//	NSLog(@"tick");
 	}
-	
+	[iTunes release];
 	[thePool release];	
+}
+
+
+
+- (void)eventDidFail:(const AppleEvent *)event withError:(NSError *)error
+{
+	NSLog (@"current  error thread: %@",[NSThread currentThread]);
+	NSLog(@"An Epple Event failed: %@, %@",[error localizedDescription], [error userInfo]);
+
+	//[iTunes autorelease];
+//	iTunes = nil;
+	
 }
 
 @end
