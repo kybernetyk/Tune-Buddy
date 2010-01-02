@@ -242,12 +242,13 @@
 	
 	if ([defaults boolForKey: @"enableMusicMonday"] && weekday == 2) //mondays!
 	{
-		NSString *tstr = [NSString stringWithFormat: @"%@ #musicmonday",[self longDisplayString]];
+		NSString *tstr = [NSString stringWithFormat: @"%@ #nowplaying #musicmonday",[self longDisplayString]];
 		lastConnectionIdentifier = [twitterEngine sendUpdate: tstr];
 	}
 	else
 	{
-		lastConnectionIdentifier = [twitterEngine sendUpdate: [self longDisplayString]];
+		NSString *tstr = [NSString stringWithFormat: @"%@ #nowplaying",[self longDisplayString]];
+		lastConnectionIdentifier = [twitterEngine sendUpdate: tstr];
 	}
 }
 
