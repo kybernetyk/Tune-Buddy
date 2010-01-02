@@ -12,6 +12,7 @@
 #import "MGTwitterEngine.h"
 #import "iTunesBridgeOperation.h"
 #import "PFMoveApplication.h"
+#import "NSString+Additions.h"
 
 @implementation AppDelegate
 @synthesize isRegistered;
@@ -362,17 +363,24 @@
 		return NO;
 	
 	if ([[self serialForName: registeredTo] isEqualToString: serial])
+	{	
+		NSLog(@"we're registered!");
+		
 		return YES;
+		
+	}
 	
 	return NO;
 }
 
 
 //lol rot 13
-- (NSString *) serialForName: (NSString *) name
+/*- (NSString *) serialForName: (NSString *) name
 {
-	name = [name uppercaseString];
-	name = [name stringByReplacingOccurrencesOfString:@" " withString:@""];
+	//name = [name uppercaseString];
+	name = [name stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+	//name = [name stringByReplacingOccurrencesOfString:@" " withString:@""];
+	
 	//XXXX-XXXX-XXXX-XXXX-XXXX
 	if ([name length] < 20)
 		name = [name stringByPaddingToLength: 20 withString:@"K" startingAtIndex: 0];
@@ -390,8 +398,65 @@
 	}
 	
 	NSString *serial2 = [NSString rot13: serial1];
+	serial2 = [serial2 uppercaseString];
+	
+	NSLog(@"computed serial: %@", serial2);
 	
 	return serial2;
+}*/
+
+- (NSString *) serialForName: (NSString *) name
+{
+	NSInteger len = [name length];
+	//NSLog(@"name: %@ - len: %i",name, len);
+	//NSLog(@"md5: %@",[name md5]);
+
+	if (len < 10)
+		len = 15;
+	if (len > 99)
+		len = 50;
+
+	NSInteger one = len - 3;
+	NSInteger two = len;
+	NSInteger three = len + 3;
+	NSInteger four = len - 5;
+
+	NSString *string = [NSString stringWithFormat: @"%i%i%i%i%i%i%i%i%i%i%i%i%i%i%i%i",
+						one,two,three,four,two,four,one,three,three,four,one,two,one,three,four,one];
+	
+	string = [string uppercaseString];
+	string = [string md5];
+
+	name = [name md5];
+
+	
+	name = [name stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+	//name = [name stringByReplacingOccurrencesOfString:@" " withString:@""];
+	
+	//XXXX-XXXX-XXXX-XXXX-XXXX
+	if ([name length] < 20)
+		name = [name stringByPaddingToLength: 20 withString:@"K" startingAtIndex: 0];
+	
+	
+	NSMutableString *serial1 = [NSMutableString string];
+	for (int i = 0; i < 5; i++)
+	{
+		NSRange r;
+		r.location = i * 4;
+		r.length = 4;
+		[serial1 appendString: [name substringWithRange: r]];
+		if (i < 4)
+			[serial1 appendString: @"-"];
+	}
+	
+	NSString *serial2 = [NSString rot13: serial1];
+	serial2 = [serial2 uppercaseString];
+	
+	//NSLog(@"computed serial: %@", serial2);
+	
+	return serial2;
+	
+	
 }
 
 - (void) registerForName: (NSString *) name andSerial: (NSString *) serial

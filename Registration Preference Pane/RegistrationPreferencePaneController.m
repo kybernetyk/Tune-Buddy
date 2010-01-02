@@ -100,7 +100,10 @@
 	
 	//WNEB-FYNJ-FMCV-YRJF-XVXX
 	
-	[[NSApp delegate] registerForName:  [registeredToTextField stringValue] andSerial: [serialTextField stringValue]];
+	NSString *name = [registeredToTextField stringValue];
+	NSString *serial = [serialTextField stringValue];
+	
+	[[NSApp delegate] registerForName: name andSerial: serial];
 	[[NSApp delegate] checkRegistration];
 	[self updateWindowWithRegistrationInfo];
 	

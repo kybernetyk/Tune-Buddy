@@ -49,6 +49,7 @@
 		03BDFE0110D6C3CE00487180 /* RegistrationPreferencePaneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFDFD10D6C3CE00487180 /* RegistrationPreferencePaneController.m */; };
 		03BDFE0210D6C3CE00487180 /* RegistrationPreferencePaneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03BDFDFE10D6C3CE00487180 /* RegistrationPreferencePaneView.xib */; };
 		03BDFE1D10D6C42300487180 /* RegistrationPreferencePane.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 03BDFDD710D6C38000487180 /* RegistrationPreferencePane.bundle */; };
+		03C604D310EFCEB400BDC333 /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C604D210EFCEB400BDC333 /* NSString+Additions.m */; };
 		03C64D30102EEB950081A12C /* Play.png in Resources */ = {isa = PBXBuildFile; fileRef = 03C64D2E102EEB950081A12C /* Play.png */; };
 		03C64D31102EEB950081A12C /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 03C64D2F102EEB950081A12C /* Pause.png */; };
 		03EAFB5310D8032A00B715D0 /* yajl.c in Sources */ = {isa = PBXBuildFile; fileRef = 03EAFB4310D8032A00B715D0 /* yajl.c */; };
@@ -191,6 +192,9 @@
 		03BDFDFC10D6C3CE00487180 /* RegistrationPreferencePaneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationPreferencePaneController.h; sourceTree = "<group>"; };
 		03BDFDFD10D6C3CE00487180 /* RegistrationPreferencePaneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationPreferencePaneController.m; sourceTree = "<group>"; };
 		03BDFDFE10D6C3CE00487180 /* RegistrationPreferencePaneView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationPreferencePaneView.xib; sourceTree = "<group>"; };
+		03C604D110EFCEB400BDC333 /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
+		03C604D210EFCEB400BDC333 /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
+		03C6050E10EFD54000BDC333 /* seria.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = seria.php; sourceTree = "<group>"; };
 		03C64D2E102EEB950081A12C /* Play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Play.png; sourceTree = "<group>"; };
 		03C64D2F102EEB950081A12C /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pause.png; sourceTree = "<group>"; };
 		03EAFB4310D8032A00B715D0 /* yajl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = yajl.c; sourceTree = "<group>"; };
@@ -505,6 +509,8 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				03C604D110EFCEB400BDC333 /* NSString+Additions.h */,
+				03C604D210EFCEB400BDC333 /* NSString+Additions.m */,
 				03EAFB4210D8032A00B715D0 /* yajl */,
 				03BDFB8710D6B37500487180 /* TwitterEngine */,
 				037440A1109E267900B3B221 /* Adium.h */,
@@ -520,6 +526,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				03C6050E10EFD54000BDC333 /* seria.php */,
 				0374404A109DDAA200B3B221 /* dsa_pub.pem */,
 				0329237F1055129800D30E83 /* icon.icns */,
 				03C64D2E102EEB950081A12C /* Play.png */,
@@ -785,6 +792,7 @@
 				03EAFB6910D8039300B715D0 /* MGTwitterStatusesYAJLParser.m in Sources */,
 				03EAFB6A10D8039300B715D0 /* MGTwitterUsersYAJLParser.m in Sources */,
 				03EAFB6B10D8039300B715D0 /* MGTwitterYAJLParser.m in Sources */,
+				03C604D310EFCEB400BDC333 /* NSString+Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
