@@ -25,14 +25,22 @@
 	
 	IBOutlet SUUpdater *sparkle;
 	
+	NSMenuItem *copyToClipboardMenuItem;
+	NSMenuItem *preferencesMenuItem;
+	NSMenuItem *smallScreenMenuSeperator;
 	NSMenuItem *adiumMenuItem;
 	NSMenuItem *twitterMenuItem;
+	NSMenuItem *smallScreenModeMenuItem;
+	NSMenuItem *quitMenuItem;
+	NSMenu *statusBarMenu;
 	
 	AdiumApplication *adium;
 	
 	NSString *longDisplayString;
 	
 	NSOperationQueue *backgroundOperationQueue;
+	
+	BOOL smallScreenModeEnabled;
 }
 
 @property (readonly, assign) BOOL isRegistered;

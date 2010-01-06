@@ -212,18 +212,18 @@
 	NSString *previousDisplayString = nil;
 	
 	
-	NSAutoreleasePool *localPool = [[NSAutoreleasePool alloc] init];	
 	int poolKillCounter = 0;
 	
 	double resolution = 0.75;
-	BOOL endRunLoop = NO;
-	BOOL isRunning;
+//	BOOL endRunLoop = NO;
+	//BOOL isRunning;
 	
 	NSPort *aPort = [NSPort port];
     [[NSRunLoop currentRunLoop] addPort:aPort forMode:NSDefaultRunLoopMode];
 	
 	NSLog (@"current thread: %@",[NSThread currentThread]);
-	
+
+	NSAutoreleasePool *localPool = [[NSAutoreleasePool alloc] init];	
 	while (![self isCancelled])
 	{
 		[previousDisplayString release];
@@ -239,7 +239,7 @@
 		}
 
 		NSDate* next = [NSDate dateWithTimeIntervalSinceNow:resolution];
-		isRunning = [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:next];
+		/*isRunning =*/ [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:next];
 		//NSLog(@"%i", isRunning);
 		
 		

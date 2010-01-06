@@ -27,6 +27,15 @@
 {
 	PFMoveToApplicationsFolderIfNecessary();
 	
+	NSScreen *screen = [[NSScreen screens] objectAtIndex: 0];
+	
+	BOOL shallEnableSmallScreenMode = NO;
+	
+	NSLog(@"screen width: %f", [screen frame].size.width);
+	
+	if ([screen frame].size.width < 1300.0)
+		shallEnableSmallScreenMode = YES;
+	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	
 	NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -35,10 +44,11 @@
 						  [NSNumber numberWithBool: NO], @"twitterEnabled",
 						  [NSNumber numberWithBool: YES], @"enableMusicMonday",
 						  [NSNumber numberWithBool: YES], @"adiumEnabled",
+						  [NSNumber numberWithBool: shallEnableSmallScreenMode], @"smallScreenModeEnabled",
 						  nil];
 	
 	[defaults registerDefaults: dict];
-	
+	smallScreenModeEnabled = [[NSUserDefaults standardUserDefaults] boolForKey: @"smallScreenModeEnabled"];
 	
 	[self checkRegistration];
 	//[self registerForName:@"Jaroslaw Szpilewski" andSerial: @"lolfail"];
@@ -54,10 +64,48 @@
 	[backgroundOperationQueue addOperation: op];
 	
 	
+	
+	NSUserDefaultsController *defc = [NSUserDefaultsController sharedUserDefaultsController];
+	[defc addObserver: self forKeyPath: @"values.smallScreenModeEnabled" options: NSKeyValueObservingOptionNew context: @"smallScreenModeEnabled"];
+
 }
+
+#pragma mark -
+#pragma mark KVO observing (for user defaults)
+/* we observe the user defaults controller to act when the user changes maxBandwidthUsage or maxConcurrentDownloadOperations */
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
+{
+	NSString *contextString = (NSString *)context;
+	
+	if ([contextString isEqualToString: @"smallScreenModeEnabled"])
+	{
+		smallScreenModeEnabled = [[NSUserDefaults standardUserDefaults] boolForKey: @"smallScreenModeEnabled"];
+		
+		[self createStatusItem];
+		return;
+	}
+	
+	
+	[super observeValueForKeyPath:keyPath
+						 ofObject:object
+						   change:change
+						  context:context];
+}
+
+
 
 - (void)menuWillOpen:(NSMenu *)menu
 {
+
+
+	if (smallScreenModeEnabled)
+	{
+		//[smallScreenModeMenuItem setTitle: [self displayString]];
+	}
+	
 	if (!adium)
 		adium = [SBApplication applicationWithBundleIdentifier:@"com.adiumX.adiumX"];
 	
@@ -74,8 +122,10 @@
 }
 
 // creates a menu item in the status menu
-- (void) createStatusItem
+/*- (void) createStatusItem
 {
+	BOOL smallScreenModeEnabled = [[NSUserDefaults standardUserDefaults] boolForKey: @"smallScreenModeEnabled"];
+	
 	NSStatusBar *statusBar = [NSStatusBar systemStatusBar];
 	
 	if (statusItem)
@@ -85,16 +135,27 @@
 		statusItem = nil;
 	}
 	
-	NSString *title = [self displayString];
+	NSString *title = @"♫";
+	
+	if (!smallScreenModeEnabled)
+		title = [self displayString];
 	
 	
 	NSMenu *menu = [[[NSMenu alloc] initWithTitle:@"menu title"] autorelease];
+	statusBarMenu = menu;
 	[menu setDelegate: self];
 	[menu setAutoenablesItems: NO];
 	//	NSMenuItem *menuItem = [[[NSMenuItem alloc] initWithTitle:@"Preferences" action:@selector(openPreferences:) keyEquivalent:[NSString string]] autorelease];
 	//	[menu addItem: menuItem];
+
 	
-	[menu addItemWithTitle:@"Copy To Clip Board" action:@selector(copyCurrentTrackInfoToClipBoard:) keyEquivalent: [NSString string]];
+	if (smallScreenModeEnabled)
+	{
+		smallScreenModeMenuItem = [menu addItemWithTitle: [self displayString] action: @selector(copyCurrentTrackInfoToClipBoard:) keyEquivalent: [NSString string]];	
+		[menu addItem:[NSMenuItem separatorItem]];
+	}
+	
+	[menu addItemWithTitle:@"Copy To Clip Board" action: @selector(copyCurrentTrackInfoToClipBoard:) keyEquivalent: [NSString string]];
 	
 	
 	//transformer for hidden = !xxxEnabled
@@ -138,6 +199,108 @@
 	
 	[statusItem retain];
 	
+}*/
+
+
+// creates a menu item in the status menu
+- (void) createStatusItem
+{
+	//BOOL smallScreenModeEnabled = [[NSUserDefaults standardUserDefaults] boolForKey: @"smallScreenModeEnabled"];
+	
+	NSStatusBar *statusBar = [NSStatusBar systemStatusBar];
+	
+	
+
+	
+	NSString *title = @"♫";
+	
+	if (!smallScreenModeEnabled)
+		title = [self displayString];
+	
+	
+	if (!statusBarMenu)
+	{	
+		statusBarMenu = [[NSMenu alloc] initWithTitle:@"menu title"];
+		[statusBarMenu setDelegate: self];
+		[statusBarMenu setAutoenablesItems: NO];
+	}
+	
+	
+	if (smallScreenModeEnabled)
+	{
+		if (!smallScreenModeMenuItem)
+		{	
+			smallScreenModeMenuItem = [[NSMenuItem alloc] initWithTitle: [self displayString] action: @selector (copyCurrentTrackInfoToClipBoard:) keyEquivalent:[NSString string]];
+			
+			[statusBarMenu insertItem: smallScreenModeMenuItem atIndex: 0];
+			
+			smallScreenMenuSeperator = [[NSMenuItem separatorItem] retain];
+			[statusBarMenu insertItem: smallScreenMenuSeperator atIndex: 1];
+		}
+		else 
+		{
+			[smallScreenModeMenuItem setTitle: [self displayString]];
+			[smallScreenModeMenuItem setHidden: NO];
+			[smallScreenMenuSeperator setHidden: NO];
+		}
+	}
+	else
+	{
+		[smallScreenModeMenuItem setHidden: YES];
+		[smallScreenMenuSeperator setHidden: YES];
+	}
+	
+	if (!copyToClipboardMenuItem)
+		copyToClipboardMenuItem = [statusBarMenu addItemWithTitle:@"Copy To Clip Board" action: @selector(copyCurrentTrackInfoToClipBoard:) keyEquivalent: [NSString string]];
+	
+	
+	//transformer for hidden = !xxxEnabled
+	NSValueTransformer *tran = [NSValueTransformer valueTransformerForName: NSNegateBooleanTransformerName];
+	NSDictionary *opts = [NSDictionary dictionaryWithObject: tran forKey: @"NSValueTransformer"];
+	
+
+	if (!adiumMenuItem)
+	{
+		adiumMenuItem = [statusBarMenu addItemWithTitle:@"Send To Active Adium Chat" action:@selector(sendCurrentTrackToAdium:) keyEquivalent: [NSString string]];
+		[adiumMenuItem bind: @"hidden" toObject: [NSUserDefaultsController sharedUserDefaultsController] withKeyPath:@"values.adiumEnabled" options:opts];
+	}
+	
+	if (!twitterMenuItem)
+	{
+		twitterMenuItem = [statusBarMenu addItemWithTitle:@"Send To Twitter" action:@selector(sendCurrentTrackToTwitter:) keyEquivalent: [NSString string]];
+		[twitterMenuItem bind: @"hidden" toObject: [NSUserDefaultsController sharedUserDefaultsController] withKeyPath:@"values.twitterEnabled" options:opts];
+		[statusBarMenu addItem:[NSMenuItem separatorItem]];
+	}
+	
+	
+	if (!preferencesMenuItem)
+	{	
+		preferencesMenuItem = [statusBarMenu addItemWithTitle:@"Preferences" action:@selector(openPreferencesWindow:) keyEquivalent: [NSString string]];
+		[statusBarMenu addItem:[NSMenuItem separatorItem]];		
+	}
+	
+	if (!quitMenuItem)
+	{	
+		quitMenuItem = [statusBarMenu addItemWithTitle:@"Quit" action:@selector(quitAppByMenu:) keyEquivalent:[NSString string]];
+	}
+	
+	
+	NSFont *font = [NSFont fontWithName:@"Verdana" size: 11.0f];
+	//NSLog(@"%@",font);
+	NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys: font,@"NSFont",nil];
+	NSAttributedString *attributedTitle = [[[NSAttributedString alloc] initWithString: title attributes: attributes] autorelease];
+	
+	if (!statusItem)
+	{	
+		statusItem = [statusBar statusItemWithLength: NSVariableStatusItemLength];
+		[statusItem setEnabled: YES];
+		[statusItem setHighlightMode: YES];
+		[statusItem setMenu: statusBarMenu];
+	
+		[statusItem retain];
+	}
+	
+	[statusItem setAttributedTitle: attributedTitle];
 }
 
 
@@ -481,12 +644,16 @@
 #pragma mark itunes bridge delegate
 - (void) iTunesTrackDidChangeTo: (NSString *) newTrack
 {
+//	BOOL smallScreenModeEnabled = [[NSUserDefaults standardUserDefaults] boolForKey: @"smallScreenModeEnabled"];
+
 	[self setLongDisplayString: newTrack];
 
-	NSString *displayString = [self displayString];
-	
-	if (![[statusItem title] isEqualToString: displayString])
-		[self createStatusItem];
+	//if (!smallScreenModeEnabled)
+	{
+		NSString *displayString = [self displayString];
+		if (![[statusItem title] isEqualToString: displayString])
+			[self createStatusItem];
+	}
 }
 
 @end
