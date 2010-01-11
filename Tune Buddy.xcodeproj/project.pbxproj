@@ -234,9 +234,9 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		32CA4F630368D1EE00C91783 /* TuneStat_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TuneStat_Prefix.pch; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* Tune Buddy_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tune Buddy_Prefix.pch"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* TuneStat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TuneStat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107320486CEB800E47090 /* Tune Buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tune Buddy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF247D5F0EEC653B002FB82F /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EF247D600EEC653B002FB82F /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -481,7 +481,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D1107320486CEB800E47090 /* TuneStat.app */,
+				8D1107320486CEB800E47090 /* Tune Buddy.app */,
 				03BDFC6010D6BA0500487180 /* GeneralPreferencePane.bundle */,
 				03BDFCB210D6BB2B00487180 /* UpdatingPreferencePane.bundle */,
 				03BDFD1910D6BD3A00487180 /* TwitterPreferencePane.bundle */,
@@ -517,7 +517,7 @@
 				03743E8C109D987300B3B221 /* NSString+Search.h */,
 				03743E8D109D987300B3B221 /* NSString+Search.m */,
 				03743D39109D91E100B3B221 /* iTunes.h */,
-				32CA4F630368D1EE00C91783 /* TuneStat_Prefix.pch */,
+				32CA4F630368D1EE00C91783 /* Tune Buddy_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
@@ -620,9 +620,9 @@
 			productReference = 03BDFDD710D6C38000487180 /* RegistrationPreferencePane.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
-		8D1107260486CEB800E47090 /* TuneStat */ = {
+		8D1107260486CEB800E47090 /* Tune Buddy */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "TuneStat" */;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Tune Buddy" */;
 			buildPhases = (
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
@@ -637,10 +637,10 @@
 				03BDFD2410D6BD5000487180 /* PBXTargetDependency */,
 				03BDFDEA10D6C39C00487180 /* PBXTargetDependency */,
 			);
-			name = TuneStat;
+			name = "Tune Buddy";
 			productInstallPath = "$(HOME)/Applications";
 			productName = "itunes control";
-			productReference = 8D1107320486CEB800E47090 /* TuneStat.app */;
+			productReference = 8D1107320486CEB800E47090 /* Tune Buddy.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -648,14 +648,14 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TuneStat" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Tune Buddy" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
 			mainGroup = 29B97314FDCFA39411CA2CEA /* itunes control */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D1107260486CEB800E47090 /* TuneStat */,
+				8D1107260486CEB800E47090 /* Tune Buddy */,
 				03BDFC5F10D6BA0500487180 /* GeneralPreferencePane */,
 				03BDFCB110D6BB2B00487180 /* UpdatingPreferencePane */,
 				03BDFD1810D6BD3A00487180 /* TwitterPreferencePane */,
@@ -1058,10 +1058,10 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = TuneStat_Prefix.pch;
+				GCC_PREFIX_HEADER = "Tune Buddy_Prefix.pch";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = TuneStat;
+				PRODUCT_NAME = "Tune Buddy";
 			};
 			name = Debug;
 		};
@@ -1079,10 +1079,10 @@
 				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = TuneStat_Prefix.pch;
+				GCC_PREFIX_HEADER = "Tune Buddy_Prefix.pch";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = TuneStat;
+				PRODUCT_NAME = "Tune Buddy";
 			};
 			name = Release;
 		};
@@ -1164,7 +1164,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "TuneStat" */ = {
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Tune Buddy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4B08A954540054247B /* Debug */,
@@ -1173,7 +1173,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TuneStat" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Tune Buddy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,

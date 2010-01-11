@@ -15,8 +15,6 @@
 
 @interface AppDelegate : NSObject 
 {
-	NSStatusItem *statusItem;
-	
 	BOOL isRegistered;
 	SS_PrefsController *preferencesWindowController;
 	
@@ -25,6 +23,7 @@
 	
 	IBOutlet SUUpdater *sparkle;
 	
+	NSStatusItem *statusItem;
 	NSMenuItem *copyToClipboardMenuItem;
 	NSMenuItem *preferencesMenuItem;
 	NSMenuItem *smallScreenMenuSeperator;
@@ -32,6 +31,7 @@
 	NSMenuItem *twitterMenuItem;
 	NSMenuItem *smallScreenModeMenuItem;
 	NSMenuItem *quitMenuItem;
+	NSMenuItem *reorderIconMenuItem;
 	NSMenu *statusBarMenu;
 	
 	AdiumApplication *adium;

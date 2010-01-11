@@ -275,7 +275,10 @@
 	
 	if (!preferencesMenuItem)
 	{	
+		reorderIconMenuItem = [statusBarMenu addItemWithTitle:@"Move Statusbar Item To The Left" action:@selector(reorderIcon:) keyEquivalent: @""];
+
 		preferencesMenuItem = [statusBarMenu addItemWithTitle:@"Preferences" action:@selector(openPreferencesWindow:) keyEquivalent: [NSString string]];
+		
 		[statusBarMenu addItem:[NSMenuItem separatorItem]];		
 	}
 	
@@ -303,6 +306,22 @@
 	[statusItem setAttributedTitle: attributedTitle];
 }
 
+
+//recreate our item to move it to the most left
+- (void) reorderIcon: (id) sender
+{
+	NSStatusBar *statusBar = [NSStatusBar systemStatusBar];
+	
+	if (statusItem)
+	{	
+		[statusBar removeStatusItem: statusItem];
+		[statusItem release];
+		statusItem = nil;
+	}
+	
+	[self createStatusItem];
+	
+}
 
 #pragma mark -
 #pragma mark MGTwitterEngineDelegate methods
