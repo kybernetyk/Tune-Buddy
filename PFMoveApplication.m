@@ -26,7 +26,7 @@ static NSString *AlertSuppressKey = @"moveToApplicationsFolderAlertSuppress";
 
 // Helper functions
 static NSString *PreferredInstallLocation(BOOL *isUserDirectory);
-static BOOL IsInApplicationsFolder(NSString *path);
+//BOOL IsInApplicationsFolder(NSString *path);
 static BOOL IsInDownloadsFolder(NSString *path);
 static BOOL Trash(NSString *path);
 static BOOL AuthorizedInstall(NSString *srcPath, NSString *dstPath, BOOL *canceled);
@@ -205,7 +205,7 @@ static NSString *PreferredInstallLocation(BOOL *isUserDirectory)
 	return [NSSearchPathForDirectoriesInDomains(NSApplicationDirectory, NSLocalDomainMask, YES) lastObject];
 }
 
-static BOOL IsInApplicationsFolder(NSString *path)
+BOOL IsInApplicationsFolder(NSString *path)
 {
 	NSEnumerator *e = [NSSearchPathForDirectoriesInDomains(NSApplicationDirectory, NSAllDomainsMask, YES) objectEnumerator];
 	NSString *appDirPath = nil;

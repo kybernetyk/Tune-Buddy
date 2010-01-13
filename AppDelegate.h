@@ -37,33 +37,33 @@
 	AdiumApplication *adium;
 	
 	NSString *longDisplayString;
+	NSString *playStatus;
 	
 	NSOperationQueue *backgroundOperationQueue;
 	
 	BOOL smallScreenModeEnabled;
 }
 
+#pragma mark -
+#pragma mark properties
+
+@property (readwrite, retain) NSString *playStatus;
 @property (readonly, assign) BOOL isRegistered;
 @property (readwrite, copy) NSString *longDisplayString;
 
 #pragma mark -
 #pragma mark public IB accessable methods
-- (IBAction) startPolling: (id) sender;
-- (IBAction) stopPolling: (id) sender;
-- (IBAction) openRegistrationWindow: (id) sender;
 - (IBAction) openPreferencesWindow: (id) sender;
 - (IBAction) quitAppByMenu : (id) sender;
 - (IBAction) copyCurrentTrackInfoToClipBoard: (id) sender;
 - (IBAction) sendCurrentTrackToAdium: (id) sender;
 - (IBAction) sendCurrentTrackToTwitter: (id) sender;
 
+- (void) createStatusItem;
 
 #pragma mark -
 #pragma mark private methods
 - (NSString *) displayString;
-- (void) createStatusItemWithTitle: (NSString *) title;
-- (void) handlePollTimer: (NSTimer *) timer;
-//- (void) processCommandString: (NSString *) commandString;
 
 #pragma mark -
 #pragma mark Application Delegate Methods

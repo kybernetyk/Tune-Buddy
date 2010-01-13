@@ -9,3 +9,4 @@
 #import <Foundation/Foundation.h>
 
 extern void PFMoveToApplicationsFolderIfNecessary();
+extern BOOL IsInApplicationsFolder(NSString *path);

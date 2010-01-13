@@ -14,6 +14,14 @@
 		03743D3F109D91F200B3B221 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03743D3E109D91F200B3B221 /* ScriptingBridge.framework */; };
 		03743E8E109D987300B3B221 /* NSString+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 03743E8D109D987300B3B221 /* NSString+Search.m */; };
 		0374404B109DDAA200B3B221 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 0374404A109DDAA200B3B221 /* dsa_pub.pem */; };
+		0391AE8C10FDF5AD00ACE94F /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0391AE8B10FDF5AD00ACE94F /* ApplicationServices.framework */; };
+		0391AFFE10FE06B900ACE94F /* AGKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0391AFFD10FE06B900ACE94F /* AGKeychain.m */; };
+		0391AFFF10FE06B900ACE94F /* AGKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0391AFFD10FE06B900ACE94F /* AGKeychain.m */; };
+		0391B01010FE06F000ACE94F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B0E8CF10D7C8E900D8B185 /* Security.framework */; };
+		0391B0E710FE13B900ACE94F /* EMKeychainItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0391B0E410FE13B900ACE94F /* EMKeychainItem.m */; };
+		0391B0E810FE13B900ACE94F /* EMKeychainProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0391B0E610FE13B900ACE94F /* EMKeychainProxy.m */; };
+		0391B0E910FE13B900ACE94F /* EMKeychainItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0391B0E410FE13B900ACE94F /* EMKeychainItem.m */; };
+		0391B0EA10FE13B900ACE94F /* EMKeychainProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0391B0E610FE13B900ACE94F /* EMKeychainProxy.m */; };
 		03B0E80110D7BCDC00D8B185 /* iTunesBridgeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0E80010D7BCDC00D8B185 /* iTunesBridgeOperation.m */; };
 		03B0E8CA10D7C87700D8B185 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0E8C910D7C87700D8B185 /* PFMoveApplication.m */; };
 		03B0E8D010D7C8E900D8B185 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B0E8CF10D7C8E900D8B185 /* Security.framework */; };
@@ -127,6 +135,13 @@
 		03743E8D109D987300B3B221 /* NSString+Search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Search.m"; sourceTree = "<group>"; };
 		0374404A109DDAA200B3B221 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		037440A1109E267900B3B221 /* Adium.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Adium.h; sourceTree = "<group>"; };
+		0391AE8B10FDF5AD00ACE94F /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
+		0391AFFC10FE06B900ACE94F /* AGKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGKeychain.h; sourceTree = "<group>"; };
+		0391AFFD10FE06B900ACE94F /* AGKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGKeychain.m; sourceTree = "<group>"; };
+		0391B0E310FE13B900ACE94F /* EMKeychainItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMKeychainItem.h; sourceTree = "<group>"; };
+		0391B0E410FE13B900ACE94F /* EMKeychainItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMKeychainItem.m; sourceTree = "<group>"; };
+		0391B0E510FE13B900ACE94F /* EMKeychainProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMKeychainProxy.h; sourceTree = "<group>"; };
+		0391B0E610FE13B900ACE94F /* EMKeychainProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMKeychainProxy.m; sourceTree = "<group>"; };
 		03B0E7FF10D7BCDC00D8B185 /* iTunesBridgeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunesBridgeOperation.h; sourceTree = "<group>"; };
 		03B0E80010D7BCDC00D8B185 /* iTunesBridgeOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iTunesBridgeOperation.m; sourceTree = "<group>"; };
 		03B0E8C810D7C87700D8B185 /* PFMoveApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFMoveApplication.h; sourceTree = "<group>"; };
@@ -260,6 +275,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0391B01010FE06F000ACE94F /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +296,7 @@
 				03BDFBDA10D6B6A400487180 /* libxml2.dylib in Frameworks */,
 				03B0E8D010D7C8E900D8B185 /* Security.framework in Frameworks */,
 				0370B01710D85551001B0FE9 /* Sparkle.framework in Frameworks */,
+				0391AE8C10FDF5AD00ACE94F /* ApplicationServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +481,7 @@
 				0370B01610D85551001B0FE9 /* Sparkle.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				03743D3E109D91F200B3B221 /* ScriptingBridge.framework */,
+				0391AE8B10FDF5AD00ACE94F /* ApplicationServices.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -509,6 +527,12 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				0391B0E310FE13B900ACE94F /* EMKeychainItem.h */,
+				0391B0E410FE13B900ACE94F /* EMKeychainItem.m */,
+				0391B0E510FE13B900ACE94F /* EMKeychainProxy.h */,
+				0391B0E610FE13B900ACE94F /* EMKeychainProxy.m */,
+				0391AFFC10FE06B900ACE94F /* AGKeychain.h */,
+				0391AFFD10FE06B900ACE94F /* AGKeychain.m */,
 				03C604D110EFCEB400BDC333 /* NSString+Additions.h */,
 				03C604D210EFCEB400BDC333 /* NSString+Additions.m */,
 				03EAFB4210D8032A00B715D0 /* yajl */,
@@ -744,6 +768,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				03BDFD7A10D6BEE600487180 /* TwitterPreferencePaneController.m in Sources */,
+				0391AFFF10FE06B900ACE94F /* AGKeychain.m in Sources */,
+				0391B0E910FE13B900ACE94F /* EMKeychainItem.m in Sources */,
+				0391B0EA10FE13B900ACE94F /* EMKeychainProxy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -793,6 +820,9 @@
 				03EAFB6A10D8039300B715D0 /* MGTwitterUsersYAJLParser.m in Sources */,
 				03EAFB6B10D8039300B715D0 /* MGTwitterYAJLParser.m in Sources */,
 				03C604D310EFCEB400BDC333 /* NSString+Additions.m in Sources */,
+				0391AFFE10FE06B900ACE94F /* AGKeychain.m in Sources */,
+				0391B0E710FE13B900ACE94F /* EMKeychainItem.m in Sources */,
+				0391B0E810FE13B900ACE94F /* EMKeychainProxy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1100,7 +1130,7 @@
 					./yajl,
 					/usr/include/libxml2,
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
 				SDKROOT = macosx10.5;
 			};

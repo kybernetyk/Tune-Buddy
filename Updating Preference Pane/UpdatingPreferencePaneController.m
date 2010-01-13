@@ -1,6 +1,38 @@
 #import "UpdatingPreferencePaneController.h"
 
 @implementation UpdatingPreferencePaneController
+#pragma mark -
+#pragma mark properties
+
+@synthesize checkForUpdatesTooltip;
+@synthesize submitAnonymizedHardwareStatisticsTooltip;
+#pragma mark -
+#pragma mark initializers / destructors
+
+// init
+- (id)init
+{
+    if (self = [super init])
+    {
+        [self setCheckForUpdatesTooltip: @"Every day an automatic check for new versions of Tune Buddy will be performed."];
+        [self setSubmitAnonymizedHardwareStatisticsTooltip: @"You can choose to submit anonymized hardware statistics about your Mac. (CPU/Size of RAM/etc). This will help us make better software. Only hardware stats are submitted - no personal information will be ever collected by this app and/or submitted to us!"];
+    }
+    return self;
+}
+
+
+
+//=========================================================== 
+// dealloc
+//=========================================================== 
+- (void) dealloc
+{
+    [checkForUpdatesTooltip release], checkForUpdatesTooltip = nil;
+    [submitAnonymizedHardwareStatisticsTooltip release], submitAnonymizedHardwareStatisticsTooltip = nil;
+	
+    [super dealloc];
+}
+
 
 
 - (IBAction) checkForUpdatesNow: (id) sender

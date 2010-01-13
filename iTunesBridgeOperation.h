@@ -14,10 +14,14 @@
 	iTunesApplication *iTunes;
 	
 	NSString *currentDisplayString;
+	NSString *playStatus;
 	
 	id delegate;
 }
+#pragma mark -
+#pragma mark properties
 
+@property (readwrite, retain) NSString *playStatus;
 @property (readwrite, assign) id delegate;
 @property (readwrite, copy) NSString *currentDisplayString;
 

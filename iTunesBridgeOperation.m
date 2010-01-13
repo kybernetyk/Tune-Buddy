@@ -13,6 +13,7 @@
 
 @implementation iTunesBridgeOperation
 @synthesize delegate;
+@synthesize playStatus;
 @synthesize currentDisplayString;
 
 
@@ -20,7 +21,9 @@
 - (void) fetchCurrentTrackFromItunes
 {
 	[self setCurrentDisplayString: nil];
-	NSString *playStatus = @"⌽ ";
+	//NSString *playStatus = @"⌽ ";
+	[self setPlayStatus: @"⌽ "];
+	
 	NSString *trackName = nil; //@"...";
 	NSString *artistName = nil;// @"";
 	NSString *delimiter = nil;// @"";
@@ -176,10 +179,10 @@
 	
 	if (playerState == iTunesEPlSPlaying)
 	{	
-		playStatus = @"♫ ";
+		[self setPlayStatus: @"♫ "];
 		
 		if (isStream)
-			playStatus = @"☢ ";
+			[self setPlayStatus: @"☢ "];
 	}
 	
 	if (!artistName && !trackName)
@@ -234,7 +237,11 @@
 		if (![currentDisplayString isEqualToString: previousDisplayString])
 		{
 			NSLog(@"current track changed to: %@",currentDisplayString);
-			[delegate performSelectorOnMainThread:@selector(iTunesTrackDidChangeTo:) withObject: currentDisplayString waitUntilDone: YES];
+			
+			NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys: currentDisplayString, @"displayString",
+								  playStatus, @"displayStatus", nil];
+			
+			[delegate performSelectorOnMainThread:@selector(iTunesTrackDidChangeTo:) withObject: dict waitUntilDone: YES];
 
 		}
 

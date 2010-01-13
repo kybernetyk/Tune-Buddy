@@ -1,0 +1,67 @@
+@@ -108,28 +108,34 @@
+ 
+             err = LSOpenApplication(&appParams, psnPtr);
+         } else {
+-            FSSpec				appSpec;
+             LaunchParamBlockRec lpb;
+ 
+             // Do it the compatible way on earlier systems.
+ 
+-            // I launch System Events using LaunchApplication, rather than
++			// I launch System Events using LaunchApplication, rather than
+             // Launch Services, because LaunchApplication gives me back
+-            // the ProcessSerialNumber.  Unfortunately this requires me to
++            // the ProcessSerialNumber. 
++			
++			memset(&lpb, 0, sizeof(lpb));
++			lpb.launchBlockID      = extendedBlock;
++			lpb.launchEPBLength    = extendedBlockLen;
++			lpb.launchControlFlags = launchContinue | launchNoFileFlags;
++			
++#if __LP64__
++			lpb.launchAppRef       = &appRef;
++#else
++			// Unfortunately this requires me to
+             // get an FSSpec for the application because there's no
+             // FSRef version of Launch Application.
+-
++			FSSpec appSpec;
++			
++			err = FSGetCatalogInfo(&appRef, kFSCatInfoNone, NULL, NULL, &appSpec, NULL);
++			lpb.launchAppSpec      = &appSpec;
++#endif
++			
+             if (err == noErr)
+-                err = FSGetCatalogInfo(&appRef, kFSCatInfoNone, NULL, NULL, &appSpec, NULL);
+-            if (err == noErr) {
+-                memset(&lpb, 0, sizeof(lpb));
+-                lpb.launchBlockID      = extendedBlock;
+-                lpb.launchEPBLength    = extendedBlockLen;
+-                lpb.launchControlFlags = launchContinue | launchNoFileFlags;
+-                lpb.launchAppSpec      = &appSpec;
+-
+-                err = LaunchApplication(&lpb);
+-            }
++				err = LaunchApplication(&lpb);
++			
+             if (err == noErr)
+                 *psnPtr = lpb.launchProcessSN;
+         }
+@@ -231,7 +237,7 @@
+ 		err = AEGetParamPtr(
+ 			reply,
+ 			keyErrorNumber,
+-			typeShortInteger,
++			typeSInt16,
+ 			&junkType,
+ 			&replyErr,
+ 			sizeof(replyErr),
+@@ -773,7 +779,7 @@
+ 	// Build object specifier for "login item X".
+ 
+ 	itemIndexPlusOne = itemIndex + 1;	// AppleScript is one-based, CF is zero-based
+-	err = AECreateDesc(typeLongInteger, &itemIndexPlusOne, sizeof(itemIndexPlusOne), &indexDesc);
++	err = AECreateDesc(typeSInt32, &itemIndexPlusOne, sizeof(itemIndexPlusOne), &indexDesc);
+ 	if (err == noErr)
+ 		err = CreateObjSpecifier(cLoginItem, (AEDesc *) &kAENull, formAbsolutePosition, &indexDesc, false, &loginItemAtIndex);
+ 

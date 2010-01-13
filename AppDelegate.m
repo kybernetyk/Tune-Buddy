@@ -13,25 +13,111 @@
 #import "iTunesBridgeOperation.h"
 #import "PFMoveApplication.h"
 #import "NSString+Additions.h"
+#import "AGKeychain.h"
+#import "EMKeychainProxy.h"
+#import "EMKeychainItem.h"
 
 @implementation AppDelegate
+#pragma mark -
+#pragma mark properties
+
+@synthesize playStatus;
 @synthesize isRegistered;
 @synthesize longDisplayString;
 
 
+#pragma mark -
+#pragma mark autostart
+
+- (void)enableLoginItemWithLoginItemsReference:(LSSharedFileListRef )theLoginItemsRefs ForPath:(CFURLRef)thePath 
+{
+	NSLog(@"enable login item!");
+	
+	// We call LSSharedFileListInsertItemURL to insert the item at the bottom of Login Items list.
+	LSSharedFileListItemRef item = LSSharedFileListInsertItemURL(theLoginItemsRefs, kLSSharedFileListItemLast, NULL, NULL, thePath, NULL, NULL);		
+	if (item)
+		CFRelease(item);
+}
+
+- (void)disableLoginItemWithLoginItemsReference:(LSSharedFileListRef )theLoginItemsRefs ForPath:(CFURLRef)thePath 
+{
+	NSLog(@"disable login item!");
+	
+	UInt32 seedValue;
+	
+	// We're going to grab the contents of the shared file list (LSSharedFileListItemRef objects)
+	// and pop it in an array so we can iterate through it to find our item.
+	NSArray  *loginItemsArray = (NSArray *)LSSharedFileListCopySnapshot(theLoginItemsRefs, &seedValue);
+	
+	for (id item in loginItemsArray) 
+	{		
+		LSSharedFileListItemRef itemRef = (LSSharedFileListItemRef)item;
+		if (LSSharedFileListItemResolve(itemRef, 0, (CFURLRef*) &thePath, NULL) == noErr) 
+		{
+			if ([[(NSURL *)thePath path] hasPrefix: [[NSBundle mainBundle] bundlePath]])
+				LSSharedFileListItemRemove(theLoginItemsRefs, itemRef); // Deleting the item
+		}
+	}
+	
+	[loginItemsArray release];
+}
+
+- (IBAction)addLoginItem:(id)sender 
+{
+//	CFURLRef url = (CFURLRef)[NSURL fileURLWithPath:SGApplicationPath];
+	
+	// Create a reference to the shared file list.
+	LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+	if (loginItems) 
+	{
+		NSURL *bundleURL = [NSURL fileURLWithPath: [[NSBundle mainBundle] bundlePath]];
+		
+		NSLog(@"my bundle path: %@", bundleURL);
+		
+		BOOL addToLogin = [[NSUserDefaults standardUserDefaults] boolForKey: @"startAtLogin"];
+		
+		if (addToLogin)
+			[self enableLoginItemWithLoginItemsReference: loginItems ForPath: (CFURLRef)bundleURL];
+		else
+			[self disableLoginItemWithLoginItemsReference: loginItems ForPath: (CFURLRef)bundleURL];
+		
+		/*if ([[oOpenAtLogin selectedCell] state] == YES)
+			[self enableLoginItemWithLoginItemsReference:loginItems ForPath:url];
+		else
+			[self disableLoginItemWithLoginItemsReference:loginItems ForPath:url];*/
+	}
+
+	CFRelease(loginItems);
+}
+
 
 #pragma mark -
 #pragma mark Application Delegate Methods
+
 // called by cocoa when our app is loaded and ready to run
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
 	PFMoveToApplicationsFolderIfNecessary();
 	
+	
+//	EMInternetKeychainItem *keychainItem = [[EMKeychainProxy sharedProxy] internetKeychainItemForServer:@"apple.com" withUsername:@"sjobs" path:@"/httpdocs" port:21 protocol:kSecProtocolTypeFTP];
+
+/*	[[EMKeychainProxy sharedProxy] setLogsErrors: YES];
+
+	EMInternetKeychainItem *keyChainItem = [[EMKeychainProxy sharedProxy] internetKeychainItemForServer: @"http://twitter.com"
+																						   withUsername: @"fettemama"
+																								   path: nil
+																								   port: 80 
+																							   protocol: kSecProtocolTypeHTTP];
+	
+	NSLog(@"keychian: %@", keyChainItem);*/
+	
+	
 	NSScreen *screen = [[NSScreen screens] objectAtIndex: 0];
 	
 	BOOL shallEnableSmallScreenMode = NO;
 	
-	NSLog(@"screen width: %f", [screen frame].size.width);
+//	NSLog(@"screen width: %f", [screen frame].size.width);
 	
 	if ([screen frame].size.width < 1300.0)
 		shallEnableSmallScreenMode = YES;
@@ -40,15 +126,26 @@
 	
 	NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
 						  [NSNumber numberWithBool: YES], @"trimDisplayStringLength",
-						  [NSNumber numberWithInt: 64], @"maxDisplayLength",
+						  [NSNumber numberWithInt: 48], @"maxDisplayLength",
 						  [NSNumber numberWithBool: NO], @"twitterEnabled",
 						  [NSNumber numberWithBool: YES], @"enableMusicMonday",
 						  [NSNumber numberWithBool: YES], @"adiumEnabled",
+						  [NSNumber numberWithBool: YES], @"startAtLogin",
+						  [NSNumber numberWithBool: YES], @"appendNowPlayingToTwitterPosts",
 						  [NSNumber numberWithBool: shallEnableSmallScreenMode], @"smallScreenModeEnabled",
 						  nil];
 	
 	[defaults registerDefaults: dict];
 	smallScreenModeEnabled = [[NSUserDefaults standardUserDefaults] boolForKey: @"smallScreenModeEnabled"];
+	
+	NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
+	if (IsInApplicationsFolder(bundlePath)) 
+	{
+		NSLog(@"app is in app folder. adding myself to autostart ...");
+		[self addLoginItem: self];	
+	}
+	
+	
 	
 	[self checkRegistration];
 	//[self registerForName:@"Jaroslaw Szpilewski" andSerial: @"lolfail"];
@@ -67,6 +164,10 @@
 	
 	NSUserDefaultsController *defc = [NSUserDefaultsController sharedUserDefaultsController];
 	[defc addObserver: self forKeyPath: @"values.smallScreenModeEnabled" options: NSKeyValueObservingOptionNew context: @"smallScreenModeEnabled"];
+	[defc addObserver: self forKeyPath: @"values.startAtLogin" options: NSKeyValueObservingOptionNew context: @"startAtLogin"];
+
+//	[defc addObserver: self forKeyPath: @"values.twitterUsername" options: NSKeyValueObservingOptionNew context: @"twitterUsername"];
+//	[defc addObserver: self forKeyPath: @"values.twitterPassword" options: NSKeyValueObservingOptionNew context: @"twitterPassword"];
 
 }
 
@@ -87,6 +188,31 @@
 		[self createStatusItem];
 		return;
 	}
+
+	if ([contextString isEqualToString: @"startAtLogin"])
+	{
+		[self addLoginItem: self];
+		return;
+	}
+
+/*	if ([contextString isEqualToString: @"twitterUsername"])
+	{
+		NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+		NSLog(@"new username for twitter: %@", [defs objectForKey: @"twitterUsername"] );
+								[defs setObject: @"yadayada" forKey: @"twitterUsername"];
+								
+								
+		return;
+	}
+
+	if ([contextString isEqualToString: @"twitterPassword"])
+	{
+		NSLog(@"new pass for twitter: %@", [[NSUserDefaults standardUserDefaults] objectForKey: @"twitterPassword"] );
+		
+		return;
+	}*/
+	
+	
 	
 	
 	[super observeValueForKeyPath:keyPath
@@ -210,9 +336,7 @@
 	NSStatusBar *statusBar = [NSStatusBar systemStatusBar];
 	
 	
-
-	
-	NSString *title = @"♫";
+	NSString *title = [[self playStatus] stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]];
 	
 	if (!smallScreenModeEnabled)
 		title = [self displayString];
@@ -226,11 +350,11 @@
 	}
 	
 	
-	if (smallScreenModeEnabled)
-	{
+	/*if (smallScreenModeEnabled)
+	{*/
 		if (!smallScreenModeMenuItem)
 		{	
-			smallScreenModeMenuItem = [[NSMenuItem alloc] initWithTitle: [self displayString] action: @selector (copyCurrentTrackInfoToClipBoard:) keyEquivalent:[NSString string]];
+			smallScreenModeMenuItem = [[NSMenuItem alloc] initWithTitle: [self longDisplayString] action: @selector (copyCurrentTrackInfoToClipBoard:) keyEquivalent:[NSString string]];
 			
 			[statusBarMenu insertItem: smallScreenModeMenuItem atIndex: 0];
 			
@@ -239,16 +363,16 @@
 		}
 		else 
 		{
-			[smallScreenModeMenuItem setTitle: [self displayString]];
+			[smallScreenModeMenuItem setTitle: [self longDisplayString]];
 			[smallScreenModeMenuItem setHidden: NO];
 			[smallScreenMenuSeperator setHidden: NO];
 		}
-	}
+/*	}
 	else
 	{
 		[smallScreenModeMenuItem setHidden: YES];
 		[smallScreenMenuSeperator setHidden: YES];
-	}
+	}*/
 	
 	if (!copyToClipboardMenuItem)
 		copyToClipboardMenuItem = [statusBarMenu addItemWithTitle:@"Copy To Clip Board" action: @selector(copyCurrentTrackInfoToClipBoard:) keyEquivalent: [NSString string]];
@@ -342,6 +466,28 @@
 	 [error localizedDescription], 
 	 [error userInfo]);
 	
+	if ([[error localizedDescription] containsString: @"401"])
+	{
+		NSLog (@"wrong username!");
+		
+		
+		NSAlert *al = [NSAlert alertWithMessageText:@"Tune Buddy: Twitter Error" defaultButton:@"Ok" alternateButton: nil otherButton: nil informativeTextWithFormat:@"Twitter returned the error code 401. This usually means that your username and password don't match."];
+		[al setAlertStyle: NSCriticalAlertStyle];
+		
+		[al runModal];
+		
+//		[[NSAlert alertWithError: error] runModal];
+
+	}
+	else
+	{
+		NSAlert *al = [NSAlert alertWithMessageText:@"Tune Buddy: Twitter Error" defaultButton:@"Ok" alternateButton: nil otherButton: nil informativeTextWithFormat:@"Twitter returned an error: %@", [error localizedDescription]];
+		[al setAlertStyle: NSCriticalAlertStyle];
+		
+		[al runModal];
+		
+	}
+	
 	lastConnectionIdentifier = nil;
 	
 	[twitterEngine autorelease];
@@ -406,16 +552,56 @@
 		return;
 	}
 	
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	NSString *user = [defaults objectForKey: @"twitterUsername"];
+	NSString *pass = nil;
+	
+	BOOL keychainItemExists = [AGKeychain checkForExistanceOfKeychainItem: @"Tune Buddy Twitter Credentials" 
+															 withItemKind: @"application password" 
+															  forUsername: user];
+	if (keychainItemExists)
+	{
+		pass = [AGKeychain getPasswordFromKeychainItem:@"Tune Buddy Twitter Credentials" 
+													withItemKind: @"application password" 
+													 forUsername: user];
+		
+		//NSLog(@"twitter pass: %@", pass);
+		//[password setStringValue: pass];
+	}
+	else
+	{
+		NSLog(@"No twitter credentials found!");
+		return;
+	}
+	
+	
+	if (!user || [user length] <= 0 || [user isEqualToString: @""])
+	{
+		NSLog(@"no valid twitter username found!");
+		return;
+	}
+
+	if (!pass || [pass length] <= 0 || [pass isEqualToString: @""])
+	{
+		NSLog(@"no valid twitter password found!");
+		return;
+	}
+	
+	
+	
 	// Create a TwitterEngine and set our login details.
     twitterEngine = [[MGTwitterEngine alloc] initWithDelegate:self];
 	[twitterEngine setClearsCookies: YES];
 	[twitterEngine setUsesSecureConnection: YES];
 	[twitterEngine setClientName:@"µTweet" version:@"0.1" URL:@"http://www.fluxforge.com" token:@"mutweet"];
     
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	NSString *user = [defaults stringForKey: @"twitterUsername"];
-	NSString *pass = [defaults stringForKey: @"twitterPassword"];
+//	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//	NSString *user = [defaults stringForKey: @"twitterUsername"];
+//	NSString *pass = [defaults stringForKey: @"twitterPassword"];
 	
+	
+	
+	NSLog(@"init twitter with credentials: '%@' / '%@'",user, pass);
 	[twitterEngine setUsername: user password: pass];
 	
 	NSCalendar *gregorian = [[NSCalendar alloc]	initWithCalendarIdentifier:NSGregorianCalendar];
@@ -423,16 +609,24 @@
 	NSInteger weekday = [weekdayComponents weekday];
 	[gregorian release];
 	
+	NSString *appendString = @"";
+	
+	if ([defaults boolForKey: @"appendNowPlayingToTwitterPosts"])
+		appendString = [appendString stringByAppendingString:@" #nowplaying"];
+	
 	if ([defaults boolForKey: @"enableMusicMonday"] && weekday == 2) //mondays!
-	{
-		NSString *tstr = [NSString stringWithFormat: @"%@ #nowplaying #musicmonday",[self longDisplayString]];
-		lastConnectionIdentifier = [twitterEngine sendUpdate: tstr];
-	}
+		appendString = [appendString stringByAppendingString: @" #musicmonday"];
+
+	NSString *tstr = nil;
+	
+	if ([appendString length] > 0)
+		tstr = [NSString stringWithFormat: @"%@%@",[self longDisplayString],appendString];
 	else
-	{
-		NSString *tstr = [NSString stringWithFormat: @"%@ #nowplaying",[self longDisplayString]];
-		lastConnectionIdentifier = [twitterEngine sendUpdate: tstr];
-	}
+		tstr = [NSString stringWithFormat: @"%@",[self longDisplayString]];
+	
+
+	lastConnectionIdentifier = [twitterEngine sendUpdate: tstr];	
+	NSLog(@"sending string %@ with id %@",tstr, lastConnectionIdentifier);
 }
 
 - (IBAction) openPreferencesWindow: (id) sender
@@ -661,12 +855,13 @@
 
 #pragma mark -
 #pragma mark itunes bridge delegate
-- (void) iTunesTrackDidChangeTo: (NSString *) newTrack
+- (void) iTunesTrackDidChangeTo: (NSDictionary *) infoDict
 {
 //	BOOL smallScreenModeEnabled = [[NSUserDefaults standardUserDefaults] boolForKey: @"smallScreenModeEnabled"];
 
-	[self setLongDisplayString: newTrack];
-
+	[self setLongDisplayString: [infoDict objectForKey: @"displayString"]];
+	[self setPlayStatus: [infoDict objectForKey: @"displayStatus"]];
+	
 	//if (!smallScreenModeEnabled)
 	{
 		NSString *displayString = [self displayString];

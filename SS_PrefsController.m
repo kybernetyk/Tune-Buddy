@@ -169,7 +169,9 @@
                                                   defer:NO];
     
     [prefsWindow setReleasedWhenClosed:NO];
+	[prefsWindow setShowsToolbarButton: NO];
     [prefsWindow setTitle:@"Preferences"]; // initial default title
+	[prefsWindow setDelegate: self];
     
     [prefsWindow center];
     [self createPrefsToolbar];
@@ -224,15 +226,32 @@
 
 - (void)destroyPreferencesWindow
 {
+	NSLog(@"destroy prefs window!");
     if (prefsWindow) {
         [prefsWindow release];
     }
     prefsWindow = nil;
 }
 
+- (void)windowWillClose:(NSNotification *)notification
+{
+// NSLog(@"window will klose");
+	for (id paneName in [self loadedPanes])
+	{
+		id pane = [preferencePanes objectForKey: paneName];
+		
+//		NSLog(@"sending klose to %@ [%@]: %i",pane,[pane className], [pane respondsToSelector: @selector (preferencesWindowWillClose:)]);
+		
+		if ([pane respondsToSelector: @selector (preferencesWindowWillClose:)])
+			[pane preferencesWindowWillClose: self];
+		
+	}
+}
+ 
 
 - (void)activatePane:(NSString*)path 
 {
+//	NSLog(@"activating pane: %@",path);
 	
     NSBundle* paneBundle = [NSBundle bundleWithPath:path];
     if (paneBundle) {

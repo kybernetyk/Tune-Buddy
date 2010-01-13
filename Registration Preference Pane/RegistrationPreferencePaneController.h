@@ -12,10 +12,11 @@
 	IBOutlet NSButton *buyButton;
 	
 	IBOutlet NSTextField *howtoLabel;
+	
+	
 }
 
 - (void) updateWindowWithRegistrationInfo;
-
 - (IBAction) handleRegisterButton: (id) sender;
 - (IBAction) handleBuyButton: (id) sender;
 

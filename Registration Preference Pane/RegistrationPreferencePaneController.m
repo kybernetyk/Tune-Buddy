@@ -74,7 +74,7 @@
 	
 	if ([[NSApp delegate] isRegistered])
 	{
-			[registeredToTextField setStringValue: registeredTo];
+		[registeredToTextField setStringValue: registeredTo];
 		[serialTextField setStringValue: serial];
 		
 		[registeredToTextField setEditable: NO];
@@ -83,7 +83,8 @@
 		[registerButton setEnabled: NO];
 		[buyButton setEnabled: NO];
 		
-		[howtoLabel setHidden: YES];
+		//[howtoLabel setHidden: YES];
+		[howtoLabel setStringValue: @"This copy of Tune Buddy is registered. Thank you!"];
 	}
 	else
 	{
@@ -109,12 +110,14 @@
 	
 	if ([[NSApp delegate] isRegistered])
 	{
-		NSAlert *al = [NSAlert alertWithMessageText:@"Registration Successful" defaultButton:@"Ok" alternateButton: nil otherButton: nil informativeTextWithFormat:@"The registration was successful. Thank you for registering Tune Stat!"];
+		NSAlert *al = [NSAlert alertWithMessageText:@"Registration Successful" defaultButton:@"Ok" alternateButton: nil otherButton: nil informativeTextWithFormat:@"The registration was successful. Thank you for registering Tune Buddy!"];
+		[al setAlertStyle: NSInformationalAlertStyle];
 		[al runModal];
 	}
 	else 
 	{
-		NSAlert *al = [NSAlert alertWithMessageText:@"Registration Failed" defaultButton:@"Ok" alternateButton: nil otherButton: nil informativeTextWithFormat:@"The registration failed. Check if you entered everything correctly and try again.\n\nShould the registration fail again contact the support: support@fluxforge.com"];
+		NSAlert *al = [NSAlert alertWithMessageText:@"Registration Failed" defaultButton:@"Ok" alternateButton: nil otherButton: nil informativeTextWithFormat:@"The registration failed. Check if you entered everything correctly and try again.\n\nShould the registration fail again contact the support: support@appslide.net"];
+		[al setAlertStyle: NSWarningAlertStyle];
 		[al runModal];
 		
 	}
@@ -123,7 +126,8 @@
 
 - (IBAction) handleBuyButton: (id) sender
 {
-	
-}
+	[[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: @"http://www.fluxforge.com/tune-buddy/"]];
+	 
+ }
 
 @end

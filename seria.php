@@ -1,5 +1,9 @@
 <?php
-	$name = "Jaroslaw Szpilewski";
+
+function generateSerial ($name)
+{
+
+//	$name = "Jaroslaw Szpilewski";
 	$original_name = $name;
 	
 	echo "name: $name\n";
@@ -61,5 +65,11 @@
 	$step5 = strtoupper ($step5);
 	
 	echo "serial: $step5";
-	echo "\n"
+	echo "\n";
+	
+	return $step5;
+}
+
+$bla = generateSerial("Jaroslaw Szpilewski");
+
 ?>
