@@ -24,7 +24,7 @@
 @synthesize playStatus;
 @synthesize isRegistered;
 @synthesize longDisplayString;
-
+@synthesize isExpired;
 
 #pragma mark -
 #pragma mark autostart
@@ -99,6 +99,47 @@
 {
 	PFMoveToApplicationsFolderIfNecessary();
 	
+	NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey: @"frameSize"];
+	if (!data)
+	{
+		NSDate *date = [NSDate date];
+
+		NSTimeInterval interval = [date timeIntervalSinceReferenceDate];
+		
+		NSData *data = [NSData dataWithBytes: &interval length: sizeof(interval)];
+		
+		[[NSUserDefaults standardUserDefaults] setObject: data forKey: @"frameSize"];
+	}
+	else
+	{
+		NSTimeInterval *intervaal = ((NSTimeInterval*)[data bytes]);
+		NSTimeInterval firstRun = *intervaal;
+
+		NSDate *date = [NSDate date];
+		NSTimeInterval now = [date timeIntervalSinceReferenceDate];
+		
+		
+		NSTimeInterval secondsrun = now - firstRun;
+		
+		NSLog(@"we're running %f seconds ...",secondsrun);
+		
+		//if (secondsrun >= 2592000.0)
+		///if (secondsrun >= 1.0)
+		if (secondsrun >= 2592000.0)
+		{
+			NSLog(@"expired!");
+			[self setIsExpired: YES];
+
+		}
+		
+/*		NSDate *date = [[NSDate alloc] initWithTimeIntervalSinceReferenceDate: myint];
+		
+		
+		NSLog(@"first run time: %@",date);
+		NSLog(@"now: %@",[NSDate date]);
+		NSLog(@"trial time: %i", [[NSDate date] timeIntervalSinceReferenceDate] - myint );*/
+	}
+	
 	
 //	EMInternetKeychainItem *keychainItem = [[EMKeychainProxy sharedProxy] internetKeychainItemForServer:@"apple.com" withUsername:@"sjobs" path:@"/httpdocs" port:21 protocol:kSecProtocolTypeFTP];
 
@@ -148,6 +189,30 @@
 	
 	
 	[self checkRegistration];
+	
+	if ([self isExpired] && ![self isRegistered])
+	{
+		NSAlert *al = [NSAlert alertWithMessageText: @"Tune Buddy: Trial Time Expired" 
+									  defaultButton: @"Ok" 
+									alternateButton: @"Buy" 
+										otherButton: @"Register" 
+						  informativeTextWithFormat:@"Your Tune Buddy trial is expired. Tune Buddy will stop displaying track information now."];
+		[al setAlertStyle: NSCriticalAlertStyle];
+		
+		NSInteger retcode = [al runModal];
+		
+		if (retcode == NSAlertAlternateReturn)
+		{
+			[self openBuyPage: self];
+		}
+		
+		if (retcode == NSAlertOtherReturn)
+		{
+			[self openRegistrationPane: self];
+		}
+		
+	}
+	
 	//[self registerForName:@"Jaroslaw Szpilewski" andSerial: @"lolfail"];
 	//isRegistered = [self isRegistrationValid];
 	//NSLog(@"is this app registered? %i",isRegistered);
@@ -357,9 +422,25 @@
 			smallScreenModeMenuItem = [[NSMenuItem alloc] initWithTitle: [self longDisplayString] action: @selector (copyCurrentTrackInfoToClipBoard:) keyEquivalent:[NSString string]];
 			
 			[statusBarMenu insertItem: smallScreenModeMenuItem atIndex: 0];
-			
+
 			smallScreenMenuSeperator = [[NSMenuItem separatorItem] retain];
-			[statusBarMenu insertItem: smallScreenMenuSeperator atIndex: 1];
+
+			
+			if ([self isExpired] && ![self isRegistered])
+			{
+				NSMenuItem *item = [statusBarMenu addItemWithTitle:@"Buy Tune Buddy" action:@selector(openBuyPage:) keyEquivalent: [NSString string]];
+				NSMenuItem *item2 = [statusBarMenu addItemWithTitle:@"Register Tune Buddy" action:@selector(openRegistrationPane:) keyEquivalent: [NSString string]];
+				
+				
+			//	[statusBarMenu addItem: item];
+			//	[statusBarMenu addItem: item2];
+				[statusBarMenu insertItem: smallScreenMenuSeperator atIndex: 3];
+			}
+			else
+			{
+				
+				[statusBarMenu insertItem: smallScreenMenuSeperator atIndex: 1];
+			}
 		}
 		else 
 		{
@@ -852,6 +933,17 @@
 	isRegistered = [self isRegistrationValid];
 }
 
+- (void) openBuyPage: (id) sender
+{
+	
+	[[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: @"http://www.fluxforge.com/tune-buddy/buy/"]];
+}
+
+- (void) openRegistrationPane: (id) sender
+{
+	[self openPreferencesWindow: self];
+	[preferencesWindowController loadPrefsPaneNamed: @"Registration" display: YES];
+}
 
 #pragma mark -
 #pragma mark itunes bridge delegate
@@ -859,8 +951,17 @@
 {
 //	BOOL smallScreenModeEnabled = [[NSUserDefaults standardUserDefaults] boolForKey: @"smallScreenModeEnabled"];
 
-	[self setLongDisplayString: [infoDict objectForKey: @"displayString"]];
-	[self setPlayStatus: [infoDict objectForKey: @"displayStatus"]];
+	if ([self isExpired] && ![self isRegistered])
+	{
+		[self setLongDisplayString: @"$$$ - Please register Tune Buddy now!"];
+		[self setPlayStatus: @"$$$"];
+	}
+	else
+	{
+		[self setLongDisplayString: [infoDict objectForKey: @"displayString"]];
+		[self setPlayStatus: [infoDict objectForKey: @"displayStatus"]];
+		
+	}
 	
 	//if (!smallScreenModeEnabled)
 	{

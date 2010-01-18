@@ -81,7 +81,8 @@
 		[serialTextField setEditable: NO];
 		
 		[registerButton setEnabled: NO];
-		[buyButton setEnabled: NO];
+		//[buyButton setEnabled: NO];
+		[buyButton setTitle: @"Support"];
 		
 		//[howtoLabel setHidden: YES];
 		[howtoLabel setStringValue: @"This copy of Tune Buddy is registered. Thank you!"];
@@ -110,9 +111,22 @@
 	
 	if ([[NSApp delegate] isRegistered])
 	{
-		NSAlert *al = [NSAlert alertWithMessageText:@"Registration Successful" defaultButton:@"Ok" alternateButton: nil otherButton: nil informativeTextWithFormat:@"The registration was successful. Thank you for registering Tune Buddy!"];
+		NSAlert *al = [NSAlert alertWithMessageText:@"Registration Successful" defaultButton:@"Ok" alternateButton: nil otherButton: nil informativeTextWithFormat:@"The registration was successful. Thank you for registering Tune Buddy!\n\nTune Buddy will restart now."];
 		[al setAlertStyle: NSInformationalAlertStyle];
 		[al runModal];
+		
+		// Relaunch.
+		// The shell script waits until the original app process terminates.
+		// This is done so that the relaunched app opens as the front-most app.
+		
+		NSBundle *mainBundle = [NSBundle mainBundle];
+		NSString *bundlePath = [mainBundle bundlePath];
+		
+		int pid = [[NSProcessInfo processInfo] processIdentifier];
+		NSString *script = [NSString stringWithFormat:@"while [ `ps -p %d | wc -l` -gt 1 ]; do sleep 0.1; done; open '%@'", pid, bundlePath];
+		[NSTask launchedTaskWithLaunchPath:@"/bin/sh" arguments:[NSArray arrayWithObjects:@"-c", script, nil]];
+		[NSApp terminate:nil];
+	
 	}
 	else 
 	{
@@ -126,7 +140,10 @@
 
 - (IBAction) handleBuyButton: (id) sender
 {
-	[[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: @"http://www.fluxforge.com/tune-buddy/"]];
+	if ([[NSApp delegate] isRegistered])
+		[[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: @"http://www.fluxforge.com/tune-buddy/help/"]];
+	else
+		[[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: @"http://www.fluxforge.com/tune-buddy/buy/"]];
 	 
  }
 

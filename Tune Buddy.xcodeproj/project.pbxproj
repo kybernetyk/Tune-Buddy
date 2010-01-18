@@ -9,19 +9,17 @@
 /* Begin PBXBuildFile section */
 		0329233E1055104F00D30E83 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B97324FDCFA39411CA2CEA /* AppKit.framework */; };
 		032923801055129800D30E83 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0329237F1055129800D30E83 /* icon.icns */; };
+		0357FCB410FF36FE009B87E1 /* AGKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0391AFFD10FE06B900ACE94F /* AGKeychain.m */; };
+		0357FCC310FF3738009B87E1 /* AGKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0391AFFD10FE06B900ACE94F /* AGKeychain.m */; };
 		0370B01710D85551001B0FE9 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0370B01610D85551001B0FE9 /* Sparkle.framework */; };
 		0370B02B10D85555001B0FE9 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0370B01610D85551001B0FE9 /* Sparkle.framework */; };
 		03743D3F109D91F200B3B221 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03743D3E109D91F200B3B221 /* ScriptingBridge.framework */; };
 		03743E8E109D987300B3B221 /* NSString+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 03743E8D109D987300B3B221 /* NSString+Search.m */; };
 		0374404B109DDAA200B3B221 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 0374404A109DDAA200B3B221 /* dsa_pub.pem */; };
 		0391AE8C10FDF5AD00ACE94F /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0391AE8B10FDF5AD00ACE94F /* ApplicationServices.framework */; };
-		0391AFFE10FE06B900ACE94F /* AGKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0391AFFD10FE06B900ACE94F /* AGKeychain.m */; };
-		0391AFFF10FE06B900ACE94F /* AGKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0391AFFD10FE06B900ACE94F /* AGKeychain.m */; };
 		0391B01010FE06F000ACE94F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B0E8CF10D7C8E900D8B185 /* Security.framework */; };
 		0391B0E710FE13B900ACE94F /* EMKeychainItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0391B0E410FE13B900ACE94F /* EMKeychainItem.m */; };
 		0391B0E810FE13B900ACE94F /* EMKeychainProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0391B0E610FE13B900ACE94F /* EMKeychainProxy.m */; };
-		0391B0E910FE13B900ACE94F /* EMKeychainItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0391B0E410FE13B900ACE94F /* EMKeychainItem.m */; };
-		0391B0EA10FE13B900ACE94F /* EMKeychainProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0391B0E610FE13B900ACE94F /* EMKeychainProxy.m */; };
 		03B0E80110D7BCDC00D8B185 /* iTunesBridgeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0E80010D7BCDC00D8B185 /* iTunesBridgeOperation.m */; };
 		03B0E8CA10D7C87700D8B185 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0E8C910D7C87700D8B185 /* PFMoveApplication.m */; };
 		03B0E8D010D7C8E900D8B185 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B0E8CF10D7C8E900D8B185 /* Security.framework */; };
@@ -672,6 +670,9 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Flux Forge";
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Tune Buddy" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
@@ -767,10 +768,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0357FCB410FF36FE009B87E1 /* AGKeychain.m in Sources */,
 				03BDFD7A10D6BEE600487180 /* TwitterPreferencePaneController.m in Sources */,
-				0391AFFF10FE06B900ACE94F /* AGKeychain.m in Sources */,
-				0391B0E910FE13B900ACE94F /* EMKeychainItem.m in Sources */,
-				0391B0EA10FE13B900ACE94F /* EMKeychainProxy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -786,6 +785,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0357FCC310FF3738009B87E1 /* AGKeychain.m in Sources */,
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				EF247D610EEC653B002FB82F /* AppDelegate.m in Sources */,
 				03743E8E109D987300B3B221 /* NSString+Search.m in Sources */,
@@ -820,7 +820,6 @@
 				03EAFB6A10D8039300B715D0 /* MGTwitterUsersYAJLParser.m in Sources */,
 				03EAFB6B10D8039300B715D0 /* MGTwitterYAJLParser.m in Sources */,
 				03C604D310EFCEB400BDC333 /* NSString+Additions.m in Sources */,
-				0391AFFE10FE06B900ACE94F /* AGKeychain.m in Sources */,
 				0391B0E710FE13B900ACE94F /* EMKeychainItem.m in Sources */,
 				0391B0E810FE13B900ACE94F /* EMKeychainProxy.m in Sources */,
 			);

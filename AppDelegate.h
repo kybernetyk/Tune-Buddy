@@ -16,6 +16,8 @@
 @interface AppDelegate : NSObject 
 {
 	BOOL isRegistered;
+	BOOL isExpired;
+	
 	SS_PrefsController *preferencesWindowController;
 	
 	MGTwitterEngine *twitterEngine;
@@ -42,6 +44,7 @@
 	NSOperationQueue *backgroundOperationQueue;
 	
 	BOOL smallScreenModeEnabled;
+	
 }
 
 #pragma mark -
@@ -49,6 +52,7 @@
 
 @property (readwrite, retain) NSString *playStatus;
 @property (readonly, assign) BOOL isRegistered;
+@property (readwrite, assign, getter=isExpired) BOOL isExpired;
 @property (readwrite, copy) NSString *longDisplayString;
 
 #pragma mark -
