@@ -173,6 +173,7 @@
 						  [NSNumber numberWithBool: YES], @"adiumEnabled",
 						  [NSNumber numberWithBool: YES], @"startAtLogin",
 						  [NSNumber numberWithBool: YES], @"appendNowPlayingToTwitterPosts",
+						  [NSNumber numberWithBool: YES], @"keepAlwaysLeft",
 						  [NSNumber numberWithBool: shallEnableSmallScreenMode], @"smallScreenModeEnabled",
 						  nil];
 	
@@ -230,11 +231,10 @@
 	NSUserDefaultsController *defc = [NSUserDefaultsController sharedUserDefaultsController];
 	[defc addObserver: self forKeyPath: @"values.smallScreenModeEnabled" options: NSKeyValueObservingOptionNew context: @"smallScreenModeEnabled"];
 	[defc addObserver: self forKeyPath: @"values.startAtLogin" options: NSKeyValueObservingOptionNew context: @"startAtLogin"];
-
-//	[defc addObserver: self forKeyPath: @"values.twitterUsername" options: NSKeyValueObservingOptionNew context: @"twitterUsername"];
-//	[defc addObserver: self forKeyPath: @"values.twitterPassword" options: NSKeyValueObservingOptionNew context: @"twitterPassword"];
+	[defc addObserver: self forKeyPath: @"values.keepAlwaysLeft" options: NSKeyValueObservingOptionNew context: @"keepAlwaysLeft"];
 
 }
+
 
 #pragma mark -
 #pragma mark KVO observing (for user defaults)
@@ -260,6 +260,18 @@
 		return;
 	}
 
+
+
+	if ([contextString isEqualToString: @"keepAlwaysLeft"])
+	{
+		//smallScreenModeEnabled = [[NSUserDefaults standardUserDefaults] boolForKey: @"smallScreenModeEnabled"];
+		[self reorderIcon: self];
+		
+//		[self createStatusItem];
+		return;
+	}
+	
+	
 /*	if ([contextString isEqualToString: @"twitterUsername"])
 	{
 		NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
@@ -480,8 +492,6 @@
 	
 	if (!preferencesMenuItem)
 	{	
-		reorderIconMenuItem = [statusBarMenu addItemWithTitle:@"Move Statusbar Item To The Left" action:@selector(reorderIcon:) keyEquivalent: @""];
-
 		preferencesMenuItem = [statusBarMenu addItemWithTitle:@"Preferences" action:@selector(openPreferencesWindow:) keyEquivalent: [NSString string]];
 		
 		[statusBarMenu addItem:[NSMenuItem separatorItem]];		
@@ -498,13 +508,34 @@
 	NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys: font,@"NSFont",nil];
 	NSAttributedString *attributedTitle = [[[NSAttributedString alloc] initWithString: title attributes: attributes] autorelease];
 	
+	
+	NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+	
 	if (!statusItem)
 	{	
-		statusItem = [statusBar statusItemWithLength: NSVariableStatusItemLength];
+
+		if ([defs boolForKey: @"keepAlwaysLeft"] && [statusBar respondsToSelector:@selector(_statusItemWithLength:withPriority:)])
+		{
+			NSLog(@"will keep always left!");
+			statusItem = [statusBar _statusItemWithLength:0 withPriority:INT_MIN ];
+			[ statusItem setLength:0 ];
+		}
+		else
+		{
+			statusItem = [statusBar statusItemWithLength: NSVariableStatusItemLength];	
+		}
+			
 		[statusItem setEnabled: YES];
 		[statusItem setHighlightMode: YES];
 		[statusItem setMenu: statusBarMenu];
-	
+
+		if ([defs boolForKey: @"keepAlwaysLeft"] && [statusBar respondsToSelector:@selector(_statusItemWithLength:withPriority:)])
+		{
+			NSLog(@"still keeping left!");
+			[ statusItem setLength:NSVariableStatusItemLength ];
+		}
+		
+
 		[statusItem retain];
 	}
 	

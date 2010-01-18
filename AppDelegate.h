@@ -33,7 +33,6 @@
 	NSMenuItem *twitterMenuItem;
 	NSMenuItem *smallScreenModeMenuItem;
 	NSMenuItem *quitMenuItem;
-	NSMenuItem *reorderIconMenuItem;
 	NSMenu *statusBarMenu;
 	
 	AdiumApplication *adium;
@@ -44,7 +43,7 @@
 	NSOperationQueue *backgroundOperationQueue;
 	
 	BOOL smallScreenModeEnabled;
-	
+
 }
 
 #pragma mark -

@@ -43,25 +43,25 @@
 				<int key="NSvFlags">268</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="NSButton" id="310560843">
+					<object class="NSButton" id="199203554">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{82, 58}, {186, 18}}</string>
+						<string key="NSFrame">{{82, 79}, {196, 18}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<bool key="NSEnabled">YES</bool>
-						<object class="NSButtonCell" key="NSCell" id="492551570">
+						<object class="NSButtonCell" key="NSCell" id="236714232">
 							<int key="NSCellFlags">-2080244224</int>
 							<int key="NSCellFlags2">0</int>
-							<string key="NSContents">Start At Login</string>
+							<string key="NSContents">Position Always To The Left</string>
 							<object class="NSFont" key="NSSupport" id="713029510">
 								<string key="NSName">LucidaGrande</string>
 								<double key="NSSize">13</double>
 								<int key="NSfFlags">1044</int>
 							</object>
-							<reference key="NSControlView" ref="310560843"/>
+							<reference key="NSControlView" ref="199203554"/>
 							<int key="NSButtonFlags">1211912703</int>
 							<int key="NSButtonFlags2">2</int>
-							<object class="NSCustomResource" key="NSNormalImage" id="506981758">
+							<object class="NSCustomResource" key="NSNormalImage" id="509688500">
 								<string key="NSClassName">NSImage</string>
 								<string key="NSResourceName">NSSwitch</string>
 							</object>
@@ -74,10 +74,32 @@
 							<int key="NSPeriodicInterval">25</int>
 						</object>
 					</object>
+					<object class="NSButton" id="310560843">
+						<reference key="NSNextResponder" ref="1005"/>
+						<int key="NSvFlags">268</int>
+						<string key="NSFrame">{{82, 119}, {186, 18}}</string>
+						<reference key="NSSuperview" ref="1005"/>
+						<bool key="NSEnabled">YES</bool>
+						<object class="NSButtonCell" key="NSCell" id="492551570">
+							<int key="NSCellFlags">-2080244224</int>
+							<int key="NSCellFlags2">0</int>
+							<string key="NSContents">Start At Login</string>
+							<reference key="NSSupport" ref="713029510"/>
+							<reference key="NSControlView" ref="310560843"/>
+							<int key="NSButtonFlags">1211912703</int>
+							<int key="NSButtonFlags2">2</int>
+							<reference key="NSNormalImage" ref="509688500"/>
+							<reference key="NSAlternateImage" ref="285412203"/>
+							<string key="NSAlternateContents"/>
+							<string key="NSKeyEquivalent"/>
+							<int key="NSPeriodicDelay">200</int>
+							<int key="NSPeriodicInterval">25</int>
+						</object>
+					</object>
 					<object class="NSButton" id="39598454">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{82, 38}, {186, 18}}</string>
+						<string key="NSFrame">{{82, 99}, {186, 18}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="159185157">
@@ -88,7 +110,7 @@
 							<reference key="NSControlView" ref="39598454"/>
 							<int key="NSButtonFlags">1211912703</int>
 							<int key="NSButtonFlags2">2</int>
-							<reference key="NSNormalImage" ref="506981758"/>
+							<reference key="NSNormalImage" ref="509688500"/>
 							<reference key="NSAlternateImage" ref="285412203"/>
 							<string key="NSAlternateContents"/>
 							<string key="NSKeyEquivalent"/>
@@ -99,7 +121,7 @@
 					<object class="NSButton" id="678112267">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{82, 18}, {163, 18}}</string>
+						<string key="NSFrame">{{82, 59}, {163, 18}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="347995583">
@@ -110,7 +132,7 @@
 							<reference key="NSControlView" ref="678112267"/>
 							<int key="NSButtonFlags">1211912703</int>
 							<int key="NSButtonFlags2">2</int>
-							<reference key="NSNormalImage" ref="506981758"/>
+							<reference key="NSNormalImage" ref="509688500"/>
 							<reference key="NSAlternateImage" ref="285412203"/>
 							<string key="NSAlternateContents"/>
 							<string key="NSKeyEquivalent"/>
@@ -119,14 +141,14 @@
 						</object>
 					</object>
 				</object>
-				<string key="NSFrameSize">{351, 94}</string>
+				<string key="NSFrameSize">{352, 155}</string>
 				<reference key="NSSuperview"/>
 				<string key="NSClassName">NSView</string>
 			</object>
 			<object class="NSUserDefaultsController" id="692869197">
 				<object class="NSMutableArray" key="NSDeclaredKeys">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>startAtLogin</string>
+					<string>keepAlwaysLeft</string>
 				</object>
 				<bool key="NSSharedInstance">YES</bool>
 			</object>
@@ -141,7 +163,7 @@
 				</object>
 				<int key="NSButtonFlags">1211912703</int>
 				<int key="NSButtonFlags2">2</int>
-				<reference key="NSNormalImage" ref="506981758"/>
+				<reference key="NSNormalImage" ref="509688500"/>
 				<reference key="NSAlternateImage" ref="285412203"/>
 				<string key="NSAlternateContents"/>
 				<string key="NSKeyEquivalent"/>
@@ -208,6 +230,86 @@
 					</object>
 					<int key="connectionID">91</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: values.keepAlwaysLeft</string>
+						<reference key="source" ref="199203554"/>
+						<reference key="destination" ref="692869197"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="199203554"/>
+							<reference key="NSDestination" ref="692869197"/>
+							<string key="NSLabel">value: values.keepAlwaysLeft</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">values.keepAlwaysLeft</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">95</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">toolTip: startAtLoginTooltip</string>
+						<reference key="source" ref="310560843"/>
+						<reference key="destination" ref="1001"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="310560843"/>
+							<reference key="NSDestination" ref="1001"/>
+							<string key="NSLabel">toolTip: startAtLoginTooltip</string>
+							<string key="NSBinding">toolTip</string>
+							<string key="NSKeyPath">startAtLoginTooltip</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">98</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">toolTip: enableSmallCcreenModeTooltip</string>
+						<reference key="source" ref="39598454"/>
+						<reference key="destination" ref="1001"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="39598454"/>
+							<reference key="NSDestination" ref="1001"/>
+							<string key="NSLabel">toolTip: enableSmallCcreenModeTooltip</string>
+							<string key="NSBinding">toolTip</string>
+							<string key="NSKeyPath">enableSmallCcreenModeTooltip</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">100</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">toolTip: positionLeftTooltip</string>
+						<reference key="source" ref="199203554"/>
+						<reference key="destination" ref="1001"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="199203554"/>
+							<reference key="NSDestination" ref="1001"/>
+							<string key="NSLabel">toolTip: positionLeftTooltip</string>
+							<string key="NSBinding">toolTip</string>
+							<string key="NSKeyPath">positionLeftTooltip</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">103</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">toolTip: enableAdiumSupport</string>
+						<reference key="source" ref="678112267"/>
+						<reference key="destination" ref="1001"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="678112267"/>
+							<reference key="NSDestination" ref="1001"/>
+							<string key="NSLabel">toolTip: enableAdiumSupport</string>
+							<string key="NSBinding">toolTip</string>
+							<string key="NSKeyPath">enableAdiumSupport</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">106</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -241,9 +343,10 @@
 						<reference key="object" ref="1005"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="678112267"/>
 							<reference ref="39598454"/>
 							<reference ref="310560843"/>
+							<reference ref="199203554"/>
+							<reference ref="678112267"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -299,6 +402,20 @@
 						<reference key="object" ref="492551570"/>
 						<reference key="parent" ref="310560843"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">92</int>
+						<reference key="object" ref="199203554"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="236714232"/>
+						</object>
+						<reference key="parent" ref="1005"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">93</int>
+						<reference key="object" ref="236714232"/>
+						<reference key="parent" ref="199203554"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -316,13 +433,17 @@
 					<string>87.IBPluginDependency</string>
 					<string>88.IBPluginDependency</string>
 					<string>89.IBPluginDependency</string>
+					<string>92.IBPluginDependency</string>
+					<string>93.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>{{322, 833}, {351, 94}}</string>
+					<string>{{322, 772}, {352, 155}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{628, 654}</string>
 					<string>{{217, 442}, {480, 272}}</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -348,7 +469,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">91</int>
+			<int key="maxID">106</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
