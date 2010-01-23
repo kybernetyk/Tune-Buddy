@@ -995,6 +995,12 @@
 			nil];
 }
 
+- (NSString *) applicationNameForGrowl
+{
+	return @"Tune Buddy";
+}
+
+
 #pragma mark -
 #pragma mark Growl Notifier
 - (void) notifyGrowlOfTrackChange
@@ -1013,6 +1019,8 @@
 	if (!shouldNotify)
 		return;
 	
+	if ([[self playStatus] containsString: @"⌽"])
+		return;
 	
 	[GrowlApplicationBridge notifyWithTitle: @"Now playing"
 								description: [self longDisplayString]
@@ -1024,10 +1032,6 @@
 	
 }
 
-- (NSString *) applicationNameForGrol
-{
-	return @"Tune Buddy";
-}
 
 #pragma mark -
 #pragma mark itunes bridge delegate
