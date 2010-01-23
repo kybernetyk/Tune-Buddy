@@ -40,9 +40,11 @@
 		@try
 		{
 			iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
-			[iTunes setTimeout: 10];
+			//[iTunes setTimeout: 10];
 		//	[iTunes setDelegate: self];
 			[iTunes retain];
+			
+			NSLog(@"timeout: %d",[iTunes timeout]);
 		}
 		@catch(NSException *e)
 		{
@@ -229,14 +231,17 @@
 	NSAutoreleasePool *localPool = [[NSAutoreleasePool alloc] init];	
 	while (![self isCancelled])
 	{
-		[previousDisplayString release];
-		previousDisplayString = [currentDisplayString retain];
+//		if (currentDisplayString)
+		{
+			[previousDisplayString release];
+			previousDisplayString = [currentDisplayString retain];
+		}
 		
 		[self fetchCurrentTrackFromItunes];
 	
 		if (![currentDisplayString isEqualToString: previousDisplayString])
 		{
-			NSLog(@"current track changed to: %@",currentDisplayString);
+			NSLog(@"current track changed to: %@ from %@",currentDisplayString, previousDisplayString);
 			
 			NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys: currentDisplayString, @"displayString",
 								  playStatus, @"displayStatus", nil];
