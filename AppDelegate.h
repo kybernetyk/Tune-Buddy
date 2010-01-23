@@ -43,6 +43,8 @@
 	NSOperationQueue *backgroundOperationQueue;
 	
 	BOOL smallScreenModeEnabled;
+	
+	BOOL growlAvailable;
 
 }
 
@@ -53,6 +55,7 @@
 @property (readonly, assign) BOOL isRegistered;
 @property (readwrite, assign, getter=isExpired) BOOL isExpired;
 @property (readwrite, copy) NSString *longDisplayString;
+
 
 #pragma mark -
 #pragma mark public IB accessable methods

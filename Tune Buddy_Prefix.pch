@@ -6,4 +6,4 @@
     #import <Cocoa/Cocoa.h>
 #endif
 
-//#define NSLog(format, ...)
+#define NSLog(format, ...)

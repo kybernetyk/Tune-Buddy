@@ -16,6 +16,8 @@
 #import "AGKeychain.h"
 #import "EMKeychainProxy.h"
 #import "EMKeychainItem.h"
+#import <Growl/Growl.h>
+
 
 @implementation AppDelegate
 #pragma mark -
@@ -25,6 +27,7 @@
 @synthesize isRegistered;
 @synthesize longDisplayString;
 @synthesize isExpired;
+
 
 #pragma mark -
 #pragma mark autostart
@@ -175,6 +178,7 @@
 						  [NSNumber numberWithBool: YES], @"appendNowPlayingToTwitterPosts",
 						  [NSNumber numberWithBool: YES], @"keepAlwaysLeft",
 						  [NSNumber numberWithBool: shallEnableSmallScreenMode], @"smallScreenModeEnabled",
+						  [NSNumber numberWithBool: YES], @"growlEnabled",
 						  nil];
 	
 	[defaults registerDefaults: dict];
@@ -213,6 +217,8 @@
 		}
 		
 	}
+	
+	[GrowlApplicationBridge setGrowlDelegate: self];
 	
 	//[self registerForName:@"Jaroslaw Szpilewski" andSerial: @"lolfail"];
 	//isRegistered = [self isRegistrationValid];
@@ -978,6 +984,52 @@
 }
 
 #pragma mark -
+#pragma mark Growl Delegate
+- (NSDictionary *) registrationDictionaryForGrowl
+{
+	return [NSDictionary dictionaryWithObjectsAndKeys:
+			[NSArray arrayWithObjects: @"TuneBuddyTrackDidChange",nil],
+			GROWL_NOTIFICATIONS_ALL,
+			[NSArray arrayWithObjects: @"TuneBuddyTrackDidChange",nil],
+			GROWL_NOTIFICATIONS_DEFAULT,
+			nil];
+}
+
+#pragma mark -
+#pragma mark Growl Notifier
+- (void) notifyGrowlOfTrackChange
+{
+/*	+[GrowlApplicationBridge
+	  notifyWithTitle:(NSString *)title
+	  description:(NSString *)description
+	  notificationName:(NSString *)notificationName
+	  iconData:(NSData *)iconData
+	  priority:(signed int)priority
+	  isSticky:(BOOL)isSticky
+	  clickContext:(id)clickContext]*/
+	NSLog(@"notfieng growl ...");
+	
+	BOOL shouldNotify = [[NSUserDefaults standardUserDefaults] boolForKey: @"growlEnabled"];
+	if (!shouldNotify)
+		return;
+	
+	
+	[GrowlApplicationBridge notifyWithTitle: @"Now playing"
+								description: [self longDisplayString]
+						   notificationName: @"TuneBuddyTrackDidChange" 
+								   iconData: nil
+								   priority: 0 
+								   isSticky: NO 
+							   clickContext: nil];
+	
+}
+
+- (NSString *) applicationNameForGrol
+{
+	return @"Tune Buddy";
+}
+
+#pragma mark -
 #pragma mark itunes bridge delegate
 - (void) iTunesTrackDidChangeTo: (NSDictionary *) infoDict
 {
@@ -1000,6 +1052,8 @@
 		NSString *displayString = [self displayString];
 		if (![[statusItem title] isEqualToString: displayString])
 			[self createStatusItem];
+		
+		[self notifyGrowlOfTrackChange];
 	}
 }
 

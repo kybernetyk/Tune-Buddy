@@ -23,6 +23,8 @@
 		03B0E80110D7BCDC00D8B185 /* iTunesBridgeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0E80010D7BCDC00D8B185 /* iTunesBridgeOperation.m */; };
 		03B0E8CA10D7C87700D8B185 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0E8C910D7C87700D8B185 /* PFMoveApplication.m */; };
 		03B0E8D010D7C8E900D8B185 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B0E8CF10D7C8E900D8B185 /* Security.framework */; };
+		03B79FB3110BA67900C7AD7F /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B79FB2110BA67900C7AD7F /* Growl.framework */; };
+		03B79FBB110BA68C00C7AD7F /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03B79FB2110BA67900C7AD7F /* Growl.framework */; };
 		03BDFBB410D6B37500487180 /* MGTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFB8910D6B37500487180 /* MGTwitterEngine.m */; };
 		03BDFBB510D6B37500487180 /* MGTwitterHTTPURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFB8D10D6B37500487180 /* MGTwitterHTTPURLConnection.m */; };
 		03BDFBB610D6B37500487180 /* MGTwitterLibXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFB8F10D6B37500487180 /* MGTwitterLibXMLParser.m */; };
@@ -118,6 +120,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				03B79FBB110BA68C00C7AD7F /* Growl.framework in CopyFiles */,
 				0370B02B10D85555001B0FE9 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -145,6 +148,7 @@
 		03B0E8C810D7C87700D8B185 /* PFMoveApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFMoveApplication.h; sourceTree = "<group>"; };
 		03B0E8C910D7C87700D8B185 /* PFMoveApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFMoveApplication.m; sourceTree = "<group>"; };
 		03B0E8CF10D7C8E900D8B185 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		03B79FB2110BA67900C7AD7F /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 		03BDFB8810D6B37500487180 /* MGTwitterEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTwitterEngine.h; sourceTree = "<group>"; };
 		03BDFB8910D6B37500487180 /* MGTwitterEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTwitterEngine.m; sourceTree = "<group>"; };
 		03BDFB8A10D6B37500487180 /* MGTwitterEngineDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTwitterEngineDelegate.h; sourceTree = "<group>"; };
@@ -295,6 +299,7 @@
 				03B0E8D010D7C8E900D8B185 /* Security.framework in Frameworks */,
 				0370B01710D85551001B0FE9 /* Sparkle.framework in Frameworks */,
 				0391AE8C10FDF5AD00ACE94F /* ApplicationServices.framework in Frameworks */,
+				03B79FB3110BA67900C7AD7F /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +485,7 @@
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				03743D3E109D91F200B3B221 /* ScriptingBridge.framework */,
 				0391AE8B10FDF5AD00ACE94F /* ApplicationServices.framework */,
+				03B79FB2110BA67900C7AD7F /* Growl.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -1081,6 +1087,7 @@
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/../../../Usefull Stuff/Sparkle 1/With Garbage Collection\"",
 					"\"$(SRCROOT)/../../../Usefull Stuff/Sparkle 1\"",
+					"\"$(SRCROOT)/../../../Downloads/Growl-1.2.1-Framework\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -1105,6 +1112,7 @@
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/../../../Usefull Stuff/Sparkle 1/With Garbage Collection\"",
 					"\"$(SRCROOT)/../../../Usefull Stuff/Sparkle 1\"",
+					"\"$(SRCROOT)/../../../Downloads/Growl-1.2.1-Framework\"",
 				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

@@ -8,13 +8,16 @@
 	NSString *startAtLoginTooltip;
 	NSString *enableSmallCcreenModeTooltip;
     NSString *positionLeftTooltip;
-	NSString *enableAdiumSupport;
+	NSString *enableAdiumSupportTooltip;
+	NSString *enableGrowlTooltip;
 }
 
 @property (readwrite, retain) NSString *startAtLoginTooltip;
 @property (readwrite, retain) NSString *enableSmallCcreenModeTooltip;
 @property (readwrite, retain) NSString *positionLeftTooltip;
-@property (readwrite, retain) NSString *enableAdiumSupport;
+@property (readwrite, retain) NSString *enableAdiumSupportTooltip;
+@property (readwrite, retain) NSString *enableGrowlTooltip;
+
 
 
 @end
