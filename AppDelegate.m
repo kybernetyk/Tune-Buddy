@@ -178,7 +178,7 @@
 						  [NSNumber numberWithBool: YES], @"appendNowPlayingToTwitterPosts",
 						  [NSNumber numberWithBool: YES], @"keepAlwaysLeft",
 						  [NSNumber numberWithBool: shallEnableSmallScreenMode], @"smallScreenModeEnabled",
-						  [NSNumber numberWithBool: YES], @"growlEnabled",
+						  [NSNumber numberWithBool: shallEnableSmallScreenMode], @"growlEnabled", //enable growl notifications when small screen mode is enabled. don't bother big screen users with growl
 						  nil];
 	
 	[defaults registerDefaults: dict];
