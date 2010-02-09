@@ -124,7 +124,7 @@
 		
 		NSTimeInterval secondsrun = now - firstRun;
 		
-		NSLog(@"we're running %f seconds ...",secondsrun);
+		//NSLog(@"we're running %f seconds - %f days left ...",secondsrun, (2592000.0 - secondsrun)/86400.0);
 		
 		//if (secondsrun >= 2592000.0)
 		///if (secondsrun >= 1.0)
@@ -1054,7 +1054,11 @@
 	//if (!smallScreenModeEnabled)
 	{
 		NSString *displayString = [self displayString];
-		if (![[statusItem title] isEqualToString: displayString])
+
+		//if track name is longer than displayString a change won't be registered :-(
+		//if (![[statusItem title] isEqualToString: displayString])
+		
+		if (![[smallScreenModeMenuItem title] isEqualToString: [self longDisplayString]])
 			[self createStatusItem];
 		
 		[self notifyGrowlOfTrackChange];

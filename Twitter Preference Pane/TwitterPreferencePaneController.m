@@ -57,7 +57,7 @@
  */
 - (void) preferencesWindowWillClose: (id) sender
 {
-	NSLog(@"OMG TWITTER THE WINDOW WILL CLOSE!");
+//	NSLog(@"OMG TWITTER THE WINDOW WILL CLOSE!");
 	[self saveToKeychain];
 }
 
@@ -124,7 +124,7 @@
 													withItemKind: @"application password" 
 													 forUsername: twitterUsername];
 		
-		NSLog(@"twitter pass: %@", pass);
+//		NSLog(@"twitter pass: %@", pass);
 		[password setStringValue: pass];
 	}
 	
@@ -152,14 +152,14 @@
 
 	if (!twitterUsername || [twitterUsername isEqualToString: @""] || [twitterUsername length] <= 0)
 	{	
-		NSLog(@"invalid username");
+		NSLog(@"invalid twitter username");
 		return;
 	}
 	
 	NSString *pass = [password stringValue];
 	if (!pass || [pass isEqualToString: @""] || [pass length] <= 0)
 	{	
-		NSLog(@"invalid password");
+		NSLog(@"invalid twitter password");
 		return;
 	}
 	
@@ -189,7 +189,7 @@
 
 - (IBAction) usernameChanged: (id) sender
 {
-	NSLog(@"username changed!");
+//	NSLog(@"username changed!");
 	
 	NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
 	NSString *twitterUsername = [defs objectForKey: @"twitterUsername"];
@@ -202,12 +202,12 @@
 		NSString *pass = [AGKeychain getPasswordFromKeychainItem:@"Tune Buddy Twitter Credentials" 
 													withItemKind: @"application password" 
 													 forUsername: twitterUsername];
-		NSLog(@"keychain item for this user exists already. pass is: %@",pass);		
+		//NSLog(@"keychain item for this user exists already. pass is: %@",pass);		
 		[password setStringValue: pass];
 	}
 	else
 	{
-		NSLog(@"username not found ... creating new keychains item");
+//		NSLog(@"username not found ... creating new keychains item");
 		[self saveToKeychain];	
 	}
 	
@@ -220,7 +220,7 @@
 {
 	[self saveToKeychain];
 	
-	NSLog(@"password changed!");
+//	NSLog(@"password changed!");
 }
 
 

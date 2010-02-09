@@ -60,7 +60,7 @@
 #pragma mark implementation
 - (void) didShow: (id) sender
 {
-	NSLog(@"did show!");
+//	NSLog(@"did show!");
 	[self updateWindowWithRegistrationInfo];
 }
 
@@ -98,7 +98,7 @@
 
 - (IBAction) handleRegisterButton: (id) sender
 {
-	NSLog(@"register button!");
+//	NSLog(@"register button!");
 	
 	//WNEB-FYNJ-FMCV-YRJF-XVXX
 	
