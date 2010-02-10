@@ -200,8 +200,8 @@
 		NSAlert *al = [NSAlert alertWithMessageText: @"Tune Buddy: Trial Time Expired" 
 									  defaultButton: @"Ok" 
 									alternateButton: @"Buy" 
-										otherButton: @"Register" 
-						  informativeTextWithFormat:@"Your Tune Buddy trial is expired. Tune Buddy will stop displaying track information now."];
+										otherButton: @"Enter License Key" 
+						  informativeTextWithFormat:@"Your Tune Buddy trial is expired. Tune Buddy will stop displaying song information. If you want to continue using Tune Buddy please click the 'Buy' button to purchase a license."];
 		[al setAlertStyle: NSCriticalAlertStyle];
 		
 		NSInteger retcode = [al runModal];
@@ -447,7 +447,7 @@
 			if ([self isExpired] && ![self isRegistered])
 			{
 				NSMenuItem *item = [statusBarMenu addItemWithTitle:@"Buy Tune Buddy" action:@selector(openBuyPage:) keyEquivalent: [NSString string]];
-				NSMenuItem *item2 = [statusBarMenu addItemWithTitle:@"Register Tune Buddy" action:@selector(openRegistrationPane:) keyEquivalent: [NSString string]];
+				NSMenuItem *item2 = [statusBarMenu addItemWithTitle:@"Enter License Key" action:@selector(openRegistrationPane:) keyEquivalent: [NSString string]];
 				
 				
 			//	[statusBarMenu addItem: item];
