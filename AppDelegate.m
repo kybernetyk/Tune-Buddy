@@ -168,6 +168,11 @@
 	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	
+	//	[defaults setObject:[NSArchiver archivedDataWithRootObject:myColor
+	//														forKey:@"myColor"]];
+
+	NSData *fontData = [NSArchiver archivedDataWithRootObject: [NSColor blackColor]];
+	
 	NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
 						  [NSNumber numberWithBool: YES], @"trimDisplayStringLength",
 						  [NSNumber numberWithInt: 48], @"maxDisplayLength",
@@ -179,6 +184,7 @@
 						  [NSNumber numberWithBool: YES], @"keepAlwaysLeft",
 						  [NSNumber numberWithBool: shallEnableSmallScreenMode], @"smallScreenModeEnabled",
 						  [NSNumber numberWithBool: shallEnableSmallScreenMode], @"growlEnabled", //enable growl notifications when small screen mode is enabled. don't bother big screen users with growl
+						  fontData, @"statusItemForegroundColor",
 						  nil];
 	
 	[defaults registerDefaults: dict];
@@ -238,7 +244,8 @@
 	[defc addObserver: self forKeyPath: @"values.smallScreenModeEnabled" options: NSKeyValueObservingOptionNew context: @"smallScreenModeEnabled"];
 	[defc addObserver: self forKeyPath: @"values.startAtLogin" options: NSKeyValueObservingOptionNew context: @"startAtLogin"];
 	[defc addObserver: self forKeyPath: @"values.keepAlwaysLeft" options: NSKeyValueObservingOptionNew context: @"keepAlwaysLeft"];
-
+	[defc addObserver: self forKeyPath: @"values.statusItemForegroundColor" options: NSKeyValueObservingOptionNew context: @"statusItemForegroundColor"];
+	
 }
 
 
@@ -295,6 +302,11 @@
 		return;
 	}*/
 	
+	if ([contextString isEqualToString: @"statusItemForegroundColor"])
+	{
+		[self createStatusItem];
+		return;
+	}
 	
 	
 	
@@ -508,14 +520,23 @@
 		quitMenuItem = [statusBarMenu addItemWithTitle:@"Quit" action:@selector(quitAppByMenu:) keyEquivalent:[NSString string]];
 	}
 	
+	NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+	
+	NSData *fontData = [defs objectForKey: @"statusItemForegroundColor"];
+	NSColor *fontColor = [NSUnarchiver unarchiveObjectWithData: fontData];
+	
+	
+	
 	
 	NSFont *font = [NSFont fontWithName:@"Verdana" size: 11.0f];
 	//NSLog(@"%@",font);
-	NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys: font,@"NSFont",nil];
+	NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys: font,@"NSFont",fontColor,NSForegroundColorAttributeName,  nil];
 	NSAttributedString *attributedTitle = [[[NSAttributedString alloc] initWithString: title attributes: attributes] autorelease];
 	
-	
-	NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+//	[defaults setObject:[NSArchiver archivedDataWithRootObject:myColor
+//														forKey:@"myColor"]];
+
+
 	
 	if (!statusItem)
 	{	
@@ -1058,7 +1079,7 @@
 		//if track name is longer than displayString a change won't be registered :-(
 		//if (![[statusItem title] isEqualToString: displayString])
 		
-		if (![[smallScreenModeMenuItem title] isEqualToString: [self longDisplayString]])
+		//if (![[smallScreenModeMenuItem title] isEqualToString: [self longDisplayString]])
 			[self createStatusItem];
 		
 		[self notifyGrowlOfTrackChange];

@@ -4,6 +4,7 @@
 @interface GeneralPreferencePaneController : NSObject <SS_PreferencePaneProtocol> 
 {
     IBOutlet NSView *prefsView;
+	IBOutlet NSColorWell *colorWell;
 
 	NSString *startAtLoginTooltip;
 	NSString *enableSmallCcreenModeTooltip;

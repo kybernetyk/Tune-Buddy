@@ -90,5 +90,10 @@
     return NO;
 }
 
+- (IBAction) colorWellDidFinish: (id) sender
+{
+	
+}
+
 
 @end
