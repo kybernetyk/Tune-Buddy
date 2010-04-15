@@ -239,7 +239,7 @@
 		
 		[self fetchCurrentTrackFromItunes];
 	
-		if (![currentDisplayString isEqualToString: previousDisplayString])
+		if (![currentDisplayString isEqualToString: previousDisplayString] || !previousDisplayString || !currentDisplayString)
 		{
 			NSLog(@"current track changed to: %@ from %@",currentDisplayString, previousDisplayString);
 			
