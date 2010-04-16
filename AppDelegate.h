@@ -46,6 +46,9 @@
 	
 	BOOL growlAvailable;
 
+	NSTimer *lastFMSubmitTimer;
+	NSMutableArray *scrobbleQueue;
+	
 }
 
 #pragma mark -

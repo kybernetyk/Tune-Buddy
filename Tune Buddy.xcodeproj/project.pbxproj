@@ -9,6 +9,18 @@
 /* Begin PBXBuildFile section */
 		0329233E1055104F00D30E83 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B97324FDCFA39411CA2CEA /* AppKit.framework */; };
 		032923801055129800D30E83 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0329237F1055129800D30E83 /* icon.icns */; };
+		0357E852117720840082AB8F /* LastFMScrobbler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E851117720840082AB8F /* LastFMScrobbler.m */; };
+		0357E86A117723580082AB8F /* FMCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E863117723580082AB8F /* FMCallback.m */; };
+		0357E86B117723580082AB8F /* FMEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E865117723580082AB8F /* FMEngine.m */; };
+		0357E86C117723580082AB8F /* FMEngineURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E867117723580082AB8F /* FMEngineURLConnection.m */; };
+		0357E86D117723580082AB8F /* NSString+FMEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E869117723580082AB8F /* NSString+FMEngine.m */; };
+		0357E87D117724370082AB8F /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E873117724370082AB8F /* ASIFormDataRequest.m */; };
+		0357E87E117724370082AB8F /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E875117724370082AB8F /* ASIHTTPRequest.m */; };
+		0357E87F117724370082AB8F /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E878117724370082AB8F /* ASIInputStream.m */; };
+		0357E880117724370082AB8F /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E87A117724370082AB8F /* ASINetworkQueue.m */; };
+		0357E881117724370082AB8F /* ASINSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E87C117724370082AB8F /* ASINSStringAdditions.m */; };
+		0357E89A1177247A0082AB8F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0357E8991177247A0082AB8F /* SystemConfiguration.framework */; };
+		0357E89E117724810082AB8F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0357E89D117724810082AB8F /* libz.dylib */; };
 		0357FCB410FF36FE009B87E1 /* AGKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0391AFFD10FE06B900ACE94F /* AGKeychain.m */; };
 		0357FCC310FF3738009B87E1 /* AGKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0391AFFD10FE06B900ACE94F /* AGKeychain.m */; };
 		0370B01710D85551001B0FE9 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0370B01610D85551001B0FE9 /* Sparkle.framework */; };
@@ -129,6 +141,29 @@
 
 /* Begin PBXFileReference section */
 		0329237F1055129800D30E83 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
+		0357E850117720840082AB8F /* LastFMScrobbler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LastFMScrobbler.h; sourceTree = "<group>"; };
+		0357E851117720840082AB8F /* LastFMScrobbler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LastFMScrobbler.m; sourceTree = "<group>"; };
+		0357E862117723580082AB8F /* FMCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMCallback.h; sourceTree = "<group>"; };
+		0357E863117723580082AB8F /* FMCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMCallback.m; sourceTree = "<group>"; };
+		0357E864117723580082AB8F /* FMEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMEngine.h; sourceTree = "<group>"; };
+		0357E865117723580082AB8F /* FMEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMEngine.m; sourceTree = "<group>"; };
+		0357E866117723580082AB8F /* FMEngineURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMEngineURLConnection.h; sourceTree = "<group>"; };
+		0357E867117723580082AB8F /* FMEngineURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMEngineURLConnection.m; sourceTree = "<group>"; };
+		0357E868117723580082AB8F /* NSString+FMEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FMEngine.h"; sourceTree = "<group>"; };
+		0357E869117723580082AB8F /* NSString+FMEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FMEngine.m"; sourceTree = "<group>"; };
+		0357E872117724370082AB8F /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
+		0357E873117724370082AB8F /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIFormDataRequest.m; sourceTree = "<group>"; };
+		0357E874117724370082AB8F /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequest.h; sourceTree = "<group>"; };
+		0357E875117724370082AB8F /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIHTTPRequest.m; sourceTree = "<group>"; };
+		0357E876117724370082AB8F /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestConfig.h; sourceTree = "<group>"; };
+		0357E877117724370082AB8F /* ASIInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIInputStream.h; sourceTree = "<group>"; };
+		0357E878117724370082AB8F /* ASIInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIInputStream.m; sourceTree = "<group>"; };
+		0357E879117724370082AB8F /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
+		0357E87A117724370082AB8F /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
+		0357E87B117724370082AB8F /* ASINSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINSStringAdditions.h; sourceTree = "<group>"; };
+		0357E87C117724370082AB8F /* ASINSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINSStringAdditions.m; sourceTree = "<group>"; };
+		0357E8991177247A0082AB8F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0357E89D117724810082AB8F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		0370B01610D85551001B0FE9 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		03743D39109D91E100B3B221 /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
 		03743D3E109D91F200B3B221 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = /System/Library/Frameworks/ScriptingBridge.framework; sourceTree = "<absolute>"; };
@@ -300,12 +335,56 @@
 				0370B01710D85551001B0FE9 /* Sparkle.framework in Frameworks */,
 				0391AE8C10FDF5AD00ACE94F /* ApplicationServices.framework in Frameworks */,
 				03B79FB3110BA67900C7AD7F /* Growl.framework in Frameworks */,
+				0357E89A1177247A0082AB8F /* SystemConfiguration.framework in Frameworks */,
+				0357E89E117724810082AB8F /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0357E84F117720770082AB8F /* Last FM Scrobbler */ = {
+			isa = PBXGroup;
+			children = (
+				0357E850117720840082AB8F /* LastFMScrobbler.h */,
+				0357E851117720840082AB8F /* LastFMScrobbler.m */,
+			);
+			name = "Last FM Scrobbler";
+			sourceTree = "<group>";
+		};
+		0357E861117723580082AB8F /* FMEngine */ = {
+			isa = PBXGroup;
+			children = (
+				0357E862117723580082AB8F /* FMCallback.h */,
+				0357E863117723580082AB8F /* FMCallback.m */,
+				0357E864117723580082AB8F /* FMEngine.h */,
+				0357E865117723580082AB8F /* FMEngine.m */,
+				0357E866117723580082AB8F /* FMEngineURLConnection.h */,
+				0357E867117723580082AB8F /* FMEngineURLConnection.m */,
+				0357E868117723580082AB8F /* NSString+FMEngine.h */,
+				0357E869117723580082AB8F /* NSString+FMEngine.m */,
+			);
+			path = FMEngine;
+			sourceTree = "<group>";
+		};
+		0357E871117724370082AB8F /* ASIHttp */ = {
+			isa = PBXGroup;
+			children = (
+				0357E872117724370082AB8F /* ASIFormDataRequest.h */,
+				0357E873117724370082AB8F /* ASIFormDataRequest.m */,
+				0357E874117724370082AB8F /* ASIHTTPRequest.h */,
+				0357E875117724370082AB8F /* ASIHTTPRequest.m */,
+				0357E876117724370082AB8F /* ASIHTTPRequestConfig.h */,
+				0357E877117724370082AB8F /* ASIInputStream.h */,
+				0357E878117724370082AB8F /* ASIInputStream.m */,
+				0357E879117724370082AB8F /* ASINetworkQueue.h */,
+				0357E87A117724370082AB8F /* ASINetworkQueue.m */,
+				0357E87B117724370082AB8F /* ASINSStringAdditions.h */,
+				0357E87C117724370082AB8F /* ASINSStringAdditions.m */,
+			);
+			path = ASIHttp;
+			sourceTree = "<group>";
+		};
 		03B0E7FC10D7BC8C00D8B185 /* Prefs Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -470,6 +549,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0357E84F117720770082AB8F /* Last FM Scrobbler */,
 				03B0E8C610D7C86900D8B185 /* Move App to Apps folder */,
 				03B0E7FE10D7BCA800D8B185 /* Bridge Operation */,
 				03B0E7FD10D7BC9E00D8B185 /* App Delegate */,
@@ -531,6 +611,8 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				0357E871117724370082AB8F /* ASIHttp */,
+				0357E861117723580082AB8F /* FMEngine */,
 				0391B0E310FE13B900ACE94F /* EMKeychainItem.h */,
 				0391B0E410FE13B900ACE94F /* EMKeychainItem.m */,
 				0391B0E510FE13B900ACE94F /* EMKeychainProxy.h */,
@@ -573,6 +655,8 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 				03BDFBD910D6B6A400487180 /* libxml2.dylib */,
 				03B0E8CF10D7C8E900D8B185 /* Security.framework */,
+				0357E8991177247A0082AB8F /* SystemConfiguration.framework */,
+				0357E89D117724810082AB8F /* libz.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -828,6 +912,16 @@
 				03C604D310EFCEB400BDC333 /* NSString+Additions.m in Sources */,
 				0391B0E710FE13B900ACE94F /* EMKeychainItem.m in Sources */,
 				0391B0E810FE13B900ACE94F /* EMKeychainProxy.m in Sources */,
+				0357E852117720840082AB8F /* LastFMScrobbler.m in Sources */,
+				0357E86A117723580082AB8F /* FMCallback.m in Sources */,
+				0357E86B117723580082AB8F /* FMEngine.m in Sources */,
+				0357E86C117723580082AB8F /* FMEngineURLConnection.m in Sources */,
+				0357E86D117723580082AB8F /* NSString+FMEngine.m in Sources */,
+				0357E87D117724370082AB8F /* ASIFormDataRequest.m in Sources */,
+				0357E87E117724370082AB8F /* ASIHTTPRequest.m in Sources */,
+				0357E87F117724370082AB8F /* ASIInputStream.m in Sources */,
+				0357E880117724370082AB8F /* ASINetworkQueue.m in Sources */,
+				0357E881117724370082AB8F /* ASINSStringAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

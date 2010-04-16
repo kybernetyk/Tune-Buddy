@@ -17,6 +17,14 @@
 @synthesize currentDisplayString;
 
 
+@synthesize artistName;
+@synthesize trackName;
+@synthesize albumName;
+@synthesize trackLength;
+@synthesize trackPlaybackStartTime;
+@synthesize isStream;
+@synthesize isPlaying;
+
 //returns the string that will be displayed/copied to pasteboard
 - (void) fetchCurrentTrackFromItunes
 {
@@ -26,6 +34,8 @@
 	
 	NSString *trackName = nil; //@"...";
 	NSString *artistName = nil;// @"";
+	NSString *albumName = nil;
+	NSNumber *trackLength = nil;
 	NSString *delimiter = nil;// @"";
 	NSString *kind = nil;
 	NSString *streamTitle = nil;
@@ -33,7 +43,8 @@
 	
 	BOOL trackExists = NO;
 	BOOL isStream = NO;
-	
+	[self setIsPlaying: [NSNumber numberWithBool: NO]];
+
 	
 	if (!iTunes)
 	{	
@@ -83,12 +94,30 @@
 		{
 			trackName = [currentTrack name];
 			if (trackName != nil)
+			{	
 				trackName= [NSString stringWithString: trackName];
+				[self setTrackName: trackName];
+
+			}
 
 			artistName = [currentTrack artist];
 			if (artistName != nil)
+			{	
 				artistName = [NSString stringWithString: artistName];
+				[self setArtistName: artistName];
+			}
 		
+			
+			albumName = [currentTrack album];
+			if (albumName != nil)
+			{	
+				albumName = [NSString stringWithString: albumName];
+				[self setAlbumName: albumName];
+			}
+			
+			trackLength = [NSNumber numberWithDouble: [currentTrack duration]];
+			[self setTrackLength: trackLength];
+			
 			kind = [currentTrack kind];
 			if (kind != nil)
 				kind = [NSString stringWithString: kind];
@@ -97,8 +126,34 @@
 			if (streamTitle != nil)
 				streamTitle	= [NSString stringWithString: streamTitle];
 
+/*			NSDate *bla = [currentTrack playedDate];
+			if (bla != nil)
+				[self setTrackPlaybackStartTime: bla];*/
+			
 			playerState = [iTunes playerState];
 			trackExists = YES;
+			
+			playbackPosition = [iTunes playerPosition];
+			NSInteger len = [trackLength integerValue];
+			NSInteger perc = (int)(100.0 / (float)len * (float)playbackPosition);
+			
+		//	NSLog(@"%i/%i = %i",playbackPosition,len, perc);
+			
+			
+			if (!shouldMessage20PercentMark && !didMessage20PercentMark)
+			{
+				if (perc > 20)
+				{
+					shouldMessage20PercentMark = YES;
+				}
+			}
+			
+			/*	NSString *artistName;
+			 NSString *trackName;
+			 NSString *albumName;
+			 NSNumber *trackLength;
+*/
+			
 		}
 		@catch (NSException *e) 
 		{
@@ -123,6 +178,8 @@
 	
 	if ([kind containsString: @"stream" ignoringCase: YES])
 		isStream = YES;
+
+	[self setIsStream: [NSNumber numberWithBool: isStream]];
 	
 	if (trackExists)
 	{
@@ -185,6 +242,8 @@
 		
 		if (isStream)
 			[self setPlayStatus: @"☢ "];
+		
+		[self setIsPlaying: [NSNumber numberWithBool: YES]];
 	}
 	
 	if (!artistName && !trackName)
@@ -215,8 +274,13 @@
 {
 	NSAutoreleasePool *thePool = [[NSAutoreleasePool alloc] init];
 	NSString *previousDisplayString = nil;
-	
-	
+	NSString *previousArtistName = nil;
+	NSString *previousTrackName = nil;
+	NSString *previousAlbumName = nil;
+
+	didMessage20PercentMark = NO;
+	shouldMessage20PercentMark = NO;
+	[self setTrackPlaybackStartTime: [NSDate date]];
 	int poolKillCounter = 0;
 	
 	double resolution = 0.75;
@@ -235,21 +299,86 @@
 		{
 			[previousDisplayString release];
 			previousDisplayString = [currentDisplayString retain];
+			
+			[previousArtistName release];
+			previousArtistName = [artistName retain];
+			
+			[previousTrackName release];
+			previousTrackName = [trackName retain];
+			
+			[previousAlbumName release];
+			previousAlbumName = [albumName retain];
 		}
 		
 		[self fetchCurrentTrackFromItunes];
 	
+
+		
 		if (![currentDisplayString isEqualToString: previousDisplayString] || !previousDisplayString || !currentDisplayString)
 		{
 			NSLog(@"current track changed to: %@ from %@",currentDisplayString, previousDisplayString);
 			
-			NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys: currentDisplayString, @"displayString",
-								  playStatus, @"displayStatus", nil];
 			
+			
+			//NSLog(@"length: %@",[self trackLength]);
+			/*
+			 NSString *artistName;
+			 NSString *trackName;
+			 NSString *albumName;
+			 NSNumber *trackLength;
+			 NSDate *trackPlaybackStartTime;
+*/
+			//let us retain this here - we don't know when it might die - the delegate will release it >.<
+
+			
+			if (![previousArtistName isEqualToString: artistName] ||
+				![previousTrackName isEqualToString: trackName] ||
+				![previousAlbumName isEqualToString: albumName])
+			{
+				didMessage20PercentMark = NO;
+				shouldMessage20PercentMark = NO;
+				//[self setTrackPlaybackStartTime: [NSDate dateWithTimeIntervalSince1970: [[NSDate date] timeIntervalSince1970] - playbackPosition]];
+				
+				[self setTrackPlaybackStartTime: [NSDate date]];
+			}
+			
+
+			NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys: 
+								  [NSString stringWithString: currentDisplayString], @"displayString",
+								  [NSString stringWithString: playStatus], @"displayStatus", 
+								  
+								  [NSString stringWithString: [self artistName]], @"artistName",
+								  [NSString stringWithString: [self trackName]], @"trackName",
+								  [NSString stringWithString: [self albumName]], @"albumName",
+								  [NSNumber numberWithDouble: [[self trackLength] doubleValue]], @"trackLength",
+								    [NSNumber numberWithBool: [[self isStream] boolValue]], @"isStream",
+								    [NSNumber numberWithBool: [[self isPlaying] boolValue]], @"isPlaying",
+								  [NSDate dateWithTimeIntervalSince1970: [[self trackPlaybackStartTime] timeIntervalSince1970]] , @"trackPlaybackStartTime",
+								  nil];
+			[dict retain];
 			[delegate performSelectorOnMainThread:@selector(iTunesTrackDidChangeTo:) withObject: dict waitUntilDone: YES];
 
 		}
 
+		if (shouldMessage20PercentMark && !didMessage20PercentMark)
+		{
+			NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys: 
+								  [NSString stringWithString: currentDisplayString], @"displayString",
+								  [NSString stringWithString: playStatus], @"displayStatus", 
+								  
+								  [NSString stringWithString: [self artistName]], @"artistName",
+								  [NSString stringWithString: [self trackName]], @"trackName",
+								  [NSString stringWithString: [self albumName]], @"albumName",
+								  [NSNumber numberWithDouble: [[self trackLength] doubleValue]], @"trackLength",
+								  [NSNumber numberWithBool: [[self isStream] boolValue]], @"isStream",
+								    [NSNumber numberWithBool: [[self isPlaying] boolValue]], @"isPlaying",
+								  [NSDate dateWithTimeIntervalSince1970: [[self trackPlaybackStartTime] timeIntervalSince1970]] , @"trackPlaybackStartTime",
+								  nil];
+			[dict retain];
+			[delegate performSelectorOnMainThread:@selector(iTunesTrackDidPass20PercentMark:) withObject: dict waitUntilDone: YES];
+			didMessage20PercentMark = YES;
+		}
+		
 		NSDate* next = [NSDate dateWithTimeIntervalSinceNow:resolution];
 		/*isRunning =*/ [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:next];
 		//NSLog(@"%i", isRunning);

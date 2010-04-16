@@ -17,7 +17,7 @@
 #import "EMKeychainProxy.h"
 #import "EMKeychainItem.h"
 #import <Growl/Growl.h>
-
+#import "LastFMScrobbler.h"
 
 @implementation AppDelegate
 #pragma mark -
@@ -1053,9 +1053,71 @@
 	
 }
 
+#pragma mark -
+#pragma mark scrobble delegate
+//	[delegate lastFMScrobbler: self submissionDidSucceed: YES];
+
+- (void) lastFMScrobbler: (LastFMScrobbler *) aScrobbler submissionDidSucceed: (BOOL) yesno
+{
+	
+	[aScrobbler autorelease];
+}
+
+- (void) lastFMScrobbler: (LastFMScrobbler *) aScrobbler notificationDidSucceed: (BOOL) yesno
+{
+	
+	[aScrobbler autorelease];
+}
+
 
 #pragma mark -
 #pragma mark itunes bridge delegate
+- (LastFMScrobbler *) scrobblerWithDictionary: (NSDictionary *) infoDict
+{
+	LastFMScrobbler *scrobbler = [[LastFMScrobbler alloc] init];
+	[scrobbler autorelease];
+	[scrobbler setDelegate: self];
+	
+	[scrobbler setUsername: @"arielblumenthal"];
+	[scrobbler setPassword: @"warbird"];
+	
+	[scrobbler setArtistName: [infoDict objectForKey: @"artistName"]];
+	[scrobbler setTrackName: [infoDict objectForKey: @"trackName"]];
+	[scrobbler setAlbumName: [infoDict objectForKey: @"albumName"]];
+	[scrobbler setTrackLength: [infoDict objectForKey: @"trackLength"]];
+	[scrobbler setTrackPlaybackStartTime: [infoDict objectForKey: @"trackPlaybackStartTime"]];
+
+	return scrobbler;
+}
+
+
+- (void) iTunesTrackDidPass20PercentMark: (NSDictionary *) infoDict
+{
+	if (![[infoDict objectForKey: @"isPlaying"] boolValue])
+		return;
+	
+	if (!scrobbleQueue)
+	{
+		scrobbleQueue = [[NSMutableArray alloc] initWithCapacity: 10];
+	}
+	
+		NSLog(@"OK MAN! WE HAVE 20perc!!");
+	
+	BOOL isStream = [[infoDict objectForKey: @"isStream"] boolValue];
+	
+	//we don't want to scrobble online radio
+	if (!isStream)
+	{	
+		LastFMScrobbler *scrobbler = [[self scrobblerWithDictionary: infoDict] retain];
+		[scrobbleQueue addObject: scrobbler];
+	
+		LastFMScrobbler *notificationScrobbler = [[self scrobblerWithDictionary: infoDict] retain];
+		[notificationScrobbler performNotification];
+	}
+
+}
+
+
 - (void) iTunesTrackDidChangeTo: (NSDictionary *) infoDict
 {
 //	BOOL smallScreenModeEnabled = [[NSUserDefaults standardUserDefaults] boolForKey: @"smallScreenModeEnabled"];
@@ -1071,6 +1133,8 @@
 		[self setPlayStatus: [infoDict objectForKey: @"displayStatus"]];
 		
 	}
+//	NSLog(@"%@",infoDict);
+	
 	
 	//if (!smallScreenModeEnabled)
 	{
@@ -1080,10 +1144,29 @@
 		//if (![[statusItem title] isEqualToString: displayString])
 		
 		//if (![[smallScreenModeMenuItem title] isEqualToString: [self longDisplayString]])
-			[self createStatusItem];
+		[self createStatusItem];
 		
 		[self notifyGrowlOfTrackChange];
+
+		//only scrobble when user plays
+		if ([[infoDict objectForKey: @"isPlaying"] boolValue])
+		{
+			if (!scrobbleQueue)
+				scrobbleQueue = [[NSMutableArray alloc] initWithCapacity: 10];
+	
+			//post submission
+			NSArray *iterationArray = [NSArray arrayWithArray: scrobbleQueue];
+			for (LastFMScrobbler *scrobbler in iterationArray)
+			{
+				[scrobbler performSubmission];
+				NSLog(@"performing submission ...");
+				[scrobbleQueue removeObject: scrobbler];
+				//[scrobbler release];
+			}
+		}
 	}
+	
+	[infoDict release];
 }
 
 @end
