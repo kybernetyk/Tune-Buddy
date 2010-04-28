@@ -1059,7 +1059,12 @@
 
 - (void) lastFMScrobbler: (LastFMScrobbler *) aScrobbler submissionDidSucceed: (BOOL) yesno
 {
-	
+	if (yesno == YES)
+	{
+		[scrobbleQueue release];
+		scrobbleQueue = nil;
+	}
+
 	[aScrobbler autorelease];
 }
 
@@ -1101,16 +1106,19 @@
 		scrobbleQueue = [[NSMutableArray alloc] initWithCapacity: 10];
 	}
 	
-		NSLog(@"OK MAN! WE HAVE 20perc!!");
+	//	NSLog(@"OK MAN! WE HAVE 20perc!!");
 	
 	BOOL isStream = [[infoDict objectForKey: @"isStream"] boolValue];
 	
 	//we don't want to scrobble online radio
 	if (!isStream)
 	{	
-		LastFMScrobbler *scrobbler = [[self scrobblerWithDictionary: infoDict] retain];
-		[scrobbleQueue addObject: scrobbler];
+	//	LastFMScrobbler *scrobbler = [[self scrobblerWithDictionary: infoDict] retain];
+	//	[scrobbleQueue addObject: scrobbler];
+		[scrobbleQueue addObject: [NSDictionary dictionaryWithDictionary: infoDict]];
 	
+		NSLog(@"added %@ - %@ to submission queue (count) = %i",[infoDict objectForKey: @"artistName"],[infoDict objectForKey:@"trackName"], [scrobbleQueue count]);
+
 		LastFMScrobbler *notificationScrobbler = [[self scrobblerWithDictionary: infoDict] retain];
 		[notificationScrobbler performNotification];
 	}
@@ -1155,14 +1163,29 @@
 				scrobbleQueue = [[NSMutableArray alloc] initWithCapacity: 10];
 	
 			//post submission
-			NSArray *iterationArray = [NSArray arrayWithArray: scrobbleQueue];
+			/*NSArray *iterationArray = [NSArray arrayWithArray: scrobbleQueue];
 			for (LastFMScrobbler *scrobbler in iterationArray)
 			{
 				[scrobbler performSubmission];
 				NSLog(@"performing submission ...");
 				[scrobbleQueue removeObject: scrobbler];
 				//[scrobbler release];
+			}*/
+
+		//	if ([scrobbleQueue count] >= 5)
+			{
+				NSArray *copyScrobbleQueue = [NSArray arrayWithArray: scrobbleQueue];
+				LastFMScrobbler *scrobbler = [[LastFMScrobbler alloc] init];
+				[scrobbler setDelegate: self];
+			
+				[scrobbler setUsername: @"arielblumenthal"];
+				[scrobbler setPassword: @"warbird"];
+			
+				[scrobbler performMassSubmissionWithArray: copyScrobbleQueue];
 			}
+
+			//our original queue will be erased when we get a successful scrobble
+			
 		}
 	}
 	
