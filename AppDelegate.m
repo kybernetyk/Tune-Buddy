@@ -1086,7 +1086,7 @@
 - (void) lastFMScrobbler: (LastFMScrobbler *) aScrobbler notificationDidSucceed: (BOOL) yesno
 {
 	
-	[aScrobbler autorelease];
+//	[aScrobbler autorelease];
 }
 
 
@@ -1095,7 +1095,7 @@
 - (LastFMScrobbler *) scrobblerWithDictionary: (NSDictionary *) infoDict
 {
 	LastFMScrobbler *scrobbler = [[LastFMScrobbler alloc] init];
-	[scrobbler autorelease];
+	
 	[scrobbler setDelegate: self];
 	
 	[scrobbler setUsername: @"arielblumenthal"];
@@ -1107,14 +1107,18 @@
 	[scrobbler setTrackLength: [infoDict objectForKey: @"trackLength"]];
 	[scrobbler setTrackPlaybackStartTime: [infoDict objectForKey: @"trackPlaybackStartTime"]];
 
-	return scrobbler;
+	return [scrobbler autorelease];
 }
 
 
 - (void) iTunesTrackDidPass20PercentMark: (NSDictionary *) infoDict
 {
 	if (![[infoDict objectForKey: @"isPlaying"] boolValue])
+	{	
+		//[infoDict release]; //we must release this here
 		return;
+		
+	}
 	
 	if (!scrobbleQueue)
 	{
@@ -1134,9 +1138,11 @@
 	
 		NSLog(@"added %@ - %@ to submission queue (count) = %i",[infoDict objectForKey: @"artistName"],[infoDict objectForKey:@"trackName"], [scrobbleQueue count]);
 
-		LastFMScrobbler *notificationScrobbler = [[self scrobblerWithDictionary: infoDict] retain];
+		LastFMScrobbler *notificationScrobbler = [self scrobblerWithDictionary: [NSDictionary dictionaryWithDictionary: infoDict]];
 		[notificationScrobbler performNotification];
 	}
+	
+//	[infoDict release]; //we must release this here
 
 }
 
@@ -1217,7 +1223,7 @@
 		}
 	}
 	
-	[infoDict release];
+	//[infoDict release]; //we must release this here
 }
 
 @end

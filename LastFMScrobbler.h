@@ -37,7 +37,6 @@
 
 
 - (void) performNotification;
-- (void) performSubmission;
 
 - (void) performMassSubmissionWithArray: (NSArray *) dictsToSubmit;
 

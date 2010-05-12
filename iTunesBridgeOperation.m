@@ -280,7 +280,8 @@
 
 	didMessage20PercentMark = NO;
 	shouldMessage20PercentMark = NO;
-	[self setTrackPlaybackStartTime: [NSDate date]];
+	
+	
 	int poolKillCounter = 0;
 	
 	double resolution = 0.75;
@@ -293,6 +294,7 @@
 	NSLog (@"current thread: %@",[NSThread currentThread]);
 
 	NSAutoreleasePool *localPool = [[NSAutoreleasePool alloc] init];	
+	[self setTrackPlaybackStartTime: [NSDate date]];
 	while (![self isCancelled])
 	{
 //		if (currentDisplayString)
@@ -343,7 +345,7 @@
 			}
 			
 
-			NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys: 
+			NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys: 
 								  [NSString stringWithString: currentDisplayString], @"displayString",
 								  [NSString stringWithString: playStatus], @"displayStatus", 
 								  
@@ -355,14 +357,14 @@
 								    [NSNumber numberWithBool: [[self isPlaying] boolValue]], @"isPlaying",
 								  [NSDate dateWithTimeIntervalSince1970: [[self trackPlaybackStartTime] timeIntervalSince1970]] , @"trackPlaybackStartTime",
 								  nil];
-			[dict retain];
+//			[dict retain];
 			[delegate performSelectorOnMainThread:@selector(iTunesTrackDidChangeTo:) withObject: dict waitUntilDone: YES];
-
+			[dict release];
 		}
 
 		if (shouldMessage20PercentMark && !didMessage20PercentMark)
 		{
-			NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys: 
+			NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys: 
 								  [NSString stringWithString: currentDisplayString], @"displayString",
 								  [NSString stringWithString: playStatus], @"displayStatus", 
 								  
@@ -374,9 +376,11 @@
 								    [NSNumber numberWithBool: [[self isPlaying] boolValue]], @"isPlaying",
 								  [NSDate dateWithTimeIntervalSince1970: [[self trackPlaybackStartTime] timeIntervalSince1970]] , @"trackPlaybackStartTime",
 								  nil];
-			[dict retain];
+		//	[dict retain];
 			[delegate performSelectorOnMainThread:@selector(iTunesTrackDidPass20PercentMark:) withObject: dict waitUntilDone: YES];
 			didMessage20PercentMark = YES;
+			
+			[dict release];
 		}
 		
 		NSDate* next = [NSDate dateWithTimeIntervalSinceNow:resolution];
@@ -399,6 +403,8 @@
 		//usleep(kRefreshFrequencyInMicroseconds);
 	//	NSLog(@"tick");
 	}
+	
+	NSLog(@"LOL ITUNES DIEDDD!");
 	[iTunes release];
 	[thePool release];	
 }

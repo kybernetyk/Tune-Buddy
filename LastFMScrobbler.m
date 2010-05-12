@@ -39,7 +39,7 @@
 	
 
 	//authenticate
-	ASIFormDataRequest *authReq = [ASIFormDataRequest requestWithURL:[NSURL URLWithString: authURL]];
+	ASIFormDataRequest *authReq = [[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString: authURL]];
 	[authReq setPostValue: @"auth.getMobileSession" forKey: @"method"];
 	[authReq setPostValue: [self username] forKey: @"username"];
 	[authReq setPostValue: authToken forKey: @"authToken"];
@@ -48,14 +48,16 @@
 	[authReq setPostValue:sig forKey: @"api_sig"];
 	[authReq setPostValue:@"json" forKey:@"format"];
 	[authReq startSynchronous];
-	NSString *str  = [authReq responseString];
+	NSString *str  = [NSString stringWithString: [authReq responseString]];
 	if (!str)
 	{	
 		[delegate lastFMScrobbler: self notificationDidSucceed: NO];
 		NSLog(@"%@",[[authReq error] localizedDescription]);
+		[authReq release];
 		return;
 	}
 	
+	[authReq release];
 	
 	SBJSON *json = [[[SBJSON alloc] init] autorelease];
 	
@@ -99,15 +101,14 @@
 	NSArray *respArray = [resp componentsSeparatedByCharactersInSet: [NSCharacterSet newlineCharacterSet]];
 	
 	//if resparray[0] != OK ... error 
-	NSString *sessionID = [respArray objectAtIndex: 1];
-	NSString *nowplayingURL = [respArray objectAtIndex: 2];
-	NSString *submissionURL = [respArray objectAtIndex: 3];
+	NSString *sessionID = [NSString stringWithString: [respArray objectAtIndex: 1]];
+	NSString *nowplayingURL = [NSString stringWithString: [respArray objectAtIndex: 2]];
 //	NSLog(@"session: %@",sessionID);
 	
 //	NSLog(@"time: %@",n3);
 	
 	
-	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString: nowplayingURL]]; // log in & get cookies
+	ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString: nowplayingURL]]; // log in & get cookies
 	 [request setPostValue: sessionID forKey: @"s"];
 	 [request setPostValue: [self artistName] forKey: @"a"];
 	 [request setPostValue: [self trackName] forKey: @"t"];
@@ -120,6 +121,7 @@
 	 [request startSynchronous];
 	
 		NSLog(@"scrobble notification returned: %@",[request responseString]);
+	[request release];
 	
 	//[delegate lastFMScrobbler: self submissionDidSucceed: YES];
 	[delegate lastFMScrobbler: self notificationDidSucceed: YES];
@@ -359,6 +361,15 @@
 	//NSLog(@"%i",[fmEngine retainCount]);
 	
 	NSLog(@"bye scrobbler!");
+	
+
+	[self setUsername: nil];
+	[self setPassword: nil];
+	[self setArtistName: nil];
+	[self setTrackName: nil];
+	[self setAlbumName: nil];
+	[self setTrackLength: nil];
+	[self setTrackPlaybackStartTime: nil];
 	
 	[super dealloc];
 }

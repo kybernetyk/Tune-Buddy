@@ -30,6 +30,8 @@
 		NSLog(@"nothing to submit ...");
 		[delegate performSelectorOnMainThread:@selector(lastFmScrobblerSubmissionDidFail:) withObject: self waitUntilDone: YES];
 		//[delegate lastFMScrobbler: self submissionDidSucceed: NO];
+		
+		[thePool release];
 		return;
 	}
 	
@@ -40,7 +42,9 @@
 	
 	
 	
-	ASIFormDataRequest *authReq = [ASIFormDataRequest requestWithURL:[NSURL URLWithString: authURL]];
+	ASIFormDataRequest *authReq = [[ASIFormDataRequest alloc] initWithURL: [NSURL URLWithString: authURL]];
+	
+	//[ASIFormDataRequest requestWithURL:[NSURL URLWithString: authURL]];
 	[authReq setPostValue: @"auth.getMobileSession" forKey: @"method"];
 	[authReq setPostValue: [self username] forKey: @"username"];
 	[authReq setPostValue: authToken forKey: @"authToken"];
@@ -55,12 +59,16 @@
 	
 	[authReq startSynchronous];
 	
-	NSString *str  = [authReq responseString];
+	NSString *str  = [NSString stringWithString: [authReq responseString]];
+	[authReq release];
+	
 	if (!str || [str length] <= 0)
 	{	
 		NSLog(@"auth response[==nil] failure");
 		[delegate performSelectorOnMainThread:@selector(lastFmScrobblerSubmissionDidFail:) withObject: self waitUntilDone: YES];
 		NSLog(@"%@",[[authReq error] localizedDescription]);
+		[fmEngine release];
+		[thePool release];
 		return;
 		
 	}
@@ -76,6 +84,8 @@
 	{
 		NSLog(@"auth did not get us a key!");
 		[delegate performSelectorOnMainThread:@selector(lastFmScrobblerSubmissionDidFail:) withObject: self waitUntilDone: YES];
+		[fmEngine release];
+		[thePool release];
 		return;
 	}
 	
@@ -102,6 +112,7 @@
 	{	
 		NSLog(@"no response from handshake.");
 		[delegate performSelectorOnMainThread:@selector(lastFmScrobblerSubmissionDidFail:) withObject: self waitUntilDone: YES];
+		[thePool release];
 		return;
 		
 	}
@@ -119,7 +130,7 @@
 	
 	/////// mass
 	
-	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString: submissionURL]]; // log in & get cookies
+	ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString: submissionURL]]; // log in & get cookies
 	[request setPostValue: sessionID forKey: @"s"];
 	
 	NSInteger index = 0;
@@ -148,6 +159,8 @@
 	{
 		NSLog(@"submission request failed.");
 		[delegate performSelectorOnMainThread:@selector(lastFmScrobblerSubmissionDidFail:) withObject: self waitUntilDone: YES];
+		[request release];
+		[thePool release];
 		return;
 	}
 
@@ -155,7 +168,7 @@
 	//[delegate lastFMScrobbler: self submissionDidSucceed: YES];
 	
 	NSLog(@"Last FM Submission Operation ended ...");
-	
+	[request release];
 	[thePool release];	
 }
 
@@ -163,9 +176,10 @@
 {
 	NSLog(@"Last FM Sublission Operation dealloc!");
 	
-	[dictsToSubmit release];
-	[username release];
-	[password release];
+	[self setDictsToSubmit: nil];
+	[self setUsername: nil];
+	[self setPassword: nil];
+
 	[super dealloc];
 }
 	
