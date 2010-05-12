@@ -10,13 +10,14 @@
 #import "FMEngine.h"
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
-
+#import "JSON.h"
 
 @implementation LastFMSubmissionOperation
 @synthesize dictsToSubmit;
 @synthesize username, password;
 @synthesize delegate;
 
+//TODO: release von die pool bei error
 - (void) main
 {
 	NSAutoreleasePool *thePool = [[NSAutoreleasePool alloc] init];
@@ -34,7 +35,7 @@
 	
 	FMEngine *fmEngine = [[FMEngine alloc] init];
 	NSString *authToken = [fmEngine generateAuthTokenFromUsername: [self username] password: [self password]];
-	NSDictionary *urlDict = [NSDictionary dictionaryWithObjectsAndKeys:@"arielblumenthal", @"username", authToken, @"authToken", _LASTFM_API_KEY_, @"api_key", nil, nil];
+	NSDictionary *urlDict = [NSDictionary dictionaryWithObjectsAndKeys: [self username], @"username", authToken, @"authToken", _LASTFM_API_KEY_, @"api_key", nil, nil];
 	NSString *authURL = [NSString stringWithFormat: @"%@?format=json",_LASTFM_BASEURL_];
 	
 	
@@ -66,6 +67,20 @@
 	
 	NSLog(@"auth response: %@", str);
 	
+	SBJSON *json = [[[SBJSON alloc] init] autorelease];
+	
+	NSDictionary *authDict = [json objectWithString: str];
+
+	NSString *secretKey = [[authDict objectForKey: @"session"] objectForKey: @"key"];
+	if (!secretKey)
+	{
+		NSLog(@"auth did not get us a key!");
+		[delegate performSelectorOnMainThread:@selector(lastFmScrobblerSubmissionDidFail:) withObject: self waitUntilDone: YES];
+		return;
+	}
+	
+	NSLog(@"secret key: %@", secretKey);
+	
 	//timestamp lol
 	NSTimeInterval interval = [[NSDate date] timeIntervalSince1970];
 	NSNumber *n = [NSNumber numberWithDouble: interval];
@@ -79,7 +94,7 @@
 	
 	//handshake lol
 	//TODO: Parse the data (json) for session key ("0ed ...")
-	NSString *urlstring = [NSString stringWithFormat: @"http://post.audioscrobbler.com/?hs=true&p=1.2.1&c=tnb&v=1.0&u=arielblumenthal&t=%@&a=%@&api_key=%@&sk=%@",n2 ,authToken,_LASTFM_API_KEY_,@"0edd5a36e389998338bae96d2329db07"];
+	NSString *urlstring = [NSString stringWithFormat: @"http://post.audioscrobbler.com/?hs=true&p=1.2.1&c=tnb&v=1.0&u=%@&t=%@&a=%@&api_key=%@&sk=%@",[self username],n2 ,authToken,_LASTFM_API_KEY_,secretKey];
 	
 	NSLog(@"urlstring: %@", urlstring);
 	NSString *resp = [NSString stringWithContentsOfURL: [NSURL URLWithString: urlstring]];
