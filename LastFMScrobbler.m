@@ -68,7 +68,7 @@
 	
 	//handshake lol
 	//TODO: Parse the data (json) for session key ("0ed ...")
-	NSString *urlstring = [NSString stringWithFormat: @"http://post.audioscrobbler.com/?hs=true&p=1.2.1&c=tst&v=1.0&u=arielblumenthal&t=%@&a=%@&api_key=%@&sk=%@",n2 ,authToken,_LASTFM_API_KEY_,@"0edd5a36e389998338bae96d2329db07"];
+	NSString *urlstring = [NSString stringWithFormat: @"http://post.audioscrobbler.com/?hs=true&p=1.2.1&c=tnb&v=1.0&u=arielblumenthal&t=%@&a=%@&api_key=%@&sk=%@",n2 ,authToken,_LASTFM_API_KEY_,@"0edd5a36e389998338bae96d2329db07"];
 	
 //	NSLog(@"urlstring: %@", urlstring);
 	NSString *resp = [NSString stringWithContentsOfURL: [NSURL URLWithString: urlstring]];
@@ -108,7 +108,7 @@
 	//[delegate lastFMScrobbler: self submissionDidSucceed: YES];
 	[delegate lastFMScrobbler: self notificationDidSucceed: YES];
 }
-
+/*
 - (void) performSubmission
 {
 	FMEngine *fmEngine = [[FMEngine alloc] init];
@@ -208,7 +208,7 @@
 	[delegate lastFMScrobbler: self submissionDidSucceed: YES];
 }
 
-
+*/
 - (void) performMassSubmissionWithArray: (NSArray *) dictsToSubmit
 {
 	NSLog(@"performing mass scrobble with %i songs ...", [dictsToSubmit count]);
@@ -222,7 +222,7 @@
 	NSString *authToken = [fmEngine generateAuthTokenFromUsername: [self username] password: [self password]];
 	NSDictionary *urlDict = [NSDictionary dictionaryWithObjectsAndKeys:@"arielblumenthal", @"username", authToken, @"authToken", _LASTFM_API_KEY_, @"api_key", nil, nil];
 	NSString *authURL = [NSString stringWithFormat: @"%@?format=json",_LASTFM_BASEURL_];
-//	NSLog(@"%@",authURL);
+
 	
 	
 	ASIFormDataRequest *authReq = [ASIFormDataRequest requestWithURL:[NSURL URLWithString: authURL]];
@@ -241,15 +241,16 @@
 	[authReq startSynchronous];
 	
 	NSString *str  = [authReq responseString];
-	if (!str)
+	if (!str || [str length] <= 0)
 	{	
+		NSLog(@"auth response failure");
 		[delegate lastFMScrobbler: self submissionDidSucceed: NO];
 		NSLog(@"%@",[[authReq error] localizedDescription]);
 		return;
 		
 	}
 	
-	//NSLog(@"auth response: %@", str);
+	NSLog(@"auth response: %@", str);
 	
 	//timestamp lol
 	NSTimeInterval interval = [[NSDate date] timeIntervalSince1970];
@@ -264,18 +265,19 @@
 	
 	//handshake lol
 	//TODO: Parse the data (json) for session key ("0ed ...")
-	NSString *urlstring = [NSString stringWithFormat: @"http://post.audioscrobbler.com/?hs=true&p=1.2.1&c=tst&v=1.0&u=arielblumenthal&t=%@&a=%@&api_key=%@&sk=%@",n2 ,authToken,_LASTFM_API_KEY_,@"0edd5a36e389998338bae96d2329db07"];
+	NSString *urlstring = [NSString stringWithFormat: @"http://post.audioscrobbler.com/?hs=true&p=1.2.1&c=tnb&v=1.0&u=arielblumenthal&t=%@&a=%@&api_key=%@&sk=%@",n2 ,authToken,_LASTFM_API_KEY_,@"0edd5a36e389998338bae96d2329db07"];
 	
-	//NSLog(@"urlstring: %@", urlstring);
+	NSLog(@"urlstring: %@", urlstring);
 	NSString *resp = [NSString stringWithContentsOfURL: [NSURL URLWithString: urlstring]];
 	if (!resp)
 	{	
+		NSLog(@"no response from handshake.");
 		[delegate lastFMScrobbler: self submissionDidSucceed: NO];
 		return;
 		
 	}
 	
-	//NSLog(@"resp: %@",resp);
+	NSLog(@"resp: %@",resp);
 	
 	NSArray *respArray = [resp componentsSeparatedByCharactersInSet: [NSCharacterSet newlineCharacterSet]];
 	
@@ -283,7 +285,7 @@
 	NSString *sessionID = [respArray objectAtIndex: 1];
 	NSString *nowplayingURL = [respArray objectAtIndex: 2];
 	NSString *submissionURL = [respArray objectAtIndex: 3];
-//	NSLog(@"session: %@",sessionID);
+	NSLog(@"session: %@",sessionID);
 	
 	
 	/////// mass
@@ -323,7 +325,12 @@
 	
 	NSLog(@"scrobble submussion of %i tracks returned: %@",index,[request responseString]);
 	
-	
+	if (![request responseString] || [[request responseString] length] <= 0)
+	{
+		NSLog(@"submission request failed.");
+		[delegate lastFMScrobbler: self submissionDidSucceed: NO];		
+		return;
+	}
 	//[delegate performSelectorOnMainThread:@selector(lastFmScrobblerSubmissionDidSucceed:) withObject: self waitUntilDone: YES];
 	[delegate lastFMScrobbler: self submissionDidSucceed: YES];
 	

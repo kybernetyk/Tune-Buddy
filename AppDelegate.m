@@ -18,6 +18,7 @@
 #import "EMKeychainItem.h"
 #import <Growl/Growl.h>
 #import "LastFMScrobbler.h"
+#import "LastFMSubmissionOperation.h"
 
 @implementation AppDelegate
 #pragma mark -
@@ -1055,9 +1056,7 @@
 
 #pragma mark -
 #pragma mark scrobble delegate
-//	[delegate lastFMScrobbler: self submissionDidSucceed: YES];
-
-- (void) lastFMScrobbler: (LastFMScrobbler *) aScrobbler submissionDidSucceed: (BOOL) yesno
+/*- (void) lastFMScrobbler: (LastFMScrobbler *) aScrobbler submissionDidSucceed: (BOOL) yesno
 {
 	if (yesno == YES)
 	{
@@ -1066,7 +1065,23 @@
 	}
 
 	[aScrobbler autorelease];
+}*/
+
+
+- (void) lastFmScrobblerSubmissionDidSucceed: (LastFMScrobbler *) aScrobbler
+{
+	NSLog(@"lastFmScrobblerSubmissionDidSucceed:");
+	[scrobbleQueue release];
+	scrobbleQueue = nil;
+//	[aScrobbler autorelease];
 }
+
+- (void) lastFmScrobblerSubmissionDidFail: (LastFMScrobbler *) aScrobbler
+{
+	NSLog(@"lastFmScrobblerSubmissionDidFail:");	
+//	[aScrobbler autorelease];
+}
+
 
 - (void) lastFMScrobbler: (LastFMScrobbler *) aScrobbler notificationDidSucceed: (BOOL) yesno
 {
@@ -1174,14 +1189,27 @@
 
 		//	if ([scrobbleQueue count] >= 5)
 			{
-				NSArray *copyScrobbleQueue = [NSArray arrayWithArray: scrobbleQueue];
+/*				NSArray *copyScrobbleQueue = [NSArray arrayWithArray: scrobbleQueue];
 				LastFMScrobbler *scrobbler = [[LastFMScrobbler alloc] init];
 				[scrobbler setDelegate: self];
 			
 				[scrobbler setUsername: @"arielblumenthal"];
 				[scrobbler setPassword: @"warbird"];
 			
-				[scrobbler performMassSubmissionWithArray: copyScrobbleQueue];
+				[scrobbler performMassSubmissionWithArray: copyScrobbleQueue];*/
+				
+				NSArray *copyScrobbleQueue = [NSArray arrayWithArray: scrobbleQueue];
+				LastFMSubmissionOperation *scrobbler = [[LastFMSubmissionOperation alloc] init];
+				[scrobbler setDelegate: self];
+				[scrobbler setUsername: @"arielblumenthal"];
+				[scrobbler setPassword: @"warbird"];
+				[scrobbler setDictsToSubmit: copyScrobbleQueue];
+				
+				[backgroundOperationQueue addOperation: scrobbler];
+				[scrobbler release];
+				
+				
+				
 			}
 
 			//our original queue will be erased when we get a successful scrobble

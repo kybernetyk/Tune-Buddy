@@ -17,12 +17,8 @@
 	NSNumber *trackLength;
 	NSDate *trackPlaybackStartTime;
 	
-	NSMutableData *tempData;
-	
 	NSString *username;
 	NSString *password;
-	
-
 	
 	id delegate;
 }

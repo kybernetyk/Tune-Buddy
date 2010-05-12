@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0329233E1055104F00D30E83 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B97324FDCFA39411CA2CEA /* AppKit.framework */; };
 		032923801055129800D30E83 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0329237F1055129800D30E83 /* icon.icns */; };
+		034DF9A9119ABF1400680CA6 /* LastFMSubmissionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 034DF9A8119ABF1400680CA6 /* LastFMSubmissionOperation.m */; };
 		0357E852117720840082AB8F /* LastFMScrobbler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E851117720840082AB8F /* LastFMScrobbler.m */; };
 		0357E86A117723580082AB8F /* FMCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E863117723580082AB8F /* FMCallback.m */; };
 		0357E86B117723580082AB8F /* FMEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E865117723580082AB8F /* FMEngine.m */; };
@@ -141,6 +142,8 @@
 
 /* Begin PBXFileReference section */
 		0329237F1055129800D30E83 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
+		034DF9A7119ABF1400680CA6 /* LastFMSubmissionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LastFMSubmissionOperation.h; sourceTree = "<group>"; };
+		034DF9A8119ABF1400680CA6 /* LastFMSubmissionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LastFMSubmissionOperation.m; sourceTree = "<group>"; };
 		0357E850117720840082AB8F /* LastFMScrobbler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LastFMScrobbler.h; sourceTree = "<group>"; };
 		0357E851117720840082AB8F /* LastFMScrobbler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LastFMScrobbler.m; sourceTree = "<group>"; };
 		0357E862117723580082AB8F /* FMCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMCallback.h; sourceTree = "<group>"; };
@@ -348,6 +351,8 @@
 			children = (
 				0357E850117720840082AB8F /* LastFMScrobbler.h */,
 				0357E851117720840082AB8F /* LastFMScrobbler.m */,
+				034DF9A7119ABF1400680CA6 /* LastFMSubmissionOperation.h */,
+				034DF9A8119ABF1400680CA6 /* LastFMSubmissionOperation.m */,
 			);
 			name = "Last FM Scrobbler";
 			sourceTree = "<group>";
@@ -922,6 +927,7 @@
 				0357E87F117724370082AB8F /* ASIInputStream.m in Sources */,
 				0357E880117724370082AB8F /* ASINetworkQueue.m in Sources */,
 				0357E881117724370082AB8F /* ASINSStringAdditions.m in Sources */,
+				034DF9A9119ABF1400680CA6 /* LastFMSubmissionOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
