@@ -55,7 +55,7 @@
 		//	[iTunes setDelegate: self];
 			[iTunes retain];
 			
-			NSLog(@"timeout: %d",[iTunes timeout]);
+			NSLog(@"timeout: %d, %@",[iTunes timeout], iTunes);
 		}
 		@catch(NSException *e)
 		{
@@ -71,6 +71,7 @@
 	if (![iTunes isRunning])
 	{	
 		[self setCurrentDisplayString: [NSString stringWithFormat:@"%@",playStatus]];
+		//NSLog(@"not running biatch!");
 		return;
 	}
 	
@@ -97,7 +98,6 @@
 			{	
 				trackName= [NSString stringWithString: trackName];
 				[self setTrackName: trackName];
-
 			}
 
 			artistName = [currentTrack artist];
@@ -343,7 +343,16 @@
 				
 				[self setTrackPlaybackStartTime: [NSDate date]];
 			}
+
+			//nils don't go into a dict!
+			if (![self artistName])
+				[self setArtistName: @""];
 			
+			if (![self trackName])
+				[self setTrackName: @""];
+			
+			if (![self albumName])
+				[self setAlbumName: @""];
 
 			NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys: 
 								  [NSString stringWithString: currentDisplayString], @"displayString",
@@ -357,6 +366,8 @@
 								    [NSNumber numberWithBool: [[self isPlaying] boolValue]], @"isPlaying",
 								  [NSDate dateWithTimeIntervalSince1970: [[self trackPlaybackStartTime] timeIntervalSince1970]] , @"trackPlaybackStartTime",
 								  nil];
+			
+			NSLog(@"dict: %@",dict);
 //			[dict retain];
 			[delegate performSelectorOnMainThread:@selector(iTunesTrackDidChangeTo:) withObject: dict waitUntilDone: YES];
 			[dict release];
@@ -364,6 +375,17 @@
 
 		if (shouldMessage20PercentMark && !didMessage20PercentMark)
 		{
+			//nils don't go into a dict!
+			if (![self artistName])
+				[self setArtistName: @""];
+			
+			if (![self trackName])
+				[self setTrackName: @""];
+			
+			if (![self albumName])
+				[self setAlbumName: @""];
+			
+			
 			NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys: 
 								  [NSString stringWithString: currentDisplayString], @"displayString",
 								  [NSString stringWithString: playStatus], @"displayStatus", 
