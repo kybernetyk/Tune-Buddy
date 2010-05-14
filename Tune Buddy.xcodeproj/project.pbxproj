@@ -24,6 +24,13 @@
 		0357E89E117724810082AB8F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0357E89D117724810082AB8F /* libz.dylib */; };
 		0357FCB410FF36FE009B87E1 /* AGKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0391AFFD10FE06B900ACE94F /* AGKeychain.m */; };
 		0357FCC310FF3738009B87E1 /* AGKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0391AFFD10FE06B900ACE94F /* AGKeychain.m */; };
+		0369145D119D482800F5BD1D /* LastFMNotificationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369145C119D482800F5BD1D /* LastFMNotificationOperation.m */; };
+		036914D8119D64CC00F5BD1D /* LastFMPreferencePaneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 036914D3119D64CC00F5BD1D /* LastFMPreferencePaneController.m */; };
+		036914D9119D64CC00F5BD1D /* LastFMPreferencePaneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 036914D4119D64CC00F5BD1D /* LastFMPreferencePaneView.xib */; };
+		03691521119D663000F5BD1D /* AGKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0391AFFD10FE06B900ACE94F /* AGKeychain.m */; };
+		03691524119D663F00F5BD1D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B0E8CF10D7C8E900D8B185 /* Security.framework */; };
+		036915A5119D67E400F5BD1D /* LastFM Preference Pane.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 036914CA119D64A900F5BD1D /* LastFM Preference Pane.bundle */; };
+		036915F0119D6AD200F5BD1D /* LastFM_Prefs.png in Resources */ = {isa = PBXBuildFile; fileRef = 036915EF119D6AD200F5BD1D /* LastFM_Prefs.png */; };
 		0370B01710D85551001B0FE9 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0370B01610D85551001B0FE9 /* Sparkle.framework */; };
 		0370B02B10D85555001B0FE9 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0370B01610D85551001B0FE9 /* Sparkle.framework */; };
 		03743D3F109D91F200B3B221 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03743D3E109D91F200B3B221 /* ScriptingBridge.framework */; };
@@ -102,6 +109,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		036914E4119D64F300F5BD1D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 036914C9119D64A900F5BD1D /* LastFM Preference Pane */;
+			remoteInfo = "LastFM Preference Pane";
+		};
 		03BDFC8210D6BA9F00487180 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -173,6 +187,14 @@
 		0357E87C117724370082AB8F /* ASINSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINSStringAdditions.m; sourceTree = "<group>"; };
 		0357E8991177247A0082AB8F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0357E89D117724810082AB8F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		0369145B119D482800F5BD1D /* LastFMNotificationOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LastFMNotificationOperation.h; sourceTree = "<group>"; };
+		0369145C119D482800F5BD1D /* LastFMNotificationOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LastFMNotificationOperation.m; sourceTree = "<group>"; };
+		036914CA119D64A900F5BD1D /* LastFM Preference Pane.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LastFM Preference Pane.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		036914D1119D64CC00F5BD1D /* LastFMPreferencePane-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "LastFMPreferencePane-Info.plist"; sourceTree = "<group>"; };
+		036914D2119D64CC00F5BD1D /* LastFMPreferencePaneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LastFMPreferencePaneController.h; sourceTree = "<group>"; };
+		036914D3119D64CC00F5BD1D /* LastFMPreferencePaneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LastFMPreferencePaneController.m; sourceTree = "<group>"; };
+		036914D4119D64CC00F5BD1D /* LastFMPreferencePaneView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LastFMPreferencePaneView.xib; sourceTree = "<group>"; };
+		036915EF119D6AD200F5BD1D /* LastFM_Prefs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LastFM_Prefs.png; sourceTree = "<group>"; };
 		0370B01610D85551001B0FE9 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		03743D39109D91E100B3B221 /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
 		03743D3E109D91F200B3B221 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = /System/Library/Frameworks/ScriptingBridge.framework; sourceTree = "<absolute>"; };
@@ -316,6 +338,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		036914C8119D64A900F5BD1D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03691524119D663F00F5BD1D /* Security.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		03BDFC5E10D6BA0500487180 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -372,6 +402,8 @@
 				0357E851117720840082AB8F /* LastFMScrobbler.m */,
 				034DF9A7119ABF1400680CA6 /* LastFMSubmissionOperation.h */,
 				034DF9A8119ABF1400680CA6 /* LastFMSubmissionOperation.m */,
+				0369145B119D482800F5BD1D /* LastFMNotificationOperation.h */,
+				0369145C119D482800F5BD1D /* LastFMNotificationOperation.m */,
 			);
 			name = "Last FM Scrobbler";
 			sourceTree = "<group>";
@@ -407,6 +439,18 @@
 				0357E87C117724370082AB8F /* ASINSStringAdditions.m */,
 			);
 			path = ASIHttp;
+			sourceTree = "<group>";
+		};
+		036914D0119D64CC00F5BD1D /* LastFM Preference Pane */ = {
+			isa = PBXGroup;
+			children = (
+				036915EF119D6AD200F5BD1D /* LastFM_Prefs.png */,
+				036914D1119D64CC00F5BD1D /* LastFMPreferencePane-Info.plist */,
+				036914D2119D64CC00F5BD1D /* LastFMPreferencePaneController.h */,
+				036914D3119D64CC00F5BD1D /* LastFMPreferencePaneController.m */,
+				036914D4119D64CC00F5BD1D /* LastFMPreferencePaneView.xib */,
+			);
+			path = "LastFM Preference Pane";
 			sourceTree = "<group>";
 		};
 		03B0E7FC10D7BC8C00D8B185 /* Prefs Controller */ = {
@@ -632,6 +676,7 @@
 				03BDFCB210D6BB2B00487180 /* UpdatingPreferencePane.bundle */,
 				03BDFD1910D6BD3A00487180 /* TwitterPreferencePane.bundle */,
 				03BDFDD710D6C38000487180 /* RegistrationPreferencePane.bundle */,
+				036914CA119D64A900F5BD1D /* LastFM Preference Pane.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -639,6 +684,7 @@
 		29B97314FDCFA39411CA2CEA /* itunes control */ = {
 			isa = PBXGroup;
 			children = (
+				036914D0119D64CC00F5BD1D /* LastFM Preference Pane */,
 				03BDFDF910D6C3CE00487180 /* Registration Preference Pane */,
 				03BDFD7210D6BEE600487180 /* Twitter Preference Pane */,
 				03BDFCC710D6BB6500487180 /* Updating Preference Pane */,
@@ -709,6 +755,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		036914C9119D64A900F5BD1D /* LastFM Preference Pane */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 036914CF119D64AA00F5BD1D /* Build configuration list for PBXNativeTarget "LastFM Preference Pane" */;
+			buildPhases = (
+				036914C6119D64A900F5BD1D /* Resources */,
+				036914C7119D64A900F5BD1D /* Sources */,
+				036914C8119D64A900F5BD1D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "LastFM Preference Pane";
+			productName = "LastFM Preference Pane";
+			productReference = 036914CA119D64A900F5BD1D /* LastFM Preference Pane.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 		03BDFC5F10D6BA0500487180 /* GeneralPreferencePane */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03BDFC6410D6BA0600487180 /* Build configuration list for PBXNativeTarget "GeneralPreferencePane" */;
@@ -793,6 +856,7 @@
 				03BDFCD410D6BB7600487180 /* PBXTargetDependency */,
 				03BDFD2410D6BD5000487180 /* PBXTargetDependency */,
 				03BDFDEA10D6C39C00487180 /* PBXTargetDependency */,
+				036914E5119D64F300F5BD1D /* PBXTargetDependency */,
 			);
 			name = "Tune Buddy";
 			productInstallPath = "$(HOME)/Applications";
@@ -820,11 +884,21 @@
 				03BDFCB110D6BB2B00487180 /* UpdatingPreferencePane */,
 				03BDFD1810D6BD3A00487180 /* TwitterPreferencePane */,
 				03BDFDD610D6C38000487180 /* RegistrationPreferencePane */,
+				036914C9119D64A900F5BD1D /* LastFM Preference Pane */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		036914C6119D64A900F5BD1D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				036914D9119D64CC00F5BD1D /* LastFMPreferencePaneView.xib in Resources */,
+				036915F0119D6AD200F5BD1D /* LastFM_Prefs.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		03BDFC5C10D6BA0500487180 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -867,6 +941,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				036915A5119D67E400F5BD1D /* LastFM Preference Pane.bundle in Resources */,
 				03BDFE1D10D6C42300487180 /* RegistrationPreferencePane.bundle in Resources */,
 				03BDFD2610D6BD5E00487180 /* TwitterPreferencePane.bundle in Resources */,
 				03BDFCD610D6BB8100487180 /* UpdatingPreferencePane.bundle in Resources */,
@@ -883,6 +958,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		036914C7119D64A900F5BD1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03691521119D663000F5BD1D /* AGKeychain.m in Sources */,
+				036914D8119D64CC00F5BD1D /* LastFMPreferencePaneController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		03BDFC5D10D6BA0500487180 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -974,12 +1058,18 @@
 				03F9F8E4119B346A000CA35E /* SBJsonBase.m in Sources */,
 				03F9F8E5119B346A000CA35E /* SBJsonParser.m in Sources */,
 				03F9F8E6119B346A000CA35E /* SBJsonWriter.m in Sources */,
+				0369145D119D482800F5BD1D /* LastFMNotificationOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		036914E5119D64F300F5BD1D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 036914C9119D64A900F5BD1D /* LastFM Preference Pane */;
+			targetProxy = 036914E4119D64F300F5BD1D /* PBXContainerItemProxy */;
+		};
 		03BDFC8310D6BA9F00487180 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 03BDFC5F10D6BA0500487180 /* GeneralPreferencePane */;
@@ -1022,6 +1112,56 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		036914CD119D64AA00F5BD1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "LastFM Preference Pane/LastFMPreferencePane-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "LastFM Preference Pane";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		036914CE119D64AA00F5BD1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "LastFM Preference Pane/LastFMPreferencePane-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "LastFM Preference Pane";
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		03BDFC6210D6BA0600487180 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1311,6 +1451,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		036914CF119D64AA00F5BD1D /* Build configuration list for PBXNativeTarget "LastFM Preference Pane" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				036914CD119D64AA00F5BD1D /* Debug */,
+				036914CE119D64AA00F5BD1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		03BDFC6410D6BA0600487180 /* Build configuration list for PBXNativeTarget "GeneralPreferencePane" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -253,7 +253,7 @@
 
     } else {
         printf("Error = %d\n", (int)status);
-		return @"Error getting password";
+		return nil;
     }
 }
 

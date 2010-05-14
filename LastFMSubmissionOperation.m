@@ -17,7 +17,6 @@
 @synthesize username, password;
 @synthesize delegate;
 
-//TODO: release von die pool bei error
 - (void) main
 {
 	NSAutoreleasePool *thePool = [[NSAutoreleasePool alloc] init];
@@ -174,7 +173,7 @@
 
 - (void) dealloc
 {
-	NSLog(@"Last FM Sublission Operation dealloc!");
+	NSLog(@"Last FM Submission Operation dealloc!");
 	
 	[self setDictsToSubmit: nil];
 	[self setUsername: nil];

@@ -17,7 +17,7 @@
 #import "EMKeychainProxy.h"
 #import "EMKeychainItem.h"
 #import <Growl/Growl.h>
-#import "LastFMScrobbler.h"
+#import "LastFMNotificationOperation.h"
 #import "LastFMSubmissionOperation.h"
 
 @implementation AppDelegate
@@ -232,7 +232,7 @@
 	//NSLog(@"is this app registered? %i",isRegistered);
 	
 	backgroundOperationQueue = [[NSOperationQueue alloc] init];
-	[backgroundOperationQueue setMaxConcurrentOperationCount: 2];
+	[backgroundOperationQueue setMaxConcurrentOperationCount: 5];
 	
 	iTunesBridgeOperation *op = [[iTunesBridgeOperation alloc] init];
 	[op setDelegate: self];
@@ -787,7 +787,7 @@
 	preferencesWindowController = [[SS_PrefsController alloc] initWithPanesSearchPath:pathToPanes bundleExtension:@"bundle"];
 	
 	// Set which panes are included, and their order.
-	[preferencesWindowController setPanesOrder:[NSArray arrayWithObjects:@"General",@"Twitter",@"Updating",@"Registration", nil]];
+	[preferencesWindowController setPanesOrder:[NSArray arrayWithObjects:@"General",@"Twitter",@"LastFM",@"Updating",@"Registration", nil]];
 	// Show the preferences window.
 	[preferencesWindowController showPreferencesWindow];
 	
@@ -1068,7 +1068,7 @@
 }*/
 
 
-- (void) lastFmScrobblerSubmissionDidSucceed: (LastFMScrobbler *) aScrobbler
+- (void) lastFmScrobblerSubmissionDidSucceed: (LastFMSubmissionOperation *) aScrobbler
 {
 	NSLog(@"lastFmScrobblerSubmissionDidSucceed:");
 	[scrobbleQueue release];
@@ -1076,30 +1076,83 @@
 //	[aScrobbler autorelease];
 }
 
-- (void) lastFmScrobblerSubmissionDidFail: (LastFMScrobbler *) aScrobbler
+- (void) lastFmScrobblerSubmissionDidFail: (LastFMSubmissionOperation *) aScrobbler
 {
 	NSLog(@"lastFmScrobblerSubmissionDidFail:");	
-//	[aScrobbler autorelease];
 }
 
-
-- (void) lastFMScrobbler: (LastFMScrobbler *) aScrobbler notificationDidSucceed: (BOOL) yesno
+- (void) lastFmScrobblerNotificationDidSucceed: (LastFMNotificationOperation *) aScrobbler
 {
-	
-//	[aScrobbler autorelease];
+	NSLog(@"lastFmScrobblerNotificationDidSucceed:");	
 }
 
+- (void) lastFmScrobblerNotificationDidFail: (LastFMNotificationOperation *) aScrobbler
+{
+	NSLog(@"lastFmScrobblerNotificationDidFail:");	
+}
+
+- (NSDictionary *) lastFMCredentials
+{
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	NSString *user = [defaults objectForKey: @"lastFMUsername"];
+	NSLog(@"lastfm user: %@",user);
+	NSString *pass = nil;
+	
+	BOOL keychainItemExists = [AGKeychain checkForExistanceOfKeychainItem: @"Tune Buddy LastFM Credentials" 
+															 withItemKind: @"application password" 
+															  forUsername: user];
+	if (keychainItemExists)
+	{
+		pass = [AGKeychain getPasswordFromKeychainItem:@"Tune Buddy LastFM Credentials" 
+										  withItemKind: @"application password" 
+										   forUsername: user];
+		
+		NSLog(@"lfm pass: %@", pass);
+
+		//[password setStringValue: pass];
+	}
+	else
+	{
+		NSLog(@"No lastfm credentials found!");
+		return nil;
+	}
+	
+
+	
+	
+	if (!user || [user length] <= 0 || [user isEqualToString: @""])
+	{
+		NSLog(@"no valid lastfm username found!");
+		return nil;
+	}
+	
+	if (!pass || [pass length] <= 0 || [pass isEqualToString: @""])
+	{
+		NSLog(@"no valid lastfm password found!");
+		return nil;
+	}
+	
+	
+	return [NSDictionary dictionaryWithObjectsAndKeys: user, @"username", pass, @"password", nil];
+}
 
 #pragma mark -
 #pragma mark itunes bridge delegate
-- (LastFMScrobbler *) scrobblerWithDictionary: (NSDictionary *) infoDict
+- (LastFMNotificationOperation *) notificationOperationWithDictionary: (NSDictionary *) infoDict
 {
-	LastFMScrobbler *scrobbler = [[LastFMScrobbler alloc] init];
+	LastFMNotificationOperation *scrobbler = [[LastFMNotificationOperation alloc] init];
 	
 	[scrobbler setDelegate: self];
 	
-	[scrobbler setUsername: @"arielblumenthal"];
-	[scrobbler setPassword: @"warbird"];
+	NSDictionary *lastFMCreds = [self lastFMCredentials];
+	if (!lastFMCreds)
+	{
+		NSLog(@"can't notify last fm without credentials!");
+		return nil;
+	}
+	
+	[scrobbler setUsername: [lastFMCreds objectForKey: @"username"]];
+	[scrobbler setPassword: [lastFMCreds objectForKey: @"password"]];
 	
 	[scrobbler setArtistName: [infoDict objectForKey: @"artistName"]];
 	[scrobbler setTrackName: [infoDict objectForKey: @"trackName"]];
@@ -1138,8 +1191,10 @@
 	
 		NSLog(@"added %@ - %@ to submission queue (count) = %i",[infoDict objectForKey: @"artistName"],[infoDict objectForKey:@"trackName"], [scrobbleQueue count]);
 
-		LastFMScrobbler *notificationScrobbler = [self scrobblerWithDictionary: [NSDictionary dictionaryWithDictionary: infoDict]];
-		[notificationScrobbler performNotification];
+		LastFMNotificationOperation *notificationScrobbler = [self notificationOperationWithDictionary: [NSDictionary dictionaryWithDictionary: infoDict]];
+	//	[notificationScrobbler performNotification];
+		if (notificationScrobbler)
+			[backgroundOperationQueue addOperation: notificationScrobbler];
 	}
 	
 //	[infoDict release]; //we must release this here
@@ -1204,11 +1259,19 @@
 			
 				[scrobbler performMassSubmissionWithArray: copyScrobbleQueue];*/
 				
+				NSDictionary *lastFMCreds = [self lastFMCredentials];
+				if (!lastFMCreds)
+				{
+					NSLog(@"can't submit to last fm without credentials!");
+					return;
+				}
+				
+				
 				NSArray *copyScrobbleQueue = [NSArray arrayWithArray: scrobbleQueue];
 				LastFMSubmissionOperation *scrobbler = [[LastFMSubmissionOperation alloc] init];
 				[scrobbler setDelegate: self];
-				[scrobbler setUsername: @"arielblumenthal"];
-				[scrobbler setPassword: @"warbird"];
+				[scrobbler setUsername: [lastFMCreds objectForKey: @"username"]];
+				[scrobbler setPassword: [lastFMCreds objectForKey: @"password"]];
 				[scrobbler setDictsToSubmit: copyScrobbleQueue];
 				
 				[backgroundOperationQueue addOperation: scrobbler];
