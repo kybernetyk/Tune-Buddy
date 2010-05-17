@@ -11,10 +11,9 @@
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
 #import "JSON.h"
-
+#import "LastFMAuth.h"
 
 @implementation LastFMNotificationOperation
-@synthesize username, password;
 @synthesize delegate;
 
 
@@ -28,11 +27,15 @@
 
 - (void) main
 {
-	if (![self username] || ![self password])
+	NSAutoreleasePool *thePool = [[NSAutoreleasePool alloc] init];
+	NSString *username = [[LastFMAuth sharedLastFMAuth] username];
+	
+	if (!username)
 	{
 		
-		NSLog(@"no credentials!");
+		NSLog(@"LastFM Notification op: no username set!");
 		[delegate performSelectorOnMainThread:@selector(lastFmScrobblerNotificationDidFail:) withObject: self waitUntilDone: YES];
+		[thePool release];
 		return;
 	}
 	
@@ -41,64 +44,20 @@
 	{
 		NSLog(@"one of the datas is nil!");
 		[delegate performSelectorOnMainThread:@selector(lastFmScrobblerNotificationDidFail:) withObject: self waitUntilDone: YES];
+		[thePool release];
 		return;
 	}
 		
 	
-	NSAutoreleasePool *thePool = [[NSAutoreleasePool alloc] init];
+
 
 	
 	FMEngine *fmEngine = [[FMEngine alloc] init];
 	
 	
-	NSString *authToken = [fmEngine generateAuthTokenFromUsername: [self username] password: [self password]];
-	NSDictionary *urlDict = [NSDictionary dictionaryWithObjectsAndKeys:[self username], @"username", authToken, @"authToken", _LASTFM_API_KEY_, @"api_key", nil, nil];
-	//[fmEngine performMethod:@"auth.getMobileSession" withTarget:self withParameters:urlDict andAction:@selector(loginCallback:data:) useSignature:YES httpMethod:POST_TYPE];
+	NSString *secretKey = [[LastFMAuth sharedLastFMAuth] secretKey];
+	NSLog(@"secret key: %@", secretKey);
 	
-	NSString *authURL = [NSString stringWithFormat: @"%@?format=json",_LASTFM_BASEURL_];
-	//	NSLog(@"%@",authURL);
-	
-	
-	//authenticate
-	ASIFormDataRequest *authReq = [[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString: authURL]];
-	[authReq setPostValue: @"auth.getMobileSession" forKey: @"method"];
-	[authReq setPostValue: [self username] forKey: @"username"];
-	[authReq setPostValue: authToken forKey: @"authToken"];
-	[authReq setPostValue: _LASTFM_API_KEY_ forKey: @"api_key"];
-	NSString *sig = [fmEngine generateSignatureFromDictionary: [authReq postData]];
-	[authReq setPostValue:sig forKey: @"api_sig"];
-	[authReq setPostValue:@"json" forKey:@"format"];
-	[authReq startSynchronous];
-	NSString *str  = [NSString stringWithString: [authReq responseString]];
-	if (!str)
-	{	
-		[delegate performSelectorOnMainThread:@selector(lastFmScrobblerNotificationDidFail:) withObject: self waitUntilDone: YES];
-
-
-		NSLog(@"auth err: %@",[[authReq error] localizedDescription]);
-		[authReq release];
-		[fmEngine release];
-		[thePool release];
-		return;
-	}
-	
-	[authReq release];
-	
-	SBJSON *json = [[[SBJSON alloc] init] autorelease];
-	
-	NSDictionary *authDict = [json objectWithString: str];
-	
-	NSString *secretKey = [[authDict objectForKey: @"session"] objectForKey: @"key"];
-	if (!secretKey)
-	{
-		NSLog(@"auth did not get us a key!");
-		[delegate performSelectorOnMainThread:@selector(lastFmScrobblerNotificationDidFail:) withObject: self waitUntilDone: YES];
-		//[authReq release];
-		[fmEngine release];
-		[thePool release];
-		
-		return;
-	}
 	
 	NSLog(@"secret key: %@", secretKey);
 	
@@ -109,13 +68,13 @@
 	NSNumber *n = [NSNumber numberWithDouble: interval];
 	NSNumber *n2 = [NSNumber numberWithInt: [n intValue]];
 	NSNumber *n3 = [NSNumber numberWithInt: [[self trackPlaybackStartTime] timeIntervalSince1970]];  //[NSNumber numberWithInt: ([n intValue] - 100)];
-	authToken = [fmEngine scrobbleAuthToken: n2];
+	NSString *authToken = [fmEngine scrobbleAuthToken: n2];
 	[fmEngine release];
 	
 	
 	//handshake lol
 	//TODO: Parse the data (json) for session key ("0ed ...")
-	NSString *urlstring = [NSString stringWithFormat: @"http://post.audioscrobbler.com/?hs=true&p=1.2.1&c=tnb&v=1.0&u=%@&t=%@&a=%@&api_key=%@&sk=%@",[self username],n2 ,authToken,_LASTFM_API_KEY_, secretKey];
+	NSString *urlstring = [NSString stringWithFormat: @"http://post.audioscrobbler.com/?hs=true&p=1.2.1&c=tnb&v=1.0&u=%@&t=%@&a=%@&api_key=%@&sk=%@", username,n2 ,authToken,_LASTFM_API_KEY_, secretKey];
 	
 	//	NSLog(@"urlstring: %@", urlstring);
 	NSString *resp = [NSString stringWithContentsOfURL: [NSURL URLWithString: urlstring]];
@@ -133,7 +92,7 @@
 	//if resparray[0] != OK ... error 
 	NSString *sessionID = [NSString stringWithString: [respArray objectAtIndex: 1]];
 	NSString *nowplayingURL = [NSString stringWithString: [respArray objectAtIndex: 2]];
-	//	NSLog(@"session: %@",sessionID);
+		NSLog(@"session: %@",sessionID);
 	
 	//	NSLog(@"time: %@",n3);
 	
@@ -164,10 +123,7 @@
 - (void) dealloc
 {
 	NSLog(@"Last FM Notification Operation dealloc!");
-	
-	[self setUsername: nil];
-	[self setPassword: nil];
-	
+
 	
 	[self setArtistName: nil];
 	[self setTrackName: nil];

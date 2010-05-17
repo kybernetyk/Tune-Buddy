@@ -1091,50 +1091,6 @@
 	NSLog(@"lastFmScrobblerNotificationDidFail:");	
 }
 
-- (NSDictionary *) lastFMCredentials
-{
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	NSString *user = [defaults objectForKey: @"lastFMUsername"];
-	NSLog(@"lastfm user: %@",user);
-	NSString *pass = nil;
-	
-	BOOL keychainItemExists = [AGKeychain checkForExistanceOfKeychainItem: @"Tune Buddy LastFM Credentials" 
-															 withItemKind: @"application password" 
-															  forUsername: user];
-	if (keychainItemExists)
-	{
-		pass = [AGKeychain getPasswordFromKeychainItem:@"Tune Buddy LastFM Credentials" 
-										  withItemKind: @"application password" 
-										   forUsername: user];
-		
-		NSLog(@"lfm pass: %@", pass);
-
-		//[password setStringValue: pass];
-	}
-	else
-	{
-		NSLog(@"No lastfm credentials found!");
-		return nil;
-	}
-	
-
-	
-	
-	if (!user || [user length] <= 0 || [user isEqualToString: @""])
-	{
-		NSLog(@"no valid lastfm username found!");
-		return nil;
-	}
-	
-	if (!pass || [pass length] <= 0 || [pass isEqualToString: @""])
-	{
-		NSLog(@"no valid lastfm password found!");
-		return nil;
-	}
-	
-	
-	return [NSDictionary dictionaryWithObjectsAndKeys: user, @"username", pass, @"password", nil];
-}
 
 #pragma mark -
 #pragma mark itunes bridge delegate
@@ -1144,15 +1100,6 @@
 	
 	[scrobbler setDelegate: self];
 	
-	NSDictionary *lastFMCreds = [self lastFMCredentials];
-	if (!lastFMCreds)
-	{
-		NSLog(@"can't notify last fm without credentials!");
-		return nil;
-	}
-	
-	[scrobbler setUsername: [lastFMCreds objectForKey: @"username"]];
-	[scrobbler setPassword: [lastFMCreds objectForKey: @"password"]];
 	
 	[scrobbler setArtistName: [infoDict objectForKey: @"artistName"]];
 	[scrobbler setTrackName: [infoDict objectForKey: @"trackName"]];
@@ -1259,19 +1206,10 @@
 			
 				[scrobbler performMassSubmissionWithArray: copyScrobbleQueue];*/
 				
-				NSDictionary *lastFMCreds = [self lastFMCredentials];
-				if (!lastFMCreds)
-				{
-					NSLog(@"can't submit to last fm without credentials!");
-					return;
-				}
-				
 				
 				NSArray *copyScrobbleQueue = [NSArray arrayWithArray: scrobbleQueue];
 				LastFMSubmissionOperation *scrobbler = [[LastFMSubmissionOperation alloc] init];
 				[scrobbler setDelegate: self];
-				[scrobbler setUsername: [lastFMCreds objectForKey: @"username"]];
-				[scrobbler setPassword: [lastFMCreds objectForKey: @"password"]];
 				[scrobbler setDictsToSubmit: copyScrobbleQueue];
 				
 				[backgroundOperationQueue addOperation: scrobbler];

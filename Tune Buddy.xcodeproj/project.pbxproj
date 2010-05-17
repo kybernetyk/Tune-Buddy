@@ -31,6 +31,7 @@
 		03691524119D663F00F5BD1D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B0E8CF10D7C8E900D8B185 /* Security.framework */; };
 		036915A5119D67E400F5BD1D /* LastFM Preference Pane.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 036914CA119D64A900F5BD1D /* LastFM Preference Pane.bundle */; };
 		036915F0119D6AD200F5BD1D /* LastFM_Prefs.png in Resources */ = {isa = PBXBuildFile; fileRef = 036915EF119D6AD200F5BD1D /* LastFM_Prefs.png */; };
+		0369169A11A1238100F5BD1D /* LastFMAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369168711A1224600F5BD1D /* LastFMAuth.m */; };
 		0370B01710D85551001B0FE9 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0370B01610D85551001B0FE9 /* Sparkle.framework */; };
 		0370B02B10D85555001B0FE9 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0370B01610D85551001B0FE9 /* Sparkle.framework */; };
 		03743D3F109D91F200B3B221 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03743D3E109D91F200B3B221 /* ScriptingBridge.framework */; };
@@ -195,6 +196,8 @@
 		036914D3119D64CC00F5BD1D /* LastFMPreferencePaneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LastFMPreferencePaneController.m; sourceTree = "<group>"; };
 		036914D4119D64CC00F5BD1D /* LastFMPreferencePaneView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LastFMPreferencePaneView.xib; sourceTree = "<group>"; };
 		036915EF119D6AD200F5BD1D /* LastFM_Prefs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LastFM_Prefs.png; sourceTree = "<group>"; };
+		0369168611A1224600F5BD1D /* LastFMAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LastFMAuth.h; sourceTree = "<group>"; };
+		0369168711A1224600F5BD1D /* LastFMAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LastFMAuth.m; sourceTree = "<group>"; };
 		0370B01610D85551001B0FE9 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		03743D39109D91E100B3B221 /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
 		03743D3E109D91F200B3B221 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = /System/Library/Frameworks/ScriptingBridge.framework; sourceTree = "<absolute>"; };
@@ -404,6 +407,8 @@
 				034DF9A8119ABF1400680CA6 /* LastFMSubmissionOperation.m */,
 				0369145B119D482800F5BD1D /* LastFMNotificationOperation.h */,
 				0369145C119D482800F5BD1D /* LastFMNotificationOperation.m */,
+				0369168611A1224600F5BD1D /* LastFMAuth.h */,
+				0369168711A1224600F5BD1D /* LastFMAuth.m */,
 			);
 			name = "Last FM Scrobbler";
 			sourceTree = "<group>";
@@ -1004,6 +1009,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0369169A11A1238100F5BD1D /* LastFMAuth.m in Sources */,
 				0357FCC310FF3738009B87E1 /* AGKeychain.m in Sources */,
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				EF247D610EEC653B002FB82F /* AppDelegate.m in Sources */,

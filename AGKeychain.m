@@ -246,6 +246,7 @@
 
             passwordBuffer[length] = '\0';
 			//printf ("passwordBuffer = %s\n", passwordBuffer);
+	        SecKeychainItemFreeContent (&list, password); //lol i fixed a leak [jrk]
 			return [NSString stringWithUTF8String:passwordBuffer];
         }
 

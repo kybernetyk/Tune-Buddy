@@ -11,10 +11,6 @@
 
 @interface LastFMNotificationOperation : NSOperation 
 {
-
-	NSString *username;
-	NSString *password;
-	
 	id delegate;
 	
 	
@@ -28,8 +24,6 @@
 
 
 @property (assign) id delegate;
-@property (readwrite, copy) NSString *username;
-@property (readwrite, copy) NSString *password;
 
 
 @property (readwrite, copy) NSString *artistName;

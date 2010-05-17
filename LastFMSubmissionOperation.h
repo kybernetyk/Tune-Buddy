@@ -12,17 +12,13 @@
 @interface LastFMSubmissionOperation : NSOperation 
 {
 	NSArray *dictsToSubmit;
-	NSString *username;
-	NSString *password;
-	
+
 	id delegate;
 }
 
 @property (readwrite, copy) NSArray *dictsToSubmit;
 
 @property (assign) id delegate;
-@property (readwrite, copy) NSString *username;
-@property (readwrite, copy) NSString *password;
 
 
 @end
