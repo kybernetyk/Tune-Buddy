@@ -46,6 +46,15 @@
 	NSString *secretKey = [[LastFMAuth sharedLastFMAuth] secretKey];
 	NSLog(@"secret key: %@", secretKey);
 	
+	if (!secretKey)
+	{
+		NSLog(@"secret key = nil :(");
+		[delegate performSelectorOnMainThread:@selector(lastFmScrobblerSubmissionDidFail:) withObject: self waitUntilDone: YES];
+		[thePool release];
+
+		return;
+	}
+	
 	FMEngine *fmEngine = [[FMEngine alloc] init];
 	
 	//timestamp lol
@@ -80,7 +89,7 @@
 	
 	//if resparray[0] != OK ... error 
 	NSString *sessionID = [respArray objectAtIndex: 1];
-	NSString *nowplayingURL = [respArray objectAtIndex: 2];
+//	NSString *nowplayingURL = [respArray objectAtIndex: 2];
 	NSString *submissionURL = [respArray objectAtIndex: 3];
 	NSLog(@"session: %@",sessionID);
 	

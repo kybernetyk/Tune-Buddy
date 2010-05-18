@@ -19,6 +19,7 @@
 #import <Growl/Growl.h>
 #import "LastFMNotificationOperation.h"
 #import "LastFMSubmissionOperation.h"
+#import "LastFMAuth.h"
 
 @implementation AppDelegate
 #pragma mark -
@@ -230,6 +231,29 @@
 	//[self registerForName:@"Jaroslaw Szpilewski" andSerial: @"lolfail"];
 	//isRegistered = [self isRegistrationValid];
 	//NSLog(@"is this app registered? %i",isRegistered);
+
+	//auth with last fm to get shit going
+	[[LastFMAuth sharedLastFMAuth] password];
+	
+	//twitter to get the annoying shit huso popup at startup
+	NSString *twitterUser = [defaults objectForKey: @"twitterUsername"];
+
+	BOOL keychainItemExists = [AGKeychain checkForExistanceOfKeychainItem: @"Tune Buddy Twitter Credentials" 
+															 withItemKind: @"application password" 
+															  forUsername: twitterUser];
+	if (keychainItemExists)
+	{
+		NSString *pass = [AGKeychain getPasswordFromKeychainItem:@"Tune Buddy Twitter Credentials" 
+										  withItemKind: @"application password" 
+										   forUsername: twitterUser];
+	}
+	else
+	{
+		NSLog(@"No twitter credentials found!");
+		return;
+	}
+	
+	
 	
 	backgroundOperationQueue = [[NSOperationQueue alloc] init];
 	[backgroundOperationQueue setMaxConcurrentOperationCount: 5];
@@ -246,7 +270,7 @@
 	[defc addObserver: self forKeyPath: @"values.startAtLogin" options: NSKeyValueObservingOptionNew context: @"startAtLogin"];
 	[defc addObserver: self forKeyPath: @"values.keepAlwaysLeft" options: NSKeyValueObservingOptionNew context: @"keepAlwaysLeft"];
 	[defc addObserver: self forKeyPath: @"values.statusItemForegroundColor" options: NSKeyValueObservingOptionNew context: @"statusItemForegroundColor"];
-	
+	[defc addObserver: self forKeyPath: @"values.lastFMUsername" options: NSKeyValueObservingOptionNew context: @"lastFMUsername"];
 }
 
 
@@ -271,6 +295,13 @@
 	if ([contextString isEqualToString: @"startAtLogin"])
 	{
 		[self addLoginItem: self];
+		return;
+	}
+	
+	if ([contextString isEqualToString: @"lastFMUsername"])
+	{
+		NSLog(@"last fm username changed biatch!");
+		[[LastFMAuth sharedLastFMAuth] reset];
 		return;
 	}
 
@@ -704,9 +735,6 @@
 		pass = [AGKeychain getPasswordFromKeychainItem:@"Tune Buddy Twitter Credentials" 
 													withItemKind: @"application password" 
 													 forUsername: user];
-		
-		//NSLog(@"twitter pass: %@", pass);
-		//[password setStringValue: pass];
 	}
 	else
 	{

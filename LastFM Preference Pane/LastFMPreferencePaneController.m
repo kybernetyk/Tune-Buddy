@@ -1,5 +1,6 @@
 #import "LastFMPreferencePaneController.h"
 #import "AGKeychain.h"
+#import "LastFMAuth.h"
 
 @implementation LastFMPreferencePaneController
 #pragma mark -
@@ -210,9 +211,6 @@
 //		NSLog(@"username not found ... creating new keychains item");
 		[self saveToKeychain];	
 	}
-	
-	
-
 
 }
 

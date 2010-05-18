@@ -14,7 +14,6 @@
 #import "AGKeychain.h"
 
 @implementation LastFMAuth
-
 static LastFMAuth *sharedSingleton = nil;
 
 
@@ -103,9 +102,7 @@ static LastFMAuth *sharedSingleton = nil;
 #pragma mark auth LastFM
 - (NSDictionary *) lastFMCredentials
 {
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	NSString *user = [defaults objectForKey: @"lastFMUsername"];
-	NSLog(@"lastfm user: %@",user);
+	NSString *user = [self username];
 	NSString *pass = nil;
 	
 	BOOL keychainItemExists = [AGKeychain checkForExistanceOfKeychainItem: @"Tune Buddy LastFM Credentials" 
@@ -156,9 +153,9 @@ static LastFMAuth *sharedSingleton = nil;
 	if (!user)
 		return nil;
 	
-	NSString *ret = [NSString stringWithString: user];
+	NSString *ret = [[NSString alloc] initWithString: [NSString stringWithString: user]];
 	
-	return ret;
+	return [ret autorelease];
 }
 
 - (NSString *) password
@@ -167,16 +164,20 @@ static LastFMAuth *sharedSingleton = nil;
 	if (!ret)
 		return nil;
 
-	ret = [NSString stringWithString: ret];
-	return ret;
+	ret = [[NSString alloc] initWithString: [NSString stringWithString: ret]];
+	return [ret autorelease];
 }
 
 #pragma mark -
 #pragma mark credentials
 - (NSString *) secretKey
 {
-	if (_secretKey)
-		return _secretKey;
+	@synchronized (self)
+	{
+		if (_secretKey)
+			return _secretKey;
+		
+	}
 
 	NSString *username = [self username];
 	NSString *password = [self password];
@@ -184,14 +185,13 @@ static LastFMAuth *sharedSingleton = nil;
 	if (!username || !password)
 	{
 		NSLog(@"no lastfm credentials set!");
-		return;
+		return nil;
 	}
 		
 	FMEngine *fmEngine = [[FMEngine alloc] init];
 	NSString *authToken = [fmEngine generateAuthTokenFromUsername: username password: password];
 	NSDictionary *urlDict = [NSDictionary dictionaryWithObjectsAndKeys: username, @"username", authToken, @"authToken", _LASTFM_API_KEY_, @"api_key", nil, nil];
 	NSString *authURL = [NSString stringWithFormat: @"%@?format=json",_LASTFM_BASEURL_];
-	
 	
 	
 	ASIFormDataRequest *authReq = [[ASIFormDataRequest alloc] initWithURL: [NSURL URLWithString: authURL]];
@@ -208,17 +208,19 @@ static LastFMAuth *sharedSingleton = nil;
 	[authReq setPostValue:sig forKey: @"api_sig"];
 	[authReq setPostValue:@"json" forKey:@"format"];
 	
-	
 	[authReq startSynchronous];
 	
-	NSString *str  = [NSString stringWithString: [authReq responseString]];
+	NSString *str  = nil;
+	if ([authReq responseString])
+		str = [NSString stringWithString: [authReq responseString]];
+	
 	[authReq release];
 	
 	if (!str || [str length] <= 0)
 	{	
 		NSLog(@"auth response[==nil] failure");
-		NSLog(@"%@",[[authReq error] localizedDescription]);
 		[fmEngine release];
+		
 		return nil;
 	}
 	
@@ -232,12 +234,17 @@ static LastFMAuth *sharedSingleton = nil;
 	if (!secretKey)
 	{
 		NSLog(@"auth did not get us a key!");
+		[fmEngine release];
+		return nil;
 	}
 
 	[fmEngine release];
 	
-	_secretKey = [[NSString stringWithString: secretKey] retain];
-	
+	@synchronized (self)
+	{
+		_secretKey = [[NSString alloc] initWithString: secretKey];
+	}
+
 	return _secretKey;
 	
 }

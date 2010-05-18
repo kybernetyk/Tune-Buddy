@@ -58,6 +58,15 @@
 	NSString *secretKey = [[LastFMAuth sharedLastFMAuth] secretKey];
 	NSLog(@"secret key: %@", secretKey);
 	
+	if (!secretKey)
+	{
+		NSLog(@"secret key = nil :(");
+		[delegate performSelectorOnMainThread:@selector(lastFmScrobblerNotificationDidFail:) withObject: self waitUntilDone: YES];
+		[fmEngine release];
+		[thePool release];
+		return;
+	}
+	
 	
 	NSLog(@"secret key: %@", secretKey);
 	
