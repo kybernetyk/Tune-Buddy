@@ -22,12 +22,9 @@
 		0357E881117724370082AB8F /* ASINSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E87C117724370082AB8F /* ASINSStringAdditions.m */; };
 		0357E89A1177247A0082AB8F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0357E8991177247A0082AB8F /* SystemConfiguration.framework */; };
 		0357E89E117724810082AB8F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0357E89D117724810082AB8F /* libz.dylib */; };
-		0357FCB410FF36FE009B87E1 /* AGKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0391AFFD10FE06B900ACE94F /* AGKeychain.m */; };
-		0357FCC310FF3738009B87E1 /* AGKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0391AFFD10FE06B900ACE94F /* AGKeychain.m */; };
 		0369145D119D482800F5BD1D /* LastFMNotificationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369145C119D482800F5BD1D /* LastFMNotificationOperation.m */; };
 		036914D8119D64CC00F5BD1D /* LastFMPreferencePaneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 036914D3119D64CC00F5BD1D /* LastFMPreferencePaneController.m */; };
 		036914D9119D64CC00F5BD1D /* LastFMPreferencePaneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 036914D4119D64CC00F5BD1D /* LastFMPreferencePaneView.xib */; };
-		03691521119D663000F5BD1D /* AGKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0391AFFD10FE06B900ACE94F /* AGKeychain.m */; };
 		03691524119D663F00F5BD1D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B0E8CF10D7C8E900D8B185 /* Security.framework */; };
 		036915A5119D67E400F5BD1D /* LastFM Preference Pane.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 036914CA119D64A900F5BD1D /* LastFM Preference Pane.bundle */; };
 		036915F0119D6AD200F5BD1D /* LastFM_Prefs.png in Resources */ = {isa = PBXBuildFile; fileRef = 036915EF119D6AD200F5BD1D /* LastFM_Prefs.png */; };
@@ -39,8 +36,6 @@
 		0374404B109DDAA200B3B221 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 0374404A109DDAA200B3B221 /* dsa_pub.pem */; };
 		0391AE8C10FDF5AD00ACE94F /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0391AE8B10FDF5AD00ACE94F /* ApplicationServices.framework */; };
 		0391B01010FE06F000ACE94F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B0E8CF10D7C8E900D8B185 /* Security.framework */; };
-		0391B0E710FE13B900ACE94F /* EMKeychainItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0391B0E410FE13B900ACE94F /* EMKeychainItem.m */; };
-		0391B0E810FE13B900ACE94F /* EMKeychainProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0391B0E610FE13B900ACE94F /* EMKeychainProxy.m */; };
 		03B0E80110D7BCDC00D8B185 /* iTunesBridgeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0E80010D7BCDC00D8B185 /* iTunesBridgeOperation.m */; };
 		03B0E8CA10D7C87700D8B185 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0E8C910D7C87700D8B185 /* PFMoveApplication.m */; };
 		03B0E8D010D7C8E900D8B185 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B0E8CF10D7C8E900D8B185 /* Security.framework */; };
@@ -79,6 +74,9 @@
 		03BDFE0210D6C3CE00487180 /* RegistrationPreferencePaneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03BDFDFE10D6C3CE00487180 /* RegistrationPreferencePaneView.xib */; };
 		03BDFE1D10D6C42300487180 /* RegistrationPreferencePane.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 03BDFDD710D6C38000487180 /* RegistrationPreferencePane.bundle */; };
 		03C604D310EFCEB400BDC333 /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C604D210EFCEB400BDC333 /* NSString+Additions.m */; };
+		03C60DCB11A2B8E200823D21 /* EMKeychainItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C60DCA11A2B8E200823D21 /* EMKeychainItem.m */; };
+		03C60E6111A2C0B700823D21 /* EMKeychainItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C60DCA11A2B8E200823D21 /* EMKeychainItem.m */; };
+		03C60E6211A2C0BD00823D21 /* EMKeychainItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C60DCA11A2B8E200823D21 /* EMKeychainItem.m */; };
 		03C64D30102EEB950081A12C /* Play.png in Resources */ = {isa = PBXBuildFile; fileRef = 03C64D2E102EEB950081A12C /* Play.png */; };
 		03C64D31102EEB950081A12C /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 03C64D2F102EEB950081A12C /* Pause.png */; };
 		03EAFB5310D8032A00B715D0 /* yajl.c in Sources */ = {isa = PBXBuildFile; fileRef = 03EAFB4310D8032A00B715D0 /* yajl.c */; };
@@ -114,7 +112,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 036914C9119D64A900F5BD1D /* LastFM Preference Pane */;
+			remoteGlobalIDString = 036914C9119D64A900F5BD1D;
 			remoteInfo = "LastFM Preference Pane";
 		};
 		03BDFC8210D6BA9F00487180 /* PBXContainerItemProxy */ = {
@@ -206,12 +204,6 @@
 		0374404A109DDAA200B3B221 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		037440A1109E267900B3B221 /* Adium.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Adium.h; sourceTree = "<group>"; };
 		0391AE8B10FDF5AD00ACE94F /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
-		0391AFFC10FE06B900ACE94F /* AGKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGKeychain.h; sourceTree = "<group>"; };
-		0391AFFD10FE06B900ACE94F /* AGKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGKeychain.m; sourceTree = "<group>"; };
-		0391B0E310FE13B900ACE94F /* EMKeychainItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMKeychainItem.h; sourceTree = "<group>"; };
-		0391B0E410FE13B900ACE94F /* EMKeychainItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMKeychainItem.m; sourceTree = "<group>"; };
-		0391B0E510FE13B900ACE94F /* EMKeychainProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMKeychainProxy.h; sourceTree = "<group>"; };
-		0391B0E610FE13B900ACE94F /* EMKeychainProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMKeychainProxy.m; sourceTree = "<group>"; };
 		03B0E7FF10D7BCDC00D8B185 /* iTunesBridgeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunesBridgeOperation.h; sourceTree = "<group>"; };
 		03B0E80010D7BCDC00D8B185 /* iTunesBridgeOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iTunesBridgeOperation.m; sourceTree = "<group>"; };
 		03B0E8C810D7C87700D8B185 /* PFMoveApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFMoveApplication.h; sourceTree = "<group>"; };
@@ -281,6 +273,9 @@
 		03C604D110EFCEB400BDC333 /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
 		03C604D210EFCEB400BDC333 /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
 		03C6050E10EFD54000BDC333 /* seria.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = seria.php; sourceTree = "<group>"; };
+		03C60D7811A2AFE500823D21 /* defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = defs.h; sourceTree = "<group>"; };
+		03C60DC911A2B8E200823D21 /* EMKeychainItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMKeychainItem.h; sourceTree = "<group>"; };
+		03C60DCA11A2B8E200823D21 /* EMKeychainItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMKeychainItem.m; sourceTree = "<group>"; };
 		03C64D2E102EEB950081A12C /* Play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Play.png; sourceTree = "<group>"; };
 		03C64D2F102EEB950081A12C /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pause.png; sourceTree = "<group>"; };
 		03EAFB4310D8032A00B715D0 /* yajl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = yajl.c; sourceTree = "<group>"; };
@@ -706,15 +701,11 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				03C60DC911A2B8E200823D21 /* EMKeychainItem.h */,
+				03C60DCA11A2B8E200823D21 /* EMKeychainItem.m */,
 				03F9F8D3119B346A000CA35E /* JSON */,
 				0357E871117724370082AB8F /* ASIHttp */,
 				0357E861117723580082AB8F /* FMEngine */,
-				0391B0E310FE13B900ACE94F /* EMKeychainItem.h */,
-				0391B0E410FE13B900ACE94F /* EMKeychainItem.m */,
-				0391B0E510FE13B900ACE94F /* EMKeychainProxy.h */,
-				0391B0E610FE13B900ACE94F /* EMKeychainProxy.m */,
-				0391AFFC10FE06B900ACE94F /* AGKeychain.h */,
-				0391AFFD10FE06B900ACE94F /* AGKeychain.m */,
 				03C604D110EFCEB400BDC333 /* NSString+Additions.h */,
 				03C604D210EFCEB400BDC333 /* NSString+Additions.m */,
 				03EAFB4210D8032A00B715D0 /* yajl */,
@@ -725,6 +716,7 @@
 				03743D39109D91E100B3B221 /* iTunes.h */,
 				32CA4F630368D1EE00C91783 /* Tune Buddy_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
+				03C60D7811A2AFE500823D21 /* defs.h */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -967,7 +959,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03691521119D663000F5BD1D /* AGKeychain.m in Sources */,
+				03C60E6211A2C0BD00823D21 /* EMKeychainItem.m in Sources */,
 				036914D8119D64CC00F5BD1D /* LastFMPreferencePaneController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -992,7 +984,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0357FCB410FF36FE009B87E1 /* AGKeychain.m in Sources */,
+				03C60E6111A2C0B700823D21 /* EMKeychainItem.m in Sources */,
 				03BDFD7A10D6BEE600487180 /* TwitterPreferencePaneController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1010,7 +1002,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0369169A11A1238100F5BD1D /* LastFMAuth.m in Sources */,
-				0357FCC310FF3738009B87E1 /* AGKeychain.m in Sources */,
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				EF247D610EEC653B002FB82F /* AppDelegate.m in Sources */,
 				03743E8E109D987300B3B221 /* NSString+Search.m in Sources */,
@@ -1045,8 +1036,6 @@
 				03EAFB6A10D8039300B715D0 /* MGTwitterUsersYAJLParser.m in Sources */,
 				03EAFB6B10D8039300B715D0 /* MGTwitterYAJLParser.m in Sources */,
 				03C604D310EFCEB400BDC333 /* NSString+Additions.m in Sources */,
-				0391B0E710FE13B900ACE94F /* EMKeychainItem.m in Sources */,
-				0391B0E810FE13B900ACE94F /* EMKeychainProxy.m in Sources */,
 				0357E852117720840082AB8F /* LastFMScrobbler.m in Sources */,
 				0357E86A117723580082AB8F /* FMCallback.m in Sources */,
 				0357E86B117723580082AB8F /* FMEngine.m in Sources */,
@@ -1065,6 +1054,7 @@
 				03F9F8E5119B346A000CA35E /* SBJsonParser.m in Sources */,
 				03F9F8E6119B346A000CA35E /* SBJsonWriter.m in Sources */,
 				0369145D119D482800F5BD1D /* LastFMNotificationOperation.m in Sources */,
+				03C60DCB11A2B8E200823D21 /* EMKeychainItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,6 +1,8 @@
+#import "Tune Buddy_Prefix.pch"
 #import "LastFMPreferencePaneController.h"
-#import "AGKeychain.h"
+#import "EMKeychainItem.h"
 #import "LastFMAuth.h"
+#include "defs.h"
 
 @implementation LastFMPreferencePaneController
 #pragma mark -
@@ -58,7 +60,7 @@
  */
 - (void) preferencesWindowWillClose: (id) sender
 {
-//	NSLog(@"OMG TWITTER THE WINDOW WILL CLOSE!");
+		NSLog(@"OMG LASTHM THE WINDOW WILL CLOSE!");
 	[self saveToKeychain];
 }
 
@@ -116,31 +118,13 @@
 	NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
 	NSString *twitterUsername = [defs objectForKey: @"lastFMUsername"];
 	
-	BOOL keychainItemExists = [AGKeychain checkForExistanceOfKeychainItem: @"Tune Buddy LastFM Credentials" 
-															 withItemKind: @"application password" 
-															  forUsername: twitterUsername];
-	if (keychainItemExists)
+	EMGenericKeychainItem *keychainItem = [EMGenericKeychainItem genericKeychainItemForService: KEYCHAIN_LASTFM withUsername: twitterUsername];
+	if (keychainItem)
 	{
-		NSString *pass = [AGKeychain getPasswordFromKeychainItem:@"Tune Buddy LastFM Credentials" 
-													withItemKind: @"application password" 
-													 forUsername: twitterUsername];
 		
-//		NSLog(@"twitter pass: %@", pass);
+		NSString *pass = [keychainItem password];
 		[password setStringValue: pass];
 	}
-	
-	
-	//NSLog(@"exitst? %i", existsTwitterKeychain);
-	
-	//[AGKeychain 
-	
-	//+ (BOOL)addKeychainItem:(NSString *)keychainItemName withItemKind:(NSString *)keychainItemKind forUsername:(NSString *)username withPassword:(NSString *)password;
-	
-	
-//
-	
-	//NSLog(@"twitter did show!");
-//	[self updateWindowWithRegistrationInfo];
 	
 	
 	
@@ -164,27 +148,15 @@
 		return;
 	}
 	
-	BOOL keychainItemExists = [AGKeychain checkForExistanceOfKeychainItem: @"Tune Buddy LastFM Credentials" 
-															 withItemKind: @"application password" 
-															  forUsername: twitterUsername];
-	
-	if (!keychainItemExists)
+	EMGenericKeychainItem *keychainItem = [EMGenericKeychainItem genericKeychainItemForService: KEYCHAIN_LASTFM withUsername: twitterUsername];
+	if (keychainItem)
 	{
-		NSLog(@"adding new keychain item with credentials: %@ / %@", twitterUsername, [password stringValue]);
-		[AGKeychain addKeychainItem: @"Tune Buddy LastFM Credentials" 
-					   withItemKind: @"application password" 
-						forUsername: twitterUsername 
-					   withPassword: [password stringValue] ];
+		[keychainItem setPassword: [password stringValue]];
 	}
-	else
+	else 
 	{
-		NSLog(@"modifying existing keychain item with credentials: %@ / %@", twitterUsername, [password stringValue]);
-		[AGKeychain modifyKeychainItem: @"Tune Buddy LastFM Credentials" 
-						  withItemKind: @"application password" 
-						   forUsername: twitterUsername 
-					   withNewPassword: [password stringValue]];
+		[EMGenericKeychainItem addGenericKeychainItemForService: KEYCHAIN_LASTFM withUsername: twitterUsername password: [password stringValue]];
 	}
-	
 	
 }
 
@@ -195,30 +167,24 @@
 	NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
 	NSString *twitterUsername = [defs objectForKey: @"lastFMUsername"];
 	
-	BOOL keychainItemExists = [AGKeychain checkForExistanceOfKeychainItem: @"Tune Buddy LastFM Credentials" 
-															 withItemKind: @"application password" 
-															  forUsername: twitterUsername];
-	if (keychainItemExists)
+	EMGenericKeychainItem *keychainItem = [EMGenericKeychainItem genericKeychainItemForService: KEYCHAIN_LASTFM withUsername: twitterUsername];
+	if (keychainItem)
 	{
-		NSString *pass = [AGKeychain getPasswordFromKeychainItem:@"Tune Buddy LastFM Credentials" 
-													withItemKind: @"application password" 
-													 forUsername: twitterUsername];
-		//NSLog(@"keychain item for this user exists already. pass is: %@",pass);		
-		[password setStringValue: pass];
+		//[keychainItem setPassword: [password stringValue]];
+		[password setStringValue: [keychainItem password]];
 	}
-	else
+	else 
 	{
-//		NSLog(@"username not found ... creating new keychains item");
-		[self saveToKeychain];	
+		[self saveToKeychain];
 	}
-
+	
 }
 
 - (IBAction) passwordChanged: (id) sender
 {
 	[self saveToKeychain];
 	
-//	NSLog(@"password changed!");
+
 }
 
 

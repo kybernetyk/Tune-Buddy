@@ -13,8 +13,6 @@
 #import "iTunesBridgeOperation.h"
 #import "PFMoveApplication.h"
 #import "NSString+Additions.h"
-#import "AGKeychain.h"
-#import "EMKeychainProxy.h"
 #import "EMKeychainItem.h"
 #import <Growl/Growl.h>
 #import "LastFMNotificationOperation.h"
@@ -102,9 +100,18 @@
 // called by cocoa when our app is loaded and ready to run
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+/*	CFStringRef ref = SecCopyErrorMessageString (-25299, NULL);
+	
+	NSLog(@"%@",ref);
+*/	
+	
+//	[EMGenericKeychainItem addGenericKeychainItemForService: @"lalalala" withUsername: @"peniskopf" password: @"fisckendich"];
+	
+	//[EMGenericKeychainItem addGenericKeychainItemForService:@"SomeAppService" withUsername:@"Joe" password:@"supersecure!"];
+	
 	PFMoveToApplicationsFolderIfNecessary();
 	
-	NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey: @"frameSize"];
+	NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey: @"LastFMAPIKey"];
 	if (!data)
 	{
 		NSDate *date = [NSDate date];
@@ -113,7 +120,7 @@
 		
 		NSData *data = [NSData dataWithBytes: &interval length: sizeof(interval)];
 		
-		[[NSUserDefaults standardUserDefaults] setObject: data forKey: @"frameSize"];
+		[[NSUserDefaults standardUserDefaults] setObject: data forKey: @"LastFMAPIKey"];
 	}
 	else
 	{
@@ -179,6 +186,7 @@
 						  [NSNumber numberWithBool: YES], @"trimDisplayStringLength",
 						  [NSNumber numberWithInt: 48], @"maxDisplayLength",
 						  [NSNumber numberWithBool: NO], @"twitterEnabled",
+						  [NSNumber numberWithBool: NO], @"lastFMEnabled",
 						  [NSNumber numberWithBool: YES], @"enableMusicMonday",
 						  [NSNumber numberWithBool: YES], @"adiumEnabled",
 						  [NSNumber numberWithBool: YES], @"startAtLogin",
@@ -233,27 +241,26 @@
 	//NSLog(@"is this app registered? %i",isRegistered);
 
 	//auth with last fm to get shit going
-	[[LastFMAuth sharedLastFMAuth] password];
 	
-	//twitter to get the annoying shit huso popup at startup
-	NSString *twitterUser = [defaults objectForKey: @"twitterUsername"];
+	BOOL lfm = [defaults boolForKey: @"lastFMEnabled"];
+	if (lfm)
+		[[LastFMAuth sharedLastFMAuth] password];
+	
+	
+	BOOL twtr = [defaults boolForKey: @"twitterEnabled"];
+	if (twtr)
+	{
+		//twitter to get the annoying shit huso popup at startup
+		NSString *twitterUser = [defaults objectForKey: @"twitterUsername"];
 
-	BOOL keychainItemExists = [AGKeychain checkForExistanceOfKeychainItem: @"Tune Buddy Twitter Credentials" 
-															 withItemKind: @"application password" 
-															  forUsername: twitterUser];
-	if (keychainItemExists)
-	{
-		NSString *pass = [AGKeychain getPasswordFromKeychainItem:@"Tune Buddy Twitter Credentials" 
-										  withItemKind: @"application password" 
-										   forUsername: twitterUser];
+		EMGenericKeychainItem *keychainItem = [EMGenericKeychainItem genericKeychainItemForService: KEYCHAIN_TWITTER withUsername: twitterUser];
+		if (keychainItem)
+		{
+			
+			NSString *pass = [keychainItem password];
+
+		}
 	}
-	else
-	{
-		NSLog(@"No twitter credentials found!");
-		return;
-	}
-	
-	
 	
 	backgroundOperationQueue = [[NSOperationQueue alloc] init];
 	[backgroundOperationQueue setMaxConcurrentOperationCount: 5];
@@ -262,7 +269,6 @@
 	[op setDelegate: self];
 	
 	[backgroundOperationQueue addOperation: op];
-	
 	
 	
 	NSUserDefaultsController *defc = [NSUserDefaultsController sharedUserDefaultsController];
@@ -727,14 +733,10 @@
 	NSString *user = [defaults objectForKey: @"twitterUsername"];
 	NSString *pass = nil;
 	
-	BOOL keychainItemExists = [AGKeychain checkForExistanceOfKeychainItem: @"Tune Buddy Twitter Credentials" 
-															 withItemKind: @"application password" 
-															  forUsername: user];
-	if (keychainItemExists)
+	EMGenericKeychainItem *keychainItem = [EMGenericKeychainItem genericKeychainItemForService: KEYCHAIN_TWITTER withUsername: user];
+	if (keychainItem)
 	{
-		pass = [AGKeychain getPasswordFromKeychainItem:@"Tune Buddy Twitter Credentials" 
-													withItemKind: @"application password" 
-													 forUsername: user];
+		pass = [keychainItem password];
 	}
 	else
 	{
@@ -1160,16 +1162,19 @@
 	//we don't want to scrobble online radio
 	if (!isStream)
 	{	
-	//	LastFMScrobbler *scrobbler = [[self scrobblerWithDictionary: infoDict] retain];
-	//	[scrobbleQueue addObject: scrobbler];
-		[scrobbleQueue addObject: [NSDictionary dictionaryWithDictionary: infoDict]];
-	
-		NSLog(@"added %@ - %@ to submission queue (count) = %i",[infoDict objectForKey: @"artistName"],[infoDict objectForKey:@"trackName"], [scrobbleQueue count]);
+		
+		NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+		BOOL doScrobble = [defs boolForKey: @"lastFMEnabled"];
 
-		LastFMNotificationOperation *notificationScrobbler = [self notificationOperationWithDictionary: [NSDictionary dictionaryWithDictionary: infoDict]];
-	//	[notificationScrobbler performNotification];
-		if (notificationScrobbler)
-			[backgroundOperationQueue addOperation: notificationScrobbler];
+		if (doScrobble)
+		{
+			[scrobbleQueue addObject: [NSDictionary dictionaryWithDictionary: infoDict]];
+			NSLog(@"added %@ - %@ to submission queue (count) = %i",[infoDict objectForKey: @"artistName"],[infoDict objectForKey:@"trackName"], [scrobbleQueue count]);
+			LastFMNotificationOperation *notificationScrobbler = [self notificationOperationWithDictionary: [NSDictionary dictionaryWithDictionary: infoDict]];
+			if (notificationScrobbler)
+				[backgroundOperationQueue addOperation: notificationScrobbler];
+			
+		}
 	}
 	
 //	[infoDict release]; //we must release this here
@@ -1210,30 +1215,13 @@
 		//only scrobble when user plays
 		if ([[infoDict objectForKey: @"isPlaying"] boolValue])
 		{
-			if (!scrobbleQueue)
-				scrobbleQueue = [[NSMutableArray alloc] initWithCapacity: 10];
-	
-			//post submission
-			/*NSArray *iterationArray = [NSArray arrayWithArray: scrobbleQueue];
-			for (LastFMScrobbler *scrobbler in iterationArray)
-			{
-				[scrobbler performSubmission];
-				NSLog(@"performing submission ...");
-				[scrobbleQueue removeObject: scrobbler];
-				//[scrobbler release];
-			}*/
+			NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+			BOOL doScrobble = [defs boolForKey: @"lastFMEnabled"];
 
-		//	if ([scrobbleQueue count] >= 5)
+			if (doScrobble)
 			{
-/*				NSArray *copyScrobbleQueue = [NSArray arrayWithArray: scrobbleQueue];
-				LastFMScrobbler *scrobbler = [[LastFMScrobbler alloc] init];
-				[scrobbler setDelegate: self];
-			
-				[scrobbler setUsername: @"arielblumenthal"];
-				[scrobbler setPassword: @"warbird"];
-			
-				[scrobbler performMassSubmissionWithArray: copyScrobbleQueue];*/
-				
+				if (!scrobbleQueue)
+					scrobbleQueue = [[NSMutableArray alloc] initWithCapacity: 10];
 				
 				NSArray *copyScrobbleQueue = [NSArray arrayWithArray: scrobbleQueue];
 				LastFMSubmissionOperation *scrobbler = [[LastFMSubmissionOperation alloc] init];
@@ -1242,11 +1230,8 @@
 				
 				[backgroundOperationQueue addOperation: scrobbler];
 				[scrobbler release];
-				
-				
-				
 			}
-
+	
 			//our original queue will be erased when we get a successful scrobble
 			
 		}

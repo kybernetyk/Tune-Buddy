@@ -240,7 +240,7 @@
 	{
 		id pane = [preferencePanes objectForKey: paneName];
 		
-//		NSLog(@"sending klose to %@ [%@]: %i",pane,[pane className], [pane respondsToSelector: @selector (preferencesWindowWillClose:)]);
+		//NSLog(@"sending klose to %@ [%@]: %i",pane,[pane className], [pane respondsToSelector: @selector (preferencesWindowWillClose:)]);
 		
 		if ([pane respondsToSelector: @selector (preferencesWindowWillClose:)])
 			[pane preferencesWindowWillClose: self];

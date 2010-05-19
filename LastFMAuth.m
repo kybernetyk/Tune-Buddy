@@ -11,7 +11,7 @@
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
 #import "JSON.h"
-#import "AGKeychain.h"
+#import "EMKeychainItem.h"
 
 @implementation LastFMAuth
 static LastFMAuth *sharedSingleton = nil;
@@ -104,19 +104,12 @@ static LastFMAuth *sharedSingleton = nil;
 {
 	NSString *user = [self username];
 	NSString *pass = nil;
-	
-	BOOL keychainItemExists = [AGKeychain checkForExistanceOfKeychainItem: @"Tune Buddy LastFM Credentials" 
-															 withItemKind: @"application password" 
-															  forUsername: user];
-	if (keychainItemExists)
+
+	EMGenericKeychainItem *keychainItem = [EMGenericKeychainItem genericKeychainItemForService: KEYCHAIN_LASTFM withUsername: user];
+	if (keychainItem)
 	{
-		pass = [AGKeychain getPasswordFromKeychainItem:@"Tune Buddy LastFM Credentials" 
-										  withItemKind: @"application password" 
-										   forUsername: user];
-		
+		pass = [keychainItem password];
 		NSLog(@"lfm pass: %@", pass);
-		
-		//[password setStringValue: pass];
 	}
 	else
 	{
