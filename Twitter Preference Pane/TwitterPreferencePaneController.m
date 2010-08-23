@@ -12,6 +12,8 @@
 @synthesize musicMondayTooltip;
 @synthesize twitterUsernameTooltip;
 @synthesize twitterPasswordTooltip;
+@synthesize tagSongTooltip;
+
 #pragma mark -
 #pragma mark initializers / destructors
 
@@ -26,6 +28,7 @@
         [self setMusicMondayTooltip: @"On mondays a #musicmonday hashtag will be appended to the Twitter post."];
         [self setTwitterUsernameTooltip: @"Your twitter.com username."];
         [self setTwitterPasswordTooltip: @"Your twitter.com password."];
+		[self setTagSongTooltip: @"The artist and song name will be tagged with a #."];
     }
     return self;
 }
@@ -42,6 +45,7 @@
     [musicMondayTooltip release], musicMondayTooltip = nil;
     [twitterUsernameTooltip release], twitterUsernameTooltip = nil;
     [twitterPasswordTooltip release], twitterPasswordTooltip = nil;
+	[tagSongTooltip release], tagSongTooltip = nil;
 	
     [super dealloc];
 }

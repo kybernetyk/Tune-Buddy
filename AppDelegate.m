@@ -192,6 +192,7 @@
 						  [NSNumber numberWithBool: YES], @"startAtLogin",
 						  [NSNumber numberWithBool: YES], @"appendNowPlayingToTwitterPosts",
 						  [NSNumber numberWithBool: YES], @"keepAlwaysLeft",
+						  [NSNumber numberWithBool: NO], @"tagSongOnTwitter",
 						  [NSNumber numberWithBool: shallEnableSmallScreenMode], @"smallScreenModeEnabled",
 						  [NSNumber numberWithBool: shallEnableSmallScreenMode], @"growlEnabled", //enable growl notifications when small screen mode is enabled. don't bother big screen users with growl
 						  fontData, @"statusItemForegroundColor",
@@ -788,11 +789,18 @@
 		appendString = [appendString stringByAppendingString: @" #musicmonday"];
 
 	NSString *tstr = nil;
+	NSString *dispString = [NSString stringWithString: [self longDisplayString]];
+	
+	if ([defaults boolForKey: @"tagSongOnTwitter"]) //mondays!
+	{	
+		dispString = [dispString stringByReplacingOccurrencesOfString: @" " withString: @" #"];
+		dispString = [dispString stringByReplacingOccurrencesOfString: @"#-" withString: @"-"];
+	}
 	
 	if ([appendString length] > 0)
-		tstr = [NSString stringWithFormat: @"%@%@",[self longDisplayString],appendString];
+		tstr = [NSString stringWithFormat: @"%@%@",dispString,appendString];
 	else
-		tstr = [NSString stringWithFormat: @"%@",[self longDisplayString]];
+		tstr = [NSString stringWithFormat: @"%@",dispString];
 	
 
 	lastConnectionIdentifier = [twitterEngine sendUpdate: tstr];	

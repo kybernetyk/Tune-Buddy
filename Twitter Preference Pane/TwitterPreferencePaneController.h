@@ -15,6 +15,8 @@
 	
 	NSString *twitterUsernameTooltip;
 	NSString *twitterPasswordTooltip;	
+	
+	NSString *tagSongTooltip;
 }
 
 #pragma mark -
@@ -25,6 +27,7 @@
 @property (readwrite, retain) NSString *musicMondayTooltip;
 @property (readwrite, retain) NSString *twitterUsernameTooltip;
 @property (readwrite, retain) NSString *twitterPasswordTooltip;
+@property (readwrite, retain) NSString *tagSongTooltip;
 
 
 - (IBAction) usernameChanged: (id) sender;
