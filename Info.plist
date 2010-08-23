@@ -19,7 +19,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.9.9.88</string>
+	<string>1.2</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
@@ -35,7 +35,5 @@
 	<string>http://shine.fluxforge.com/appcast.php?id=4</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
-	<key>SUEnableSystemProfiling</key>
-	<true/>
 </dict>
 </plist>
