@@ -795,6 +795,10 @@
 	{	
 		dispString = [dispString stringByReplacingOccurrencesOfString: @" " withString: @" #"];
 		dispString = [dispString stringByReplacingOccurrencesOfString: @"#-" withString: @"-"];
+		dispString = [dispString stringByReplacingOccurrencesOfString: @"#(" withString: @"(#"];
+		dispString = [dispString stringByReplacingOccurrencesOfString: @"#{" withString: @"{#"];
+		dispString = [dispString stringByReplacingOccurrencesOfString: @"#." withString: @"."];
+		dispString = [dispString stringByReplacingOccurrencesOfString: @"#," withString: @","];
 	}
 	
 	if ([appendString length] > 0)
