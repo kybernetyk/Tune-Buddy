@@ -18,6 +18,8 @@
 #import "LastFMNotificationOperation.h"
 #import "LastFMSubmissionOperation.h"
 #import "LastFMAuth.h"
+#import "OAuthConsumer.h"
+#import "TwitterAuthWindowController.h"
 
 @implementation AppDelegate
 #pragma mark -
@@ -247,22 +249,7 @@
 	if (lfm)
 		[[LastFMAuth sharedLastFMAuth] password];
 	
-	
-	BOOL twtr = [defaults boolForKey: @"twitterEnabled"];
-	if (twtr)
-	{
-		//twitter to get the annoying shit huso popup at startup
-		NSString *twitterUser = [defaults objectForKey: @"twitterUsername"];
-
-		EMGenericKeychainItem *keychainItem = [EMGenericKeychainItem genericKeychainItemForService: KEYCHAIN_TWITTER withUsername: twitterUser];
-		if (keychainItem)
-		{
-			
-			NSString *pass = [keychainItem password];
-
-		}
-	}
-	
+		
 	backgroundOperationQueue = [[NSOperationQueue alloc] init];
 	[backgroundOperationQueue setMaxConcurrentOperationCount: 5];
 	
@@ -629,7 +616,7 @@
 #pragma mark MGTwitterEngineDelegate methods
 - (void)requestSucceeded:(NSString *)connectionIdentifier
 {
-//	  NSLog(@"Request succeeded for connectionIdentifier = %@", connectionIdentifier);
+	  NSLog(@"Request succeeded for connectionIdentifier = %@", connectionIdentifier);
 	lastConnectionIdentifier = nil;
 	
 	[twitterEngine autorelease];
@@ -649,11 +636,18 @@
 		NSLog (@"wrong username!");
 		
 		
-		NSAlert *al = [NSAlert alertWithMessageText:@"Tune Buddy: Twitter Error" defaultButton:@"Ok" alternateButton: nil otherButton: nil informativeTextWithFormat:@"Twitter returned the error code 401. This usually means that your username and password don't match."];
+/*		NSAlert *al = [NSAlert alertWithMessageText:@"Tune Buddy: Twitter Error" defaultButton:@"Ok" alternateButton: nil otherButton: nil informativeTextWithFormat:@"Twitter returned the error code 401. This usually means that your username and password don't match."];
 		[al setAlertStyle: NSCriticalAlertStyle];
 		
-		[al runModal];
+		[al runModal];*/
+		lastConnectionIdentifier = nil;
 		
+		[twitterEngine autorelease];
+		twitterEngine = nil;
+		
+		[self authTwitterAndPostTweetAfterwards: YES];
+		
+		return;
 //		[[NSAlert alertWithError: error] runModal];
 
 	}
@@ -731,33 +725,6 @@
 	}
 	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	NSString *user = [defaults objectForKey: @"twitterUsername"];
-	NSString *pass = nil;
-	
-	EMGenericKeychainItem *keychainItem = [EMGenericKeychainItem genericKeychainItemForService: KEYCHAIN_TWITTER withUsername: user];
-	if (keychainItem)
-	{
-		pass = [keychainItem password];
-	}
-	else
-	{
-		NSLog(@"No twitter credentials found!");
-		return;
-	}
-	
-	
-	if (!user || [user length] <= 0 || [user isEqualToString: @""])
-	{
-		NSLog(@"no valid twitter username found!");
-		return;
-	}
-
-	if (!pass || [pass length] <= 0 || [pass isEqualToString: @""])
-	{
-		NSLog(@"no valid twitter password found!");
-		return;
-	}
-	
 	
 	
 	// Create a TwitterEngine and set our login details.
@@ -771,9 +738,27 @@
 //	NSString *pass = [defaults stringForKey: @"twitterPassword"];
 	
 	
+	OAToken *token = [[OAToken alloc] initWithUserDefaultsUsingServiceProviderName: @"twitter" prefix:@"fx"];
+	if (!token)
+	{
+		NSLog(@"no twitter token found ... let's authorize!");
+		[self authTwitterAndPostTweetAfterwards: YES];
+		return;
+	}
 	
-	NSLog(@"init twitter with credentials: '%@' / '%@'",user, pass);
-	[twitterEngine setUsername: user password: pass];
+	OAConsumer *consumer = [[OAConsumer alloc] initWithKey:@"N5xET9H7GvoErKPu2bmOaQ" secret:@"sH4lPqr7cIV2xebsDlAYmAWHd3S5Km6Q5JbtWUut80"];
+	
+	
+	NSLog(@"init twitter with token: %@",token);
+	[twitterEngine setUseOAuth: YES];
+	[twitterEngine setConsumer: consumer];
+	[twitterEngine setAccessToken: token];
+	
+	[token autorelease];
+	[consumer autorelease];
+	
+	
+
 	
 	NSCalendar *gregorian = [[NSCalendar alloc]	initWithCalendarIdentifier:NSGregorianCalendar];
 	NSDateComponents *weekdayComponents = [gregorian components:NSWeekdayCalendarUnit fromDate: [NSDate date]];
@@ -1250,6 +1235,25 @@
 	}
 	
 	//[infoDict release]; //we must release this here
+}
+
+
+- (void) authTwitterAndPostTweetAfterwards: (BOOL) postAfterwards
+{
+	[NSApp activateIgnoringOtherApps: YES];
+
+	TwitterAuthWindowController *twc = [[TwitterAuthWindowController alloc] initWithWindowNibName: @"TwitterAuthWindow"];
+	
+	if (postAfterwards)
+		[twc setDelegate: self];
+	
+	[[twc window] center];
+	[twc showWindow: self];
+}
+
+- (void) twitterWindowControllerDidSucced
+{
+	[self sendCurrentTrackToTwitter: self];
 }
 
 @end

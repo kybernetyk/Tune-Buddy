@@ -13,7 +13,8 @@
 #import "MGTwitterParserDelegate.h"
 #import "MGTwitterEngineDelegate.h"
 
-@interface MGTwitterYAJLParser : NSObject {
+@interface MGTwitterYAJLParser : NSObject 
+{
 	__weak NSObject <MGTwitterParserDelegate> *delegate; // weak ref
 	NSString *identifier;
 	MGTwitterRequestType requestType;
