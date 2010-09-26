@@ -21,6 +21,7 @@
 #import "OAuthConsumer.h"
 #import "TwitterAuthWindowController.h"
 #import "FacebookAuthWindowController.h"
+#import "FacebookShareOperation.h"
 
 @implementation AppDelegate
 #pragma mark -
@@ -870,40 +871,25 @@
 
 - (IBAction) sendCurrentTrackToFacebook: (id) sender
 {
-	NSLog(@"sending to fb ...");
-	
-	NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
-	NSString *token = [[defs objectForKey: @"facebookAccessToken"] URLEncodedString];
-	if (!token)
-	{
-		NSLog(@"no token found. authing ...");
-		[self authFacebookAndPostAfterwars: YES];
-		return;
-	}
-	
-	NSString *message = [[self longDisplayString] URLEncodedString];
-	
-	
-	NSString *actionLinks = [@"[{\"text\":\"Tune Buddy for Mac\",\"href\":\"http://www.fluxforge.com/tune-buddy/\"}]" URLEncodedString];
-
-	NSString *callURL = [NSString stringWithFormat: @"https://api.facebook.com/method/stream.publish?message=%@&access_token=%@&action_links=%@",
-						 message,
-						 token,
-						 actionLinks];
-	NSURL *url = [NSURL URLWithString: callURL];
-	NSString *ret = [NSString stringWithContentsOfURL: url];
-	NSLog(@"fb ret: %@", ret);	
-	
-	//Invalid OAuth 2.0 Access Token
-	
-	if ([ret containsString: @"error_response" ignoringCase: YES])
-	{
-		[defs removeObjectForKey: @"facebookAccessToken"];
-		[self authFacebookAndPostAfterwars: YES];
-		return;
-	}
+	FacebookShareOperation *fso = [[[FacebookShareOperation alloc] init] autorelease];
+	[fso setMessage: [self longDisplayString]];
+	[fso setDelegate: self];
+	[backgroundOperationQueue addOperation: fso];
 }
 
+- (void) facebookShareOperationDidSucceed: (FacebookShareOperation *) operation
+{
+	NSLog(@"fb share was cool!");
+}
+
+- (void) facebookShareOperationDidFail: (FacebookShareOperation *) operation
+{
+	NSLog(@"fb share was not cool!");
+	[self authFacebookAndPostAfterwars: YES];
+}
+
+
+	 
 #pragma mark -
 #pragma mark display string mangling
 - (NSString *) trimmedDisplayString: (NSString *) displayString
@@ -1327,5 +1313,7 @@
 	NSLog(@"OMG WERE AUTHED WITH THE FACEBOOKS!");
 	[self sendCurrentTrackToFacebook: self];
 }
+
+
 
 @end
