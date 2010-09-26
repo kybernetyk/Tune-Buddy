@@ -31,6 +31,7 @@
 	NSMenuItem *smallScreenMenuSeperator;
 	NSMenuItem *adiumMenuItem;
 	NSMenuItem *twitterMenuItem;
+	NSMenuItem *facebookMenuItem;
 	NSMenuItem *smallScreenModeMenuItem;
 	NSMenuItem *quitMenuItem;
 	NSMenu *statusBarMenu;
@@ -66,6 +67,7 @@
 - (IBAction) copyCurrentTrackInfoToClipBoard: (id) sender;
 - (IBAction) sendCurrentTrackToAdium: (id) sender;
 - (IBAction) sendCurrentTrackToTwitter: (id) sender;
+- (IBAction) sendCurrentTrackToFacebook: (id) sender;
 
 - (void) createStatusItem;
 

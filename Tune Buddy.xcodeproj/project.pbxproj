@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03123E79124F5C49000182C2 /* FacebookAuthWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03123E78124F5C49000182C2 /* FacebookAuthWindowController.m */; };
+		03123E7B124F5C59000182C2 /* FacebookAuthWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03123E7A124F5C59000182C2 /* FacebookAuthWindow.xib */; };
 		0329233E1055104F00D30E83 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B97324FDCFA39411CA2CEA /* AppKit.framework */; };
 		032923801055129800D30E83 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0329237F1055129800D30E83 /* icon.icns */; };
 		034DF9A9119ABF1400680CA6 /* LastFMSubmissionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 034DF9A8119ABF1400680CA6 /* LastFMSubmissionOperation.m */; };
@@ -170,6 +172,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		03123E77124F5C49000182C2 /* FacebookAuthWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAuthWindowController.h; sourceTree = "<group>"; };
+		03123E78124F5C49000182C2 /* FacebookAuthWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookAuthWindowController.m; sourceTree = "<group>"; };
+		03123E7A124F5C59000182C2 /* FacebookAuthWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacebookAuthWindow.xib; sourceTree = "<group>"; };
 		0329237F1055129800D30E83 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		034DF9A7119ABF1400680CA6 /* LastFMSubmissionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LastFMSubmissionOperation.h; sourceTree = "<group>"; };
 		034DF9A8119ABF1400680CA6 /* LastFMSubmissionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LastFMSubmissionOperation.m; sourceTree = "<group>"; };
@@ -424,6 +429,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03123E76124F5C2D000182C2 /* FacebookAuthWindow */ = {
+			isa = PBXGroup;
+			children = (
+				03123E77124F5C49000182C2 /* FacebookAuthWindowController.h */,
+				03123E78124F5C49000182C2 /* FacebookAuthWindowController.m */,
+				03123E7A124F5C59000182C2 /* FacebookAuthWindow.xib */,
+			);
+			name = FacebookAuthWindow;
+			sourceTree = "<group>";
+		};
 		0357E84F117720770082AB8F /* Last FM Scrobbler */ = {
 			isa = PBXGroup;
 			children = (
@@ -717,6 +732,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				03123E76124F5C2D000182C2 /* FacebookAuthWindow */,
 				03652295123000B400E01E03 /* TwitterAuthWindow */,
 				0357E84F117720770082AB8F /* Last FM Scrobbler */,
 				03B0E8C610D7C86900D8B185 /* Move App to Apps folder */,
@@ -1033,6 +1049,7 @@
 				032923801055129800D30E83 /* icon.icns in Resources */,
 				0374404B109DDAA200B3B221 /* dsa_pub.pem in Resources */,
 				0365229A123000D600E01E03 /* TwitterAuthWindow.xib in Resources */,
+				03123E7B124F5C59000182C2 /* FacebookAuthWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1147,6 +1164,7 @@
 				03652288122FFFAA00E01E03 /* OAServiceTicket.m in Sources */,
 				03652289122FFFAA00E01E03 /* OAToken.m in Sources */,
 				03652298123000CB00E01E03 /* TwitterAuthWindowController.m in Sources */,
+				03123E79124F5C49000182C2 /* FacebookAuthWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

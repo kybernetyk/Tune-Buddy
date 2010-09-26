@@ -20,6 +20,7 @@
 #import "LastFMAuth.h"
 #import "OAuthConsumer.h"
 #import "TwitterAuthWindowController.h"
+#import "FacebookAuthWindowController.h"
 
 @implementation AppDelegate
 #pragma mark -
@@ -195,6 +196,7 @@
 						  [NSNumber numberWithBool: YES], @"appendNowPlayingToTwitterPosts",
 						  [NSNumber numberWithBool: YES], @"keepAlwaysLeft",
 						  [NSNumber numberWithBool: NO], @"tagSongOnTwitter",
+						  [NSNumber numberWithBool: YES], @"facebookEnabled",
 						  [NSNumber numberWithBool: shallEnableSmallScreenMode], @"smallScreenModeEnabled",
 						  [NSNumber numberWithBool: shallEnableSmallScreenMode], @"growlEnabled", //enable growl notifications when small screen mode is enabled. don't bother big screen users with growl
 						  fontData, @"statusItemForegroundColor",
@@ -265,6 +267,9 @@
 	[defc addObserver: self forKeyPath: @"values.keepAlwaysLeft" options: NSKeyValueObservingOptionNew context: @"keepAlwaysLeft"];
 	[defc addObserver: self forKeyPath: @"values.statusItemForegroundColor" options: NSKeyValueObservingOptionNew context: @"statusItemForegroundColor"];
 	[defc addObserver: self forKeyPath: @"values.lastFMUsername" options: NSKeyValueObservingOptionNew context: @"lastFMUsername"];
+	
+	
+//	[self authFacebookAndPostAfterwars: NO];
 }
 
 
@@ -530,9 +535,15 @@
 	{
 		twitterMenuItem = [statusBarMenu addItemWithTitle:@"Send To Twitter" action:@selector(sendCurrentTrackToTwitter:) keyEquivalent: [NSString string]];
 		[twitterMenuItem bind: @"hidden" toObject: [NSUserDefaultsController sharedUserDefaultsController] withKeyPath:@"values.twitterEnabled" options:opts];
-		[statusBarMenu addItem:[NSMenuItem separatorItem]];
 	}
 	
+	if (!facebookMenuItem)
+	{
+		facebookMenuItem = [statusBarMenu addItemWithTitle: @"Send To Facebook" action:@selector(sendCurrentTrackToFacebook:) keyEquivalent: [NSString string]];
+		[facebookMenuItem bind: @"hidden" toObject: [NSUserDefaultsController sharedUserDefaultsController] withKeyPath: @"values.facebookEnabled" options:opts];
+		[statusBarMenu addItem:[NSMenuItem separatorItem]];
+		
+	}
 	
 	if (!preferencesMenuItem)
 	{	
@@ -857,6 +868,41 @@
 	[currentChat sendMessage: [self longDisplayString] withFile: nil];
 }
 
+- (IBAction) sendCurrentTrackToFacebook: (id) sender
+{
+	NSLog(@"sending to fb ...");
+	
+	NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+	NSString *token = [[defs objectForKey: @"facebookAccessToken"] URLEncodedString];
+	if (!token)
+	{
+		NSLog(@"no token found. authing ...");
+		[self authFacebookAndPostAfterwars: YES];
+		return;
+	}
+	
+	NSString *message = [[self longDisplayString] URLEncodedString];
+	
+	
+	NSString *actionLinks = [@"[{\"text\":\"Tune Buddy for Mac\",\"href\":\"http://www.fluxforge.com/tune-buddy/\"}]" URLEncodedString];
+
+	NSString *callURL = [NSString stringWithFormat: @"https://api.facebook.com/method/stream.publish?message=%@&access_token=%@&action_links=%@",
+						 message,
+						 token,
+						 actionLinks];
+	NSURL *url = [NSURL URLWithString: callURL];
+	NSString *ret = [NSString stringWithContentsOfURL: url];
+	NSLog(@"fb ret: %@", ret);	
+	
+	//Invalid OAuth 2.0 Access Token
+	
+	if ([ret containsString: @"error_response" ignoringCase: YES])
+	{
+		[defs removeObjectForKey: @"facebookAccessToken"];
+		[self authFacebookAndPostAfterwars: YES];
+		return;
+	}
+}
 
 #pragma mark -
 #pragma mark display string mangling
@@ -1237,6 +1283,8 @@
 	//[infoDict release]; //we must release this here
 }
 
+#pragma mark -
+#pragma mark twitter auth
 
 - (void) authTwitterAndPostTweetAfterwards: (BOOL) postAfterwards
 {
@@ -1251,9 +1299,33 @@
 	[twc showWindow: self];
 }
 
-- (void) twitterWindowControllerDidSucced
+- (void) twitterWindowControllerDidSucceed
 {
 	[self sendCurrentTrackToTwitter: self];
+}
+
+#pragma mark -
+#pragma mark Facebook auth
+
+- (void) authFacebookAndPostAfterwars: (BOOL) postAfterwards
+{
+	NSLog(@"auth and post afterwards ... %i", postAfterwards);
+	[NSApp activateIgnoringOtherApps: YES];
+	
+	FacebookAuthWindowController *fwc = [[FacebookAuthWindowController alloc] initWithWindowNibName: @"FacebookAuthWindow"];
+	
+	if (postAfterwards)
+		[fwc setDelegate: self];
+	
+	[[fwc window] center];
+	[fwc showWindow: self];
+	
+}
+
+- (void) facebookWindowControllerDidSucceed
+{
+	NSLog(@"OMG WERE AUTHED WITH THE FACEBOOKS!");
+	[self sendCurrentTrackToFacebook: self];
 }
 
 @end

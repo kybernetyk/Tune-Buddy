@@ -178,7 +178,7 @@
 		
 		NSLog(@"Got access token. Ready to use Twitter API. %@ %@", [accessToken key], [accessToken secret]);
 		[accessToken storeInUserDefaultsWithServiceProviderName: @"twitter" prefix: @"fx"];
-		[delegate twitterWindowControllerDidSucced];
+		[delegate twitterWindowControllerDidSucceed];
 		[[self window] close];
 	}
 }
