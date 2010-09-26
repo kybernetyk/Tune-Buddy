@@ -152,7 +152,11 @@ signatureProvider:(id<OASignatureProviding, NSObject>)aProvider
 	NSString *oauthToken;
 	
 	if ([token.key isEqualToString:@""])
-		oauthToken = @"oauth_callback=\"oob\", ";
+	{	
+		//oauthToken = @"oauth_callback=\"oob\", ";
+		oauthToken = @"";
+		NSLog(@"no callback");
+	}
 	else if(token.verifier == nil || [token.verifier isEqualToString:@""])
 		oauthToken = [NSString stringWithFormat:@"oauth_token=\"%@\", ", [token.key URLEncodedString]];
 	else
@@ -168,7 +172,7 @@ signatureProvider:(id<OASignatureProviding, NSObject>)aProvider
 		 [[extraOAuthParameters objectForKey:parameterName] URLEncodedString]];
 	}	
     
-    NSString *oauthHeader = [NSString stringWithFormat:@"OAuth realm=\"%@\", oauth_consumer_key=\"%@\", %@oauth_signature_method=\"%@\", oauth_signature=\"%@\", oauth_timestamp=\"%@\", oauth_nonce=\"%@\", oauth_version=\"1.0\"%@",
+    NSString *oauthHeader = [NSString stringWithFormat:@"OAuth realm=\"%@\", oauth_consumer_key=\"%@\", %@oauth_signature_method=\"%@\", oauth_signature=\"%@\", oauth_timestamp=\"%@\", oauth_nonce=\"%@\", oauth_version=\"1.0a\"%@",
                              [realm URLEncodedString],
                              [consumer.key URLEncodedString],
                              oauthToken,
@@ -207,7 +211,7 @@ signatureProvider:(id<OASignatureProviding, NSObject>)aProvider
 	[parameterPairs addObject:[[OARequestParameter requestParameterWithName:@"oauth_signature_method" value:[signatureProvider name]] URLEncodedNameValuePair]];
 	[parameterPairs addObject:[[OARequestParameter requestParameterWithName:@"oauth_timestamp" value:timestamp] URLEncodedNameValuePair]];
 	[parameterPairs addObject:[[OARequestParameter requestParameterWithName:@"oauth_nonce" value:nonce] URLEncodedNameValuePair]];
-	[parameterPairs addObject:[[OARequestParameter requestParameterWithName:@"oauth_version" value:@"1.0"] URLEncodedNameValuePair]];
+	[parameterPairs addObject:[[OARequestParameter requestParameterWithName:@"oauth_version" value:@"1.0a"] URLEncodedNameValuePair]];
     
 	if (![token.key isEqualToString:@""]) {
         [parameterPairs addObject:[[OARequestParameter requestParameterWithName:@"oauth_token" value:token.key] URLEncodedNameValuePair]];
@@ -217,7 +221,7 @@ signatureProvider:(id<OASignatureProviding, NSObject>)aProvider
     }
 	else 
 	{
-		[parameterPairs addObject:[[OARequestParameter requestParameterWithName:@"oauth_callback" value:@"oob"] URLEncodedNameValuePair]];
+//		[parameterPairs addObject:[[OARequestParameter requestParameterWithName:@"oauth_callback" value:@"oob"] URLEncodedNameValuePair]];
 	}
 
 	

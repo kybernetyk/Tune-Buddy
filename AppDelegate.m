@@ -746,7 +746,7 @@
 		return;
 	}
 	
-	OAConsumer *consumer = [[OAConsumer alloc] initWithKey:@"N5xET9H7GvoErKPu2bmOaQ" secret:@"sH4lPqr7cIV2xebsDlAYmAWHd3S5Km6Q5JbtWUut80"];
+	OAConsumer *consumer = [[OAConsumer alloc] initWithKey: TWITTER_API_KEY secret: TWITTER_API_SECRET];
 	
 	
 	NSLog(@"init twitter with token: %@",token);

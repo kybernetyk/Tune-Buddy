@@ -8,8 +8,6 @@
 
 #import "TwitterAuthWindowController.h"
 #import "OAuthConsumer.h"
-NSString *consumerKey = @"N5xET9H7GvoErKPu2bmOaQ";
-NSString *consumerSecret = @"sH4lPqr7cIV2xebsDlAYmAWHd3S5Km6Q5JbtWUut80";
 
 @implementation TwitterAuthWindowController
 @synthesize delegate;
@@ -35,13 +33,37 @@ NSString *consumerSecret = @"sH4lPqr7cIV2xebsDlAYmAWHd3S5Km6Q5JbtWUut80";
 
 	[self autorelease];
 }
+//http://fluxforge.com/tunebuddy_twitter_oauth
+
+- (void)webView:(WebView *)sender willPerformClientRedirectToURL:(NSURL *)URL delay:(NSTimeInterval)seconds fireDate:(NSDate *)date forFrame:(WebFrame *)frame
+{
+	NSLog(@"will redirect to url: %@", [URL description]);
+	
+	NSString *urlstring = [URL absoluteString];
+	
+	NSString *needle = [NSString stringWithFormat: @"%@?oauth_token=", TWITTER_API_CALLBACK_URL];
+	
+	if ([urlstring containsString: needle ignoringCase: YES])
+	{
+		NSRange r = [urlstring rangeOfString: @"?oauth_token=" options: NSCaseInsensitiveSearch];
+		if (r.location != NSNotFound)
+		{
+			[self getAccessToken: self];
+
+		}
+	}
+	
+	return;
+}
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
 {
 	loadcount ++;
-	NSLog(@"webview penissed");
+	NSLog(@"webview (%@) penissed %i", [[[[frame dataSource] request] URL] absoluteString], loadcount);
 
-	if (loadcount == 2)
+	NSLog(@"%@",[[[frame dataSource] request] allHTTPHeaderFields]);
+	
+	/*if (loadcount == 2)
 	{
 		loadcount = 0;
 		pin = [[self locateAuthPinInWebView] retain];
@@ -53,7 +75,7 @@ NSString *consumerSecret = @"sH4lPqr7cIV2xebsDlAYmAWHd3S5Km6Q5JbtWUut80";
 		{
 			[[self window] close];
 		}
-	}
+	}*/
 		
 	
 }
@@ -61,10 +83,8 @@ NSString *consumerSecret = @"sH4lPqr7cIV2xebsDlAYmAWHd3S5Km6Q5JbtWUut80";
 
 - (IBAction) getRequestToken:(id)sender
 {
-	
-	OAConsumer *consumer = [[OAConsumer alloc] initWithKey:consumerKey
-													secret:consumerSecret];
-	
+	OAConsumer *consumer = [[OAConsumer alloc] initWithKey:TWITTER_API_KEY
+													secret:TWITTER_API_SECRET];
 	OADataFetcher *fetcher = [[OADataFetcher alloc] init];
 	
 	NSURL *url = [NSURL URLWithString:@"https://api.twitter.com/oauth/request_token"];
@@ -74,8 +94,9 @@ NSString *consumerSecret = @"sH4lPqr7cIV2xebsDlAYmAWHd3S5Km6Q5JbtWUut80";
 																	  token:nil
 																	  realm:nil
 														  signatureProvider:nil];
-	
-	[request setHTTPMethod:@"POST"];
+	[request setHTTPMethod:@"POST"];	
+//	[request setOAuthParameterName: @"oauth_callback" withValue: @"http://www.fluxforge.com/tune-buddy/"];
+
 	
 	NSLog(@"Getting request token...");
 	
@@ -87,22 +108,25 @@ NSString *consumerSecret = @"sH4lPqr7cIV2xebsDlAYmAWHd3S5Km6Q5JbtWUut80";
 
 - (IBAction) getAccessToken:(id)sender
 {
-	OAConsumer *consumer = [[OAConsumer alloc] initWithKey:consumerKey
-													secret:consumerSecret];
+	OAConsumer *consumer = [[OAConsumer alloc] initWithKey:TWITTER_API_KEY
+													secret:TWITTER_API_SECRET];
 	
 	OADataFetcher *fetcher = [[OADataFetcher alloc] init];
 	
 	NSURL *url = [NSURL URLWithString:@"https://api.twitter.com/oauth/access_token"];
+
+//	[accessToken set
 	
-	[accessToken setVerifier: pin];
-	NSLog(@"Using PIN %@", accessToken.verifier);
+//	[accessToken setVerifier: authToken];
+	
+//	[accessToken setVerifier: pin];
+//	NSLog(@"Using PIN %@", accessToken.verifier);
 	
 	OAMutableURLRequest *request = [[OAMutableURLRequest alloc] initWithURL:url
 																   consumer:consumer
 																	  token:accessToken
 																	  realm:nil
 														  signatureProvider:nil];
-	
 	[request setHTTPMethod:@"POST"];
 	
 	NSLog(@"Getting access token...");
@@ -115,6 +139,8 @@ NSString *consumerSecret = @"sH4lPqr7cIV2xebsDlAYmAWHd3S5Km6Q5JbtWUut80";
 
 - (void) requestTokenTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data
 {
+	NSLog(@"%@", [ticket request]);
+	
 	if (ticket.didSucceed)
 	{
 		NSString *responseBody = [[NSString alloc] initWithData:data 
@@ -129,7 +155,7 @@ NSString *consumerSecret = @"sH4lPqr7cIV2xebsDlAYmAWHd3S5Km6Q5JbtWUut80";
 		
 		NSURL *url = [NSURL URLWithString:address];
 		//[[NSWorkspace sharedWorkspace] openURL:url];
-		
+
 		[[webView mainFrame] loadRequest:[NSURLRequest requestWithURL: url]];
 	}
 }
@@ -145,9 +171,12 @@ NSString *consumerSecret = @"sH4lPqr7cIV2xebsDlAYmAWHd3S5Km6Q5JbtWUut80";
 	if (ticket.didSucceed)
 	{
 		NSString *responseBody = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+		
+		NSLog(@"%@", responseBody);
+		
 		accessToken = [[OAToken alloc] initWithHTTPResponseBody:responseBody];
 		
-		NSLog(@"Got access token. Ready to use Twitter API.");
+		NSLog(@"Got access token. Ready to use Twitter API. %@ %@", [accessToken key], [accessToken secret]);
 		[accessToken storeInUserDefaultsWithServiceProviderName: @"twitter" prefix: @"fx"];
 		[delegate twitterWindowControllerDidSucced];
 		[[self window] close];

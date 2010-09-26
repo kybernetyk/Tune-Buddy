@@ -18,7 +18,6 @@
 	
 	NSUInteger loadcount;
 	
-	NSString *pin;
 	
 	id delegate;
 }
