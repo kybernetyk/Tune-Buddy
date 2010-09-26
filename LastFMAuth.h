@@ -14,6 +14,7 @@
 	NSString *_secretKey;
 }
 +(LastFMAuth *) sharedLastFMAuth;
+- (void) reset;
 
 - (NSString *) secretKey;
 - (NSString *) username;

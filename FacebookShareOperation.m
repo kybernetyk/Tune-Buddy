@@ -57,7 +57,9 @@
 						 token,
 						 actionLinks];
 	NSURL *url = [NSURL URLWithString: callURL];
-	NSString *ret = [NSString stringWithContentsOfURL: url];
+
+	NSError *err;
+	NSString *ret = [NSString stringWithContentsOfURL: url encoding: NSUTF8StringEncoding error: &err];
 	NSLog(@"fb ret: %@", ret);	
 	
 	//Invalid OAuth 2.0 Access Token

@@ -86,7 +86,8 @@
 	NSString *urlstring = [NSString stringWithFormat: @"http://post.audioscrobbler.com/?hs=true&p=1.2.1&c=tnb&v=1.0&u=%@&t=%@&a=%@&api_key=%@&sk=%@", username,n2 ,authToken,_LASTFM_API_KEY_, secretKey];
 	
 	//	NSLog(@"urlstring: %@", urlstring);
-	NSString *resp = [NSString stringWithContentsOfURL: [NSURL URLWithString: urlstring]];
+	NSError *err;
+	NSString *resp = [NSString stringWithContentsOfURL: [NSURL URLWithString: urlstring] encoding: NSUTF8StringEncoding error: &err];
 	if (!resp)
 	{	
 		[delegate performSelectorOnMainThread:@selector(lastFmScrobblerNotificationDidFail:) withObject: self waitUntilDone: YES];

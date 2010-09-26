@@ -99,7 +99,8 @@
 						   authToken];
 	NSURL *url = [NSURL URLWithString: urlString];
 	
-	NSString *responseString = [NSString stringWithContentsOfURL: url];
+	NSError *err;
+	NSString *responseString = [NSString stringWithContentsOfURL: url encoding: NSUTF8StringEncoding error: &err];
 	
 	NSArray *params = [responseString componentsSeparatedByString: @"&"];
 	
