@@ -119,6 +119,9 @@
 	NSString *albumURL = [albumChunk stringBetweenSubstringOne: @"<URL>" andSubstringTwo: @"</URL>" ignoringCase: YES];
 	NSLog(@"albumURL: %@", albumURL);
 	
+	NSString *trackURL = [responseString stringBetweenSubstringOne: @"<URL>" andSubstringTwo: @"</URL>" ignoringCase: YES];
+	NSLog(@"trackURL: %@", trackURL);
+	
 	//now get the image url by trying
 /*	<image size="small">http://userserve-ak.last.fm/serve/64s/5617239.jpg</image>
 	<image size="medium">http://userserve-ak.last.fm/serve/126/5617239.jpg</image>
@@ -138,7 +141,7 @@
 	NSLog(@"image url: %@", imageURL);
 
 	[self setArtworkURL: imageURL];
-	[self setTrackviewURL: albumURL];
+	[self setTrackviewURL: trackURL];
 }
 
 
