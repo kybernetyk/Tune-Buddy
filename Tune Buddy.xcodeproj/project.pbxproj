@@ -130,7 +130,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 030B19891252389E003AB6B3 /* FacebookPreferencePane */;
+			remoteGlobalIDString = 030B19891252389E003AB6B3;
 			remoteInfo = FacebookPreferencePane;
 		};
 		036914E4119D64F300F5BD1D /* PBXContainerItemProxy */ = {
