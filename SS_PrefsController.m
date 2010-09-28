@@ -163,7 +163,7 @@
     if (usesTexturedWindow) {
         styleMask = (styleMask | NSTexturedBackgroundWindowMask);
     }
-    prefsWindow = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 350, 200)
+    prefsWindow = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 450, 200)
                                               styleMask:styleMask
                                                 backing:NSBackingStoreBuffered
                                                   defer:NO];

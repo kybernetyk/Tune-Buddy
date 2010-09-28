@@ -24,6 +24,9 @@
 @synthesize trackPlaybackStartTime;
 @synthesize isStream;
 @synthesize isPlaying;
+@synthesize trackRating;
+@synthesize albumArt;
+@synthesize trackPlayCount;
 
 //returns the string that will be displayed/copied to pasteboard
 - (void) fetchCurrentTrackFromItunes
@@ -118,6 +121,9 @@
 			trackLength = [NSNumber numberWithDouble: [currentTrack duration]];
 			[self setTrackLength: trackLength];
 			
+			[self setTrackRating: [NSNumber numberWithInteger: [currentTrack rating]]];
+			[self setTrackPlayCount: [NSNumber numberWithInteger: [currentTrack playedCount]]];
+
 			kind = [currentTrack kind];
 			if (kind != nil)
 				kind = [NSString stringWithString: kind];
@@ -126,6 +132,9 @@
 			if (streamTitle != nil)
 				streamTitle	= [NSString stringWithString: streamTitle];
 
+			
+//			albumArt = [currentTrack artworks]
+			
 /*			NSDate *bla = [currentTrack playedDate];
 			if (bla != nil)
 				[self setTrackPlaybackStartTime: bla];*/
@@ -354,7 +363,7 @@
 			if (![self albumName])
 				[self setAlbumName: @""];
 
-			NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys: 
+			NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithObjectsAndKeys: 
 								  [NSString stringWithString: currentDisplayString], @"displayString",
 								  [NSString stringWithString: playStatus], @"displayStatus", 
 								  
@@ -365,10 +374,30 @@
 								    [NSNumber numberWithBool: [[self isStream] boolValue]], @"isStream",
 								    [NSNumber numberWithBool: [[self isPlaying] boolValue]], @"isPlaying",
 								  [NSDate dateWithTimeIntervalSince1970: [[self trackPlaybackStartTime] timeIntervalSince1970]] , @"trackPlaybackStartTime",
+									[NSNumber numberWithInteger: [[self trackRating] integerValue]], @"trackRating",
+									[NSNumber numberWithInteger: [[self trackPlayCount] integerValue]], @"trackPlayCount",
 								  nil];
 			
 			NSLog(@"dict: %@",dict);
 //			[dict retain];
+			
+			@try
+			{
+				iTunesTrack *currentTrack = [iTunes currentTrack];
+				
+				for (iTunesArtwork *artwork in [currentTrack artworks])
+				{
+					NSLog(@"artwork: %@", [artwork data]);
+					[self setAlbumArt: [artwork data]];
+					[dict setObject: [self albumArt] forKey: @"albumArt"];
+				}
+			}
+			@catch (NSException *e) 
+			{
+				NSLog(@"#3 Exception:%@ Reason: %@ Callstack: %@ userInfo: %@",e, [e reason], [e callStackSymbols],[e userInfo] );
+				
+			}
+			
 			[delegate performSelectorOnMainThread:@selector(iTunesTrackDidChangeTo:) withObject: dict waitUntilDone: YES];
 			[dict release];
 		}

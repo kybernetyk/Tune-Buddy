@@ -22,6 +22,8 @@
 #import "TwitterAuthWindowController.h"
 #import "FacebookAuthWindowController.h"
 #import "FacebookShareOperation.h"
+#import "ASIHTTPRequest.h"
+#import "ASIFormDataRequest.h"
 
 @implementation AppDelegate
 #pragma mark -
@@ -31,7 +33,12 @@
 @synthesize isRegistered;
 @synthesize longDisplayString;
 @synthesize isExpired;
-
+@synthesize albumArt;
+@synthesize	trackArtist;
+@synthesize trackName;
+@synthesize albumName;
+@synthesize trackRating;
+@synthesize trackPlayCount;
 
 #pragma mark -
 #pragma mark autostart
@@ -198,6 +205,7 @@
 						  [NSNumber numberWithBool: YES], @"keepAlwaysLeft",
 						  [NSNumber numberWithBool: NO], @"tagSongOnTwitter",
 						  [NSNumber numberWithBool: YES], @"facebookEnabled",
+						  [NSNumber numberWithBool: YES], @"detailedFacebookPost",
 						  [NSNumber numberWithBool: shallEnableSmallScreenMode], @"smallScreenModeEnabled",
 						  [NSNumber numberWithBool: shallEnableSmallScreenMode], @"growlEnabled", //enable growl notifications when small screen mode is enabled. don't bother big screen users with growl
 						  fontData, @"statusItemForegroundColor",
@@ -826,7 +834,7 @@
 	preferencesWindowController = [[SS_PrefsController alloc] initWithPanesSearchPath:pathToPanes bundleExtension:@"bundle"];
 	
 	// Set which panes are included, and their order.
-	[preferencesWindowController setPanesOrder:[NSArray arrayWithObjects:@"General",@"Twitter",@"LastFM",@"Updating",@"Registration", nil]];
+	[preferencesWindowController setPanesOrder:[NSArray arrayWithObjects:@"General",@"Twitter",@"LastFM",@"Facebook",@"Updating",@"Registration", nil]];
 	// Show the preferences window.
 	[preferencesWindowController showPreferencesWindow];
 	
@@ -874,6 +882,12 @@
 	FacebookShareOperation *fso = [[[FacebookShareOperation alloc] init] autorelease];
 	[fso setMessage: [self longDisplayString]];
 	[fso setDelegate: self];
+	[fso setAlbumArt: [self albumArt]];
+	[fso setAlbumName: [self albumName]];
+	[fso setTrackName: [self trackName]];
+	[fso setTrackArtist: [self trackArtist]];
+	[fso setTrackRating: [self trackRating]];
+	[fso setTrackPlayCount: [self trackPlayCount]];
 	[backgroundOperationQueue addOperation: fso];
 }
 
@@ -1224,7 +1238,14 @@
 	{
 		[self setLongDisplayString: [infoDict objectForKey: @"displayString"]];
 		[self setPlayStatus: [infoDict objectForKey: @"displayStatus"]];
-		
+
+		[self setAlbumArt: [infoDict objectForKey: @"albumArt"]];
+		[self setAlbumName: [infoDict objectForKey:@"albumName"]];
+		[self setTrackName: [infoDict objectForKey: @"trackName"]];
+		[self setTrackArtist: [infoDict objectForKey: @"artistName"]];
+		[self setTrackRating: [infoDict objectForKey: @"trackRating"]];
+		[self setTrackPlayCount: [infoDict objectForKey: @"trackPlayCount"]];
+		NSLog(@"my album art is: %@", [self albumArt]);
 	}
 //	NSLog(@"%@",infoDict);
 	
@@ -1305,6 +1326,20 @@
 	
 	[[fwc window] center];
 	[fwc showWindow: self];
+	
+}
+
+- (void) deauthFacebook
+{
+	NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+	NSString *token = [defs objectForKey: @"facebookAccessToken"];
+	
+	//	auth.expireSession
+	ASIFormDataRequest *req = [[ASIFormDataRequest alloc] initWithURL: [NSURL URLWithString: @"https://api.facebook.com/method/auth.expireSession"]];
+	[req setPostValue: token  forKey: @"access_token"];
+	[req startSynchronous];
+	[defs removeObjectForKey: @"facebookAccessToken"];
+	[defs synchronize];
 	
 }
 

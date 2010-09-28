@@ -49,16 +49,32 @@
 
 	NSTimer *lastFMSubmitTimer;
 	NSMutableArray *scrobbleQueue;
+	
+	NSImage *albumArt;
+	
+	NSString *trackArtist;
+	NSString *trackName;
+	NSString *albumName;
+	NSNumber *trackRating;
+	NSNumber *trackPlayCount;
 }
 
 #pragma mark -
 #pragma mark properties
+@property (readwrite, copy) NSNumber *trackPlayCount;
 
 @property (readwrite, retain) NSString *playStatus;
 @property (readonly, assign) BOOL isRegistered;
 @property (readwrite, assign, getter=isExpired) BOOL isExpired;
 @property (readwrite, copy) NSString *longDisplayString;
 
+@property (readwrite, copy) NSImage *albumArt;
+
+@property (readwrite, copy) NSString *trackArtist;
+@property (readwrite, copy) NSString *trackName;
+@property (readwrite, copy) NSString *albumName;
+
+@property (readwrite, copy) NSNumber *trackRating;
 
 #pragma mark -
 #pragma mark public IB accessable methods

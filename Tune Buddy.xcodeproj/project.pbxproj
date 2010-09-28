@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		030B189012520305003AB6B3 /* NSString+Slice.m in Sources */ = {isa = PBXBuildFile; fileRef = 030B188F12520305003AB6B3 /* NSString+Slice.m */; };
+		030B19AE125238E5003AB6B3 /* Facebook_Prefs.png in Resources */ = {isa = PBXBuildFile; fileRef = 030B19A8125238E5003AB6B3 /* Facebook_Prefs.png */; };
+		030B19B1125238E5003AB6B3 /* FacebookPreferencePaneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 030B19AC125238E5003AB6B3 /* FacebookPreferencePaneController.m */; };
+		030B19B2125238E5003AB6B3 /* FacebookPreferencePaneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 030B19AD125238E5003AB6B3 /* FacebookPreferencePaneView.xib */; };
+		030B19E112523B5A003AB6B3 /* FacebookPreferencePane.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 030B198A1252389E003AB6B3 /* FacebookPreferencePane.bundle */; };
 		03123E79124F5C49000182C2 /* FacebookAuthWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03123E78124F5C49000182C2 /* FacebookAuthWindowController.m */; };
 		03123E7B124F5C59000182C2 /* FacebookAuthWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03123E7A124F5C59000182C2 /* FacebookAuthWindow.xib */; };
 		03124048124F83A2000182C2 /* FacebookShareOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 03124047124F83A2000182C2 /* FacebookShareOperation.m */; };
@@ -121,6 +126,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		030B199A125238A9003AB6B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 030B19891252389E003AB6B3 /* FacebookPreferencePane */;
+			remoteInfo = FacebookPreferencePane;
+		};
 		036914E4119D64F300F5BD1D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -173,6 +185,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		030B188E12520305003AB6B3 /* NSString+Slice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Slice.h"; sourceTree = "<group>"; };
+		030B188F12520305003AB6B3 /* NSString+Slice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Slice.m"; sourceTree = "<group>"; };
+		030B198A1252389E003AB6B3 /* FacebookPreferencePane.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FacebookPreferencePane.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		030B19A8125238E5003AB6B3 /* Facebook_Prefs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Facebook_Prefs.png; sourceTree = "<group>"; };
+		030B19AA125238E5003AB6B3 /* FacebookPreferencePane-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "FacebookPreferencePane-Info.plist"; sourceTree = "<group>"; };
+		030B19AB125238E5003AB6B3 /* FacebookPreferencePaneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookPreferencePaneController.h; sourceTree = "<group>"; };
+		030B19AC125238E5003AB6B3 /* FacebookPreferencePaneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookPreferencePaneController.m; sourceTree = "<group>"; };
+		030B19AD125238E5003AB6B3 /* FacebookPreferencePaneView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacebookPreferencePaneView.xib; sourceTree = "<group>"; };
 		03123E77124F5C49000182C2 /* FacebookAuthWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAuthWindowController.h; sourceTree = "<group>"; };
 		03123E78124F5C49000182C2 /* FacebookAuthWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookAuthWindowController.m; sourceTree = "<group>"; };
 		03123E7A124F5C59000182C2 /* FacebookAuthWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacebookAuthWindow.xib; sourceTree = "<group>"; };
@@ -374,6 +394,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		030B19881252389E003AB6B3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		036914C8119D64A900F5BD1D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -432,6 +459,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		030B19A7125238E5003AB6B3 /* Facebook Preference Pane */ = {
+			isa = PBXGroup;
+			children = (
+				030B19A8125238E5003AB6B3 /* Facebook_Prefs.png */,
+				030B19AA125238E5003AB6B3 /* FacebookPreferencePane-Info.plist */,
+				030B19AB125238E5003AB6B3 /* FacebookPreferencePaneController.h */,
+				030B19AC125238E5003AB6B3 /* FacebookPreferencePaneController.m */,
+				030B19AD125238E5003AB6B3 /* FacebookPreferencePaneView.xib */,
+			);
+			path = "Facebook Preference Pane";
+			sourceTree = "<group>";
+		};
 		03123E76124F5C2D000182C2 /* FacebookAuthWindow */ = {
 			isa = PBXGroup;
 			children = (
@@ -779,6 +818,7 @@
 				03BDFD1910D6BD3A00487180 /* TwitterPreferencePane.bundle */,
 				03BDFDD710D6C38000487180 /* RegistrationPreferencePane.bundle */,
 				036914CA119D64A900F5BD1D /* LastFM Preference Pane.bundle */,
+				030B198A1252389E003AB6B3 /* FacebookPreferencePane.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -789,6 +829,7 @@
 				036914D0119D64CC00F5BD1D /* LastFM Preference Pane */,
 				03BDFDF910D6C3CE00487180 /* Registration Preference Pane */,
 				03BDFD7210D6BEE600487180 /* Twitter Preference Pane */,
+				030B19A7125238E5003AB6B3 /* Facebook Preference Pane */,
 				03BDFCC710D6BB6500487180 /* Updating Preference Pane */,
 				03BDFC6610D6BA1900487180 /* General Preference Pane */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -804,6 +845,8 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				030B188E12520305003AB6B3 /* NSString+Slice.h */,
+				030B188F12520305003AB6B3 /* NSString+Slice.m */,
 				0365225E122FFFAA00E01E03 /* OAuthConsumer */,
 				03C60DC911A2B8E200823D21 /* EMKeychainItem.h */,
 				03C60DCA11A2B8E200823D21 /* EMKeychainItem.m */,
@@ -856,6 +899,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		030B19891252389E003AB6B3 /* FacebookPreferencePane */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 030B198F1252389E003AB6B3 /* Build configuration list for PBXNativeTarget "FacebookPreferencePane" */;
+			buildPhases = (
+				030B19861252389E003AB6B3 /* Resources */,
+				030B19871252389E003AB6B3 /* Sources */,
+				030B19881252389E003AB6B3 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FacebookPreferencePane;
+			productName = FacebookPreferencePane;
+			productReference = 030B198A1252389E003AB6B3 /* FacebookPreferencePane.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 		036914C9119D64A900F5BD1D /* LastFM Preference Pane */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 036914CF119D64AA00F5BD1D /* Build configuration list for PBXNativeTarget "LastFM Preference Pane" */;
@@ -958,6 +1018,7 @@
 				03BDFD2410D6BD5000487180 /* PBXTargetDependency */,
 				03BDFDEA10D6C39C00487180 /* PBXTargetDependency */,
 				036914E5119D64F300F5BD1D /* PBXTargetDependency */,
+				030B199B125238A9003AB6B3 /* PBXTargetDependency */,
 			);
 			name = "Tune Buddy";
 			productInstallPath = "$(HOME)/Applications";
@@ -986,11 +1047,21 @@
 				03BDFD1810D6BD3A00487180 /* TwitterPreferencePane */,
 				03BDFDD610D6C38000487180 /* RegistrationPreferencePane */,
 				036914C9119D64A900F5BD1D /* LastFM Preference Pane */,
+				030B19891252389E003AB6B3 /* FacebookPreferencePane */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		030B19861252389E003AB6B3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				030B19AE125238E5003AB6B3 /* Facebook_Prefs.png in Resources */,
+				030B19B2125238E5003AB6B3 /* FacebookPreferencePaneView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		036914C6119D64A900F5BD1D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1042,6 +1113,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				030B19E112523B5A003AB6B3 /* FacebookPreferencePane.bundle in Resources */,
 				036915A5119D67E400F5BD1D /* LastFM Preference Pane.bundle in Resources */,
 				03BDFE1D10D6C42300487180 /* RegistrationPreferencePane.bundle in Resources */,
 				03BDFD2610D6BD5E00487180 /* TwitterPreferencePane.bundle in Resources */,
@@ -1061,6 +1133,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		030B19871252389E003AB6B3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				030B19B1125238E5003AB6B3 /* FacebookPreferencePaneController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		036914C7119D64A900F5BD1D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1171,12 +1251,18 @@
 				03652298123000CB00E01E03 /* TwitterAuthWindowController.m in Sources */,
 				03123E79124F5C49000182C2 /* FacebookAuthWindowController.m in Sources */,
 				03124048124F83A2000182C2 /* FacebookShareOperation.m in Sources */,
+				030B189012520305003AB6B3 /* NSString+Slice.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		030B199B125238A9003AB6B3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 030B19891252389E003AB6B3 /* FacebookPreferencePane */;
+			targetProxy = 030B199A125238A9003AB6B3 /* PBXContainerItemProxy */;
+		};
 		036914E5119D64F300F5BD1D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 036914C9119D64A900F5BD1D /* LastFM Preference Pane */;
@@ -1224,6 +1310,78 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		030B198C1252389E003AB6B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Facebook Preference Pane/FacebookPreferencePane-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = FacebookPreferencePane;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		030B198D1252389E003AB6B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Facebook Preference Pane/FacebookPreferencePane-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = FacebookPreferencePane;
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		030B198E1252389E003AB6B3 /* Distro */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Facebook Preference Pane/FacebookPreferencePane-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = FacebookPreferencePane;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Distro;
+		};
 		035C9A3C1230F58100E9941A /* Distro */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1729,6 +1887,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		030B198F1252389E003AB6B3 /* Build configuration list for PBXNativeTarget "FacebookPreferencePane" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				030B198C1252389E003AB6B3 /* Debug */,
+				030B198D1252389E003AB6B3 /* Release */,
+				030B198E1252389E003AB6B3 /* Distro */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		036914CF119D64AA00F5BD1D /* Build configuration list for PBXNativeTarget "LastFM Preference Pane" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
