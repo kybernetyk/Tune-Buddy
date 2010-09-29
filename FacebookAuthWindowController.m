@@ -15,6 +15,7 @@
 - (void) windowDidLoad
 {
 	[super windowDidLoad];
+	authDidSuceed = NO;
 	[self fetchAuthToken];
 	
 }
@@ -23,6 +24,10 @@
 {
 	[webView setFrameLoadDelegate: nil];
 	NSLog(@"window will close");
+	
+	if (!authDidSuceed)
+		[delegate facebookWindowControllerDidFail];
+	
 	[self autorelease];
 }
 
@@ -116,6 +121,8 @@
 			{
 				NSString *accessToken = [param substringFromIndex: r.location + r.length];
 				
+				NSLog(@"ACCESS TOKEN BIATCH: %@", accessToken);
+				accessToken = [accessToken URLDecodedString]; //just in case FB returns a URL encoded token (they seem to do that some times) convert it back
 				NSLog(@"ACCESS TOKEN BIATCH: %@", accessToken);
 				
 				NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];

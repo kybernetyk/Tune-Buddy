@@ -57,6 +57,8 @@
 	NSString *albumName;
 	NSNumber *trackRating;
 	NSNumber *trackPlayCount;
+	
+	NSInteger facebookAuthFailCount;
 }
 
 #pragma mark -

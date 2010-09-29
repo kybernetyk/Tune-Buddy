@@ -893,13 +893,34 @@
 
 - (void) facebookShareOperationDidSucceed: (FacebookShareOperation *) operation
 {
+	facebookAuthFailCount = 0;
 	NSLog(@"fb share was cool!");
 }
 
 - (void) facebookShareOperationDidFail: (FacebookShareOperation *) operation
 {
+	facebookAuthFailCount ++;
+	NSLog(@"auth fail count: %i", facebookAuthFailCount);
+
 	NSLog(@"fb share was not cool!");
-	[self authFacebookAndPostAfterwars: YES];
+	[self deauthFacebook];
+
+	if (facebookAuthFailCount < 3)
+	{
+		[self authFacebookAndPostAfterwars: YES];	
+	}
+	else
+	{
+		facebookAuthFailCount = 0;
+		//[self authFacebookAndPostAfterwars: NO];	
+		NSAlert *al = [NSAlert alertWithMessageText: @"Facebook critical auth error" 
+									  defaultButton: @"Ok" 
+									alternateButton: nil
+										otherButton: nil
+						  informativeTextWithFormat:@"There seems to be a critical authentication error with Facebook. Please sign into your Facebook profile and remove the permissions you granted to Tune Buddy. Then try to re-authenticate again."];
+		[al setAlertStyle: NSCriticalAlertStyle];
+		[al runModal];
+	}
 }
 
 
@@ -1349,6 +1370,11 @@
 	[self sendCurrentTrackToFacebook: self];
 }
 
+- (void) facebookWindowControllerDidFail
+{
+	NSLog(@"OMG WERE auth failed!");
+	facebookAuthFailCount = 0;
+}
 
 
 @end

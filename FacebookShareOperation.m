@@ -208,7 +208,7 @@
 	
 
 	NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
-	NSString *token = [defs objectForKey: @"facebookAccessToken"];
+	NSString *token = [[defs objectForKey: @"facebookAccessToken"] URLDecodedString]; //no url encode please!
 	if (!token)
 	{
 		NSLog(@"no token found. please auth!");

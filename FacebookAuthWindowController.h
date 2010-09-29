@@ -17,6 +17,8 @@
 	NSString *authToken;
 	
 	id delegate;
+	
+	BOOL authDidSuceed;
 }
 
 @property (readwrite, assign) id delegate;
