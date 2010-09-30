@@ -102,6 +102,11 @@
 	[req startSynchronous];
 	
 	NSString *responseString = [req responseString];
+
+	
+	NSString *trackURL = [responseString stringBetweenSubstringOne: @"<URL>" andSubstringTwo: @"</URL>" ignoringCase: YES];
+	NSLog(@"trackURL: %@", trackURL);
+	[self setTrackviewURL: trackURL];
 	
 	NSLog(@"%@",responseString);
 	NSInteger start = [responseString indexOfSubstring: @"<ALBUM" ignoringCase: YES];
@@ -119,8 +124,6 @@
 	NSString *albumURL = [albumChunk stringBetweenSubstringOne: @"<URL>" andSubstringTwo: @"</URL>" ignoringCase: YES];
 	NSLog(@"albumURL: %@", albumURL);
 	
-	NSString *trackURL = [responseString stringBetweenSubstringOne: @"<URL>" andSubstringTwo: @"</URL>" ignoringCase: YES];
-	NSLog(@"trackURL: %@", trackURL);
 	
 	//now get the image url by trying
 /*	<image size="small">http://userserve-ak.last.fm/serve/64s/5617239.jpg</image>
@@ -141,7 +144,7 @@
 	NSLog(@"image url: %@", imageURL);
 
 	[self setArtworkURL: imageURL];
-	[self setTrackviewURL: trackURL];
+
 }
 
 
@@ -309,13 +312,30 @@
 		else
 		{
 			[picture setObject: @"http://www.fluxforge.com/tune-buddy/" forKey: @"href"];
+			
 		}
 		
 		NSArray *media = [NSArray arrayWithObject: picture];
-		
-		
 		[attachment setObject: media forKey: @"media"];
 	}
+	else
+	{
+		NSMutableDictionary *picture = [NSMutableDictionary dictionary];
+		[picture setObject: @"image" forKey: @"type"];
+		[picture setObject: @"http://www.fluxforge.com/tune-buddy/no_artwork.png" forKey: @"src"];
+		if ([self trackviewURL])
+		{	
+			[picture setObject: [self trackviewURL] forKey: @"href"];		
+		}
+		else
+		{
+			[picture setObject: @"http://www.fluxforge.com/tune-buddy/" forKey: @"href"];
+		}
+
+		NSArray *media = [NSArray arrayWithObject: picture];
+		[attachment setObject: media forKey: @"media"];
+	}
+	
 	strAttachment = [json stringWithObject: attachment];	
 	NSLog(@"attachment: %@", strAttachment);
 	

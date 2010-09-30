@@ -388,7 +388,7 @@
 //			[dict retain];
 			
 			//get artwork and pass it to the dict
-			@try
+		/*	@try
 			{
 				if ([iTunes isRunning])
 				{				
@@ -407,7 +407,7 @@
 			{
 				NSLog(@"#3 Exception:%@ Reason: %@ Callstack: %@ userInfo: %@",e, [e reason], [e callStackSymbols],[e userInfo] );
 				
-			}
+			}*/
 
 			NSLog(@"dict: %@",dict);
 
