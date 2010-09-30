@@ -132,8 +132,15 @@
 			if (streamTitle != nil)
 				streamTitle	= [NSString stringWithString: streamTitle];
 
+
+/*			for (iTunesArtwork *artwork in [currentTrack artworks])
+			{
+				 NSLog(@"artwork: %@", [artwork data]);
+				 [self setAlbumArt: [artwork data]];
+			}*/
 			
-//			albumArt = [currentTrack artworks]
+			//can't do this as it would copy the shit each loop run
+			//			albumArt = [currentTrack artworks]
 			
 /*			NSDate *bla = [currentTrack playedDate];
 			if (bla != nil)
@@ -378,18 +385,22 @@
 									[NSNumber numberWithInteger: [[self trackPlayCount] integerValue]], @"trackPlayCount",
 								  nil];
 			
-			NSLog(@"dict: %@",dict);
 //			[dict retain];
 			
+			//get artwork and pass it to the dict
 			@try
 			{
-				iTunesTrack *currentTrack = [iTunes currentTrack];
-				
-				for (iTunesArtwork *artwork in [currentTrack artworks])
-				{
-					NSLog(@"artwork: %@", [artwork data]);
-					[self setAlbumArt: [artwork data]];
-					[dict setObject: [self albumArt] forKey: @"albumArt"];
+				if ([iTunes isRunning])
+				{				
+					iTunesTrack *currentTrack = [iTunes currentTrack];
+					
+					for (iTunesArtwork *artwork in [currentTrack artworks])
+					{
+						NSLog(@"artwork: %@", [artwork data]);
+						[self setAlbumArt: [artwork data]];
+						[dict setObject: [self albumArt] forKey: @"albumArt"];
+					}
+					
 				}
 			}
 			@catch (NSException *e) 
@@ -397,6 +408,9 @@
 				NSLog(@"#3 Exception:%@ Reason: %@ Callstack: %@ userInfo: %@",e, [e reason], [e callStackSymbols],[e userInfo] );
 				
 			}
+
+			NSLog(@"dict: %@",dict);
+
 			
 			[delegate performSelectorOnMainThread:@selector(iTunesTrackDidChangeTo:) withObject: dict waitUntilDone: YES];
 			[dict release];
