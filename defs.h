@@ -10,7 +10,7 @@
 #define KEYCHAIN_TWITTER @"Tune Buddy Twitter Credentials"
 #define KEYCHAIN_LASTFM @"Tune Buddy LastFM Credentials"
 
-//#define NSLog(format, ...)
+#define NSLog(format, ...)
 
 //consumer key
 #define TWITTER_API_KEY @"N5xET9H7GvoErKPu2bmOaQ"
