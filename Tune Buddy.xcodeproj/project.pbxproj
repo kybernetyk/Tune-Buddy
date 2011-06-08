@@ -1036,7 +1036,11 @@
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Tune Buddy" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* itunes control */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1331,6 +1335,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = FacebookPreferencePane;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
@@ -1355,6 +1360,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = FacebookPreferencePane;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -1378,6 +1384,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = FacebookPreferencePane;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Distro;
@@ -1420,6 +1427,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = "Tune Buddy";
+				SDKROOT = macosx;
 			};
 			name = Distro;
 		};
@@ -1443,6 +1451,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = GeneralPreferencePane;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -1468,6 +1477,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = UpdatingPreferencePane;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -1493,6 +1503,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = TwitterPreferencePane;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -1518,6 +1529,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = RegistrationPreferencePane;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -1543,6 +1555,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "LastFM Preference Pane";
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -1569,6 +1582,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "LastFM Preference Pane";
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
@@ -1593,6 +1607,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "LastFM Preference Pane";
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -1619,6 +1634,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = GeneralPreferencePane;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
@@ -1643,6 +1659,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = GeneralPreferencePane;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -1669,6 +1686,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = UpdatingPreferencePane;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
@@ -1693,6 +1711,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = UpdatingPreferencePane;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -1719,6 +1738,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = TwitterPreferencePane;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
@@ -1743,6 +1763,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = TwitterPreferencePane;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -1769,6 +1790,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = RegistrationPreferencePane;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
@@ -1793,6 +1815,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = RegistrationPreferencePane;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -1820,6 +1843,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = "Tune Buddy";
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -1842,6 +1866,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = "Tune Buddy";
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};

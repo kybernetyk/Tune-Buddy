@@ -47,13 +47,84 @@
 						 @"https://graph.facebook.com/oauth/authorize?client_id=%@&redirect_uri=http://www.fluxforge.com/tune-buddy/facebook_oauth/&display=popup&scope=publish_stream,offline_access",
 						FACEBOOK_API_CLIENT_ID];
 	
+	NSLog(@"fetching token from: %@", address);
+	
 	NSURL *url = [NSURL URLWithString:address];
 	//[[NSWorkspace sharedWorkspace] openURL:url];
+	
+	NSLog(@"URL: %@", url);
 	
 	
 	[[webView mainFrame] loadRequest:[NSURLRequest requestWithURL: url]];
 	
 }
+
+/*- (void)webView:(WebView *)sender didStartProvisionalLoadForFrame:(WebFrame *)frame
+{
+	NSLog(@"did start: %@", frame);	
+	NSLog(@"shit: %@", [[[frame dataSource] response] URL]);
+	NSLog(@"shit2: %@", [[[frame dataSource] request] URL]);
+}*/
+
+- (void)webView:(WebView *)sender didCommitLoadForFrame:(WebFrame *)frame
+{
+	NSLog(@"did commit: %@", frame);
+	NSLog(@"shit: %@", [[[frame dataSource] response] URL]);
+	NSLog(@"shit2: %@", [[[frame dataSource] request] URL]);
+	
+//	NSURL *URL = [[[frame dataSource] response] URL];
+
+	NSString *urlstring1 = [[[[frame dataSource] response] URL] absoluteString];
+	NSString *urlstring2 = [[[[frame dataSource] request] URL] absoluteString];
+	
+	NSString *urlstring = nil;
+	
+	NSString *needle = [NSString stringWithFormat: @"%@", FACEBOOK_API_CALLBACK_URL];
+	
+	if ([urlstring1 containsString: needle ignoringCase: YES])
+		urlstring = urlstring1;
+
+	if ([urlstring2 containsString: needle ignoringCase: YES])
+		urlstring = urlstring2;
+	
+	if (!urlstring)
+		return;
+
+		NSLog(@"will redirect to url: %@", urlstring);
+	if ([urlstring containsString: needle ignoringCase: YES])
+	{
+		NSString *errorNeedle = @"error";
+		NSString *successNeedle = @"code=";
+		
+		if ([urlstring containsString: errorNeedle ignoringCase: YES])
+		{
+			[[self window] close];
+		}
+		
+		if ([urlstring containsString: successNeedle ignoringCase: YES])
+		{
+			NSRange r = [urlstring rangeOfString: successNeedle options: NSCaseInsensitiveSearch];
+			if (r.location != NSNotFound)
+			{
+				authToken = [urlstring substringFromIndex: r.location + r.length];
+				[authToken retain];
+				
+				NSLog(@"auth token is: %@", authToken);
+				[webView stopLoading: self];
+				
+				[self fetchAccessToken];
+			}
+		}
+		
+	}
+
+}
+/*- (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame 
+{
+	NSLog(@"did finish: %@", frame);
+	NSLog(@"shit: %@", [[[frame dataSource] response] URL]);
+	NSLog(@"shit2: %@", [[[frame dataSource] request] URL]);
+}*/
 
 - (void)webView:(WebView *)sender willPerformClientRedirectToURL:(NSURL *)URL delay:(NSTimeInterval)seconds fireDate:(NSDate *)date forFrame:(WebFrame *)frame
 {

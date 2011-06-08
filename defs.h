@@ -20,7 +20,7 @@
 
 #define TWITTER_API_CALLBACK_URL @"http://www.fluxforge.com/tune-buddy/twitter_oauth/"
 
-#define FACEBOOK_API_KEY @"d8accb8f43f1b4461bdf94cff4ea0268"
-#define FACEBOOK_API_SECRET @"bc4ccaf0cd26c5575232cb8c8efba60b"
-#define FACEBOOK_API_CLIENT_ID @"137620056284853"
+#define FACEBOOK_API_KEY @"7b5eab9dbd3861eeb14499b83bb0699a"
+#define FACEBOOK_API_SECRET @"7b5eab9dbd3861eeb14499b83bb0699a"
+#define FACEBOOK_API_CLIENT_ID @"196155547080674"
 #define FACEBOOK_API_CALLBACK_URL @"http://www.fluxforge.com/tune-buddy/facebook_oauth/"
