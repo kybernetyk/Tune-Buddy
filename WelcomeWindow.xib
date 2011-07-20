@@ -118,7 +118,7 @@
 						</object>
 						<object class="WebView" id="358510240">
 							<reference key="NSNextResponder" ref="1006"/>
-							<int key="NSvFlags">256</int>
+							<int key="NSvFlags">258</int>
 							<object class="NSMutableSet" key="NSDragTypes">
 								<bool key="EncodedWithXMLCoder">YES</bool>
 								<object class="NSArray" key="set.sortedObjects">
@@ -152,11 +152,10 @@
 						</object>
 						<object class="NSButton" id="893119908">
 							<reference key="NSNextResponder" ref="1006"/>
-							<int key="NSvFlags">268</int>
+							<int key="NSvFlags">265</int>
 							<string key="NSFrame">{{582, 12}, {118, 25}}</string>
 							<reference key="NSSuperview" ref="1006"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="447126162">
 								<int key="NSCellFlags">-2080244224</int>
@@ -176,19 +175,20 @@
 								<int key="NSPeriodicInterval">75</int>
 							</object>
 						</object>
-						<object class="NSButton" id="847471995">
+						<object class="NSButton" id="33581739">
 							<reference key="NSNextResponder" ref="1006"/>
-							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{399, 12}, {175, 25}}</string>
+							<int key="NSvFlags">-2147483383</int>
+							<string key="NSFrame">{{312, 12}, {262, 25}}</string>
 							<reference key="NSSuperview" ref="1006"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="893119908"/>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSButtonCell" key="NSCell" id="443155740">
+							<object class="NSButtonCell" key="NSCell" id="267133236">
 								<int key="NSCellFlags">-2080244224</int>
 								<int key="NSCellFlags2">134217728</int>
-								<string key="NSContents">Purchase Full Version</string>
+								<string key="NSContents">View Tune Buddy in the Mac App Store</string>
 								<reference key="NSSupport" ref="410835800"/>
-								<reference key="NSControlView" ref="847471995"/>
+								<reference key="NSControlView" ref="33581739"/>
 								<int key="NSButtonFlags">-2038152961</int>
 								<int key="NSButtonFlags2">163</int>
 								<string key="NSAlternateContents"/>
@@ -203,12 +203,12 @@
 							<string key="NSFrame">{{18, 16}, {293, 18}}</string>
 							<reference key="NSSuperview" ref="1006"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="893119908"/>
+							<reference key="NSNextKeyView" ref="33581739"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="923514262">
 								<int key="NSCellFlags">-2080244224</int>
 								<int key="NSCellFlags2">0</int>
-								<string key="NSContents">Show this window when Tune Buddy opens</string>
+								<string key="NSContents">Show this window on start</string>
 								<reference key="NSSupport" ref="410835800"/>
 								<reference key="NSControlView" ref="230875535"/>
 								<int key="NSButtonFlags">1211912703</int>
@@ -302,9 +302,17 @@
 					<object class="IBActionConnection" key="connection">
 						<string key="label">mercantilismNow:</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="847471995"/>
+						<reference key="destination" ref="33581739"/>
 					</object>
 					<int key="connectionID">175</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">buyButton</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="33581739"/>
+					</object>
+					<int key="connectionID">176</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -353,7 +361,7 @@
 							<reference ref="137340288"/>
 							<reference ref="358510240"/>
 							<reference ref="893119908"/>
-							<reference ref="847471995"/>
+							<reference ref="33581739"/>
 						</object>
 						<reference key="parent" ref="1005"/>
 					</object>
@@ -402,17 +410,17 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">172</int>
-						<reference key="object" ref="847471995"/>
+						<reference key="object" ref="33581739"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="443155740"/>
+							<reference ref="267133236"/>
 						</object>
 						<reference key="parent" ref="1006"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">173</int>
-						<reference key="object" ref="443155740"/>
-						<reference key="parent" ref="847471995"/>
+						<reference key="object" ref="267133236"/>
+						<reference key="parent" ref="33581739"/>
 					</object>
 				</object>
 			</object>
@@ -475,7 +483,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">175</int>
+			<int key="maxID">176</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

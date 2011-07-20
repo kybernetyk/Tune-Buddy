@@ -38,8 +38,12 @@
 	NSMenuItem *facebookMenuItem;
 	NSMenuItem *smallScreenModeMenuItem;
 	NSMenuItem *quitMenuItem;
+#ifdef LITE_VERSION
 	NSMenuItem *fullVersionMenuItem;
+#endif
+	NSMenuItem *contactSupportMenuItem;
 	NSMenu *statusBarMenu;
+	
 	
 	AdiumApplication *adium;
 	

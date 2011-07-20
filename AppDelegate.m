@@ -575,6 +575,15 @@
 		
 	}	
 #endif
+	if (!contactSupportMenuItem)
+	{
+#ifdef LITE_VERSION
+		[statusBarMenu addItem:[NSMenuItem separatorItem]];
+#endif
+		contactSupportMenuItem = [statusBarMenu addItemWithTitle:@"Contact Support" action:@selector(contactSupport:) keyEquivalent: [NSString string]];
+		
+
+	}
 	
 	if (!preferencesMenuItem)
 	{	
@@ -1134,6 +1143,25 @@
 	[[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: @"http://www.fluxforge.com/tune-buddy/buy/"]];
 #endif
 }
+
+- (void) contactSupport: (id) sender
+{
+#ifdef MAS_VERSION
+	#ifdef LITE_VERSION
+	NSURL *url = [NSURL URLWithString: @"mailto:support@fluxforge.com?subject=Tune%20Buddy%20Lite%20Support"];
+	#else
+	NSURL *url = [NSURL URLWithString: @"mailto:support@fluxforge.com?subject=Tune%20Buddy%20MAS%20Support"];
+	#endif
+#else
+	NSURL *url;
+	if ([self isRegistered])
+		url = [NSURL URLWithString: @"mailto:support@fluxforge.com?subject=Tune%20Buddy%20Support"];
+	else
+		url = [NSURL URLWithString: @"mailto:support@fluxforge.com?subject=Tune%20Buddy%20Trial%20Support"];	
+#endif
+	[[NSWorkspace sharedWorkspace] openURL: url];
+}
+
 
 - (void) openRegistrationPane: (id) sender
 {

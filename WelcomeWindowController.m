@@ -40,6 +40,10 @@
 	NSString *subdir = @"welcome_lite";
 	[buyButton setHidden: NO];
 	[[self window] setTitle: @"Welcome to Tune Buddy Lite"];
+	NSRect f = [[self window] frame];
+	f.size.width = 960;
+	[[self window] setFrame: f display: NO animate: NO];
+	[[self window] center];
 #else
 	NSString *subdir = @"welcome";
 	[[self window] setTitle: @"Welcome to Tune Buddy"];

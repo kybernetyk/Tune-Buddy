@@ -4,13 +4,13 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <style type="text/css">
 body {margin: 0; padding: 0;}
-.container {width:720px; height:500px;background: url(app-back.png) top left no-repeat;-webkit-perspective: 800;-webkit-transform-style: flaten;}
+.container {width:960px; height:500px;background: url(app-back.png) top left no-repeat;-webkit-perspective: 800;-webkit-transform-style: flaten;}
 .container * {position: absolute;}
 .logo {top: 0; left: 225px; width: 256px; height: 256px; background:url(app-logo.png) top left no-repeat;}
-/*.start {top:476px; left:257px; width:204px; height:42px; background:url(app-start.png) 0 0 no-repeat;}
+.start {top:400px; left:20px; width:204px; height:42px; background:url(app-start.png) 0 0 no-repeat;}
 .start:hover {background-position: 0 -42px;}
-.start:active {background-position: 0 -84px;}*/
-/*.right {top: 0; left: 720px; width: 240px; height: 540px; background: url(app-right.png) top left no-repeat;}*/
+.start:active {background-position: 0 -84px;}
+.right {top: 0; left: 720px; width: 240px; height: 500px; background: url(app-right.png) top left no-repeat;}
 
 @-webkit-keyframes wpw {
 0% { -webkit-transform:rotateY(-45deg); opacity: 0}
@@ -53,10 +53,11 @@ function askWelcome(u, ah, sh) {
 <div class="container">
 	<div class="main">
 		<div class="logo"></div>
-		<!--<a href="#" class="start" onClick="startWallWiz();"></a>-->
 	</div>
-	<!--<div class="right">
-	</div>-->
+	<div class="right">
+	
+		<a href="#" class="start" onClick="startWallWiz();"></a>
+	</div>
 </div>
 
 
