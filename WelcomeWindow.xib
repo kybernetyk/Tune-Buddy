@@ -21,12 +21,13 @@
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<string>NSButton</string>
-			<string>NSWindowTemplate</string>
 			<string>NSView</string>
-			<string>NSButtonCell</string>
-			<string>NSCustomObject</string>
+			<string>NSWindowTemplate</string>
 			<string>WebView</string>
+			<string>NSButtonCell</string>
+			<string>NSButton</string>
+			<string>NSUserDefaultsController</string>
+			<string>NSCustomObject</string>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -213,6 +214,9 @@
 				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
 				<string key="NSMaxSize">{1e+13, 1e+13}</string>
 			</object>
+			<object class="NSUserDefaultsController" id="521466376">
+				<bool key="NSSharedInstance">YES</bool>
+			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<object class="NSMutableArray" key="connectionRecords">
@@ -248,6 +252,30 @@
 						<reference key="destination" ref="358510240"/>
 					</object>
 					<int key="connectionID">159</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: values.showWelcome</string>
+						<reference key="source" ref="923514262"/>
+						<reference key="destination" ref="521466376"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="923514262"/>
+							<reference key="NSDestination" ref="521466376"/>
+							<string key="NSLabel">value: values.showWelcome</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">values.showWelcome</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">170</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">closeMe:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="893119908"/>
+					</object>
+					<int key="connectionID">171</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -337,6 +365,11 @@
 						<reference key="object" ref="923514262"/>
 						<reference key="parent" ref="230875535"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">164</int>
+						<reference key="object" ref="521466376"/>
+						<reference key="parent" ref="0"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -394,7 +427,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">163</int>
+			<int key="maxID">171</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -402,6 +435,17 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">WelcomeWindowController</string>
 					<string key="superclassName">NSWindowController</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">closeMe:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">closeMe:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">closeMe:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">

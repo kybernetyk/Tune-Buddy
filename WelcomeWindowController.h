@@ -16,4 +16,5 @@
     
 }
 
+-(IBAction) closeMe: (id) sender;
 @end

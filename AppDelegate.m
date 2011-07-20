@@ -214,6 +214,7 @@
 						  [NSNumber numberWithBool: shallEnableSmallScreenMode], @"smallScreenModeEnabled",
 						  [NSNumber numberWithBool: shallEnableSmallScreenMode], @"growlEnabled", //enable growl notifications when small screen mode is enabled. don't bother big screen users with growl
 						  fontData, @"statusItemForegroundColor",
+						  [NSNumber numberWithBool: YES], @"showWelcome",
 						  nil];
 	
 	[defaults registerDefaults: dict];
@@ -283,11 +284,13 @@
 	[defc addObserver: self forKeyPath: @"values.lastFMUsername" options: NSKeyValueObservingOptionNew context: @"lastFMUsername"];
 	
 	
-//	[self authFacebookAndPostAfterwars: NO];
-	[NSApp activateIgnoringOtherApps: YES];
+	if ([[NSUserDefaults standardUserDefaults] boolForKey: @"showWelcome"]) {
+	//	[self authFacebookAndPostAfterwars: NO];
+		[NSApp activateIgnoringOtherApps: YES];
 
-	WelcomeWindowController *wwc = [[WelcomeWindowController alloc] initWithWindowNibName: @"WelcomeWindow"];
-	[[wwc window] makeKeyWindow];
+		WelcomeWindowController *wwc = [[WelcomeWindowController alloc] initWithWindowNibName: @"WelcomeWindow"];
+		[[wwc window] makeKeyWindow];
+	}
 }
 
 
