@@ -17,9 +17,6 @@
 		03124048124F83A2000182C2 /* FacebookShareOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 03124047124F83A2000182C2 /* FacebookShareOperation.m */; };
 		0314E9BE13D72D3B00F1A08E /* welcome_lite in Resources */ = {isa = PBXBuildFile; fileRef = 0314E9BD13D72D3B00F1A08E /* welcome_lite */; };
 		0314E9BF13D72D3B00F1A08E /* welcome_lite in Resources */ = {isa = PBXBuildFile; fileRef = 0314E9BD13D72D3B00F1A08E /* welcome_lite */; };
-		0314E9CB13D72E8600F1A08E /* FacebookPreferencePane.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 030B198A1252389E003AB6B3 /* FacebookPreferencePane.bundle */; };
-		0314E9CC13D72E8600F1A08E /* LastFM Preference Pane.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 036914CA119D64A900F5BD1D /* LastFM Preference Pane.bundle */; };
-		0314E9CD13D72E8600F1A08E /* TwitterPreferencePane.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 03BDFD1910D6BD3A00487180 /* TwitterPreferencePane.bundle */; };
 		0314E9CE13D72E8600F1A08E /* GeneralPreferencePane.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 03BDFC6010D6BA0500487180 /* GeneralPreferencePane.bundle */; };
 		0314E9CF13D72E8600F1A08E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		0314E9D013D72E8600F1A08E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
@@ -330,27 +327,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 03BDFC5F10D6BA0500487180;
 			remoteInfo = GeneralPreferencePane;
-		};
-		0314E9C513D72E8600F1A08E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 03BDFD1810D6BD3A00487180;
-			remoteInfo = TwitterPreferencePane;
-		};
-		0314E9C713D72E8600F1A08E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 036914C9119D64A900F5BD1D;
-			remoteInfo = "LastFM Preference Pane";
-		};
-		0314E9C913D72E8600F1A08E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 030B19891252389E003AB6B3;
-			remoteInfo = FacebookPreferencePane;
 		};
 		036914E4119D64F300F5BD1D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1259,9 +1235,6 @@
 			);
 			dependencies = (
 				0314E9C213D72E8600F1A08E /* PBXTargetDependency */,
-				0314E9C413D72E8600F1A08E /* PBXTargetDependency */,
-				0314E9C613D72E8600F1A08E /* PBXTargetDependency */,
-				0314E9C813D72E8600F1A08E /* PBXTargetDependency */,
 			);
 			name = "Tune Buddy MAS Lite";
 			productInstallPath = "$(HOME)/Applications";
@@ -1448,9 +1421,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0314E9CB13D72E8600F1A08E /* FacebookPreferencePane.bundle in Resources */,
-				0314E9CC13D72E8600F1A08E /* LastFM Preference Pane.bundle in Resources */,
-				0314E9CD13D72E8600F1A08E /* TwitterPreferencePane.bundle in Resources */,
 				0314E9CE13D72E8600F1A08E /* GeneralPreferencePane.bundle in Resources */,
 				0314E9CF13D72E8600F1A08E /* InfoPlist.strings in Resources */,
 				0314E9D013D72E8600F1A08E /* MainMenu.xib in Resources */,
@@ -1843,21 +1813,6 @@
 			isa = PBXTargetDependency;
 			target = 03BDFC5F10D6BA0500487180 /* GeneralPreferencePane */;
 			targetProxy = 0314E9C313D72E8600F1A08E /* PBXContainerItemProxy */;
-		};
-		0314E9C413D72E8600F1A08E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 03BDFD1810D6BD3A00487180 /* TwitterPreferencePane */;
-			targetProxy = 0314E9C513D72E8600F1A08E /* PBXContainerItemProxy */;
-		};
-		0314E9C613D72E8600F1A08E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 036914C9119D64A900F5BD1D /* LastFM Preference Pane */;
-			targetProxy = 0314E9C713D72E8600F1A08E /* PBXContainerItemProxy */;
-		};
-		0314E9C813D72E8600F1A08E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 030B19891252389E003AB6B3 /* FacebookPreferencePane */;
-			targetProxy = 0314E9C913D72E8600F1A08E /* PBXContainerItemProxy */;
 		};
 		036914E5119D64F300F5BD1D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

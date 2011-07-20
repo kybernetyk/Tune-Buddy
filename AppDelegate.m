@@ -545,7 +545,7 @@
 	NSValueTransformer *tran = [NSValueTransformer valueTransformerForName: NSNegateBooleanTransformerName];
 	NSDictionary *opts = [NSDictionary dictionaryWithObject: tran forKey: @"NSValueTransformer"];
 	
-
+#ifndef LITE_VERSION
 	if (!adiumMenuItem)
 	{
 		adiumMenuItem = [statusBarMenu addItemWithTitle:@"Send To Active Adium Chat" action:@selector(sendCurrentTrackToAdium:) keyEquivalent: [NSString string]];
@@ -565,6 +565,7 @@
 		[statusBarMenu addItem:[NSMenuItem separatorItem]];
 		
 	}
+#endif
 	
 	if (!preferencesMenuItem)
 	{	
@@ -847,7 +848,11 @@
 	
 	// Set which panes are included, and their order.
 #ifdef MAS_VERSION
+#ifndef LITE_VERSION
 	[preferencesWindowController setPanesOrder:[NSArray arrayWithObjects:@"General",@"Twitter",@"LastFM",@"Facebook", nil]];
+#else
+	[preferencesWindowController setPanesOrder:[NSArray arrayWithObjects:@"General",nil]];
+#endif
 	
 #else
 	[preferencesWindowController setPanesOrder:[NSArray arrayWithObjects:@"General",@"Twitter",@"LastFM",@"Facebook",@"Updating",@"Registration", nil]];
