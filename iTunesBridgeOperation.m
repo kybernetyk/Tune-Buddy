@@ -58,7 +58,7 @@
 		//	[iTunes setDelegate: self];
 			[iTunes retain];
 			
-			NSLog(@"timeout: %d, %@",[iTunes timeout], iTunes);
+			//NSLog(@"timeout: %d, %@",[iTunes timeout], iTunes);
 		}
 		@catch(NSException *e)
 		{

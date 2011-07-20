@@ -380,7 +380,7 @@
 	}
 	
 	if (!adium)
-		adium = [SBApplication applicationWithBundleIdentifier:@"com.adiumX.adiumX"];
+		adium = [[SBApplication applicationWithBundleIdentifier:@"com.adiumX.adiumX"] retain];
 	
 	if ([adium isRunning] && [[adium activeChat] exists])
 	{	
@@ -620,7 +620,6 @@
 
 		if ([defs boolForKey: @"keepAlwaysLeft"] && [statusBar respondsToSelector:@selector(_statusItemWithLength:withPriority:)])
 		{
-			NSLog(@"will keep always left!");
 			statusItem = [statusBar _statusItemWithLength:0 withPriority:INT_MIN ];
 			[ statusItem setLength:0 ];
 		}
@@ -635,7 +634,6 @@
 
 		if ([defs boolForKey: @"keepAlwaysLeft"] && [statusBar respondsToSelector:@selector(_statusItemWithLength:withPriority:)])
 		{
-			NSLog(@"still keeping left!");
 			[ statusItem setLength:NSVariableStatusItemLength ];
 		}
 		
@@ -910,7 +908,7 @@
 - (IBAction) sendCurrentTrackToAdium: (id) sender
 {
 	if (!adium)
-		adium = [SBApplication applicationWithBundleIdentifier:@"com.adiumX.adiumX"];
+		[adium = [SBApplication applicationWithBundleIdentifier:@"com.adiumX.adiumX"] retain];
 	
 	if (![adium isRunning])
 		return;
