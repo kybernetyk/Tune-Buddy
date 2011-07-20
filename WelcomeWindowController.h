@@ -13,8 +13,9 @@
 @interface WelcomeWindowController : NSWindowController {
 	IBOutlet WebView *webView;
 	IBOutlet WebView *bottomWebView;
-    
+	IBOutlet NSButton *buyButton;    
 }
 
 -(IBAction) closeMe: (id) sender;
+-(IBAction) mercantilismNow: (id) sender;
 @end

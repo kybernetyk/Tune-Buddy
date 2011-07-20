@@ -38,8 +38,11 @@
 	
 #ifdef LITE_VERSION
 	NSString *subdir = @"welcome_lite";
+	[buyButton setHidden: NO];
+	[[self window] setTitle: @"Welcome to Tune Buddy Lite"];
 #else
 	NSString *subdir = @"welcome";
+	[[self window] setTitle: @"Welcome to Tune Buddy"];
 #endif
 	
 	NSURL *url = [[NSBundle mainBundle] URLForResource:@"index" withExtension:@"html" subdirectory: subdir];
@@ -61,5 +64,10 @@
 {
 	[[self window] close];
 	[self autorelease];
+}
+
+-(IBAction) mercantilismNow: (id) sender
+{
+	[[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: @"http://mas"]];
 }
 @end
