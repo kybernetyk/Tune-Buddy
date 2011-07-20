@@ -35,7 +35,14 @@
 	
 //	NSLog(@"fetching token from: %@", address);
 //	[bottomView addSubview: [[NSImage imageNamed: @"welcome_bottom"] view]]; 
-	NSURL *url = [[NSBundle mainBundle] URLForResource:@"index" withExtension:@"html" subdirectory: @"welcome"];
+	
+#ifdef LITE_VERSION
+	NSString *subdir = @"welcome_lite";
+#else
+	NSString *subdir = @"welcome";
+#endif
+	
+	NSURL *url = [[NSBundle mainBundle] URLForResource:@"index" withExtension:@"html" subdirectory: subdir];
 	
 //	NSURL *url = [NSURL URLWithString:address];
 	//[[NSWorkspace sharedWorkspace] openURL:url];
@@ -45,7 +52,7 @@
 	
 	[[webView mainFrame] loadRequest:[NSURLRequest requestWithURL: url]];
 		
-	url = [[NSBundle mainBundle] URLForResource:@"bottom" withExtension:@"html" subdirectory: @"welcome"];
+	url = [[NSBundle mainBundle] URLForResource:@"bottom" withExtension:@"html" subdirectory: subdir];
 	[[bottomWebView mainFrame] loadRequest:[NSURLRequest requestWithURL: url]];
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }

@@ -15,6 +15,103 @@
 		03123E79124F5C49000182C2 /* FacebookAuthWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03123E78124F5C49000182C2 /* FacebookAuthWindowController.m */; };
 		03123E7B124F5C59000182C2 /* FacebookAuthWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03123E7A124F5C59000182C2 /* FacebookAuthWindow.xib */; };
 		03124048124F83A2000182C2 /* FacebookShareOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 03124047124F83A2000182C2 /* FacebookShareOperation.m */; };
+		0314E9BE13D72D3B00F1A08E /* welcome_lite in Resources */ = {isa = PBXBuildFile; fileRef = 0314E9BD13D72D3B00F1A08E /* welcome_lite */; };
+		0314E9BF13D72D3B00F1A08E /* welcome_lite in Resources */ = {isa = PBXBuildFile; fileRef = 0314E9BD13D72D3B00F1A08E /* welcome_lite */; };
+		0314E9CB13D72E8600F1A08E /* FacebookPreferencePane.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 030B198A1252389E003AB6B3 /* FacebookPreferencePane.bundle */; };
+		0314E9CC13D72E8600F1A08E /* LastFM Preference Pane.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 036914CA119D64A900F5BD1D /* LastFM Preference Pane.bundle */; };
+		0314E9CD13D72E8600F1A08E /* TwitterPreferencePane.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 03BDFD1910D6BD3A00487180 /* TwitterPreferencePane.bundle */; };
+		0314E9CE13D72E8600F1A08E /* GeneralPreferencePane.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 03BDFC6010D6BA0500487180 /* GeneralPreferencePane.bundle */; };
+		0314E9CF13D72E8600F1A08E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
+		0314E9D013D72E8600F1A08E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
+		0314E9D113D72E8600F1A08E /* Play.png in Resources */ = {isa = PBXBuildFile; fileRef = 03C64D2E102EEB950081A12C /* Play.png */; };
+		0314E9D213D72E8600F1A08E /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 03C64D2F102EEB950081A12C /* Pause.png */; };
+		0314E9D313D72E8600F1A08E /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0329237F1055129800D30E83 /* icon.icns */; };
+		0314E9D413D72E8600F1A08E /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 0374404A109DDAA200B3B221 /* dsa_pub.pem */; };
+		0314E9D513D72E8600F1A08E /* TwitterAuthWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03652299123000D600E01E03 /* TwitterAuthWindow.xib */; };
+		0314E9D613D72E8600F1A08E /* FacebookAuthWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03123E7A124F5C59000182C2 /* FacebookAuthWindow.xib */; };
+		0314E9D713D72E8600F1A08E /* welcome in Resources */ = {isa = PBXBuildFile; fileRef = 037A65C913D6FA80001C01A8 /* welcome */; };
+		0314E9D813D72E8600F1A08E /* WelcomeWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037A65D213D6FBBF001C01A8 /* WelcomeWindow.xib */; };
+		0314E9D913D72E8600F1A08E /* welcome_lite in Resources */ = {isa = PBXBuildFile; fileRef = 0314E9BD13D72D3B00F1A08E /* welcome_lite */; };
+		0314E9DB13D72E8600F1A08E /* LastFMAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369168711A1224600F5BD1D /* LastFMAuth.m */; };
+		0314E9DC13D72E8600F1A08E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		0314E9DD13D72E8600F1A08E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EF247D600EEC653B002FB82F /* AppDelegate.m */; };
+		0314E9DE13D72E8600F1A08E /* NSString+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 03743E8D109D987300B3B221 /* NSString+Search.m */; };
+		0314E9DF13D72E8600F1A08E /* MGTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFB8910D6B37500487180 /* MGTwitterEngine.m */; };
+		0314E9E013D72E8600F1A08E /* MGTwitterHTTPURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFB8D10D6B37500487180 /* MGTwitterHTTPURLConnection.m */; };
+		0314E9E113D72E8600F1A08E /* MGTwitterLibXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFB8F10D6B37500487180 /* MGTwitterLibXMLParser.m */; };
+		0314E9E213D72E8600F1A08E /* MGTwitterMessagesLibXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFB9110D6B37500487180 /* MGTwitterMessagesLibXMLParser.m */; };
+		0314E9E313D72E8600F1A08E /* MGTwitterMessagesParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFB9310D6B37500487180 /* MGTwitterMessagesParser.m */; };
+		0314E9E413D72E8600F1A08E /* MGTwitterMiscLibXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFB9710D6B37500487180 /* MGTwitterMiscLibXMLParser.m */; };
+		0314E9E513D72E8600F1A08E /* MGTwitterMiscParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFB9910D6B37500487180 /* MGTwitterMiscParser.m */; };
+		0314E9E613D72E8600F1A08E /* MGTwitterStatusesLibXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFBA110D6B37500487180 /* MGTwitterStatusesLibXMLParser.m */; };
+		0314E9E713D72E8600F1A08E /* MGTwitterStatusesParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFBA310D6B37500487180 /* MGTwitterStatusesParser.m */; };
+		0314E9E813D72E8600F1A08E /* MGTwitterUsersLibXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFBA710D6B37500487180 /* MGTwitterUsersLibXMLParser.m */; };
+		0314E9E913D72E8600F1A08E /* MGTwitterUsersParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFBA910D6B37500487180 /* MGTwitterUsersParser.m */; };
+		0314E9EA13D72E8600F1A08E /* MGTwitterXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFBAD10D6B37500487180 /* MGTwitterXMLParser.m */; };
+		0314E9EB13D72E8600F1A08E /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFBB110D6B37500487180 /* NSData+Base64.m */; };
+		0314E9EC13D72E8600F1A08E /* NSString+UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFBB310D6B37500487180 /* NSString+UUID.m */; };
+		0314E9ED13D72E8600F1A08E /* SS_PrefsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFC2B10D6B96600487180 /* SS_PrefsController.m */; };
+		0314E9EE13D72E8600F1A08E /* iTunesBridgeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0E80010D7BCDC00D8B185 /* iTunesBridgeOperation.m */; };
+		0314E9EF13D72E8600F1A08E /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0E8C910D7C87700D8B185 /* PFMoveApplication.m */; };
+		0314E9F013D72E8600F1A08E /* yajl.c in Sources */ = {isa = PBXBuildFile; fileRef = 03EAFB4310D8032A00B715D0 /* yajl.c */; };
+		0314E9F113D72E8600F1A08E /* yajl_alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 03EAFB4410D8032A00B715D0 /* yajl_alloc.c */; };
+		0314E9F213D72E8600F1A08E /* yajl_buf.c in Sources */ = {isa = PBXBuildFile; fileRef = 03EAFB4610D8032A00B715D0 /* yajl_buf.c */; };
+		0314E9F313D72E8600F1A08E /* yajl_encode.c in Sources */ = {isa = PBXBuildFile; fileRef = 03EAFB4A10D8032A00B715D0 /* yajl_encode.c */; };
+		0314E9F413D72E8600F1A08E /* yajl_gen.c in Sources */ = {isa = PBXBuildFile; fileRef = 03EAFB4C10D8032A00B715D0 /* yajl_gen.c */; };
+		0314E9F513D72E8600F1A08E /* yajl_lex.c in Sources */ = {isa = PBXBuildFile; fileRef = 03EAFB4E10D8032A00B715D0 /* yajl_lex.c */; };
+		0314E9F613D72E8600F1A08E /* yajl_parser.c in Sources */ = {isa = PBXBuildFile; fileRef = 03EAFB5110D8032A00B715D0 /* yajl_parser.c */; };
+		0314E9F713D72E8600F1A08E /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C604D210EFCEB400BDC333 /* NSString+Additions.m */; };
+		0314E9F813D72E8600F1A08E /* LastFMScrobbler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E851117720840082AB8F /* LastFMScrobbler.m */; };
+		0314E9F913D72E8600F1A08E /* FMCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E863117723580082AB8F /* FMCallback.m */; };
+		0314E9FA13D72E8600F1A08E /* FMEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E865117723580082AB8F /* FMEngine.m */; };
+		0314E9FB13D72E8600F1A08E /* FMEngineURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E867117723580082AB8F /* FMEngineURLConnection.m */; };
+		0314E9FC13D72E8600F1A08E /* NSString+FMEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E869117723580082AB8F /* NSString+FMEngine.m */; };
+		0314E9FD13D72E8600F1A08E /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E873117724370082AB8F /* ASIFormDataRequest.m */; };
+		0314E9FE13D72E8600F1A08E /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E875117724370082AB8F /* ASIHTTPRequest.m */; };
+		0314E9FF13D72E8600F1A08E /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E878117724370082AB8F /* ASIInputStream.m */; };
+		0314EA0013D72E8600F1A08E /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E87A117724370082AB8F /* ASINetworkQueue.m */; };
+		0314EA0113D72E8600F1A08E /* ASINSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E87C117724370082AB8F /* ASINSStringAdditions.m */; };
+		0314EA0213D72E8600F1A08E /* LastFMSubmissionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 034DF9A8119ABF1400680CA6 /* LastFMSubmissionOperation.m */; };
+		0314EA0313D72E8600F1A08E /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F9F8D6119B346A000CA35E /* NSObject+SBJSON.m */; };
+		0314EA0413D72E8600F1A08E /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F9F8D8119B346A000CA35E /* NSString+SBJSON.m */; };
+		0314EA0513D72E8600F1A08E /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F9F8DA119B346A000CA35E /* SBJSON.m */; };
+		0314EA0613D72E8600F1A08E /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F9F8DC119B346A000CA35E /* SBJsonBase.m */; };
+		0314EA0713D72E8600F1A08E /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F9F8DE119B346A000CA35E /* SBJsonParser.m */; };
+		0314EA0813D72E8600F1A08E /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F9F8E0119B346A000CA35E /* SBJsonWriter.m */; };
+		0314EA0913D72E8600F1A08E /* LastFMNotificationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369145C119D482800F5BD1D /* LastFMNotificationOperation.m */; };
+		0314EA0A13D72E8600F1A08E /* EMKeychainItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C60DCA11A2B8E200823D21 /* EMKeychainItem.m */; };
+		0314EA0B13D72E8600F1A08E /* NSMutableURLRequest+Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 03652261122FFFAA00E01E03 /* NSMutableURLRequest+Parameters.m */; };
+		0314EA0C13D72E8600F1A08E /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 03652263122FFFAA00E01E03 /* NSString+URLEncoding.m */; };
+		0314EA0D13D72E8600F1A08E /* NSURL+Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 03652265122FFFAA00E01E03 /* NSURL+Base.m */; };
+		0314EA0E13D72E8600F1A08E /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 03652267122FFFAA00E01E03 /* Base64Transcoder.c */; };
+		0314EA0F13D72E8600F1A08E /* OAAsynchronousDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0365226A122FFFAA00E01E03 /* OAAsynchronousDataFetcher.m */; };
+		0314EA1013D72E8600F1A08E /* OAConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0365226C122FFFAA00E01E03 /* OAConsumer.m */; };
+		0314EA1113D72E8600F1A08E /* OADataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0365226E122FFFAA00E01E03 /* OADataFetcher.m */; };
+		0314EA1213D72E8600F1A08E /* OAHMAC_SHA1SignatureProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 03652270122FFFAA00E01E03 /* OAHMAC_SHA1SignatureProvider.m */; };
+		0314EA1313D72E8600F1A08E /* OAMutableURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 03652272122FFFAA00E01E03 /* OAMutableURLRequest.m */; };
+		0314EA1413D72E8600F1A08E /* OAPlaintextSignatureProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 03652274122FFFAA00E01E03 /* OAPlaintextSignatureProvider.m */; };
+		0314EA1513D72E8600F1A08E /* OARequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 03652276122FFFAA00E01E03 /* OARequestParameter.m */; };
+		0314EA1613D72E8600F1A08E /* OAServiceTicket.m in Sources */ = {isa = PBXBuildFile; fileRef = 03652278122FFFAA00E01E03 /* OAServiceTicket.m */; };
+		0314EA1713D72E8600F1A08E /* OAToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 0365227B122FFFAA00E01E03 /* OAToken.m */; };
+		0314EA1813D72E8600F1A08E /* TwitterAuthWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03652297123000CB00E01E03 /* TwitterAuthWindowController.m */; };
+		0314EA1913D72E8600F1A08E /* FacebookAuthWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03123E78124F5C49000182C2 /* FacebookAuthWindowController.m */; };
+		0314EA1A13D72E8600F1A08E /* FacebookShareOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 03124047124F83A2000182C2 /* FacebookShareOperation.m */; };
+		0314EA1B13D72E8600F1A08E /* NSString+Slice.m in Sources */ = {isa = PBXBuildFile; fileRef = 030B188F12520305003AB6B3 /* NSString+Slice.m */; };
+		0314EA1C13D72E8600F1A08E /* WelcomeWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 037A65CF13D6FB9F001C01A8 /* WelcomeWindowController.m */; };
+		0314EA1E13D72E8600F1A08E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		0314EA1F13D72E8600F1A08E /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B97324FDCFA39411CA2CEA /* AppKit.framework */; };
+		0314EA2013D72E8600F1A08E /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03743D3E109D91F200B3B221 /* ScriptingBridge.framework */; };
+		0314EA2113D72E8600F1A08E /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03DAA06D13D6C65F006D4AF4 /* Growl.framework */; };
+		0314EA2213D72E8600F1A08E /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03BDFBD910D6B6A400487180 /* libxml2.dylib */; };
+		0314EA2313D72E8600F1A08E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B0E8CF10D7C8E900D8B185 /* Security.framework */; };
+		0314EA2413D72E8600F1A08E /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0391AE8B10FDF5AD00ACE94F /* ApplicationServices.framework */; };
+		0314EA2513D72E8600F1A08E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0357E8991177247A0082AB8F /* SystemConfiguration.framework */; };
+		0314EA2613D72E8600F1A08E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0357E89D117724810082AB8F /* libz.dylib */; };
+		0314EA2713D72E8600F1A08E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036522AD123001CA00E01E03 /* WebKit.framework */; };
+		0314EA2913D72E8600F1A08E /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03DAA06D13D6C65F006D4AF4 /* Growl.framework */; };
+		0314EA3113D72F7E00F1A08E /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0314EA3013D72F7E00F1A08E /* Growl.framework */; };
+		0314EA3213D72F7E00F1A08E /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0314EA3013D72F7E00F1A08E /* Growl.framework */; };
+		0314EA3313D72F7E00F1A08E /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0314EA3013D72F7E00F1A08E /* Growl.framework */; };
 		0329233E1055104F00D30E83 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B97324FDCFA39411CA2CEA /* AppKit.framework */; };
 		032923801055129800D30E83 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0329237F1055129800D30E83 /* icon.icns */; };
 		034DF9A9119ABF1400680CA6 /* LastFMSubmissionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 034DF9A8119ABF1400680CA6 /* LastFMSubmissionOperation.m */; };
@@ -227,6 +324,34 @@
 			remoteGlobalIDString = 030B19891252389E003AB6B3;
 			remoteInfo = FacebookPreferencePane;
 		};
+		0314E9C313D72E8600F1A08E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03BDFC5F10D6BA0500487180;
+			remoteInfo = GeneralPreferencePane;
+		};
+		0314E9C513D72E8600F1A08E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03BDFD1810D6BD3A00487180;
+			remoteInfo = TwitterPreferencePane;
+		};
+		0314E9C713D72E8600F1A08E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 036914C9119D64A900F5BD1D;
+			remoteInfo = "LastFM Preference Pane";
+		};
+		0314E9C913D72E8600F1A08E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 030B19891252389E003AB6B3;
+			remoteInfo = FacebookPreferencePane;
+		};
 		036914E4119D64F300F5BD1D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -293,6 +418,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		0314EA2813D72E8600F1A08E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0314EA2913D72E8600F1A08E /* Growl.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		03DAA05D13D6C433006D4AF4 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -330,6 +465,9 @@
 		03123E7A124F5C59000182C2 /* FacebookAuthWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacebookAuthWindow.xib; sourceTree = "<group>"; };
 		03124046124F83A2000182C2 /* FacebookShareOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookShareOperation.h; sourceTree = "<group>"; };
 		03124047124F83A2000182C2 /* FacebookShareOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookShareOperation.m; sourceTree = "<group>"; };
+		0314E9BD13D72D3B00F1A08E /* welcome_lite */ = {isa = PBXFileReference; lastKnownFileType = folder; path = welcome_lite; sourceTree = "<group>"; };
+		0314EA2E13D72E8600F1A08E /* TuneBuddyLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TuneBuddyLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0314EA3013D72F7E00F1A08E /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 		0329237F1055129800D30E83 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		034DF9A7119ABF1400680CA6 /* LastFMSubmissionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LastFMSubmissionOperation.h; sourceTree = "<group>"; };
 		034DF9A8119ABF1400680CA6 /* LastFMSubmissionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LastFMSubmissionOperation.m; sourceTree = "<group>"; };
@@ -539,6 +677,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0314EA1D13D72E8600F1A08E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0314EA1E13D72E8600F1A08E /* Cocoa.framework in Frameworks */,
+				0314EA1F13D72E8600F1A08E /* AppKit.framework in Frameworks */,
+				0314EA2013D72E8600F1A08E /* ScriptingBridge.framework in Frameworks */,
+				0314EA2113D72E8600F1A08E /* Growl.framework in Frameworks */,
+				0314EA2213D72E8600F1A08E /* libxml2.dylib in Frameworks */,
+				0314EA2313D72E8600F1A08E /* Security.framework in Frameworks */,
+				0314EA2413D72E8600F1A08E /* ApplicationServices.framework in Frameworks */,
+				0314EA2513D72E8600F1A08E /* SystemConfiguration.framework in Frameworks */,
+				0314EA2613D72E8600F1A08E /* libz.dylib in Frameworks */,
+				0314EA2713D72E8600F1A08E /* WebKit.framework in Frameworks */,
+				0314EA3313D72F7E00F1A08E /* Growl.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		036914C8119D64A900F5BD1D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -590,6 +746,7 @@
 				03DAA05A13D6C433006D4AF4 /* SystemConfiguration.framework in Frameworks */,
 				03DAA05B13D6C433006D4AF4 /* libz.dylib in Frameworks */,
 				03DAA05C13D6C433006D4AF4 /* WebKit.framework in Frameworks */,
+				0314EA3213D72F7E00F1A08E /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,6 +765,7 @@
 				0357E89A1177247A0082AB8F /* SystemConfiguration.framework in Frameworks */,
 				0357E89E117724810082AB8F /* libz.dylib in Frameworks */,
 				036522AE123001CA00E01E03 /* WebKit.framework in Frameworks */,
+				0314EA3113D72F7E00F1A08E /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -986,6 +1144,7 @@
 				036914CA119D64A900F5BD1D /* LastFM Preference Pane.bundle */,
 				030B198A1252389E003AB6B3 /* FacebookPreferencePane.bundle */,
 				03DAA06413D6C433006D4AF4 /* TuneBuddy.app */,
+				0314EA2E13D72E8600F1A08E /* TuneBuddyLite.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1041,6 +1200,7 @@
 			children = (
 				037A65C913D6FA80001C01A8 /* welcome */,
 				03C6050E10EFD54000BDC333 /* seria.php */,
+				0314E9BD13D72D3B00F1A08E /* welcome_lite */,
 				0374404A109DDAA200B3B221 /* dsa_pub.pem */,
 				0329237F1055129800D30E83 /* icon.icns */,
 				03C64D2E102EEB950081A12C /* Play.png */,
@@ -1055,6 +1215,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0314EA3013D72F7E00F1A08E /* Growl.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 				03BDFBD910D6B6A400487180 /* libxml2.dylib */,
@@ -1084,6 +1245,29 @@
 			productName = FacebookPreferencePane;
 			productReference = 030B198A1252389E003AB6B3 /* FacebookPreferencePane.bundle */;
 			productType = "com.apple.product-type.bundle";
+		};
+		0314E9C113D72E8600F1A08E /* Tune Buddy MAS Lite */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0314EA2A13D72E8600F1A08E /* Build configuration list for PBXNativeTarget "Tune Buddy MAS Lite" */;
+			buildPhases = (
+				0314E9CA13D72E8600F1A08E /* Resources */,
+				0314E9DA13D72E8600F1A08E /* Sources */,
+				0314EA1D13D72E8600F1A08E /* Frameworks */,
+				0314EA2813D72E8600F1A08E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0314E9C213D72E8600F1A08E /* PBXTargetDependency */,
+				0314E9C413D72E8600F1A08E /* PBXTargetDependency */,
+				0314E9C613D72E8600F1A08E /* PBXTargetDependency */,
+				0314E9C813D72E8600F1A08E /* PBXTargetDependency */,
+			);
+			name = "Tune Buddy MAS Lite";
+			productInstallPath = "$(HOME)/Applications";
+			productName = "itunes control";
+			productReference = 0314EA2E13D72E8600F1A08E /* TuneBuddyLite.app */;
+			productType = "com.apple.product-type.application";
 		};
 		036914C9119D64A900F5BD1D /* LastFM Preference Pane */ = {
 			isa = PBXNativeTarget;
@@ -1245,6 +1429,7 @@
 				036914C9119D64A900F5BD1D /* LastFM Preference Pane */,
 				030B19891252389E003AB6B3 /* FacebookPreferencePane */,
 				03DA9FF313D6C433006D4AF4 /* Tune Buddy MAS */,
+				0314E9C113D72E8600F1A08E /* Tune Buddy MAS Lite */,
 			);
 		};
 /* End PBXProject section */
@@ -1256,6 +1441,28 @@
 			files = (
 				030B19AE125238E5003AB6B3 /* Facebook_Prefs.png in Resources */,
 				030B19B2125238E5003AB6B3 /* FacebookPreferencePaneView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0314E9CA13D72E8600F1A08E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0314E9CB13D72E8600F1A08E /* FacebookPreferencePane.bundle in Resources */,
+				0314E9CC13D72E8600F1A08E /* LastFM Preference Pane.bundle in Resources */,
+				0314E9CD13D72E8600F1A08E /* TwitterPreferencePane.bundle in Resources */,
+				0314E9CE13D72E8600F1A08E /* GeneralPreferencePane.bundle in Resources */,
+				0314E9CF13D72E8600F1A08E /* InfoPlist.strings in Resources */,
+				0314E9D013D72E8600F1A08E /* MainMenu.xib in Resources */,
+				0314E9D113D72E8600F1A08E /* Play.png in Resources */,
+				0314E9D213D72E8600F1A08E /* Pause.png in Resources */,
+				0314E9D313D72E8600F1A08E /* icon.icns in Resources */,
+				0314E9D413D72E8600F1A08E /* dsa_pub.pem in Resources */,
+				0314E9D513D72E8600F1A08E /* TwitterAuthWindow.xib in Resources */,
+				0314E9D613D72E8600F1A08E /* FacebookAuthWindow.xib in Resources */,
+				0314E9D713D72E8600F1A08E /* welcome in Resources */,
+				0314E9D813D72E8600F1A08E /* WelcomeWindow.xib in Resources */,
+				0314E9D913D72E8600F1A08E /* welcome_lite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1324,6 +1531,7 @@
 				03DAA00E13D6C433006D4AF4 /* FacebookAuthWindow.xib in Resources */,
 				037A65CB13D6FA80001C01A8 /* welcome in Resources */,
 				037A65D413D6FBBF001C01A8 /* WelcomeWindow.xib in Resources */,
+				0314E9BF13D72D3B00F1A08E /* welcome_lite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1347,6 +1555,7 @@
 				03123E7B124F5C59000182C2 /* FacebookAuthWindow.xib in Resources */,
 				037A65CA13D6FA80001C01A8 /* welcome in Resources */,
 				037A65D313D6FBBF001C01A8 /* WelcomeWindow.xib in Resources */,
+				0314E9BE13D72D3B00F1A08E /* welcome_lite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1358,6 +1567,79 @@
 			buildActionMask = 2147483647;
 			files = (
 				030B19B1125238E5003AB6B3 /* FacebookPreferencePaneController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0314E9DA13D72E8600F1A08E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0314E9DB13D72E8600F1A08E /* LastFMAuth.m in Sources */,
+				0314E9DC13D72E8600F1A08E /* main.m in Sources */,
+				0314E9DD13D72E8600F1A08E /* AppDelegate.m in Sources */,
+				0314E9DE13D72E8600F1A08E /* NSString+Search.m in Sources */,
+				0314E9DF13D72E8600F1A08E /* MGTwitterEngine.m in Sources */,
+				0314E9E013D72E8600F1A08E /* MGTwitterHTTPURLConnection.m in Sources */,
+				0314E9E113D72E8600F1A08E /* MGTwitterLibXMLParser.m in Sources */,
+				0314E9E213D72E8600F1A08E /* MGTwitterMessagesLibXMLParser.m in Sources */,
+				0314E9E313D72E8600F1A08E /* MGTwitterMessagesParser.m in Sources */,
+				0314E9E413D72E8600F1A08E /* MGTwitterMiscLibXMLParser.m in Sources */,
+				0314E9E513D72E8600F1A08E /* MGTwitterMiscParser.m in Sources */,
+				0314E9E613D72E8600F1A08E /* MGTwitterStatusesLibXMLParser.m in Sources */,
+				0314E9E713D72E8600F1A08E /* MGTwitterStatusesParser.m in Sources */,
+				0314E9E813D72E8600F1A08E /* MGTwitterUsersLibXMLParser.m in Sources */,
+				0314E9E913D72E8600F1A08E /* MGTwitterUsersParser.m in Sources */,
+				0314E9EA13D72E8600F1A08E /* MGTwitterXMLParser.m in Sources */,
+				0314E9EB13D72E8600F1A08E /* NSData+Base64.m in Sources */,
+				0314E9EC13D72E8600F1A08E /* NSString+UUID.m in Sources */,
+				0314E9ED13D72E8600F1A08E /* SS_PrefsController.m in Sources */,
+				0314E9EE13D72E8600F1A08E /* iTunesBridgeOperation.m in Sources */,
+				0314E9EF13D72E8600F1A08E /* PFMoveApplication.m in Sources */,
+				0314E9F013D72E8600F1A08E /* yajl.c in Sources */,
+				0314E9F113D72E8600F1A08E /* yajl_alloc.c in Sources */,
+				0314E9F213D72E8600F1A08E /* yajl_buf.c in Sources */,
+				0314E9F313D72E8600F1A08E /* yajl_encode.c in Sources */,
+				0314E9F413D72E8600F1A08E /* yajl_gen.c in Sources */,
+				0314E9F513D72E8600F1A08E /* yajl_lex.c in Sources */,
+				0314E9F613D72E8600F1A08E /* yajl_parser.c in Sources */,
+				0314E9F713D72E8600F1A08E /* NSString+Additions.m in Sources */,
+				0314E9F813D72E8600F1A08E /* LastFMScrobbler.m in Sources */,
+				0314E9F913D72E8600F1A08E /* FMCallback.m in Sources */,
+				0314E9FA13D72E8600F1A08E /* FMEngine.m in Sources */,
+				0314E9FB13D72E8600F1A08E /* FMEngineURLConnection.m in Sources */,
+				0314E9FC13D72E8600F1A08E /* NSString+FMEngine.m in Sources */,
+				0314E9FD13D72E8600F1A08E /* ASIFormDataRequest.m in Sources */,
+				0314E9FE13D72E8600F1A08E /* ASIHTTPRequest.m in Sources */,
+				0314E9FF13D72E8600F1A08E /* ASIInputStream.m in Sources */,
+				0314EA0013D72E8600F1A08E /* ASINetworkQueue.m in Sources */,
+				0314EA0113D72E8600F1A08E /* ASINSStringAdditions.m in Sources */,
+				0314EA0213D72E8600F1A08E /* LastFMSubmissionOperation.m in Sources */,
+				0314EA0313D72E8600F1A08E /* NSObject+SBJSON.m in Sources */,
+				0314EA0413D72E8600F1A08E /* NSString+SBJSON.m in Sources */,
+				0314EA0513D72E8600F1A08E /* SBJSON.m in Sources */,
+				0314EA0613D72E8600F1A08E /* SBJsonBase.m in Sources */,
+				0314EA0713D72E8600F1A08E /* SBJsonParser.m in Sources */,
+				0314EA0813D72E8600F1A08E /* SBJsonWriter.m in Sources */,
+				0314EA0913D72E8600F1A08E /* LastFMNotificationOperation.m in Sources */,
+				0314EA0A13D72E8600F1A08E /* EMKeychainItem.m in Sources */,
+				0314EA0B13D72E8600F1A08E /* NSMutableURLRequest+Parameters.m in Sources */,
+				0314EA0C13D72E8600F1A08E /* NSString+URLEncoding.m in Sources */,
+				0314EA0D13D72E8600F1A08E /* NSURL+Base.m in Sources */,
+				0314EA0E13D72E8600F1A08E /* Base64Transcoder.c in Sources */,
+				0314EA0F13D72E8600F1A08E /* OAAsynchronousDataFetcher.m in Sources */,
+				0314EA1013D72E8600F1A08E /* OAConsumer.m in Sources */,
+				0314EA1113D72E8600F1A08E /* OADataFetcher.m in Sources */,
+				0314EA1213D72E8600F1A08E /* OAHMAC_SHA1SignatureProvider.m in Sources */,
+				0314EA1313D72E8600F1A08E /* OAMutableURLRequest.m in Sources */,
+				0314EA1413D72E8600F1A08E /* OAPlaintextSignatureProvider.m in Sources */,
+				0314EA1513D72E8600F1A08E /* OARequestParameter.m in Sources */,
+				0314EA1613D72E8600F1A08E /* OAServiceTicket.m in Sources */,
+				0314EA1713D72E8600F1A08E /* OAToken.m in Sources */,
+				0314EA1813D72E8600F1A08E /* TwitterAuthWindowController.m in Sources */,
+				0314EA1913D72E8600F1A08E /* FacebookAuthWindowController.m in Sources */,
+				0314EA1A13D72E8600F1A08E /* FacebookShareOperation.m in Sources */,
+				0314EA1B13D72E8600F1A08E /* NSString+Slice.m in Sources */,
+				0314EA1C13D72E8600F1A08E /* WelcomeWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1557,6 +1839,26 @@
 			target = 030B19891252389E003AB6B3 /* FacebookPreferencePane */;
 			targetProxy = 030B199A125238A9003AB6B3 /* PBXContainerItemProxy */;
 		};
+		0314E9C213D72E8600F1A08E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03BDFC5F10D6BA0500487180 /* GeneralPreferencePane */;
+			targetProxy = 0314E9C313D72E8600F1A08E /* PBXContainerItemProxy */;
+		};
+		0314E9C413D72E8600F1A08E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03BDFD1810D6BD3A00487180 /* TwitterPreferencePane */;
+			targetProxy = 0314E9C513D72E8600F1A08E /* PBXContainerItemProxy */;
+		};
+		0314E9C613D72E8600F1A08E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 036914C9119D64A900F5BD1D /* LastFM Preference Pane */;
+			targetProxy = 0314E9C713D72E8600F1A08E /* PBXContainerItemProxy */;
+		};
+		0314E9C813D72E8600F1A08E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 030B19891252389E003AB6B3 /* FacebookPreferencePane */;
+			targetProxy = 0314E9C913D72E8600F1A08E /* PBXContainerItemProxy */;
+		};
 		036914E5119D64F300F5BD1D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 036914C9119D64A900F5BD1D /* LastFM Preference Pane */;
@@ -1696,6 +1998,100 @@
 				PRODUCT_NAME = FacebookPreferencePane;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
+			};
+			name = Distro;
+		};
+		0314EA2B13D72E8600F1A08E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Jaroslaw Szpilewski";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\\\\\"$(SRCROOT)/../Desktop/eyetunes/build/Release\\\\\\\"",
+					"\\\\\\\"$(SRCROOT)\\\\\\\"",
+					"\\\\\\\"$(SRCROOT)/../../../Usefull\\\\\\ Stuff/Sparkle\\\\\\ 1/With\\\\\\ Garbage\\\\\\ Collection\\\\\\\"",
+					"\\\\\\\"$(SRCROOT)/../../../Usefull\\\\\\ Stuff/Sparkle\\\\\\ 1\\\\\\\"",
+					"\\\\\\\"$(SRCROOT)/../../../Downloads/Growl-1.2.1-Framework\\\\\\\"",
+					"\\\"$(SRCROOT)\\\"",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tune Buddy_Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					MAS_VERSION,
+					LITE_VERSION,
+				);
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = TuneBuddyLite;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		0314EA2C13D72E8600F1A08E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Jaroslaw Szpilewski";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\\\\\"$(SRCROOT)/../Desktop/eyetunes/build/Release\\\\\\\"",
+					"\\\\\\\"$(SRCROOT)\\\\\\\"",
+					"\\\\\\\"$(SRCROOT)/../../../Usefull\\\\\\ Stuff/Sparkle\\\\\\ 1/With\\\\\\ Garbage\\\\\\ Collection\\\\\\\"",
+					"\\\\\\\"$(SRCROOT)/../../../Usefull\\\\\\ Stuff/Sparkle\\\\\\ 1\\\\\\\"",
+					"\\\\\\\"$(SRCROOT)/../../../Downloads/Growl-1.2.1-Framework\\\\\\\"",
+					"\\\"$(SRCROOT)\\\"",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tune Buddy_Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					MAS_VERSION,
+					LITE_VERSION,
+				);
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = TuneBuddyLite;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		0314EA2D13D72E8600F1A08E /* Distro */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Jaroslaw Szpilewski";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\\\\\"$(SRCROOT)/../Desktop/eyetunes/build/Release\\\\\\\"",
+					"\\\\\\\"$(SRCROOT)\\\\\\\"",
+					"\\\\\\\"$(SRCROOT)/../../../Usefull\\\\\\ Stuff/Sparkle\\\\\\ 1/With\\\\\\ Garbage\\\\\\ Collection\\\\\\\"",
+					"\\\\\\\"$(SRCROOT)/../../../Usefull\\\\\\ Stuff/Sparkle\\\\\\ 1\\\\\\\"",
+					"\\\\\\\"$(SRCROOT)/../../../Downloads/Growl-1.2.1-Framework\\\\\\\"",
+					"\\\"$(SRCROOT)\\\"",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tune Buddy_Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					MAS_VERSION,
+					LITE_VERSION,
+				);
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = TuneBuddyLite;
+				SDKROOT = macosx;
 			};
 			name = Distro;
 		};
@@ -2316,6 +2712,16 @@
 				030B198C1252389E003AB6B3 /* Debug */,
 				030B198D1252389E003AB6B3 /* Release */,
 				030B198E1252389E003AB6B3 /* Distro */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0314EA2A13D72E8600F1A08E /* Build configuration list for PBXNativeTarget "Tune Buddy MAS Lite" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0314EA2B13D72E8600F1A08E /* Debug */,
+				0314EA2C13D72E8600F1A08E /* Release */,
+				0314EA2D13D72E8600F1A08E /* Distro */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
