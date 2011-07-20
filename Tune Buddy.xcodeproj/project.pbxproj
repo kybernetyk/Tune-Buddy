@@ -58,6 +58,12 @@
 		03743D3F109D91F200B3B221 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03743D3E109D91F200B3B221 /* ScriptingBridge.framework */; };
 		03743E8E109D987300B3B221 /* NSString+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 03743E8D109D987300B3B221 /* NSString+Search.m */; };
 		0374404B109DDAA200B3B221 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 0374404A109DDAA200B3B221 /* dsa_pub.pem */; };
+		037A65CA13D6FA80001C01A8 /* welcome in Resources */ = {isa = PBXBuildFile; fileRef = 037A65C913D6FA80001C01A8 /* welcome */; };
+		037A65CB13D6FA80001C01A8 /* welcome in Resources */ = {isa = PBXBuildFile; fileRef = 037A65C913D6FA80001C01A8 /* welcome */; };
+		037A65D013D6FB9F001C01A8 /* WelcomeWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 037A65CF13D6FB9F001C01A8 /* WelcomeWindowController.m */; };
+		037A65D113D6FB9F001C01A8 /* WelcomeWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 037A65CF13D6FB9F001C01A8 /* WelcomeWindowController.m */; };
+		037A65D313D6FBBF001C01A8 /* WelcomeWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037A65D213D6FBBF001C01A8 /* WelcomeWindow.xib */; };
+		037A65D413D6FBBF001C01A8 /* WelcomeWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037A65D213D6FBBF001C01A8 /* WelcomeWindow.xib */; };
 		0391AE8C10FDF5AD00ACE94F /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0391AE8B10FDF5AD00ACE94F /* ApplicationServices.framework */; };
 		0391B01010FE06F000ACE94F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B0E8CF10D7C8E900D8B185 /* Security.framework */; };
 		03B0E80110D7BCDC00D8B185 /* iTunesBridgeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0E80010D7BCDC00D8B185 /* iTunesBridgeOperation.m */; };
@@ -399,6 +405,10 @@
 		03743E8D109D987300B3B221 /* NSString+Search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Search.m"; sourceTree = "<group>"; };
 		0374404A109DDAA200B3B221 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		037440A1109E267900B3B221 /* Adium.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Adium.h; sourceTree = "<group>"; };
+		037A65C913D6FA80001C01A8 /* welcome */ = {isa = PBXFileReference; lastKnownFileType = folder; path = welcome; sourceTree = "<group>"; };
+		037A65CE13D6FB9F001C01A8 /* WelcomeWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeWindowController.h; sourceTree = "<group>"; };
+		037A65CF13D6FB9F001C01A8 /* WelcomeWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeWindowController.m; sourceTree = "<group>"; };
+		037A65D213D6FBBF001C01A8 /* WelcomeWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeWindow.xib; sourceTree = "<group>"; };
 		0391AE8B10FDF5AD00ACE94F /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		03B0E7FF10D7BCDC00D8B185 /* iTunesBridgeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunesBridgeOperation.h; sourceTree = "<group>"; };
 		03B0E80010D7BCDC00D8B185 /* iTunesBridgeOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iTunesBridgeOperation.m; sourceTree = "<group>"; };
@@ -749,6 +759,16 @@
 			path = "LastFM Preference Pane";
 			sourceTree = "<group>";
 		};
+		037A65CD13D6FB7A001C01A8 /* WelcomeWindow */ = {
+			isa = PBXGroup;
+			children = (
+				037A65CE13D6FB9F001C01A8 /* WelcomeWindowController.h */,
+				037A65CF13D6FB9F001C01A8 /* WelcomeWindowController.m */,
+				037A65D213D6FBBF001C01A8 /* WelcomeWindow.xib */,
+			);
+			name = WelcomeWindow;
+			sourceTree = "<group>";
+		};
 		03B0E7FC10D7BC8C00D8B185 /* Prefs Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -921,6 +941,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				037A65CD13D6FB7A001C01A8 /* WelcomeWindow */,
 				03123E76124F5C2D000182C2 /* FacebookAuthWindow */,
 				03652295123000B400E01E03 /* TwitterAuthWindow */,
 				0357E84F117720770082AB8F /* Last FM Scrobbler */,
@@ -1018,6 +1039,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				037A65C913D6FA80001C01A8 /* welcome */,
 				03C6050E10EFD54000BDC333 /* seria.php */,
 				0374404A109DDAA200B3B221 /* dsa_pub.pem */,
 				0329237F1055129800D30E83 /* icon.icns */,
@@ -1300,6 +1322,8 @@
 				03DAA00C13D6C433006D4AF4 /* dsa_pub.pem in Resources */,
 				03DAA00D13D6C433006D4AF4 /* TwitterAuthWindow.xib in Resources */,
 				03DAA00E13D6C433006D4AF4 /* FacebookAuthWindow.xib in Resources */,
+				037A65CB13D6FA80001C01A8 /* welcome in Resources */,
+				037A65D413D6FBBF001C01A8 /* WelcomeWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1321,6 +1345,8 @@
 				0374404B109DDAA200B3B221 /* dsa_pub.pem in Resources */,
 				0365229A123000D600E01E03 /* TwitterAuthWindow.xib in Resources */,
 				03123E7B124F5C59000182C2 /* FacebookAuthWindow.xib in Resources */,
+				037A65CA13D6FA80001C01A8 /* welcome in Resources */,
+				037A65D313D6FBBF001C01A8 /* WelcomeWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1446,6 +1472,7 @@
 				03DAA04E13D6C433006D4AF4 /* FacebookAuthWindowController.m in Sources */,
 				03DAA04F13D6C433006D4AF4 /* FacebookShareOperation.m in Sources */,
 				03DAA05013D6C433006D4AF4 /* NSString+Slice.m in Sources */,
+				037A65D113D6FB9F001C01A8 /* WelcomeWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1518,6 +1545,7 @@
 				03123E79124F5C49000182C2 /* FacebookAuthWindowController.m in Sources */,
 				03124048124F83A2000182C2 /* FacebookShareOperation.m in Sources */,
 				030B189012520305003AB6B3 /* NSString+Slice.m in Sources */,
+				037A65D013D6FB9F001C01A8 /* WelcomeWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

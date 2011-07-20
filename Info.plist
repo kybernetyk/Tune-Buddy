@@ -30,7 +30,7 @@
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>NSUIElement</key>
-	<string>1</string>
+	<string>0</string>
 	<key>SUFeedURL</key>
 	<string>http://shine.fluxforge.com/appcast.php?id=4</string>
 	<key>SUPublicDSAKeyFile</key>

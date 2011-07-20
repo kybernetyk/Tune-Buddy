@@ -26,6 +26,7 @@
 #import "FacebookShareOperation.h"
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
+#import "WelcomeWindowController.h"
 
 @implementation AppDelegate
 #pragma mark -
@@ -283,6 +284,10 @@
 	
 	
 //	[self authFacebookAndPostAfterwars: NO];
+	[NSApp activateIgnoringOtherApps: YES];
+
+	WelcomeWindowController *wwc = [[WelcomeWindowController alloc] initWithWindowNibName: @"WelcomeWindow"];
+	[[wwc window] makeKeyWindow];
 }
 
 
