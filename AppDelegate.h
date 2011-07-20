@@ -7,7 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <Sparkle/Sparkle.h>
+#ifndef MAS_VERSION
+	#import <Sparkle/Sparkle.h>
+#endif
 #import "iTunes.h"
 #import "Adium.h"
 #import "MGTwitterEngine.h"
@@ -22,8 +24,9 @@
 	
 	MGTwitterEngine *twitterEngine;
 	NSString *lastConnectionIdentifier;
-	
+	#ifndef MAS_VERSION
 	IBOutlet SUUpdater *sparkle;
+#endif
 	
 	NSStatusItem *statusItem;
 	NSMenuItem *copyToClipboardMenuItem;

@@ -11,7 +11,9 @@
 #import "NSString+Search.h"
 #import "MGTwitterEngine.h"
 #import "iTunesBridgeOperation.h"
-#import "PFMoveApplication.h"
+#ifndef MAS_VERSION
+	#import "PFMoveApplication.h"
+#endif
 #import "NSString+Additions.h"
 #import "EMKeychainItem.h"
 #import <Growl/Growl.h>
@@ -120,7 +122,9 @@
 	
 	//[EMGenericKeychainItem addGenericKeychainItemForService:@"SomeAppService" withUsername:@"Joe" password:@"supersecure!"];
 	
+#ifndef MAS_VERSION
 	PFMoveToApplicationsFolderIfNecessary();
+#endif
 	
 	NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey: @"LastFMAPIKey"];
 	if (!data)
@@ -834,7 +838,12 @@
 	preferencesWindowController = [[SS_PrefsController alloc] initWithPanesSearchPath:pathToPanes bundleExtension:@"bundle"];
 	
 	// Set which panes are included, and their order.
+#ifdef MAS_VERSION
+	[preferencesWindowController setPanesOrder:[NSArray arrayWithObjects:@"General",@"Twitter",@"LastFM",@"Facebook", nil]];
+	
+#else
 	[preferencesWindowController setPanesOrder:[NSArray arrayWithObjects:@"General",@"Twitter",@"LastFM",@"Facebook",@"Updating",@"Registration", nil]];
+#endif
 	// Show the preferences window.
 	[preferencesWindowController showPreferencesWindow];
 	
@@ -845,7 +854,9 @@
 
 - (IBAction) checkForUpdates: (id) sender
 {
+#ifndef MAS_VERSION
 	[sparkle checkForUpdates: sender];
+#endif
 }
 
 

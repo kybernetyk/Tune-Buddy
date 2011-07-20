@@ -103,6 +103,94 @@
 		03C60E6211A2C0BD00823D21 /* EMKeychainItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C60DCA11A2B8E200823D21 /* EMKeychainItem.m */; };
 		03C64D30102EEB950081A12C /* Play.png in Resources */ = {isa = PBXBuildFile; fileRef = 03C64D2E102EEB950081A12C /* Play.png */; };
 		03C64D31102EEB950081A12C /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 03C64D2F102EEB950081A12C /* Pause.png */; };
+		03DAA00113D6C433006D4AF4 /* FacebookPreferencePane.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 030B198A1252389E003AB6B3 /* FacebookPreferencePane.bundle */; };
+		03DAA00213D6C433006D4AF4 /* LastFM Preference Pane.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 036914CA119D64A900F5BD1D /* LastFM Preference Pane.bundle */; };
+		03DAA00413D6C433006D4AF4 /* TwitterPreferencePane.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 03BDFD1910D6BD3A00487180 /* TwitterPreferencePane.bundle */; };
+		03DAA00613D6C433006D4AF4 /* GeneralPreferencePane.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 03BDFC6010D6BA0500487180 /* GeneralPreferencePane.bundle */; };
+		03DAA00713D6C433006D4AF4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
+		03DAA00813D6C433006D4AF4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
+		03DAA00913D6C433006D4AF4 /* Play.png in Resources */ = {isa = PBXBuildFile; fileRef = 03C64D2E102EEB950081A12C /* Play.png */; };
+		03DAA00A13D6C433006D4AF4 /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 03C64D2F102EEB950081A12C /* Pause.png */; };
+		03DAA00B13D6C433006D4AF4 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0329237F1055129800D30E83 /* icon.icns */; };
+		03DAA00C13D6C433006D4AF4 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 0374404A109DDAA200B3B221 /* dsa_pub.pem */; };
+		03DAA00D13D6C433006D4AF4 /* TwitterAuthWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03652299123000D600E01E03 /* TwitterAuthWindow.xib */; };
+		03DAA00E13D6C433006D4AF4 /* FacebookAuthWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03123E7A124F5C59000182C2 /* FacebookAuthWindow.xib */; };
+		03DAA01013D6C433006D4AF4 /* LastFMAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369168711A1224600F5BD1D /* LastFMAuth.m */; };
+		03DAA01113D6C433006D4AF4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		03DAA01213D6C433006D4AF4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EF247D600EEC653B002FB82F /* AppDelegate.m */; };
+		03DAA01313D6C433006D4AF4 /* NSString+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 03743E8D109D987300B3B221 /* NSString+Search.m */; };
+		03DAA01413D6C433006D4AF4 /* MGTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFB8910D6B37500487180 /* MGTwitterEngine.m */; };
+		03DAA01513D6C433006D4AF4 /* MGTwitterHTTPURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFB8D10D6B37500487180 /* MGTwitterHTTPURLConnection.m */; };
+		03DAA01613D6C433006D4AF4 /* MGTwitterLibXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFB8F10D6B37500487180 /* MGTwitterLibXMLParser.m */; };
+		03DAA01713D6C433006D4AF4 /* MGTwitterMessagesLibXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFB9110D6B37500487180 /* MGTwitterMessagesLibXMLParser.m */; };
+		03DAA01813D6C433006D4AF4 /* MGTwitterMessagesParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFB9310D6B37500487180 /* MGTwitterMessagesParser.m */; };
+		03DAA01913D6C433006D4AF4 /* MGTwitterMiscLibXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFB9710D6B37500487180 /* MGTwitterMiscLibXMLParser.m */; };
+		03DAA01A13D6C433006D4AF4 /* MGTwitterMiscParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFB9910D6B37500487180 /* MGTwitterMiscParser.m */; };
+		03DAA01B13D6C433006D4AF4 /* MGTwitterStatusesLibXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFBA110D6B37500487180 /* MGTwitterStatusesLibXMLParser.m */; };
+		03DAA01C13D6C433006D4AF4 /* MGTwitterStatusesParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFBA310D6B37500487180 /* MGTwitterStatusesParser.m */; };
+		03DAA01D13D6C433006D4AF4 /* MGTwitterUsersLibXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFBA710D6B37500487180 /* MGTwitterUsersLibXMLParser.m */; };
+		03DAA01E13D6C433006D4AF4 /* MGTwitterUsersParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFBA910D6B37500487180 /* MGTwitterUsersParser.m */; };
+		03DAA01F13D6C433006D4AF4 /* MGTwitterXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFBAD10D6B37500487180 /* MGTwitterXMLParser.m */; };
+		03DAA02013D6C433006D4AF4 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFBB110D6B37500487180 /* NSData+Base64.m */; };
+		03DAA02113D6C433006D4AF4 /* NSString+UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFBB310D6B37500487180 /* NSString+UUID.m */; };
+		03DAA02213D6C433006D4AF4 /* SS_PrefsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDFC2B10D6B96600487180 /* SS_PrefsController.m */; };
+		03DAA02313D6C433006D4AF4 /* iTunesBridgeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0E80010D7BCDC00D8B185 /* iTunesBridgeOperation.m */; };
+		03DAA02413D6C433006D4AF4 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0E8C910D7C87700D8B185 /* PFMoveApplication.m */; };
+		03DAA02513D6C433006D4AF4 /* yajl.c in Sources */ = {isa = PBXBuildFile; fileRef = 03EAFB4310D8032A00B715D0 /* yajl.c */; };
+		03DAA02613D6C433006D4AF4 /* yajl_alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 03EAFB4410D8032A00B715D0 /* yajl_alloc.c */; };
+		03DAA02713D6C433006D4AF4 /* yajl_buf.c in Sources */ = {isa = PBXBuildFile; fileRef = 03EAFB4610D8032A00B715D0 /* yajl_buf.c */; };
+		03DAA02813D6C433006D4AF4 /* yajl_encode.c in Sources */ = {isa = PBXBuildFile; fileRef = 03EAFB4A10D8032A00B715D0 /* yajl_encode.c */; };
+		03DAA02913D6C433006D4AF4 /* yajl_gen.c in Sources */ = {isa = PBXBuildFile; fileRef = 03EAFB4C10D8032A00B715D0 /* yajl_gen.c */; };
+		03DAA02A13D6C433006D4AF4 /* yajl_lex.c in Sources */ = {isa = PBXBuildFile; fileRef = 03EAFB4E10D8032A00B715D0 /* yajl_lex.c */; };
+		03DAA02B13D6C433006D4AF4 /* yajl_parser.c in Sources */ = {isa = PBXBuildFile; fileRef = 03EAFB5110D8032A00B715D0 /* yajl_parser.c */; };
+		03DAA02C13D6C433006D4AF4 /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C604D210EFCEB400BDC333 /* NSString+Additions.m */; };
+		03DAA02D13D6C433006D4AF4 /* LastFMScrobbler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E851117720840082AB8F /* LastFMScrobbler.m */; };
+		03DAA02E13D6C433006D4AF4 /* FMCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E863117723580082AB8F /* FMCallback.m */; };
+		03DAA02F13D6C433006D4AF4 /* FMEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E865117723580082AB8F /* FMEngine.m */; };
+		03DAA03013D6C433006D4AF4 /* FMEngineURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E867117723580082AB8F /* FMEngineURLConnection.m */; };
+		03DAA03113D6C433006D4AF4 /* NSString+FMEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E869117723580082AB8F /* NSString+FMEngine.m */; };
+		03DAA03213D6C433006D4AF4 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E873117724370082AB8F /* ASIFormDataRequest.m */; };
+		03DAA03313D6C433006D4AF4 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E875117724370082AB8F /* ASIHTTPRequest.m */; };
+		03DAA03413D6C433006D4AF4 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E878117724370082AB8F /* ASIInputStream.m */; };
+		03DAA03513D6C433006D4AF4 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E87A117724370082AB8F /* ASINetworkQueue.m */; };
+		03DAA03613D6C433006D4AF4 /* ASINSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E87C117724370082AB8F /* ASINSStringAdditions.m */; };
+		03DAA03713D6C433006D4AF4 /* LastFMSubmissionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 034DF9A8119ABF1400680CA6 /* LastFMSubmissionOperation.m */; };
+		03DAA03813D6C433006D4AF4 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F9F8D6119B346A000CA35E /* NSObject+SBJSON.m */; };
+		03DAA03913D6C433006D4AF4 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F9F8D8119B346A000CA35E /* NSString+SBJSON.m */; };
+		03DAA03A13D6C433006D4AF4 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F9F8DA119B346A000CA35E /* SBJSON.m */; };
+		03DAA03B13D6C433006D4AF4 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F9F8DC119B346A000CA35E /* SBJsonBase.m */; };
+		03DAA03C13D6C433006D4AF4 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F9F8DE119B346A000CA35E /* SBJsonParser.m */; };
+		03DAA03D13D6C433006D4AF4 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F9F8E0119B346A000CA35E /* SBJsonWriter.m */; };
+		03DAA03E13D6C433006D4AF4 /* LastFMNotificationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369145C119D482800F5BD1D /* LastFMNotificationOperation.m */; };
+		03DAA03F13D6C433006D4AF4 /* EMKeychainItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C60DCA11A2B8E200823D21 /* EMKeychainItem.m */; };
+		03DAA04013D6C433006D4AF4 /* NSMutableURLRequest+Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 03652261122FFFAA00E01E03 /* NSMutableURLRequest+Parameters.m */; };
+		03DAA04113D6C433006D4AF4 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 03652263122FFFAA00E01E03 /* NSString+URLEncoding.m */; };
+		03DAA04213D6C433006D4AF4 /* NSURL+Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 03652265122FFFAA00E01E03 /* NSURL+Base.m */; };
+		03DAA04313D6C433006D4AF4 /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 03652267122FFFAA00E01E03 /* Base64Transcoder.c */; };
+		03DAA04413D6C433006D4AF4 /* OAAsynchronousDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0365226A122FFFAA00E01E03 /* OAAsynchronousDataFetcher.m */; };
+		03DAA04513D6C433006D4AF4 /* OAConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0365226C122FFFAA00E01E03 /* OAConsumer.m */; };
+		03DAA04613D6C433006D4AF4 /* OADataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0365226E122FFFAA00E01E03 /* OADataFetcher.m */; };
+		03DAA04713D6C433006D4AF4 /* OAHMAC_SHA1SignatureProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 03652270122FFFAA00E01E03 /* OAHMAC_SHA1SignatureProvider.m */; };
+		03DAA04813D6C433006D4AF4 /* OAMutableURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 03652272122FFFAA00E01E03 /* OAMutableURLRequest.m */; };
+		03DAA04913D6C433006D4AF4 /* OAPlaintextSignatureProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 03652274122FFFAA00E01E03 /* OAPlaintextSignatureProvider.m */; };
+		03DAA04A13D6C433006D4AF4 /* OARequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 03652276122FFFAA00E01E03 /* OARequestParameter.m */; };
+		03DAA04B13D6C433006D4AF4 /* OAServiceTicket.m in Sources */ = {isa = PBXBuildFile; fileRef = 03652278122FFFAA00E01E03 /* OAServiceTicket.m */; };
+		03DAA04C13D6C433006D4AF4 /* OAToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 0365227B122FFFAA00E01E03 /* OAToken.m */; };
+		03DAA04D13D6C433006D4AF4 /* TwitterAuthWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03652297123000CB00E01E03 /* TwitterAuthWindowController.m */; };
+		03DAA04E13D6C433006D4AF4 /* FacebookAuthWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03123E78124F5C49000182C2 /* FacebookAuthWindowController.m */; };
+		03DAA04F13D6C433006D4AF4 /* FacebookShareOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 03124047124F83A2000182C2 /* FacebookShareOperation.m */; };
+		03DAA05013D6C433006D4AF4 /* NSString+Slice.m in Sources */ = {isa = PBXBuildFile; fileRef = 030B188F12520305003AB6B3 /* NSString+Slice.m */; };
+		03DAA05213D6C433006D4AF4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		03DAA05313D6C433006D4AF4 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B97324FDCFA39411CA2CEA /* AppKit.framework */; };
+		03DAA05413D6C433006D4AF4 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03743D3E109D91F200B3B221 /* ScriptingBridge.framework */; };
+		03DAA05513D6C433006D4AF4 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03BDFBD910D6B6A400487180 /* libxml2.dylib */; };
+		03DAA05613D6C433006D4AF4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B0E8CF10D7C8E900D8B185 /* Security.framework */; };
+		03DAA05813D6C433006D4AF4 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0391AE8B10FDF5AD00ACE94F /* ApplicationServices.framework */; };
+		03DAA05A13D6C433006D4AF4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0357E8991177247A0082AB8F /* SystemConfiguration.framework */; };
+		03DAA05B13D6C433006D4AF4 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0357E89D117724810082AB8F /* libz.dylib */; };
+		03DAA05C13D6C433006D4AF4 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036522AD123001CA00E01E03 /* WebKit.framework */; };
+		03DAA06E13D6C65F006D4AF4 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03DAA06D13D6C65F006D4AF4 /* Growl.framework */; };
+		03DAA06F13D6C676006D4AF4 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03DAA06D13D6C65F006D4AF4 /* Growl.framework */; };
 		03EAFB5310D8032A00B715D0 /* yajl.c in Sources */ = {isa = PBXBuildFile; fileRef = 03EAFB4310D8032A00B715D0 /* yajl.c */; };
 		03EAFB5410D8032A00B715D0 /* yajl_alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 03EAFB4410D8032A00B715D0 /* yajl_alloc.c */; };
 		03EAFB5510D8032A00B715D0 /* yajl_buf.c in Sources */ = {isa = PBXBuildFile; fileRef = 03EAFB4610D8032A00B715D0 /* yajl_buf.c */; };
@@ -168,9 +256,47 @@
 			remoteGlobalIDString = 03BDFDD610D6C38000487180;
 			remoteInfo = RegistrationPreferencePane;
 		};
+		03DA9FF513D6C433006D4AF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03BDFC5F10D6BA0500487180;
+			remoteInfo = GeneralPreferencePane;
+		};
+		03DA9FF913D6C433006D4AF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03BDFD1810D6BD3A00487180;
+			remoteInfo = TwitterPreferencePane;
+		};
+		03DA9FFD13D6C433006D4AF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 036914C9119D64A900F5BD1D;
+			remoteInfo = "LastFM Preference Pane";
+		};
+		03DA9FFF13D6C433006D4AF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 030B19891252389E003AB6B3;
+			remoteInfo = FacebookPreferencePane;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		03DAA05D13D6C433006D4AF4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				03DAA06F13D6C676006D4AF4 /* Growl.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EF247D3B0EEC18A0002FB82F /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -348,6 +474,8 @@
 		03C60DCA11A2B8E200823D21 /* EMKeychainItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMKeychainItem.m; sourceTree = "<group>"; };
 		03C64D2E102EEB950081A12C /* Play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Play.png; sourceTree = "<group>"; };
 		03C64D2F102EEB950081A12C /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pause.png; sourceTree = "<group>"; };
+		03DAA06413D6C433006D4AF4 /* TuneBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TuneBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		03DAA06D13D6C65F006D4AF4 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 		03EAFB4310D8032A00B715D0 /* yajl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = yajl.c; sourceTree = "<group>"; };
 		03EAFB4410D8032A00B715D0 /* yajl_alloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = yajl_alloc.c; sourceTree = "<group>"; };
 		03EAFB4510D8032A00B715D0 /* yajl_alloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yajl_alloc.h; sourceTree = "<group>"; };
@@ -435,6 +563,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03DAA05113D6C433006D4AF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03DAA05213D6C433006D4AF4 /* Cocoa.framework in Frameworks */,
+				03DAA05313D6C433006D4AF4 /* AppKit.framework in Frameworks */,
+				03DAA05413D6C433006D4AF4 /* ScriptingBridge.framework in Frameworks */,
+				03DAA06E13D6C65F006D4AF4 /* Growl.framework in Frameworks */,
+				03DAA05513D6C433006D4AF4 /* libxml2.dylib in Frameworks */,
+				03DAA05613D6C433006D4AF4 /* Security.framework in Frameworks */,
+				03DAA05813D6C433006D4AF4 /* ApplicationServices.framework in Frameworks */,
+				03DAA05A13D6C433006D4AF4 /* SystemConfiguration.framework in Frameworks */,
+				03DAA05B13D6C433006D4AF4 /* libz.dylib in Frameworks */,
+				03DAA05C13D6C433006D4AF4 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -819,6 +964,7 @@
 				03BDFDD710D6C38000487180 /* RegistrationPreferencePane.bundle */,
 				036914CA119D64A900F5BD1D /* LastFM Preference Pane.bundle */,
 				030B198A1252389E003AB6B3 /* FacebookPreferencePane.bundle */,
+				03DAA06413D6C433006D4AF4 /* TuneBuddy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -829,6 +975,7 @@
 				036914D0119D64CC00F5BD1D /* LastFM Preference Pane */,
 				03BDFDF910D6C3CE00487180 /* Registration Preference Pane */,
 				03BDFD7210D6BEE600487180 /* Twitter Preference Pane */,
+				03DAA06D13D6C65F006D4AF4 /* Growl.framework */,
 				030B19A7125238E5003AB6B3 /* Facebook Preference Pane */,
 				03BDFCC710D6BB6500487180 /* Updating Preference Pane */,
 				03BDFC6610D6BA1900487180 /* General Preference Pane */,
@@ -1001,6 +1148,29 @@
 			productReference = 03BDFDD710D6C38000487180 /* RegistrationPreferencePane.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
+		03DA9FF313D6C433006D4AF4 /* Tune Buddy MAS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03DAA06013D6C433006D4AF4 /* Build configuration list for PBXNativeTarget "Tune Buddy MAS" */;
+			buildPhases = (
+				03DAA00013D6C433006D4AF4 /* Resources */,
+				03DAA00F13D6C433006D4AF4 /* Sources */,
+				03DAA05113D6C433006D4AF4 /* Frameworks */,
+				03DAA05D13D6C433006D4AF4 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				03DA9FF413D6C433006D4AF4 /* PBXTargetDependency */,
+				03DA9FF813D6C433006D4AF4 /* PBXTargetDependency */,
+				03DA9FFC13D6C433006D4AF4 /* PBXTargetDependency */,
+				03DA9FFE13D6C433006D4AF4 /* PBXTargetDependency */,
+			);
+			name = "Tune Buddy MAS";
+			productInstallPath = "$(HOME)/Applications";
+			productName = "itunes control";
+			productReference = 03DAA06413D6C433006D4AF4 /* TuneBuddy.app */;
+			productType = "com.apple.product-type.application";
+		};
 		8D1107260486CEB800E47090 /* Tune Buddy */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Tune Buddy" */;
@@ -1052,6 +1222,7 @@
 				03BDFDD610D6C38000487180 /* RegistrationPreferencePane */,
 				036914C9119D64A900F5BD1D /* LastFM Preference Pane */,
 				030B19891252389E003AB6B3 /* FacebookPreferencePane */,
+				03DA9FF313D6C433006D4AF4 /* Tune Buddy MAS */,
 			);
 		};
 /* End PBXProject section */
@@ -1110,6 +1281,25 @@
 				03BDFDFF10D6C3CE00487180 /* Registration_Prefs.tiff in Resources */,
 				03BDFE0210D6C3CE00487180 /* RegistrationPreferencePaneView.xib in Resources */,
 				03EAFBDC10D809A800B715D0 /* Registration_Prefs.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03DAA00013D6C433006D4AF4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03DAA00113D6C433006D4AF4 /* FacebookPreferencePane.bundle in Resources */,
+				03DAA00213D6C433006D4AF4 /* LastFM Preference Pane.bundle in Resources */,
+				03DAA00413D6C433006D4AF4 /* TwitterPreferencePane.bundle in Resources */,
+				03DAA00613D6C433006D4AF4 /* GeneralPreferencePane.bundle in Resources */,
+				03DAA00713D6C433006D4AF4 /* InfoPlist.strings in Resources */,
+				03DAA00813D6C433006D4AF4 /* MainMenu.xib in Resources */,
+				03DAA00913D6C433006D4AF4 /* Play.png in Resources */,
+				03DAA00A13D6C433006D4AF4 /* Pause.png in Resources */,
+				03DAA00B13D6C433006D4AF4 /* icon.icns in Resources */,
+				03DAA00C13D6C433006D4AF4 /* dsa_pub.pem in Resources */,
+				03DAA00D13D6C433006D4AF4 /* TwitterAuthWindow.xib in Resources */,
+				03DAA00E13D6C433006D4AF4 /* FacebookAuthWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1184,6 +1374,78 @@
 			buildActionMask = 2147483647;
 			files = (
 				03BDFE0110D6C3CE00487180 /* RegistrationPreferencePaneController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03DAA00F13D6C433006D4AF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03DAA01013D6C433006D4AF4 /* LastFMAuth.m in Sources */,
+				03DAA01113D6C433006D4AF4 /* main.m in Sources */,
+				03DAA01213D6C433006D4AF4 /* AppDelegate.m in Sources */,
+				03DAA01313D6C433006D4AF4 /* NSString+Search.m in Sources */,
+				03DAA01413D6C433006D4AF4 /* MGTwitterEngine.m in Sources */,
+				03DAA01513D6C433006D4AF4 /* MGTwitterHTTPURLConnection.m in Sources */,
+				03DAA01613D6C433006D4AF4 /* MGTwitterLibXMLParser.m in Sources */,
+				03DAA01713D6C433006D4AF4 /* MGTwitterMessagesLibXMLParser.m in Sources */,
+				03DAA01813D6C433006D4AF4 /* MGTwitterMessagesParser.m in Sources */,
+				03DAA01913D6C433006D4AF4 /* MGTwitterMiscLibXMLParser.m in Sources */,
+				03DAA01A13D6C433006D4AF4 /* MGTwitterMiscParser.m in Sources */,
+				03DAA01B13D6C433006D4AF4 /* MGTwitterStatusesLibXMLParser.m in Sources */,
+				03DAA01C13D6C433006D4AF4 /* MGTwitterStatusesParser.m in Sources */,
+				03DAA01D13D6C433006D4AF4 /* MGTwitterUsersLibXMLParser.m in Sources */,
+				03DAA01E13D6C433006D4AF4 /* MGTwitterUsersParser.m in Sources */,
+				03DAA01F13D6C433006D4AF4 /* MGTwitterXMLParser.m in Sources */,
+				03DAA02013D6C433006D4AF4 /* NSData+Base64.m in Sources */,
+				03DAA02113D6C433006D4AF4 /* NSString+UUID.m in Sources */,
+				03DAA02213D6C433006D4AF4 /* SS_PrefsController.m in Sources */,
+				03DAA02313D6C433006D4AF4 /* iTunesBridgeOperation.m in Sources */,
+				03DAA02413D6C433006D4AF4 /* PFMoveApplication.m in Sources */,
+				03DAA02513D6C433006D4AF4 /* yajl.c in Sources */,
+				03DAA02613D6C433006D4AF4 /* yajl_alloc.c in Sources */,
+				03DAA02713D6C433006D4AF4 /* yajl_buf.c in Sources */,
+				03DAA02813D6C433006D4AF4 /* yajl_encode.c in Sources */,
+				03DAA02913D6C433006D4AF4 /* yajl_gen.c in Sources */,
+				03DAA02A13D6C433006D4AF4 /* yajl_lex.c in Sources */,
+				03DAA02B13D6C433006D4AF4 /* yajl_parser.c in Sources */,
+				03DAA02C13D6C433006D4AF4 /* NSString+Additions.m in Sources */,
+				03DAA02D13D6C433006D4AF4 /* LastFMScrobbler.m in Sources */,
+				03DAA02E13D6C433006D4AF4 /* FMCallback.m in Sources */,
+				03DAA02F13D6C433006D4AF4 /* FMEngine.m in Sources */,
+				03DAA03013D6C433006D4AF4 /* FMEngineURLConnection.m in Sources */,
+				03DAA03113D6C433006D4AF4 /* NSString+FMEngine.m in Sources */,
+				03DAA03213D6C433006D4AF4 /* ASIFormDataRequest.m in Sources */,
+				03DAA03313D6C433006D4AF4 /* ASIHTTPRequest.m in Sources */,
+				03DAA03413D6C433006D4AF4 /* ASIInputStream.m in Sources */,
+				03DAA03513D6C433006D4AF4 /* ASINetworkQueue.m in Sources */,
+				03DAA03613D6C433006D4AF4 /* ASINSStringAdditions.m in Sources */,
+				03DAA03713D6C433006D4AF4 /* LastFMSubmissionOperation.m in Sources */,
+				03DAA03813D6C433006D4AF4 /* NSObject+SBJSON.m in Sources */,
+				03DAA03913D6C433006D4AF4 /* NSString+SBJSON.m in Sources */,
+				03DAA03A13D6C433006D4AF4 /* SBJSON.m in Sources */,
+				03DAA03B13D6C433006D4AF4 /* SBJsonBase.m in Sources */,
+				03DAA03C13D6C433006D4AF4 /* SBJsonParser.m in Sources */,
+				03DAA03D13D6C433006D4AF4 /* SBJsonWriter.m in Sources */,
+				03DAA03E13D6C433006D4AF4 /* LastFMNotificationOperation.m in Sources */,
+				03DAA03F13D6C433006D4AF4 /* EMKeychainItem.m in Sources */,
+				03DAA04013D6C433006D4AF4 /* NSMutableURLRequest+Parameters.m in Sources */,
+				03DAA04113D6C433006D4AF4 /* NSString+URLEncoding.m in Sources */,
+				03DAA04213D6C433006D4AF4 /* NSURL+Base.m in Sources */,
+				03DAA04313D6C433006D4AF4 /* Base64Transcoder.c in Sources */,
+				03DAA04413D6C433006D4AF4 /* OAAsynchronousDataFetcher.m in Sources */,
+				03DAA04513D6C433006D4AF4 /* OAConsumer.m in Sources */,
+				03DAA04613D6C433006D4AF4 /* OADataFetcher.m in Sources */,
+				03DAA04713D6C433006D4AF4 /* OAHMAC_SHA1SignatureProvider.m in Sources */,
+				03DAA04813D6C433006D4AF4 /* OAMutableURLRequest.m in Sources */,
+				03DAA04913D6C433006D4AF4 /* OAPlaintextSignatureProvider.m in Sources */,
+				03DAA04A13D6C433006D4AF4 /* OARequestParameter.m in Sources */,
+				03DAA04B13D6C433006D4AF4 /* OAServiceTicket.m in Sources */,
+				03DAA04C13D6C433006D4AF4 /* OAToken.m in Sources */,
+				03DAA04D13D6C433006D4AF4 /* TwitterAuthWindowController.m in Sources */,
+				03DAA04E13D6C433006D4AF4 /* FacebookAuthWindowController.m in Sources */,
+				03DAA04F13D6C433006D4AF4 /* FacebookShareOperation.m in Sources */,
+				03DAA05013D6C433006D4AF4 /* NSString+Slice.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1291,6 +1553,26 @@
 			isa = PBXTargetDependency;
 			target = 03BDFDD610D6C38000487180 /* RegistrationPreferencePane */;
 			targetProxy = 03BDFDE910D6C39C00487180 /* PBXContainerItemProxy */;
+		};
+		03DA9FF413D6C433006D4AF4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03BDFC5F10D6BA0500487180 /* GeneralPreferencePane */;
+			targetProxy = 03DA9FF513D6C433006D4AF4 /* PBXContainerItemProxy */;
+		};
+		03DA9FF813D6C433006D4AF4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03BDFD1810D6BD3A00487180 /* TwitterPreferencePane */;
+			targetProxy = 03DA9FF913D6C433006D4AF4 /* PBXContainerItemProxy */;
+		};
+		03DA9FFC13D6C433006D4AF4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 036914C9119D64A900F5BD1D /* LastFM Preference Pane */;
+			targetProxy = 03DA9FFD13D6C433006D4AF4 /* PBXContainerItemProxy */;
+		};
+		03DA9FFE13D6C433006D4AF4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 030B19891252389E003AB6B3 /* FacebookPreferencePane */;
+			targetProxy = 03DA9FFF13D6C433006D4AF4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1412,6 +1694,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1426,6 +1709,7 @@
 				GCC_PREFIX_HEADER = "Tune Buddy_Prefix.pch";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				PRODUCT_NAME = "Tune Buddy";
 				SDKROOT = macosx;
 			};
@@ -1821,10 +2105,93 @@
 			};
 			name = Release;
 		};
+		03DAA06113D6C433006D4AF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Jaroslaw Szpilewski";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(SRCROOT)/../Desktop/eyetunes/build/Release\\\"",
+					"\\\"$(SRCROOT)\\\"",
+					"\\\"$(SRCROOT)/../../../Usefull\\ Stuff/Sparkle\\ 1/With\\ Garbage\\ Collection\\\"",
+					"\\\"$(SRCROOT)/../../../Usefull\\ Stuff/Sparkle\\ 1\\\"",
+					"\\\"$(SRCROOT)/../../../Downloads/Growl-1.2.1-Framework\\\"",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tune Buddy_Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = MAS_VERSION;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = TuneBuddy;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		03DAA06213D6C433006D4AF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Jaroslaw Szpilewski";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(SRCROOT)/../Desktop/eyetunes/build/Release\\\"",
+					"\\\"$(SRCROOT)\\\"",
+					"\\\"$(SRCROOT)/../../../Usefull\\ Stuff/Sparkle\\ 1/With\\ Garbage\\ Collection\\\"",
+					"\\\"$(SRCROOT)/../../../Usefull\\ Stuff/Sparkle\\ 1\\\"",
+					"\\\"$(SRCROOT)/../../../Downloads/Growl-1.2.1-Framework\\\"",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tune Buddy_Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = MAS_VERSION;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = TuneBuddy;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		03DAA06313D6C433006D4AF4 /* Distro */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Jaroslaw Szpilewski";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(SRCROOT)/../Desktop/eyetunes/build/Release\\\"",
+					"\\\"$(SRCROOT)\\\"",
+					"\\\"$(SRCROOT)/../../../Usefull\\ Stuff/Sparkle\\ 1/With\\ Garbage\\ Collection\\\"",
+					"\\\"$(SRCROOT)/../../../Usefull\\ Stuff/Sparkle\\ 1\\\"",
+					"\\\"$(SRCROOT)/../../../Downloads/Growl-1.2.1-Framework\\\"",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tune Buddy_Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = MAS_VERSION;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = TuneBuddy;
+				SDKROOT = macosx;
+			};
+			name = Distro;
+		};
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1842,6 +2209,7 @@
 				GCC_PREFIX_HEADER = "Tune Buddy_Prefix.pch";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				PRODUCT_NAME = "Tune Buddy";
 				SDKROOT = macosx;
 			};
@@ -1851,6 +2219,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1865,6 +2234,7 @@
 				GCC_PREFIX_HEADER = "Tune Buddy_Prefix.pch";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				PRODUCT_NAME = "Tune Buddy";
 				SDKROOT = macosx;
 			};
@@ -1968,6 +2338,16 @@
 				03BDFDDA10D6C38100487180 /* Debug */,
 				03BDFDDB10D6C38100487180 /* Release */,
 				035C9A411230F58100E9941A /* Distro */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03DAA06013D6C433006D4AF4 /* Build configuration list for PBXNativeTarget "Tune Buddy MAS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03DAA06113D6C433006D4AF4 /* Debug */,
+				03DAA06213D6C433006D4AF4 /* Release */,
+				03DAA06313D6C433006D4AF4 /* Distro */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
