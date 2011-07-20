@@ -14,6 +14,7 @@
 #import "Adium.h"
 #import "MGTwitterEngine.h"
 #import "SS_PrefsController.h"
+#import "WelcomeWindowController.h"
 
 @interface AppDelegate : NSObject 
 {
@@ -37,6 +38,7 @@
 	NSMenuItem *facebookMenuItem;
 	NSMenuItem *smallScreenModeMenuItem;
 	NSMenuItem *quitMenuItem;
+	NSMenuItem *fullVersionMenuItem;
 	NSMenu *statusBarMenu;
 	
 	AdiumApplication *adium;
@@ -62,6 +64,7 @@
 	NSNumber *trackPlayCount;
 	
 	NSInteger facebookAuthFailCount;
+	
 }
 
 #pragma mark -

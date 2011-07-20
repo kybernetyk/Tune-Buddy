@@ -536,7 +536,16 @@
 		[smallScreenModeMenuItem setHidden: YES];
 		[smallScreenMenuSeperator setHidden: YES];
 	}*/
-	
+
+#ifdef LITE_VERSION
+	if (!fullVersionMenuItem)
+	{
+		fullVersionMenuItem = [statusBarMenu addItemWithTitle: @"Get Tune Buddy Full Version" action:@selector(openBuyPage:) keyEquivalent: [NSString string]];
+		//		[statusBarMenu addItem:[NSMenuItem separatorItem]];
+		
+	}
+#endif
+
 	if (!copyToClipboardMenuItem)
 		copyToClipboardMenuItem = [statusBarMenu addItemWithTitle:@"Copy To Clip Board" action: @selector(copyCurrentTrackInfoToClipBoard:) keyEquivalent: [NSString string]];
 	
@@ -544,7 +553,7 @@
 	//transformer for hidden = !xxxEnabled
 	NSValueTransformer *tran = [NSValueTransformer valueTransformerForName: NSNegateBooleanTransformerName];
 	NSDictionary *opts = [NSDictionary dictionaryWithObject: tran forKey: @"NSValueTransformer"];
-	
+
 #ifndef LITE_VERSION
 	if (!adiumMenuItem)
 	{
@@ -564,7 +573,7 @@
 		[facebookMenuItem bind: @"hidden" toObject: [NSUserDefaultsController sharedUserDefaultsController] withKeyPath: @"values.facebookEnabled" options:opts];
 		[statusBarMenu addItem:[NSMenuItem separatorItem]];
 		
-	}
+	}	
 #endif
 	
 	if (!preferencesMenuItem)
@@ -1113,8 +1122,17 @@
 
 - (void) openBuyPage: (id) sender
 {
+#ifdef MAS_VERSION
+#ifdef LITE_VERSION
+	[NSApp activateIgnoringOtherApps: YES];
 	
+	WelcomeWindowController *wwc = [[WelcomeWindowController alloc] initWithWindowNibName: @"WelcomeWindow"];
+	[[wwc window] makeKeyWindow];
+#endif
+	
+#else
 	[[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: @"http://www.fluxforge.com/tune-buddy/buy/"]];
+#endif
 }
 
 - (void) openRegistrationPane: (id) sender
