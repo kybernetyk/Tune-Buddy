@@ -25,7 +25,7 @@
 
 // speed in pixel(s)/sec
 
-#define SCROLLING_SPEED 30
+#define SCROLLING_SPEED 60
 #define RESIZE_SPEED 150
 
 @interface TrackInfoView(PRIVATE)
@@ -140,15 +140,21 @@
 	[titleField sizeToFit];
 	[self addObserver:self forKeyPath:@"titleField.stringValue" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
 	NSRect frame = titleField.frame;
+	NSRect frame2 = titleField.frame;
+	frame2.origin.x += 8.0; //buffer around bounce
+	titleField.frame = frame2;
 	
 	CABasicAnimation *scrollAnimation = [CABasicAnimation animationWithKeyPath:@"frameOrigin"];
 	scrollAnimation.duration = fabs(frame.size.width - oldFrame.size.width) / SCROLLING_SPEED;
+	//scrollAnimation.duration = fabs((maximumWidth - oldFrame.size.width - 8.0)) / SCROLLING_SPEED;
 	scrollAnimation.repeatCount = HUGE_VAL;
-	//scrollAnimation.autoreverses = YES;
+	scrollAnimation.autoreverses = YES;
 	
 	titleField.animations = [NSDictionary dictionaryWithObject:scrollAnimation forKey:@"frameOrigin"];
 	
-	frame.origin.x = - (frame.size.width - oldFrame.size.width);//titleFieldClippingView.frame.size.width - titleField.frame.size.width;
+	//frame.origin.x = titleFieldClippingView.frame.size.width - titleField.frame.size.width;
+//	frame.origin.x = - (frame.size.width - oldFrame.size.width);
+	frame.origin.x = (maximumWidth - oldFrame.size.width - 8.0);
 	[[titleField animator] setFrame:frame];
 }
 
