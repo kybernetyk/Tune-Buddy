@@ -282,6 +282,7 @@
 	[defc addObserver: self forKeyPath: @"values.keepAlwaysLeft" options: NSKeyValueObservingOptionNew context: @"keepAlwaysLeft"];
 	[defc addObserver: self forKeyPath: @"values.statusItemForegroundColor" options: NSKeyValueObservingOptionNew context: @"statusItemForegroundColor"];
 	[defc addObserver: self forKeyPath: @"values.lastFMUsername" options: NSKeyValueObservingOptionNew context: @"lastFMUsername"];
+	[defc addObserver: self forKeyPath: @"values.scrollingEnabled" options: NSKeyValueObservingOptionNew context: @"scrollingEnabled"];
 	
 	
 	if ([[NSUserDefaults standardUserDefaults] boolForKey: @"showWelcome"]) {
@@ -322,6 +323,11 @@
 	{
 		NSLog(@"last fm username changed biatch!");
 		[[LastFMAuth sharedLastFMAuth] reset];
+		return;
+	}
+	
+	if ([contextString isEqualToString: @"scrollingEnabled"]) {
+		[self createStatusItem];
 		return;
 	}
 
@@ -372,8 +378,6 @@
 
 - (void)menuWillOpen:(NSMenu *)menu
 {
-
-
 	if (smallScreenModeEnabled)
 	{
 		//[smallScreenModeMenuItem setTitle: [self displayString]];
@@ -598,7 +602,6 @@
 	}
 	
 	NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
-	
 	NSData *fontData = [defs objectForKey: @"statusItemForegroundColor"];
 	NSColor *fontColor = [NSUnarchiver unarchiveObjectWithData: fontData];
 	
@@ -621,7 +624,7 @@
 		if ([defs boolForKey: @"keepAlwaysLeft"] && [statusBar respondsToSelector:@selector(_statusItemWithLength:withPriority:)])
 		{
 			statusItem = [statusBar _statusItemWithLength:0 withPriority:INT_MIN ];
-			[ statusItem setLength:0 ];
+			[statusItem setLength:0];
 		}
 		else
 		{
@@ -632,6 +635,7 @@
 		[statusItem setHighlightMode: YES];
 		[statusItem setMenu: statusBarMenu];
 
+
 		if ([defs boolForKey: @"keepAlwaysLeft"] && [statusBar respondsToSelector:@selector(_statusItemWithLength:withPriority:)])
 		{
 			[ statusItem setLength:NSVariableStatusItemLength ];
@@ -641,7 +645,23 @@
 		[statusItem retain];
 	}
 	
-	[statusItem setAttributedTitle: attributedTitle];
+//	[statusItem setAttributedTitle: attributedTitle];
+	#define SYSTEM_STATUS_BAR_HEIGHT ([[NSStatusBar systemStatusBar] thickness])
+	trackInfoView = [[TrackInfoView alloc] initWithFrame:NSMakeRect(0, 0, SYSTEM_STATUS_BAR_HEIGHT, SYSTEM_STATUS_BAR_HEIGHT)];
+
+
+	trackInfoView.maximumWidth = [[[NSScreen screens] objectAtIndex: 0] frame].size.width/6.4;
+	//self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+	statusItem.view = trackInfoView;
+			statusItem.menu.delegate = trackInfoView;
+//	[statusItem menu = mainMenu;
+//	statusItem.menu.delegate = trackInfoView;
+	
+	//trackInfoView.menu = mainMenu;
+	trackInfoView.statusItem = statusItem;
+	//trackInfoView.artworkView.image = [NSImage imageNamed: @"icon.icns"];
+	[trackInfoView.titleField setStringValue: title];
+//	[trackInfoView.titleField setAttributedStringValue: attributedTitle];
 }
 
 
@@ -969,6 +989,9 @@
 #pragma mark display string mangling
 - (NSString *) trimmedDisplayString: (NSString *) displayString
 {
+	if ([[NSUserDefaults standardUserDefaults] boolForKey: @"scrollingEnabled"])
+		return displayString;
+	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	NSInteger maxLength = [defaults integerForKey: @"maxDisplayLength"];
 	if (maxLength < 8)
@@ -998,6 +1021,7 @@
 			dispString = [self trimmedDisplayString: dispString];
 		}
 	}
+	NSLog(@"Display String: %@", dispString);
 	return dispString;
 }
 

@@ -15,6 +15,7 @@
 #import "MGTwitterEngine.h"
 #import "SS_PrefsController.h"
 #import "WelcomeWindowController.h"
+#import "TrackInfoView.h"
 
 @interface AppDelegate : NSObject 
 {
@@ -68,6 +69,8 @@
 	NSNumber *trackPlayCount;
 	
 	NSInteger facebookAuthFailCount;
+	
+	TrackInfoView *trackInfoView;
 	
 }
 
