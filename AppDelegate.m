@@ -215,6 +215,7 @@
 						  [NSNumber numberWithBool: shallEnableSmallScreenMode], @"growlEnabled", //enable growl notifications when small screen mode is enabled. don't bother big screen users with growl
 						  fontData, @"statusItemForegroundColor",
 						  [NSNumber numberWithBool: YES], @"showWelcome",
+						  [NSNumber numberWithBool: YES], @"scrollingEnabled",
 						  nil];
 	
 	[defaults registerDefaults: dict];
