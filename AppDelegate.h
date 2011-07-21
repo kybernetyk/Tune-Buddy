@@ -15,7 +15,7 @@
 #import "MGTwitterEngine.h"
 #import "SS_PrefsController.h"
 #import "WelcomeWindowController.h"
-#import "TrackInfoView.h"
+#import "FXScrollingView.h"
 
 @interface AppDelegate : NSObject 
 {
@@ -70,7 +70,7 @@
 	
 	NSInteger facebookAuthFailCount;
 	
-	TrackInfoView *trackInfoView;
+	FXScrollingView *statusView;
 	
 }
 

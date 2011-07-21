@@ -648,20 +648,20 @@
 	
 //	[statusItem setAttributedTitle: attributedTitle];
 	#define SYSTEM_STATUS_BAR_HEIGHT ([[NSStatusBar systemStatusBar] thickness])
-	trackInfoView = [[TrackInfoView alloc] initWithFrame:NSMakeRect(0, 0, SYSTEM_STATUS_BAR_HEIGHT, SYSTEM_STATUS_BAR_HEIGHT)];
+	statusView = [[FXScrollingView alloc] initWithFrame:NSMakeRect(0, 0, SYSTEM_STATUS_BAR_HEIGHT, SYSTEM_STATUS_BAR_HEIGHT)];
 
 
-	trackInfoView.maximumWidth = [[[NSScreen screens] objectAtIndex: 0] frame].size.width/6.4;
+	statusView.maximumWidth = [[[NSScreen screens] objectAtIndex: 0] frame].size.width/6.4;
 	//self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-	statusItem.view = trackInfoView;
-			statusItem.menu.delegate = trackInfoView;
+	statusItem.view = statusView;
+			statusItem.menu.delegate = statusView;
 //	[statusItem menu = mainMenu;
 //	statusItem.menu.delegate = trackInfoView;
 	
 	//trackInfoView.menu = mainMenu;
-	trackInfoView.statusItem = statusItem;
+	statusView.statusItem = statusItem;
 	//trackInfoView.artworkView.image = [NSImage imageNamed: @"icon.icns"];
-	[trackInfoView.titleField setStringValue: title];
+	[statusView.titleField setStringValue: title];
 //	[trackInfoView.titleField setAttributedStringValue: attributedTitle];
 }
 
@@ -994,9 +994,11 @@
 		return displayString;
 	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	NSInteger maxLength = [defaults integerForKey: @"maxDisplayLength"];
+	NSInteger maxLength = ([[[NSScreen screens] objectAtIndex: 0] frame].size.width/6.4)/6.0;//[defaults integerForKey: @"maxDisplayLength"];
 	if (maxLength < 8)
 		maxLength = 8;
+	
+	
 	
 	//NSString *displayString = [self longDisplayString];
 	
@@ -1016,7 +1018,10 @@
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	if ([defaults boolForKey: @"trimDisplayStringLength"])
 	{
-		NSInteger maxLength = [defaults integerForKey: @"maxDisplayLength"];
+		//NSInteger maxLength = [defaults integerForKey: @"maxDisplayLength"];
+		NSFont *font = [NSFont fontWithName:@"Verdana" size: 11.0f];
+		NSInteger maxLength = ([[[NSScreen screens] objectAtIndex: 0] frame].size.width/6.4)/6.0;//[defaults integerForKey: @"
+		NSLog(@"maxLength: %i", maxLength);
 		if ([dispString length] >= maxLength)
 		{
 			dispString = [self trimmedDisplayString: dispString];
