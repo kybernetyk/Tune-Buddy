@@ -188,8 +188,10 @@
 	
 //	NSLog(@"screen width: %f", [screen frame].size.width);
 	
+#ifdef SMALL_SCREENMODE_INSTEAD_OF_SCROLLING
 	if ([screen frame].size.width < 1300.0)
 		shallEnableSmallScreenMode = YES;
+#endif
 	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	
@@ -200,7 +202,6 @@
 	
 	NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
 						  [NSNumber numberWithBool: YES], @"trimDisplayStringLength",
-						  [NSNumber numberWithInt: 48], @"maxDisplayLength",
 						  [NSNumber numberWithBool: NO], @"twitterEnabled",
 						  [NSNumber numberWithBool: NO], @"lastFMEnabled",
 						  [NSNumber numberWithBool: YES], @"enableMusicMonday",
@@ -985,6 +986,10 @@
 }
 
 
+- (NSInteger) maxDisplayStringLength
+{
+	return ([[[NSScreen screens] objectAtIndex: 0] frame].size.width/6.4)/6.0;
+}
 	 
 #pragma mark -
 #pragma mark display string mangling
@@ -993,8 +998,7 @@
 	if ([[NSUserDefaults standardUserDefaults] boolForKey: @"scrollingEnabled"])
 		return displayString;
 	
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	NSInteger maxLength = ([[[NSScreen screens] objectAtIndex: 0] frame].size.width/6.4)/6.0;//[defaults integerForKey: @"maxDisplayLength"];
+	NSInteger maxLength = [self maxDisplayStringLength];
 	if (maxLength < 8)
 		maxLength = 8;
 	
@@ -1016,18 +1020,12 @@
 	NSString *dispString = [self longDisplayString];
 	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	if ([defaults boolForKey: @"trimDisplayStringLength"])
-	{
-		//NSInteger maxLength = [defaults integerForKey: @"maxDisplayLength"];
-		NSFont *font = [NSFont fontWithName:@"Verdana" size: 11.0f];
-		NSInteger maxLength = ([[[NSScreen screens] objectAtIndex: 0] frame].size.width/6.4)/6.0;//[defaults integerForKey: @"
-		NSLog(@"maxLength: %i", maxLength);
-		if ([dispString length] >= maxLength)
-		{
+	if ([defaults boolForKey: @"trimDisplayStringLength"])	{
+		NSInteger maxLength = [self maxDisplayStringLength];
+		if ([dispString length] >= maxLength) {
 			dispString = [self trimmedDisplayString: dispString];
 		}
 	}
-	NSLog(@"Display String: %@", dispString);
 	return dispString;
 }
 
