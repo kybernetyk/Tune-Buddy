@@ -150,8 +150,6 @@
 		036915A5119D67E400F5BD1D /* LastFM Preference Pane.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 036914CA119D64A900F5BD1D /* LastFM Preference Pane.bundle */; };
 		036915F0119D6AD200F5BD1D /* LastFM_Prefs.png in Resources */ = {isa = PBXBuildFile; fileRef = 036915EF119D6AD200F5BD1D /* LastFM_Prefs.png */; };
 		0369169A11A1238100F5BD1D /* LastFMAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369168711A1224600F5BD1D /* LastFMAuth.m */; };
-		0370B01710D85551001B0FE9 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0370B01610D85551001B0FE9 /* Sparkle.framework */; };
-		0370B02B10D85555001B0FE9 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0370B01610D85551001B0FE9 /* Sparkle.framework */; };
 		03743D3F109D91F200B3B221 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03743D3E109D91F200B3B221 /* ScriptingBridge.framework */; };
 		03743E8E109D987300B3B221 /* NSString+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 03743E8D109D987300B3B221 /* NSString+Search.m */; };
 		0374404B109DDAA200B3B221 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 0374404A109DDAA200B3B221 /* dsa_pub.pem */; };
@@ -163,6 +161,8 @@
 		037A65D413D6FBBF001C01A8 /* WelcomeWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037A65D213D6FBBF001C01A8 /* WelcomeWindow.xib */; };
 		0391AE8C10FDF5AD00ACE94F /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0391AE8B10FDF5AD00ACE94F /* ApplicationServices.framework */; };
 		0391B01010FE06F000ACE94F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B0E8CF10D7C8E900D8B185 /* Security.framework */; };
+		03A1262A13D987FE0043C59F /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03A1262913D987FE0043C59F /* Sparkle.framework */; };
+		03A1262B13D9880B0043C59F /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03A1262913D987FE0043C59F /* Sparkle.framework */; };
 		03B0E80110D7BCDC00D8B185 /* iTunesBridgeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0E80010D7BCDC00D8B185 /* iTunesBridgeOperation.m */; };
 		03B0E8CA10D7C87700D8B185 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0E8C910D7C87700D8B185 /* PFMoveApplication.m */; };
 		03B0E8D010D7C8E900D8B185 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B0E8CF10D7C8E900D8B185 /* Security.framework */; };
@@ -427,7 +427,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				03B79FBB110BA68C00C7AD7F /* Growl.framework in CopyFiles */,
-				0370B02B10D85555001B0FE9 /* Sparkle.framework in CopyFiles */,
+				03A1262B13D9880B0043C59F /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,6 +533,7 @@
 		037A65CF13D6FB9F001C01A8 /* WelcomeWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeWindowController.m; sourceTree = "<group>"; };
 		037A65D213D6FBBF001C01A8 /* WelcomeWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeWindow.xib; sourceTree = "<group>"; };
 		0391AE8B10FDF5AD00ACE94F /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
+		03A1262913D987FE0043C59F /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		03B0E7FF10D7BCDC00D8B185 /* iTunesBridgeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunesBridgeOperation.h; sourceTree = "<group>"; };
 		03B0E80010D7BCDC00D8B185 /* iTunesBridgeOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iTunesBridgeOperation.m; sourceTree = "<group>"; };
 		03B0E8C810D7C87700D8B185 /* PFMoveApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFMoveApplication.h; sourceTree = "<group>"; };
@@ -640,7 +641,7 @@
 		03F9F8DE119B346A000CA35E /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
 		03F9F8DF119B346A000CA35E /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		03F9F8E0119B346A000CA35E /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
-		03FF3B7B13D84C29006099C6 /* FXScrollingView.h */ = {isa = PBXFileReference; fileEncoding = 4; path = FXScrollingView.h; sourceTree = "<group>"; };
+		03FF3B7B13D84C29006099C6 /* FXScrollingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXScrollingView.h; sourceTree = "<group>"; };
 		03FF3B7C13D84C29006099C6 /* FXScrollingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXScrollingView.m; sourceTree = "<group>"; };
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
@@ -749,11 +750,11 @@
 				03743D3F109D91F200B3B221 /* ScriptingBridge.framework in Frameworks */,
 				03BDFBDA10D6B6A400487180 /* libxml2.dylib in Frameworks */,
 				03B0E8D010D7C8E900D8B185 /* Security.framework in Frameworks */,
-				0370B01710D85551001B0FE9 /* Sparkle.framework in Frameworks */,
 				0391AE8C10FDF5AD00ACE94F /* ApplicationServices.framework in Frameworks */,
 				03B79FB3110BA67900C7AD7F /* Growl.framework in Frameworks */,
 				0357E89A1177247A0082AB8F /* SystemConfiguration.framework in Frameworks */,
 				0357E89E117724810082AB8F /* libz.dylib in Frameworks */,
+				03A1262A13D987FE0043C59F /* Sparkle.framework in Frameworks */,
 				036522AE123001CA00E01E03 /* WebKit.framework in Frameworks */,
 				0314EA3113D72F7E00F1A08E /* Growl.framework in Frameworks */,
 			);
@@ -1154,6 +1155,7 @@
 				030B19A7125238E5003AB6B3 /* Facebook Preference Pane */,
 				03BDFCC710D6BB6500487180 /* Updating Preference Pane */,
 				03BDFC6610D6BA1900487180 /* General Preference Pane */,
+				03A1262913D987FE0043C59F /* Sparkle.framework */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,

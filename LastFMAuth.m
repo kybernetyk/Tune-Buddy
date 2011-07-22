@@ -62,7 +62,7 @@ static LastFMAuth *sharedSingleton = nil;
 }
 
 
--(unsigned)retainCount 
+-(NSUInteger)retainCount 
 {
     return UINT_MAX;  //denotes an object that cannot be release
 }
@@ -183,7 +183,7 @@ static LastFMAuth *sharedSingleton = nil;
 		
 	FMEngine *fmEngine = [[FMEngine alloc] init];
 	NSString *authToken = [fmEngine generateAuthTokenFromUsername: username password: password];
-	NSDictionary *urlDict = [NSDictionary dictionaryWithObjectsAndKeys: username, @"username", authToken, @"authToken", _LASTFM_API_KEY_, @"api_key", nil, nil];
+//	NSDictionary *urlDict = [NSDictionary dictionaryWithObjectsAndKeys: username, @"username", authToken, @"authToken", _LASTFM_API_KEY_, @"api_key", nil, nil];
 	NSString *authURL = [NSString stringWithFormat: @"%@?format=json",_LASTFM_BASEURL_];
 	
 	

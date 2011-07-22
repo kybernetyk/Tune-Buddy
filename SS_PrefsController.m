@@ -63,7 +63,7 @@
 // Designated initializer
 - (id)initWithPanesSearchPath:(NSString*)path bundleExtension:(NSString *)ext
 {
-    if (self = [super init]) {
+    if ((self = [super init])) {
         [self setDebug:NO];
         preferencePanes = [[NSMutableDictionary alloc] init];
         panesOrder = [[NSMutableArray alloc] init];

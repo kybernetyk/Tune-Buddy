@@ -17,7 +17,7 @@
 #import "WelcomeWindowController.h"
 #import "FXScrollingView.h"
 
-@interface AppDelegate : NSObject 
+@interface AppDelegate : NSObject <NSMenuDelegate>
 {
 	BOOL isRegistered;
 	BOOL isExpired;
@@ -99,6 +99,7 @@
 - (IBAction) sendCurrentTrackToAdium: (id) sender;
 - (IBAction) sendCurrentTrackToTwitter: (id) sender;
 - (IBAction) sendCurrentTrackToFacebook: (id) sender;
+- (IBAction) checkForUpdates: (id) sender;
 
 - (void) createStatusItem;
 
@@ -110,6 +111,5 @@
 #pragma mark Application Delegate Methods
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification;
 
-- (void) checkRegistration;
 
 @end

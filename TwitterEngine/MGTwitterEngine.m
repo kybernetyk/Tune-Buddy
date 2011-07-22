@@ -660,14 +660,14 @@
         [_connections removeObjectForKey:[connection identifier]];
     }
     
-    if (NO) {
-        // Display headers for debugging.
-        NSHTTPURLResponse *resp = (NSHTTPURLResponse *)response;
-        NSLog(@"(%d) [%@]:\r%@", 
-              [resp statusCode], 
-              [NSHTTPURLResponse localizedStringForStatusCode:[resp statusCode]], 
-              [resp allHeaderFields]);
-    }
+//    if (NO) {
+//        // Display headers for debugging.
+//        NSHTTPURLResponse *resp = (NSHTTPURLResponse *)response;
+//        NSLog(@"(%d) [%@]:\r%@", 
+//              [resp statusCode], 
+//              [NSHTTPURLResponse localizedStringForStatusCode:[resp statusCode]], 
+//              [resp allHeaderFields]);
+//    }
 }
 
 
@@ -697,18 +697,18 @@
     
     NSData *receivedData = [connection data];
     if (receivedData) {
-        if (NO) {
-            // Dump data as string for debugging.
-            NSString *dataString = [NSString stringWithUTF8String:[receivedData bytes]];
-            NSLog(@"Succeeded! Received %d bytes of data:\r\r%@", [receivedData length], dataString);
-        }
-        
-        if (NO) {
-            // Dump XML to file for debugging.
-            NSString *dataString = [NSString stringWithUTF8String:[receivedData bytes]];
-            [dataString writeToFile:[@"~/Desktop/twitter_messages.xml" stringByExpandingTildeInPath] 
-                         atomically:NO encoding:NSUnicodeStringEncoding error:NULL];
-        }
+//        if (NO) {
+//            // Dump data as string for debugging.
+//            NSString *dataString = [NSString stringWithUTF8String:[receivedData bytes]];
+//            NSLog(@"Succeeded! Received %d bytes of data:\r\r%@", [receivedData length], dataString);
+//        }
+//        
+//        if (NO) {
+//            // Dump XML to file for debugging.
+//            NSString *dataString = [NSString stringWithUTF8String:[receivedData bytes]];
+//            [dataString writeToFile:[@"~/Desktop/twitter_messages.xml" stringByExpandingTildeInPath] 
+//                         atomically:NO encoding:NSUnicodeStringEncoding error:NULL];
+//        }
         
         if ([connection responseType] == MGTwitterImage) {
 			// Create image from data.
@@ -1486,6 +1486,7 @@
     }
 
     // Remove this shit, we don't support it.  ;)
+	return nil;
 }
 
 #pragma mark Adium OAuth Changes

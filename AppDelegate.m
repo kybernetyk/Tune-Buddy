@@ -27,6 +27,16 @@
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
 #import "WelcomeWindowController.h"
+#import "PFMoveApplication.h"
+
+@interface AppDelegate()
+- (void) checkRegistration;
+- (void) openBuyPage: (id) sender;
+- (void) contactSupport: (id) sender;
+- (void) openRegistrationPane: (id) sender;
+- (void) reorderIcon: (id) sender;
+- (void) authTwitterAndPostTweetAfterwards: (BOOL) postAfterwards;
+@end
 
 @implementation AppDelegate
 #pragma mark -
@@ -182,7 +192,7 @@
 	NSLog(@"keychian: %@", keyChainItem);*/
 	
 	
-	NSScreen *screen = [[NSScreen screens] objectAtIndex: 0];
+	//NSScreen *screen = [[NSScreen screens] objectAtIndex: 0];
 	
 	BOOL shallEnableSmallScreenMode = NO;
 	
@@ -516,17 +526,12 @@
 			
 			if ([self isExpired] && ![self isRegistered])
 			{
-				NSMenuItem *item = [statusBarMenu addItemWithTitle:@"Buy Tune Buddy" action:@selector(openBuyPage:) keyEquivalent: [NSString string]];
-				NSMenuItem *item2 = [statusBarMenu addItemWithTitle:@"Enter License Key" action:@selector(openRegistrationPane:) keyEquivalent: [NSString string]];
-				
-				
-			//	[statusBarMenu addItem: item];
-			//	[statusBarMenu addItem: item2];
+				[statusBarMenu addItemWithTitle:@"Buy Tune Buddy" action:@selector(openBuyPage:) keyEquivalent: [NSString string]];
+				[statusBarMenu addItemWithTitle:@"Enter License Key" action:@selector(openRegistrationPane:) keyEquivalent: [NSString string]];
 				[statusBarMenu insertItem: smallScreenMenuSeperator atIndex: 3];
 			}
 			else
 			{
-				
 				[statusBarMenu insertItem: smallScreenMenuSeperator atIndex: 1];
 			}
 		}
@@ -604,16 +609,16 @@
 	}
 	
 	NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
-	NSData *fontData = [defs objectForKey: @"statusItemForegroundColor"];
-	NSColor *fontColor = [NSUnarchiver unarchiveObjectWithData: fontData];
+//	NSData *fontData = [defs objectForKey: @"statusItemForegroundColor"];
+//	NSColor *fontColor = [NSUnarchiver unarchiveObjectWithData: fontData];
 	
 	
 	
 	
-	NSFont *font = [NSFont fontWithName:@"Verdana" size: 11.0f];
+//	NSFont *font = [NSFont fontWithName:@"Verdana" size: 11.0f];
 	//NSLog(@"%@",font);
-	NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys: font,@"NSFont",fontColor,NSForegroundColorAttributeName,  nil];
-	NSAttributedString *attributedTitle = [[[NSAttributedString alloc] initWithString: title attributes: attributes] autorelease];
+//	NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys: font,@"NSFont",fontColor,NSForegroundColorAttributeName,  nil];
+	//NSAttributedString *attributedTitle = [[[NSAttributedString alloc] initWithString: title attributes: attributes] autorelease];
 	
 //	[defaults setObject:[NSArchiver archivedDataWithRootObject:myColor
 //														forKey:@"myColor"]];

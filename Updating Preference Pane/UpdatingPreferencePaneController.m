@@ -1,4 +1,5 @@
 #import "UpdatingPreferencePaneController.h"
+//#import "AppDelegate.h"
 
 @implementation UpdatingPreferencePaneController
 #pragma mark -
@@ -12,8 +13,8 @@
 // init
 - (id)init
 {
-    if (self = [super init])
-    {
+	self = [super init];
+    if (self) {
         [self setCheckForUpdatesTooltip: @"Every day an automatic check for new versions of Tune Buddy will be performed."];
         [self setSubmitAnonymizedHardwareStatisticsTooltip: @"You can choose to submit anonymized hardware statistics about your Mac. (CPU/Size of RAM/etc). This will help us make better software. Only hardware stats are submitted - no personal information will be ever collected by this app and/or submitted to us!"];
     }
