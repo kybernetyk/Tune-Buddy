@@ -260,7 +260,7 @@
 						  fontData, @"statusItemForegroundColor",
 						  [NSNumber numberWithBool: YES], @"showWelcome",
 						  [NSNumber numberWithBool: YES], @"scrollingEnabled",
-						  @"iTunes", @"selectedClient",
+						  @"Automatic", @"selectedClient",
 						  nil];
 	
 	[defaults registerDefaults: dict];
