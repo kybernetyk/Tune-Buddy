@@ -186,6 +186,7 @@ static LastFMAuth *sharedSingleton = nil;
 //	NSDictionary *urlDict = [NSDictionary dictionaryWithObjectsAndKeys: username, @"username", authToken, @"authToken", _LASTFM_API_KEY_, @"api_key", nil, nil];
 	NSString *authURL = [NSString stringWithFormat: @"%@?format=json",_LASTFM_BASEURL_];
 	
+	NSLog(@"lastfm authing url: %@", authURL);
 	
 	ASIFormDataRequest *authReq = [[ASIFormDataRequest alloc] initWithURL: [NSURL URLWithString: authURL]];
 	
@@ -197,21 +198,24 @@ static LastFMAuth *sharedSingleton = nil;
 	
 	
 	NSString *sig = [fmEngine generateSignatureFromDictionary: [authReq postData]];
-	
+	NSLog(@"lastfm sig: %@", sig);
 	[authReq setPostValue:sig forKey: @"api_sig"];
 	[authReq setPostValue:@"json" forKey:@"format"];
 	
 	[authReq startSynchronous];
 	
 	NSString *str  = nil;
-	if ([authReq responseString])
+	if ([authReq responseString]) {
+		NSLog(@"auth resp string: %@", str);
 		str = [NSString stringWithString: [authReq responseString]];
+	}
 	
-	[authReq release];
+//	[authReq release];
 	
 	if (!str || [str length] <= 0)
 	{	
 		NSLog(@"auth response[==nil] failure");
+		NSLog(@"auth err: %@", [authReq error]);
 		[fmEngine release];
 		
 		return nil;

@@ -133,8 +133,9 @@
 			[self setTrackLength: trackLength];
 			
 			//[self setTrackRating: [NSNumber numberWithInteger: [currentTrack rating]]];
+
 			if ([currentTrack starred])
-				[self setTrackRating: [NSNumber numberWithInteger: 5]];
+				[self setTrackRating: [NSNumber numberWithInteger: 100]];
 			else
 				[self setTrackRating: [NSNumber numberWithInteger: 0]];
 			

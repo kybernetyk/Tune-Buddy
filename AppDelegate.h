@@ -73,6 +73,7 @@
 	
 	FXScrollingView *statusView;
 	
+	id bridgeOperation;
 }
 
 #pragma mark -

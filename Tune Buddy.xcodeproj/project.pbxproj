@@ -108,6 +108,11 @@
 		03287ACB13D82BC30097B761 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03287ACA13D82BC30097B761 /* QuartzCore.framework */; };
 		0329233E1055104F00D30E83 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B97324FDCFA39411CA2CEA /* AppKit.framework */; };
 		032923801055129800D30E83 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0329237F1055129800D30E83 /* icon.icns */; };
+		032DAC0413DB1B46005CC704 /* Client_Prefs.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 032DABFF13DB1B46005CC704 /* Client_Prefs.tiff */; };
+		032DAC0513DB1B46005CC704 /* ClientPreferencePane-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 032DAC0013DB1B46005CC704 /* ClientPreferencePane-Info.plist */; };
+		032DAC0613DB1B46005CC704 /* ClientPreferencePaneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 032DAC0213DB1B46005CC704 /* ClientPreferencePaneController.m */; };
+		032DAC0713DB1B46005CC704 /* ClientPreferencePaneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 032DAC0313DB1B46005CC704 /* ClientPreferencePaneView.xib */; };
+		032DAC0813DB1E97005CC704 /* GeneralPreferencePane-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03BDFC7210D6BA5D00487180 /* GeneralPreferencePane-Info.plist */; };
 		034DF9A9119ABF1400680CA6 /* LastFMSubmissionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 034DF9A8119ABF1400680CA6 /* LastFMSubmissionOperation.m */; };
 		0357E852117720840082AB8F /* LastFMScrobbler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E851117720840082AB8F /* LastFMScrobbler.m */; };
 		0357E86A117723580082AB8F /* FMCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E863117723580082AB8F /* FMCallback.m */; };
@@ -147,6 +152,8 @@
 		036A0C7713DB08BA00DA8205 /* SpotifyBridgeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 036A0C7613DB08BA00DA8205 /* SpotifyBridgeOperation.m */; };
 		036A0C7813DB08BA00DA8205 /* SpotifyBridgeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 036A0C7613DB08BA00DA8205 /* SpotifyBridgeOperation.m */; };
 		036A0C7913DB08BA00DA8205 /* SpotifyBridgeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 036A0C7613DB08BA00DA8205 /* SpotifyBridgeOperation.m */; };
+		036A0C9513DB149900DA8205 /* ClientPreferencePane.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 036A0C8513DB126C00DA8205 /* ClientPreferencePane.bundle */; };
+		036A0C9613DB149E00DA8205 /* ClientPreferencePane.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 036A0C8513DB126C00DA8205 /* ClientPreferencePane.bundle */; };
 		03743D3F109D91F200B3B221 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03743D3E109D91F200B3B221 /* ScriptingBridge.framework */; };
 		03743E8E109D987300B3B221 /* NSString+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 03743E8D109D987300B3B221 /* NSString+Search.m */; };
 		0374404B109DDAA200B3B221 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 0374404A109DDAA200B3B221 /* dsa_pub.pem */; };
@@ -338,6 +345,20 @@
 			remoteGlobalIDString = 036914C9119D64A900F5BD1D;
 			remoteInfo = "LastFM Preference Pane";
 		};
+		036A0C9013DB131E00DA8205 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 036A0C7A13DB126C00DA8205;
+			remoteInfo = SpotifyPreferencePane;
+		};
+		036A0C9213DB132300DA8205 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 036A0C7A13DB126C00DA8205;
+			remoteInfo = SpotifyPreferencePane;
+		};
 		0372EBC713DAE0A500A7C1F0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -451,6 +472,11 @@
 		03287AC813D82BBA0097B761 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = SDKs/MacOSX10.6.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		03287ACA13D82BC30097B761 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = SDKs/MacOSX10.6.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		0329237F1055129800D30E83 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
+		032DABFF13DB1B46005CC704 /* Client_Prefs.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Client_Prefs.tiff; sourceTree = "<group>"; };
+		032DAC0013DB1B46005CC704 /* ClientPreferencePane-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ClientPreferencePane-Info.plist"; sourceTree = "<group>"; };
+		032DAC0113DB1B46005CC704 /* ClientPreferencePaneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientPreferencePaneController.h; sourceTree = "<group>"; };
+		032DAC0213DB1B46005CC704 /* ClientPreferencePaneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientPreferencePaneController.m; sourceTree = "<group>"; };
+		032DAC0313DB1B46005CC704 /* ClientPreferencePaneView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClientPreferencePaneView.xib; sourceTree = "<group>"; };
 		034DF9A7119ABF1400680CA6 /* LastFMSubmissionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LastFMSubmissionOperation.h; sourceTree = "<group>"; };
 		034DF9A8119ABF1400680CA6 /* LastFMSubmissionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LastFMSubmissionOperation.m; sourceTree = "<group>"; };
 		0357E850117720840082AB8F /* LastFMScrobbler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LastFMScrobbler.h; sourceTree = "<group>"; };
@@ -521,6 +547,7 @@
 		036A0C7413DB088500DA8205 /* Spotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spotify.h; sourceTree = "<group>"; };
 		036A0C7513DB08BA00DA8205 /* SpotifyBridgeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotifyBridgeOperation.h; sourceTree = "<group>"; };
 		036A0C7613DB08BA00DA8205 /* SpotifyBridgeOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotifyBridgeOperation.m; sourceTree = "<group>"; };
+		036A0C8513DB126C00DA8205 /* ClientPreferencePane.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClientPreferencePane.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		0370B01610D85551001B0FE9 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		03743D39109D91E100B3B221 /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
 		03743D3E109D91F200B3B221 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = /System/Library/Frameworks/ScriptingBridge.framework; sourceTree = "<absolute>"; };
@@ -691,6 +718,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		036A0C8013DB126C00DA8205 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		03BDFC5E10D6BA0500487180 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -782,6 +816,18 @@
 				03124047124F83A2000182C2 /* FacebookShareOperation.m */,
 			);
 			name = FacebookAuthWindow;
+			sourceTree = "<group>";
+		};
+		032DABFE13DB1B46005CC704 /* Client Preference Pane */ = {
+			isa = PBXGroup;
+			children = (
+				032DABFF13DB1B46005CC704 /* Client_Prefs.tiff */,
+				032DAC0013DB1B46005CC704 /* ClientPreferencePane-Info.plist */,
+				032DAC0113DB1B46005CC704 /* ClientPreferencePaneController.h */,
+				032DAC0213DB1B46005CC704 /* ClientPreferencePaneController.m */,
+				032DAC0313DB1B46005CC704 /* ClientPreferencePaneView.xib */,
+			);
+			path = "Client Preference Pane";
 			sourceTree = "<group>";
 		};
 		0357E84F117720770082AB8F /* Last FM Scrobbler */ = {
@@ -1147,6 +1193,7 @@
 				030B198A1252389E003AB6B3 /* FacebookPreferencePane.bundle */,
 				03DAA06413D6C433006D4AF4 /* TuneBuddy.app */,
 				0314EA2E13D72E8600F1A08E /* TuneBuddyLite.app */,
+				036A0C8513DB126C00DA8205 /* ClientPreferencePane.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1154,6 +1201,7 @@
 		29B97314FDCFA39411CA2CEA /* itunes control */ = {
 			isa = PBXGroup;
 			children = (
+				032DABFE13DB1B46005CC704 /* Client Preference Pane */,
 				03287ACA13D82BC30097B761 /* QuartzCore.framework */,
 				03287AC813D82BBA0097B761 /* QuartzCore.framework */,
 				03287AC613D82BB30097B761 /* QuartzCore.framework */,
@@ -1288,6 +1336,23 @@
 			productReference = 036914CA119D64A900F5BD1D /* LastFM Preference Pane.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
+		036A0C7A13DB126C00DA8205 /* ClientPreferencePane */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 036A0C8113DB126C00DA8205 /* Build configuration list for PBXNativeTarget "ClientPreferencePane" */;
+			buildPhases = (
+				036A0C7B13DB126C00DA8205 /* Resources */,
+				036A0C7E13DB126C00DA8205 /* Sources */,
+				036A0C8013DB126C00DA8205 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ClientPreferencePane;
+			productName = GeneralPreferencePane;
+			productReference = 036A0C8513DB126C00DA8205 /* ClientPreferencePane.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 		03BDFC5F10D6BA0500487180 /* GeneralPreferencePane */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03BDFC6410D6BA0600487180 /* Build configuration list for PBXNativeTarget "GeneralPreferencePane" */;
@@ -1368,6 +1433,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				036A0C9313DB132300DA8205 /* PBXTargetDependency */,
 				0372EBC813DAE0A500A7C1F0 /* PBXTargetDependency */,
 				0372EBCA13DAE0A500A7C1F0 /* PBXTargetDependency */,
 				0372EBCC13DAE0A500A7C1F0 /* PBXTargetDependency */,
@@ -1391,6 +1457,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				036A0C9113DB131E00DA8205 /* PBXTargetDependency */,
 				03BDFC8310D6BA9F00487180 /* PBXTargetDependency */,
 				03BDFCD410D6BB7600487180 /* PBXTargetDependency */,
 				03BDFD2410D6BD5000487180 /* PBXTargetDependency */,
@@ -1431,6 +1498,7 @@
 				03BDFDD610D6C38000487180 /* RegistrationPreferencePane */,
 				036914C9119D64A900F5BD1D /* LastFM Preference Pane */,
 				030B19891252389E003AB6B3 /* FacebookPreferencePane */,
+				036A0C7A13DB126C00DA8205 /* ClientPreferencePane */,
 				03DA9FF313D6C433006D4AF4 /* Tune Buddy MAS */,
 				0314E9C113D72E8600F1A08E /* Tune Buddy MAS Lite */,
 			);
@@ -1474,12 +1542,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		036A0C7B13DB126C00DA8205 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				032DAC0413DB1B46005CC704 /* Client_Prefs.tiff in Resources */,
+				032DAC0513DB1B46005CC704 /* ClientPreferencePane-Info.plist in Resources */,
+				032DAC0713DB1B46005CC704 /* ClientPreferencePaneView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		03BDFC5C10D6BA0500487180 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				03BDFC6C10D6BA1900487180 /* General_Prefs.tiff in Resources */,
 				03BDFC6F10D6BA1900487180 /* GeneralPreferencePaneView.xib in Resources */,
+				032DAC0813DB1E97005CC704 /* GeneralPreferencePane-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1520,6 +1599,7 @@
 				03DAA00213D6C433006D4AF4 /* LastFM Preference Pane.bundle in Resources */,
 				03DAA00413D6C433006D4AF4 /* TwitterPreferencePane.bundle in Resources */,
 				03DAA00613D6C433006D4AF4 /* GeneralPreferencePane.bundle in Resources */,
+				036A0C9513DB149900DA8205 /* ClientPreferencePane.bundle in Resources */,
 				03DAA00713D6C433006D4AF4 /* InfoPlist.strings in Resources */,
 				03DAA00813D6C433006D4AF4 /* MainMenu.xib in Resources */,
 				03DAA00913D6C433006D4AF4 /* Play.png in Resources */,
@@ -1543,6 +1623,7 @@
 				03BDFD2610D6BD5E00487180 /* TwitterPreferencePane.bundle in Resources */,
 				03BDFCD610D6BB8100487180 /* UpdatingPreferencePane.bundle in Resources */,
 				03BDFC8610D6BAB300487180 /* GeneralPreferencePane.bundle in Resources */,
+				036A0C9613DB149E00DA8205 /* ClientPreferencePane.bundle in Resources */,
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				03C64D30102EEB950081A12C /* Play.png in Resources */,
@@ -1648,6 +1729,14 @@
 			files = (
 				03C60E6211A2C0BD00823D21 /* EMKeychainItem.m in Sources */,
 				036914D8119D64CC00F5BD1D /* LastFMPreferencePaneController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		036A0C7E13DB126C00DA8205 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				032DAC0613DB1B46005CC704 /* ClientPreferencePaneController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1851,6 +1940,16 @@
 			isa = PBXTargetDependency;
 			target = 036914C9119D64A900F5BD1D /* LastFM Preference Pane */;
 			targetProxy = 036914E4119D64F300F5BD1D /* PBXContainerItemProxy */;
+		};
+		036A0C9113DB131E00DA8205 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 036A0C7A13DB126C00DA8205 /* ClientPreferencePane */;
+			targetProxy = 036A0C9013DB131E00DA8205 /* PBXContainerItemProxy */;
+		};
+		036A0C9313DB132300DA8205 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 036A0C7A13DB126C00DA8205 /* ClientPreferencePane */;
+			targetProxy = 036A0C9213DB132300DA8205 /* PBXContainerItemProxy */;
 		};
 		0372EBC813DAE0A500A7C1F0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2338,6 +2437,90 @@
 			};
 			name = Release;
 		};
+		036A0C8213DB126C00DA8205 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Client Preference Pane/ClientPreferencePane-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				MACH_O_TYPE = mh_bundle;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PRODUCT_NAME = ClientPreferencePane;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "i386 x86_64";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		036A0C8313DB126C00DA8205 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Client Preference Pane/ClientPreferencePane-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				MACH_O_TYPE = mh_bundle;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PRODUCT_NAME = ClientPreferencePane;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "i386 x86_64";
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		036A0C8413DB126C00DA8205 /* Distro */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Client Preference Pane/ClientPreferencePane-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				MACH_O_TYPE = mh_bundle;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PRODUCT_NAME = ClientPreferencePane;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "i386 x86_64";
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = NO;
+			};
+			name = Distro;
+		};
 		03BDFC6210D6BA0600487180 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2775,6 +2958,16 @@
 				036914CD119D64AA00F5BD1D /* Debug */,
 				036914CE119D64AA00F5BD1D /* Release */,
 				035C9A421230F58100E9941A /* Distro */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		036A0C8113DB126C00DA8205 /* Build configuration list for PBXNativeTarget "ClientPreferencePane" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				036A0C8213DB126C00DA8205 /* Debug */,
+				036A0C8313DB126C00DA8205 /* Release */,
+				036A0C8413DB126C00DA8205 /* Distro */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

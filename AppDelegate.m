@@ -119,6 +119,33 @@
 }
 
 
+- (void) createBridgeOperation {
+	[bridgeOperation autorelease];
+	[backgroundOperationQueue cancelAllOperations];
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+	NSString *selectedClient = [defaults valueForKey: @"selectedClient"];
+	NSLog(@"Selected Client: %@", selectedClient);
+	
+	if ([selectedClient isEqualToString: @"Spotify"]) {
+		bridgeOperation = [[SpotifyBridgeOperation alloc] init];		
+	}
+	
+	//fall back is always iTunes
+	if ([selectedClient isEqualToString: @"iTunes"] ||
+		[selectedClient length] == 0 ||
+		!bridgeOperation) {
+		bridgeOperation = [[iTunesBridgeOperation alloc] init];
+	}
+	
+
+	
+	[bridgeOperation setDelegate: self];
+	[backgroundOperationQueue addOperation: bridgeOperation];
+	
+
+}
+
 #pragma mark -
 #pragma mark Application Delegate Methods
 
@@ -228,6 +255,7 @@
 						  fontData, @"statusItemForegroundColor",
 						  [NSNumber numberWithBool: YES], @"showWelcome",
 						  [NSNumber numberWithBool: YES], @"scrollingEnabled",
+						  @"iTunes", @"selectedClient",
 						  nil];
 	
 	[defaults registerDefaults: dict];
@@ -283,16 +311,8 @@
 	backgroundOperationQueue = [[NSOperationQueue alloc] init];
 	[backgroundOperationQueue setMaxConcurrentOperationCount: 5];
 	
-	id op;
-	if (0) {
-		op = [[iTunesBridgeOperation alloc] init];
-	} else {
-		op = [[SpotifyBridgeOperation alloc] init];
-	}
-	[op setDelegate: self];
-	
-	[backgroundOperationQueue addOperation: op];
-	
+	[self createBridgeOperation];
+	NSLog(@"bridge op: %@", bridgeOperation);
 	
 	NSUserDefaultsController *defc = [NSUserDefaultsController sharedUserDefaultsController];
 	[defc addObserver: self forKeyPath: @"values.smallScreenModeEnabled" options: NSKeyValueObservingOptionNew context: @"smallScreenModeEnabled"];
@@ -301,6 +321,8 @@
 	[defc addObserver: self forKeyPath: @"values.statusItemForegroundColor" options: NSKeyValueObservingOptionNew context: @"statusItemForegroundColor"];
 	[defc addObserver: self forKeyPath: @"values.lastFMUsername" options: NSKeyValueObservingOptionNew context: @"lastFMUsername"];
 	[defc addObserver: self forKeyPath: @"values.scrollingEnabled" options: NSKeyValueObservingOptionNew context: @"scrollingEnabled"];
+	[defc addObserver: self forKeyPath: @"values.selectedClient" options: NSKeyValueObservingOptionNew context: @"selectedClient"];
+	
 	
 	
 	if ([[NSUserDefaults standardUserDefaults] boolForKey: @"showWelcome"]) {
@@ -322,6 +344,7 @@
                        context:(void *)context
 {
 	NSString *contextString = (NSString *)context;
+	NSLog(@"context string: %@", contextString);
 	
 	if ([contextString isEqualToString: @"smallScreenModeEnabled"])
 	{
@@ -345,6 +368,12 @@
 	}
 	
 	if ([contextString isEqualToString: @"scrollingEnabled"]) {
+		[self createStatusItem];
+		return;
+	}
+	
+	if ([contextString isEqualToString: @"selectedClient"]) {
+		[self createBridgeOperation];		
 		[self createStatusItem];
 		return;
 	}
@@ -898,13 +927,13 @@
 	// Set which panes are included, and their order.
 #ifdef MAS_VERSION
 #ifndef LITE_VERSION
-	[preferencesWindowController setPanesOrder:[NSArray arrayWithObjects:@"General",@"Twitter",@"LastFM",@"Facebook", nil]];
+	[preferencesWindowController setPanesOrder:[NSArray arrayWithObjects:@"General", @"Client",@"Twitter",@"LastFM",@"Facebook", nil]];
 #else
 	[preferencesWindowController setPanesOrder:[NSArray arrayWithObjects:@"General",nil]];
 #endif
 	
 #else
-	[preferencesWindowController setPanesOrder:[NSArray arrayWithObjects:@"General",@"Twitter",@"LastFM",@"Facebook",@"Updating",@"Registration", nil]];
+	[preferencesWindowController setPanesOrder:[NSArray arrayWithObjects:@"General", @"Client",@"Twitter",@"LastFM",@"Facebook",@"Updating",@"Registration", nil]];
 #endif
 	// Show the preferences window.
 	[preferencesWindowController showPreferencesWindow];
