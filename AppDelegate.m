@@ -120,30 +120,35 @@
 
 
 - (void) createBridgeOperation {
-	[bridgeOperation autorelease];
+//	[bridgeOperation autorelease];
 	[backgroundOperationQueue cancelAllOperations];
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	NSString *selectedClient = [defaults valueForKey: @"selectedClient"];
 	NSLog(@"Selected Client: %@", selectedClient);
-	
-	if ([selectedClient isEqualToString: @"Spotify"]) {
-		bridgeOperation = [[SpotifyBridgeOperation alloc] init];		
+	if ([selectedClient isEqualToString: @"Automatic"]) {
+		bridgeOperation = [[[SpotifyBridgeOperation alloc] init] autorelease];
+		[bridgeOperation setDelegate: self];	
+		[backgroundOperationQueue addOperation: bridgeOperation];
+		
+		bridgeOperation = [[[iTunesBridgeOperation alloc] init] autorelease];		
+		[bridgeOperation setDelegate: self];	
+		[backgroundOperationQueue addOperation: bridgeOperation];
+	} else {
+		if ([selectedClient isEqualToString: @"Spotify"]) {
+			bridgeOperation = [[[SpotifyBridgeOperation alloc] init] autorelease];		
+		}
+		
+		//fall back is always iTunes
+		if ([selectedClient isEqualToString: @"iTunes"] ||
+			[selectedClient length] == 0 ||
+			!bridgeOperation) {
+			bridgeOperation = [[[iTunesBridgeOperation alloc] init] autorelease];
+		}
+		
+		[bridgeOperation setDelegate: self];
+		[backgroundOperationQueue addOperation: bridgeOperation];
 	}
-	
-	//fall back is always iTunes
-	if ([selectedClient isEqualToString: @"iTunes"] ||
-		[selectedClient length] == 0 ||
-		!bridgeOperation) {
-		bridgeOperation = [[iTunesBridgeOperation alloc] init];
-	}
-	
-
-	
-	[bridgeOperation setDelegate: self];
-	[backgroundOperationQueue addOperation: bridgeOperation];
-	
-
 }
 
 #pragma mark -
@@ -1445,6 +1450,28 @@
 	}
 	
 	//[infoDict release]; //we must release this here
+}
+
+- (void) bridgePing: (NSDictionary *) infoDict
+{
+	if ([[infoDict objectForKey: @"isPlaying"] boolValue]) {
+		if ([[self longDisplayString] isEqualToString: [infoDict objectForKey: @"displayString"]]) {
+			return;
+		}
+		[self setLongDisplayString: [infoDict objectForKey: @"displayString"]];
+		[self setPlayStatus: [infoDict objectForKey: @"displayStatus"]];
+		
+		[self setAlbumArt: [infoDict objectForKey: @"albumArt"]];
+		[self setAlbumName: [infoDict objectForKey:@"albumName"]];
+		[self setTrackName: [infoDict objectForKey: @"trackName"]];
+		[self setTrackArtist: [infoDict objectForKey: @"artistName"]];
+		[self setTrackRating: [infoDict objectForKey: @"trackRating"]];
+		[self setTrackPlayCount: [infoDict objectForKey: @"trackPlayCount"]];
+		[self createStatusItem];
+		
+	} else {
+		//[self setLongDisplayString: @"x"];
+	}
 }
 
 #pragma mark -

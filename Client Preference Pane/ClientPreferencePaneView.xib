@@ -115,6 +115,7 @@
 							<bool key="NSHasVerticalScroller">YES</bool>
 							<object class="NSMutableArray" key="NSPopUpListData">
 								<bool key="EncodedWithXMLCoder">YES</bool>
+								<string>Automatic</string>
 								<string>iTunes</string>
 								<string>Spotify</string>
 							</object>
@@ -371,6 +372,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSArray">
 						<bool key="EncodedWithXMLCoder">YES</bool>
+						<string>Automatic</string>
 						<string>iTunes</string>
 						<string>Spotify</string>
 					</object>
