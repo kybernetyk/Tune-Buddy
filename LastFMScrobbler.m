@@ -31,7 +31,7 @@
 	
 	
 	NSString *authToken = [fmEngine generateAuthTokenFromUsername: [self username] password: [self password]];
-	NSDictionary *urlDict = [NSDictionary dictionaryWithObjectsAndKeys:[self username], @"username", authToken, @"authToken", _LASTFM_API_KEY_, @"api_key", nil, nil];
+//	NSDictionary *urlDict = [NSDictionary dictionaryWithObjectsAndKeys:[self username], @"username", authToken, @"authToken", _LASTFM_API_KEY_, @"api_key", nil, nil];
 	//[fmEngine performMethod:@"auth.getMobileSession" withTarget:self withParameters:urlDict andAction:@selector(loginCallback:data:) useSignature:YES httpMethod:POST_TYPE];
 	
 	NSString *authURL = [NSString stringWithFormat: @"%@?format=json",_LASTFM_BASEURL_];

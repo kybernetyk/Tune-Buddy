@@ -76,7 +76,7 @@
 	NSTimeInterval interval = [[NSDate date] timeIntervalSince1970];
 	NSNumber *n = [NSNumber numberWithDouble: interval];
 	NSNumber *n2 = [NSNumber numberWithInt: [n intValue]];
-	NSNumber *n3 = [NSNumber numberWithInt: [[self trackPlaybackStartTime] timeIntervalSince1970]];  //[NSNumber numberWithInt: ([n intValue] - 100)];
+//	NSNumber *n3 = [NSNumber numberWithInt: [[self trackPlaybackStartTime] timeIntervalSince1970]];  //[NSNumber numberWithInt: ([n intValue] - 100)];
 	NSString *authToken = [fmEngine scrobbleAuthToken: n2];
 	[fmEngine release];
 	

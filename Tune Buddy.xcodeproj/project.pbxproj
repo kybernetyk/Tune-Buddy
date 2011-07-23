@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,8 +15,6 @@
 		03123E79124F5C49000182C2 /* FacebookAuthWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03123E78124F5C49000182C2 /* FacebookAuthWindowController.m */; };
 		03123E7B124F5C59000182C2 /* FacebookAuthWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03123E7A124F5C59000182C2 /* FacebookAuthWindow.xib */; };
 		03124048124F83A2000182C2 /* FacebookShareOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 03124047124F83A2000182C2 /* FacebookShareOperation.m */; };
-		0314E9BE13D72D3B00F1A08E /* welcome_lite in Resources */ = {isa = PBXBuildFile; fileRef = 0314E9BD13D72D3B00F1A08E /* welcome_lite */; };
-		0314E9BF13D72D3B00F1A08E /* welcome_lite in Resources */ = {isa = PBXBuildFile; fileRef = 0314E9BD13D72D3B00F1A08E /* welcome_lite */; };
 		0314E9CE13D72E8600F1A08E /* GeneralPreferencePane.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 03BDFC6010D6BA0500487180 /* GeneralPreferencePane.bundle */; };
 		0314E9CF13D72E8600F1A08E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		0314E9D013D72E8600F1A08E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
@@ -26,7 +24,6 @@
 		0314E9D413D72E8600F1A08E /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 0374404A109DDAA200B3B221 /* dsa_pub.pem */; };
 		0314E9D513D72E8600F1A08E /* TwitterAuthWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03652299123000D600E01E03 /* TwitterAuthWindow.xib */; };
 		0314E9D613D72E8600F1A08E /* FacebookAuthWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03123E7A124F5C59000182C2 /* FacebookAuthWindow.xib */; };
-		0314E9D713D72E8600F1A08E /* welcome in Resources */ = {isa = PBXBuildFile; fileRef = 037A65C913D6FA80001C01A8 /* welcome */; };
 		0314E9D813D72E8600F1A08E /* WelcomeWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037A65D213D6FBBF001C01A8 /* WelcomeWindow.xib */; };
 		0314E9D913D72E8600F1A08E /* welcome_lite in Resources */ = {isa = PBXBuildFile; fileRef = 0314E9BD13D72D3B00F1A08E /* welcome_lite */; };
 		0314E9DB13D72E8600F1A08E /* LastFMAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369168711A1224600F5BD1D /* LastFMAuth.m */; };
@@ -106,9 +103,6 @@
 		0314EA2613D72E8600F1A08E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0357E89D117724810082AB8F /* libz.dylib */; };
 		0314EA2713D72E8600F1A08E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036522AD123001CA00E01E03 /* WebKit.framework */; };
 		0314EA2913D72E8600F1A08E /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03DAA06D13D6C65F006D4AF4 /* Growl.framework */; };
-		0314EA3113D72F7E00F1A08E /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0314EA3013D72F7E00F1A08E /* Growl.framework */; };
-		0314EA3213D72F7E00F1A08E /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0314EA3013D72F7E00F1A08E /* Growl.framework */; };
-		0314EA3313D72F7E00F1A08E /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0314EA3013D72F7E00F1A08E /* Growl.framework */; };
 		03287AC713D82BB30097B761 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03287AC613D82BB30097B761 /* QuartzCore.framework */; };
 		03287AC913D82BBA0097B761 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03287AC813D82BBA0097B761 /* QuartzCore.framework */; };
 		03287ACB13D82BC30097B761 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03287ACA13D82BC30097B761 /* QuartzCore.framework */; };
@@ -680,7 +674,6 @@
 				0314EA2513D72E8600F1A08E /* SystemConfiguration.framework in Frameworks */,
 				0314EA2613D72E8600F1A08E /* libz.dylib in Frameworks */,
 				0314EA2713D72E8600F1A08E /* WebKit.framework in Frameworks */,
-				0314EA3313D72F7E00F1A08E /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -736,7 +729,6 @@
 				03DAA05A13D6C433006D4AF4 /* SystemConfiguration.framework in Frameworks */,
 				03DAA05B13D6C433006D4AF4 /* libz.dylib in Frameworks */,
 				03DAA05C13D6C433006D4AF4 /* WebKit.framework in Frameworks */,
-				0314EA3213D72F7E00F1A08E /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -756,7 +748,6 @@
 				0357E89E117724810082AB8F /* libz.dylib in Frameworks */,
 				03A1262A13D987FE0043C59F /* Sparkle.framework in Frameworks */,
 				036522AE123001CA00E01E03 /* WebKit.framework in Frameworks */,
-				0314EA3113D72F7E00F1A08E /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1402,10 +1393,11 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0410;
 				ORGANIZATIONNAME = "Flux Forge";
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Tune Buddy" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -1451,7 +1443,6 @@
 				0314E9D413D72E8600F1A08E /* dsa_pub.pem in Resources */,
 				0314E9D513D72E8600F1A08E /* TwitterAuthWindow.xib in Resources */,
 				0314E9D613D72E8600F1A08E /* FacebookAuthWindow.xib in Resources */,
-				0314E9D713D72E8600F1A08E /* welcome in Resources */,
 				0314E9D813D72E8600F1A08E /* WelcomeWindow.xib in Resources */,
 				0314E9D913D72E8600F1A08E /* welcome_lite in Resources */,
 			);
@@ -1522,7 +1513,6 @@
 				03DAA00E13D6C433006D4AF4 /* FacebookAuthWindow.xib in Resources */,
 				037A65CB13D6FA80001C01A8 /* welcome in Resources */,
 				037A65D413D6FBBF001C01A8 /* WelcomeWindow.xib in Resources */,
-				0314E9BF13D72D3B00F1A08E /* welcome_lite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1546,7 +1536,6 @@
 				03123E7B124F5C59000182C2 /* FacebookAuthWindow.xib in Resources */,
 				037A65CA13D6FA80001C01A8 /* welcome in Resources */,
 				037A65D313D6FBBF001C01A8 /* WelcomeWindow.xib in Resources */,
-				0314E9BE13D72D3B00F1A08E /* welcome_lite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1911,7 +1900,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1924,7 +1912,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = FacebookPreferencePane;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
@@ -1937,7 +1924,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
@@ -1949,7 +1935,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = FacebookPreferencePane;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
@@ -1961,7 +1946,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
@@ -1973,7 +1957,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = FacebookPreferencePane;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
@@ -1997,7 +1980,6 @@
 					"\"$(SRCROOT)\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2008,6 +1990,7 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = TuneBuddyLite;
 				SDKROOT = macosx;
 			};
@@ -2038,6 +2021,7 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = TuneBuddyLite;
 				SDKROOT = macosx;
 			};
@@ -2069,6 +2053,7 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = TuneBuddyLite;
 				SDKROOT = macosx;
 			};
@@ -2088,8 +2073,7 @@
 					/usr/include/libxml2,
 				);
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx;
 			};
 			name = Distro;
 		};
@@ -2124,7 +2108,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
@@ -2136,7 +2119,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = GeneralPreferencePane;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
@@ -2150,7 +2132,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
@@ -2162,7 +2143,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = UpdatingPreferencePane;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
@@ -2176,7 +2156,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
@@ -2188,7 +2167,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = TwitterPreferencePane;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
@@ -2202,7 +2180,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
@@ -2214,7 +2191,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = RegistrationPreferencePane;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
@@ -2228,7 +2204,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
@@ -2240,7 +2215,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = "LastFM Preference Pane";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
@@ -2254,7 +2228,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2267,7 +2240,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = "LastFM Preference Pane";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
@@ -2280,7 +2252,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
@@ -2292,7 +2263,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = "LastFM Preference Pane";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
@@ -2306,7 +2276,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2319,7 +2288,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = GeneralPreferencePane;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
@@ -2332,7 +2300,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
@@ -2344,7 +2311,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = GeneralPreferencePane;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
@@ -2358,7 +2324,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2371,7 +2336,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = UpdatingPreferencePane;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
@@ -2384,7 +2348,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
@@ -2396,7 +2359,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = UpdatingPreferencePane;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
@@ -2410,7 +2372,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2423,7 +2384,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = TwitterPreferencePane;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
@@ -2436,7 +2396,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
@@ -2448,7 +2407,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = TwitterPreferencePane;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
@@ -2462,7 +2420,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2475,7 +2432,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = RegistrationPreferencePane;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
@@ -2488,7 +2444,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
@@ -2500,7 +2455,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = RegistrationPreferencePane;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
@@ -2524,7 +2478,6 @@
 					"\"$(SRCROOT)\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2532,6 +2485,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = MAS_VERSION;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = TuneBuddy;
 				SDKROOT = macosx;
 			};
@@ -2558,6 +2512,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = MAS_VERSION;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = TuneBuddy;
 				SDKROOT = macosx;
 			};
@@ -2585,6 +2540,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = MAS_VERSION;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = TuneBuddy;
 				SDKROOT = macosx;
 			};
@@ -2605,7 +2561,6 @@
 					"\"$(SRCROOT)/../../../Downloads/Growl-1.2.1-Framework\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2658,8 +2613,7 @@
 					/usr/include/libxml2,
 				);
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -2677,8 +2631,7 @@
 					/usr/include/libxml2,
 				);
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};

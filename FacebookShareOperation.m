@@ -62,7 +62,7 @@
 	NSBitmapImageRep *rep = [[[NSBitmapImageRep alloc] initWithData:[[self albumArt] TIFFRepresentation]] autorelease];
 	NSData *data = [rep representationUsingType: NSJPEGFileType properties: nil];
 	
-	ASIFormDataRequest *req = [[ASIFormDataRequest alloc] initWithURL: [NSURL URLWithString: @"http://htlr.org/upload/uploadFile"]];
+	ASIFormDataRequest *req = [[[ASIFormDataRequest alloc] initWithURL: [NSURL URLWithString: @"http://htlr.org/upload/uploadFile"]] autorelease];
 	[req setData: data forKey: @"upload[datafile]"];
 	[req startSynchronous];
 
@@ -346,7 +346,7 @@
 	
 	NSString *strActionLinks = [json stringWithObject: [NSArray arrayWithObject: actionLink]];
 	
-	ASIFormDataRequest *req = [[ASIFormDataRequest alloc] initWithURL: [NSURL URLWithString: @"https://api.facebook.com/method/stream.publish"]];
+	ASIFormDataRequest *req = [[[ASIFormDataRequest alloc] initWithURL: [NSURL URLWithString: @"https://api.facebook.com/method/stream.publish"]] autorelease];
 	
 	[req setPostValue: token  forKey: @"access_token"];
 	[req setPostValue: message forKey: @"message"];

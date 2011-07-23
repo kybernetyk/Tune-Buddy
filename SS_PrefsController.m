@@ -73,7 +73,7 @@
         [self setToolbarSizeMode:NSToolbarSizeModeDefault];
 #endif
         [self setUsesTexturedWindow:NO];
-        [self setAlwaysShowsToolbar:NO];
+        [self setAlwaysShowsToolbar:YES];
         [self setAlwaysOpensCentered:YES];
         
         if (!ext || [ext isEqualToString:@""]) {
@@ -159,7 +159,7 @@
     }
     
     // Create prefs window
-    unsigned int styleMask = (NSClosableWindowMask | NSResizableWindowMask);
+    unsigned int styleMask = (NSClosableWindowMask | NSResizableWindowMask | NSShowControlGlyphs) ;
     if (usesTexturedWindow) {
         styleMask = (styleMask | NSTexturedBackgroundWindowMask);
     }

@@ -18,7 +18,6 @@ body {margin: 0; padding: 0;}
 /*70% {-webkit-transform:rotateY(180deg); opacity:1}*/
 100% {-webkit-transform:rotateY(0); opacity:1}
 }
-
 .logo {-webkit-animation-name: wpw;
 	-webkit-animation-duration: 1.3s;
 	-webkit-animation-timing-function: ease-in-out;
@@ -26,38 +25,13 @@ body {margin: 0; padding: 0;}
 	-webkit-backface-visibility: hidden;
 }
 </style>
-
-<script type="text/javascript" src="jquery-1.4.4.min.js"></script>
-<script type="text/javascript" language="JavaScript1.4"><!--
-function startWallWiz() { if (welcomePage) {welcomePage.startWallWiz(); return false;} }
-
-function askWelcome(u, ah, sh) {
-	try {
-		$.post(u, { auth: ah, signature: sh}, function (data) {
-			var obj = $.parseJSON(data);
-			if (obj.redirectUrl) { 
-				$('form[name="askWelcome"]').attr("action", obj.redirectUrl);
-				$('form[name="askWelcome"]').submit();
-			}
-		}, "json");
-	} catch (err) {}
-	
-}
-
-// -->
-</script>
-
 </head>
 <body style="">
-
 <div class="container">
 	<div class="main">
 		<div class="logo"></div>
-		<!--<a href="#" class="start" onClick="startWallWiz();"></a>-->
 	</div>
 	<!--<div class="right">
 	</div>-->
 </div>
-
-
 </html>
