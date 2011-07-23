@@ -12,6 +12,7 @@
 #endif
 #import "iTunes.h"
 #import "Adium.h"
+#include "Spotify.h"
 #import "MGTwitterEngine.h"
 #import "SS_PrefsController.h"
 #import "WelcomeWindowController.h"

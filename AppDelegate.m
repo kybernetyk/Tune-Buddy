@@ -11,6 +11,7 @@
 #import "NSString+Search.h"
 #import "MGTwitterEngine.h"
 #import "iTunesBridgeOperation.h"
+#import "SpotifyBridgeOperation.h"
 #ifndef MAS_VERSION
 	#import "PFMoveApplication.h"
 #endif
@@ -282,7 +283,12 @@
 	backgroundOperationQueue = [[NSOperationQueue alloc] init];
 	[backgroundOperationQueue setMaxConcurrentOperationCount: 5];
 	
-	iTunesBridgeOperation *op = [[iTunesBridgeOperation alloc] init];
+	id op;
+	if (0) {
+		op = [[iTunesBridgeOperation alloc] init];
+	} else {
+		op = [[SpotifyBridgeOperation alloc] init];
+	}
 	[op setDelegate: self];
 	
 	[backgroundOperationQueue addOperation: op];
