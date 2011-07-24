@@ -453,6 +453,25 @@
 		//NSLog(@"%i", isRunning);
 		
 		
+		usleep(kRefreshFrequencyInMicroseconds/2.0);
+		if ([[self isPlaying] boolValue]) {
+			NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys: 
+								  [NSString stringWithString: currentDisplayString], @"displayString",
+								  [NSString stringWithString: playStatus], @"displayStatus", 
+								  
+								  [NSString stringWithString: [self artistName]], @"artistName",
+								  [NSString stringWithString: [self trackName]], @"trackName",
+								  [NSString stringWithString: [self albumName]], @"albumName",
+								  [NSNumber numberWithDouble: [[self trackLength] doubleValue]], @"trackLength",
+								  [NSNumber numberWithBool: [[self isStream] boolValue]], @"isStream",
+								  [NSNumber numberWithBool: [[self isPlaying] boolValue]], @"isPlaying",
+								  [NSDate dateWithTimeIntervalSince1970: [[self trackPlaybackStartTime] timeIntervalSince1970]] , @"trackPlaybackStartTime",
+								  nil];
+			[delegate performSelectorOnMainThread:@selector(bridgePing:) withObject: dict waitUntilDone: YES];
+			[dict release];
+		}
+		usleep(kRefreshFrequencyInMicroseconds/2.0);
+		
 		poolKillCounter ++;
 		if (poolKillCounter >= 20) //after 10 seconds
 		{
@@ -464,25 +483,6 @@
 			//[iTunes release];
 			//iTunes = nil;
 		}
-		
-		usleep(kRefreshFrequencyInMicroseconds/2.0);
-		NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithObjectsAndKeys: 
-									 [NSString stringWithString: currentDisplayString], @"displayString",
-									 [NSString stringWithString: playStatus], @"displayStatus", 
-									 
-									 [NSString stringWithString: [self artistName]], @"artistName",
-									 [NSString stringWithString: [self trackName]], @"trackName",
-									 [NSString stringWithString: [self albumName]], @"albumName",
-									 [NSNumber numberWithDouble: [[self trackLength] doubleValue]], @"trackLength",
-									 [NSNumber numberWithBool: [[self isStream] boolValue]], @"isStream",
-									 [NSNumber numberWithBool: [[self isPlaying] boolValue]], @"isPlaying",
-									 [NSDate dateWithTimeIntervalSince1970: [[self trackPlaybackStartTime] timeIntervalSince1970]] , @"trackPlaybackStartTime",
-									 [NSNumber numberWithInteger: [[self trackRating] integerValue]], @"trackRating",
-									 [NSNumber numberWithInteger: [[self trackPlayCount] integerValue]], @"trackPlayCount",
-									 nil];
-		[delegate performSelectorOnMainThread:@selector(bridgePing:) withObject: dict waitUntilDone: YES];
-		[dict release];
-		usleep(kRefreshFrequencyInMicroseconds/2.0);
 	}
 	
 	NSLog(@"LOL ITUNES DIEDDD!");

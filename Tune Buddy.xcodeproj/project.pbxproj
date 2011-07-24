@@ -992,14 +992,14 @@
 			name = "App Delegate";
 			sourceTree = "<group>";
 		};
-		03B0E7FE10D7BCA800D8B185 /* Bridge Operation */ = {
+		03B0E7FE10D7BCA800D8B185 /* iTunes */ = {
 			isa = PBXGroup;
 			children = (
 				03743D39109D91E100B3B221 /* iTunes.h */,
 				03B0E7FF10D7BCDC00D8B185 /* iTunesBridgeOperation.h */,
 				03B0E80010D7BCDC00D8B185 /* iTunesBridgeOperation.m */,
 			);
-			name = "Bridge Operation";
+			name = iTunes;
 			sourceTree = "<group>";
 		};
 		03B0E8C610D7C86900D8B185 /* Move App to Apps folder */ = {
@@ -1152,7 +1152,7 @@
 				0357E84F117720770082AB8F /* Last FM Scrobbler */,
 				03B0E8C610D7C86900D8B185 /* Move App to Apps folder */,
 				036A0C7213DB087300DA8205 /* Spotify */,
-				03B0E7FE10D7BCA800D8B185 /* Bridge Operation */,
+				03B0E7FE10D7BCA800D8B185 /* iTunes */,
 				03B0E7FD10D7BC9E00D8B185 /* App Delegate */,
 				03B0E7FC10D7BC8C00D8B185 /* Prefs Controller */,
 			);
