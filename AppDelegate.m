@@ -166,51 +166,34 @@
 	
 	//[EMGenericKeychainItem addGenericKeychainItemForService:@"SomeAppService" withUsername:@"Joe" password:@"supersecure!"];
 	
-#ifndef MAS_VERSION
+#ifdef MAS_VERSION
+	[self setIsExpired: NO];
+#else
 	PFMoveToApplicationsFolderIfNecessary();
-#endif
 	
 	NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey: @"LastFMAPIKey"];
 	if (!data)
 	{
 		NSDate *date = [NSDate date];
-
 		NSTimeInterval interval = [date timeIntervalSinceReferenceDate];
-		
 		NSData *data = [NSData dataWithBytes: &interval length: sizeof(interval)];
-		
 		[[NSUserDefaults standardUserDefaults] setObject: data forKey: @"LastFMAPIKey"];
 	}
 	else
 	{
 		NSTimeInterval *intervaal = ((NSTimeInterval*)[data bytes]);
 		NSTimeInterval firstRun = *intervaal;
-
 		NSDate *date = [NSDate date];
 		NSTimeInterval now = [date timeIntervalSinceReferenceDate];
-		
-		
 		NSTimeInterval secondsrun = now - firstRun;
-		
-		//NSLog(@"we're running %f seconds - %f days left ...",secondsrun, (2592000.0 - secondsrun)/86400.0);
-		
-		//if (secondsrun >= 2592000.0)
-		///if (secondsrun >= 1.0)
 		if (secondsrun >= 2592000.0)
 		{
 			NSLog(@"expired!");
 			[self setIsExpired: YES];
 
 		}
-		
-/*		NSDate *date = [[NSDate alloc] initWithTimeIntervalSinceReferenceDate: myint];
-		
-		
-		NSLog(@"first run time: %@",date);
-		NSLog(@"now: %@",[NSDate date]);
-		NSLog(@"trial time: %i", [[NSDate date] timeIntervalSinceReferenceDate] - myint );*/
 	}
-	
+#endif
 	
 //	EMInternetKeychainItem *keychainItem = [[EMKeychainProxy sharedProxy] internetKeychainItemForServer:@"apple.com" withUsername:@"sjobs" path:@"/httpdocs" port:21 protocol:kSecProtocolTypeFTP];
 
@@ -1078,6 +1061,10 @@
 #pragma mark registration 
 - (BOOL) isRegistrationValid
 {
+#ifdef MAS_VERSION
+	return YES;
+#endif
+	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	
 	NSString *registeredTo = [defaults stringForKey: @"registeredTo"];
@@ -1197,7 +1184,11 @@
 
 - (void) checkRegistration
 {
-	isRegistered = [self isRegistrationValid];
+#ifdef MAS_VERSION
+	isRegistered = YES;
+#else
+	isRegistered = [self isRegistrationValid];	
+#endif
 }
 
 - (void) openBuyPage: (id) sender
@@ -1391,6 +1382,17 @@
 {
 //	BOOL smallScreenModeEnabled = [[NSUserDefaults standardUserDefaults] boolForKey: @"smallScreenModeEnabled"];
 
+#ifdef MAS_VERSION
+	[self setLongDisplayString: [infoDict objectForKey: @"displayString"]];
+	[self setPlayStatus: [infoDict objectForKey: @"displayStatus"]];
+	
+	[self setAlbumArt: [infoDict objectForKey: @"albumArt"]];
+	[self setAlbumName: [infoDict objectForKey:@"albumName"]];
+	[self setTrackName: [infoDict objectForKey: @"trackName"]];
+	[self setTrackArtist: [infoDict objectForKey: @"artistName"]];
+	[self setTrackRating: [infoDict objectForKey: @"trackRating"]];
+	[self setTrackPlayCount: [infoDict objectForKey: @"trackPlayCount"]];
+#else
 	if ([self isExpired] && ![self isRegistered])
 	{
 		[self setLongDisplayString: @"$$$ - Please register Tune Buddy now!"];
@@ -1409,6 +1411,8 @@
 		[self setTrackPlayCount: [infoDict objectForKey: @"trackPlayCount"]];
 		NSLog(@"my album art is: %@", [self albumArt]);
 	}
+#endif
+	
 //	NSLog(@"%@",infoDict);
 	
 	
@@ -1454,10 +1458,16 @@
 
 - (void) bridgePing: (NSDictionary *) infoDict
 {
+#ifndef MAS_VERSION
+	if ([self isExpired] && ![self isRegistered])
+		return;
+#endif
+	
 	if ([[infoDict objectForKey: @"isPlaying"] boolValue]) {
 		if ([[self longDisplayString] isEqualToString: [infoDict objectForKey: @"displayString"]]) {
 			return;
 		}
+
 		[self setLongDisplayString: [infoDict objectForKey: @"displayString"]];
 		[self setPlayStatus: [infoDict objectForKey: @"displayStatus"]];
 		

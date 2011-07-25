@@ -7,6 +7,13 @@
 //
 
 #import "WelcomeWindowController.h"
+#import "AppDelegate.h"
+#import "NSString+Search.h"
+
+@interface WelcomeWindowController() 
+- (void) loadTrialPromotion;
+- (void) loadLitePromotion;
+@end
 
 
 @implementation WelcomeWindowController
@@ -35,33 +42,81 @@
 	
 //	NSLog(@"fetching token from: %@", address);
 //	[bottomView addSubview: [[NSImage imageNamed: @"welcome_bottom"] view]]; 
-	
-#ifdef LITE_VERSION
-	NSString *subdir = @"welcome_lite";
+	NSString *subdir = nil;
+
+//lite MAS version
+#ifdef MAS_VERSION
+	#ifdef LITE_VERSION
+	subdir = @"welcome_lite";
 	[buyButton setHidden: NO];
 	[[self window] setTitle: @"Welcome to Tune Buddy Lite"];
 	NSRect f = [[self window] frame];
 	f.size.width = 960;
 	[[self window] setFrame: f display: NO animate: NO];
 	[[self window] center];
-#else
-	NSString *subdir = @"welcome";
+	#else
+	subdir = @"welcome";
 	[[self window] setTitle: @"Welcome to Tune Buddy"];
+	#endif	
+#else //normal version
+	if ([(AppDelegate*)[NSApp delegate] isRegistered]) {
+		subdir = @"welcome";
+		[[self window] setTitle: @"Welcome to Tune Buddy"];
+	} else {
+		subdir = @"welcome_trial";
+		[[self window] setTitle: @"Welcome to Tune Buddy [Trial]"];
+		
+		[buyButton setHidden: NO];
+		[buyButton setTitle: @"Purchase Tune Buddy"];
+		NSRect f = [[self window] frame];
+		f.size.width = 960;
+		[[self window] setFrame: f display: NO animate: NO];
+		[[self window] center];
+	}
 #endif
 	
+	if (!subdir)
+		subdir = @"welcome";
+	
 	NSURL *url = [[NSBundle mainBundle] URLForResource:@"index" withExtension:@"html" subdirectory: subdir];
-	
-//	NSURL *url = [NSURL URLWithString:address];
-	//[[NSWorkspace sharedWorkspace] openURL:url];
-	
 	NSLog(@"URL: %@", url);
-	
-	
 	[[webView mainFrame] loadRequest:[NSURLRequest requestWithURL: url]];
-		
 	url = [[NSBundle mainBundle] URLForResource:@"bottom" withExtension:@"html" subdirectory: subdir];
 	[[bottomWebView mainFrame] loadRequest:[NSURLRequest requestWithURL: url]];
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+
+#ifdef MAS_VERSION
+	#ifdef LITE_VERSION
+		//[self checkMASPromotion];
+	#endif
+#else
+	if (![[NSApp delegate] isRegistered]) {
+//		[self checkTrialPromotion];
+		dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+		dispatch_async(queue, ^{
+			dispatch_queue_t q = dispatch_get_main_queue();
+			dispatch_async(q, ^{
+				NSString *prom = [NSString stringWithContentsOfURL: [NSURL URLWithString: @"http://www.fluxforge.com/tune-buddy/promo_trial.txt"]
+														  encoding: NSUTF8StringEncoding
+															 error: NULL];
+				NSLog(@"prom: %@", prom);
+				if (prom && [prom length] > 0 && [prom containsString: @"yes" ignoringCase: YES])
+					[self loadTrialPromotion];
+				else
+					NSLog(@"no promo for trial found!");
+			});
+		});
+	}
+#endif
+}
+
+- (void) loadTrialPromotion 
+{
+	[[webView mainFrame] loadRequest:[NSURLRequest requestWithURL: [NSURL URLWithString: @"http://www.fluxforge.com/tune-buddy/promo_trial/"]]];
+}
+
+- (void) loadLitePromotion
+{
+	
 }
 
 -(IBAction) closeMe: (id) sender
@@ -72,6 +127,10 @@
 
 -(IBAction) mercantilismNow: (id) sender
 {
+#ifdef MAS_VERSION
 	[[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: @"http://mas"]];
+#else
+	[[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: @"http://www.fluxforge.com/tune-buddy/buy/"]];
+#endif
 }
 @end
