@@ -467,7 +467,10 @@
 		}
 		
 		NSDate* next = [NSDate dateWithTimeIntervalSinceNow:resolution];
-		/*isRunning =*/ [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:next];
+		BOOL isRunning = [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:next];
+		if (!isRunning) {
+			break;
+		}
 		//NSLog(@"%i", isRunning);
 		
 		
@@ -513,6 +516,10 @@
 }
 
 
+- (void) dealloc {
+	NSLog(@"Spotify OP Dealloc!");
+	[super dealloc];
+}
 
 - (void)eventDidFail:(const AppleEvent *)event withError:(NSError *)error
 {

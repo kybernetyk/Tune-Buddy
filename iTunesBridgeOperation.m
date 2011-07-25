@@ -451,8 +451,10 @@
 		}
 		
 		NSDate* next = [NSDate dateWithTimeIntervalSinceNow:resolution];
-		/*isRunning =*/ [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:next];
-		//NSLog(@"%i", isRunning);
+		BOOL isRunning = [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:next];
+		if (!isRunning) {
+			break;
+		}
 		
 		
 //		usleep(kRefreshFrequencyInMicroseconds/2.0);
@@ -494,6 +496,10 @@
 }
 
 
+- (void) dealloc {
+	NSLog(@"iTunes OP Dealloc!");
+	[super dealloc];
+}
 
 - (void)eventDidFail:(const AppleEvent *)event withError:(NSError *)error
 {

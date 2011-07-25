@@ -55,6 +55,8 @@
 	
 	NSOperationQueue *backgroundOperationQueue;
 	
+	NSOperationQueue *bridgeQueue;
+	
 	BOOL smallScreenModeEnabled;
 	
 	BOOL growlAvailable;

@@ -121,34 +121,61 @@
 
 
 - (void) createBridgeOperation {
-//	[bridgeOperation autorelease];
-	[backgroundOperationQueue cancelAllOperations];
+	[[self activeBridgeOperation] setDelegate: nil];
+	[self setActiveBridgeOperation: nil];
+//	if (bridgeQueue) {
+//		dispatch_queue_t dq = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+//		dispatch_async(dq, ^{
+//			for (id op in [bridgeQueue operations]) {
+//				[op setDelegate: nil];
+//				[op release];
+//			}
+//
+//			[bridgeQueue cancelAllOperations];
+//			[bridgeQueue waitUntilAllOperationsAreFinished];
+//			[bridgeQueue release];
+//		});
+//	}
+
+	[bridgeQueue cancelAllOperations];
+	[bridgeQueue release];
+
+	
+	bridgeQueue = [[NSOperationQueue alloc] init];
+	[bridgeQueue setMaxConcurrentOperationCount: 5];
+	
+
 
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	NSString *selectedClient = [defaults valueForKey: @"selectedClient"];
 	NSLog(@"Selected Client: %@", selectedClient);
 	if ([selectedClient isEqualToString: @"Automatic"]) {
-		id bridgeOperation = [[[SpotifyBridgeOperation alloc] init] autorelease];
+		id bridgeOperation = [[SpotifyBridgeOperation alloc] init];
 		[bridgeOperation setDelegate: self];	
-		[backgroundOperationQueue addOperation: bridgeOperation];
+		[bridgeQueue addOperation: bridgeOperation];
+		[bridgeOperation release];
 		
-		bridgeOperation = [[[iTunesBridgeOperation alloc] init] autorelease];		
+		bridgeOperation = [[iTunesBridgeOperation alloc] init];		
 		[bridgeOperation setDelegate: self];	
-		[backgroundOperationQueue addOperation: bridgeOperation];
+		[bridgeQueue addOperation: bridgeOperation];
+		[bridgeOperation release];
 	} else {
+		id bridgeOperation = nil;
 		if ([selectedClient isEqualToString: @"Spotify"]) {
-			activeBridgeOperation = [[[SpotifyBridgeOperation alloc] init] autorelease];		
+			bridgeOperation = [[SpotifyBridgeOperation alloc] init];		
 		}
 		
 		//fall back is always iTunes
 		if ([selectedClient isEqualToString: @"iTunes"] ||
 			[selectedClient length] == 0 ||
-			!activeBridgeOperation) {
-			activeBridgeOperation = [[[iTunesBridgeOperation alloc] init] autorelease];
+			!bridgeOperation) {
+			bridgeOperation = [[iTunesBridgeOperation alloc] init];
 		}
 		
-		[activeBridgeOperation setDelegate: self];
-		[backgroundOperationQueue addOperation: activeBridgeOperation];
+		[bridgeOperation setDelegate: self];
+		[bridgeQueue addOperation: bridgeOperation];
+		[self setActiveBridgeOperation: bridgeOperation];
+		[bridgeOperation release];
 	}
 }
 
@@ -296,7 +323,7 @@
 	if (lfm)
 		[[LastFMAuth sharedLastFMAuth] password];
 	
-		
+	
 	backgroundOperationQueue = [[NSOperationQueue alloc] init];
 	[backgroundOperationQueue setMaxConcurrentOperationCount: 5];
 	
@@ -361,8 +388,10 @@
 	}
 	
 	if ([contextString isEqualToString: @"selectedClient"]) {
-		[self createBridgeOperation];		
-		[self createStatusItem];
+		[self createBridgeOperation];
+//		[self setLongDisplayString: @"..."];
+//		[self setDisplayString: @"..."];
+//		[self createStatusItem];
 		return;
 	}
 
@@ -995,6 +1024,7 @@
 - (IBAction) quitAppByMenu : (id) sender
 {
 	[backgroundOperationQueue cancelAllOperations];
+	[bridgeQueue cancelAllOperations];
 	
 	[NSApp terminate: self];
 }
