@@ -371,6 +371,7 @@
 				[self setAlbumName: @""];
 
 			NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithObjectsAndKeys: 
+ 								  self, @"sender",
 								  [NSString stringWithString: currentDisplayString], @"displayString",
 								  [NSString stringWithString: playStatus], @"displayStatus", 
 								  
@@ -430,6 +431,7 @@
 			
 			
 			NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys: 
+								  self, @"sender",
 								  [NSString stringWithString: currentDisplayString], @"displayString",
 								  [NSString stringWithString: playStatus], @"displayStatus", 
 								  
@@ -456,6 +458,7 @@
 		usleep(kRefreshFrequencyInMicroseconds/2.0);
 		if ([[self isPlaying] boolValue]) {
 			NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys: 
+								  self, @"sender",
 								  [NSString stringWithString: currentDisplayString], @"displayString",
 								  [NSString stringWithString: playStatus], @"displayStatus", 
 								  
@@ -500,6 +503,21 @@
 	//[iTunes autorelease];
 //	iTunes = nil;
 	
+}
+
+- (void) playpause 
+{
+	[iTunes playpause];	
+}
+
+- (void) next
+{
+	[iTunes nextTrack];
+}
+
+- (void) previous
+{
+	[iTunes backTrack];
 }
 
 @end

@@ -74,11 +74,13 @@
 	
 	FXScrollingView *statusView;
 	
-	id bridgeOperation;
+	id activeBridgeOperation;
 	
 	BOOL isPlaying;
-	
+
+	NSButton *prevButton;
 	NSButton *stopButton;
+	NSButton *nextButton;
 }
 
 #pragma mark -
@@ -98,6 +100,8 @@
 
 @property (readwrite, copy) NSNumber *trackRating;
 
+@property (readwrite, retain) id activeBridgeOperation;
+
 #pragma mark -
 #pragma mark public IB accessable methods
 - (IBAction) openPreferencesWindow: (id) sender;
@@ -107,6 +111,11 @@
 - (IBAction) sendCurrentTrackToTwitter: (id) sender;
 - (IBAction) sendCurrentTrackToFacebook: (id) sender;
 - (IBAction) checkForUpdates: (id) sender;
+
+#pragma mark - playback controls
+- (void) playbackPausePlay: (id) sender;
+- (void) playbackNext: (id) sender;
+- (void) playbackPrevious: (id) sender;
 
 - (void) createStatusItem;
 

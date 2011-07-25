@@ -53,6 +53,7 @@
 @synthesize albumName;
 @synthesize trackRating;
 @synthesize trackPlayCount;
+@synthesize activeBridgeOperation;
 
 #pragma mark -
 #pragma mark autostart
@@ -127,7 +128,7 @@
 	NSString *selectedClient = [defaults valueForKey: @"selectedClient"];
 	NSLog(@"Selected Client: %@", selectedClient);
 	if ([selectedClient isEqualToString: @"Automatic"]) {
-		bridgeOperation = [[[SpotifyBridgeOperation alloc] init] autorelease];
+		id bridgeOperation = [[[SpotifyBridgeOperation alloc] init] autorelease];
 		[bridgeOperation setDelegate: self];	
 		[backgroundOperationQueue addOperation: bridgeOperation];
 		
@@ -136,18 +137,18 @@
 		[backgroundOperationQueue addOperation: bridgeOperation];
 	} else {
 		if ([selectedClient isEqualToString: @"Spotify"]) {
-			bridgeOperation = [[[SpotifyBridgeOperation alloc] init] autorelease];		
+			activeBridgeOperation = [[[SpotifyBridgeOperation alloc] init] autorelease];		
 		}
 		
 		//fall back is always iTunes
 		if ([selectedClient isEqualToString: @"iTunes"] ||
 			[selectedClient length] == 0 ||
-			!bridgeOperation) {
-			bridgeOperation = [[[iTunesBridgeOperation alloc] init] autorelease];
+			!activeBridgeOperation) {
+			activeBridgeOperation = [[[iTunesBridgeOperation alloc] init] autorelease];
 		}
 		
-		[bridgeOperation setDelegate: self];
-		[backgroundOperationQueue addOperation: bridgeOperation];
+		[activeBridgeOperation setDelegate: self];
+		[backgroundOperationQueue addOperation: activeBridgeOperation];
 	}
 }
 
@@ -300,7 +301,6 @@
 	[backgroundOperationQueue setMaxConcurrentOperationCount: 5];
 	
 	[self createBridgeOperation];
-	NSLog(@"bridge op: %@", bridgeOperation);
 	
 	NSUserDefaultsController *defc = [NSUserDefaultsController sharedUserDefaultsController];
 	[defc addObserver: self forKeyPath: @"values.smallScreenModeEnabled" options: NSKeyValueObservingOptionNew context: @"smallScreenModeEnabled"];
@@ -577,18 +577,18 @@
 		NSView *v = [[NSView alloc] initWithFrame: NSMakeRect(0, 0, 220, 20)];
 		
 		double x = 0.0 + 20.0;//[[smallScreenModeMenuItem view] frame].size.width/2.0 - 40.0/2.0 + 20;
-		NSButton *back = [[NSButton alloc] initWithFrame: NSMakeRect(x, 0, 40, 20)];
-		[back setImage: [NSImage imageNamed: @"prev.png"]];
-		[v addSubview: back];
+		prevButton = [[NSButton alloc] initWithFrame: NSMakeRect(x, 0, 40, 20)];
+		[prevButton setImage: [NSImage imageNamed: @"prev.png"]];
+		[v addSubview: prevButton];
 		
 		x += 50.0;
 		stopButton = [[NSButton alloc] initWithFrame: NSMakeRect(x, 0, 40, 20)];
 		[v addSubview: stopButton];
 		
 		x += 50.0;
-		NSButton *next = [[NSButton alloc] initWithFrame: NSMakeRect(x, 0, 40, 20)];
-		[next setImage: [NSImage imageNamed: @"next.png"]];
-		[v addSubview: next];
+		nextButton = [[NSButton alloc] initWithFrame: NSMakeRect(x, 0, 40, 20)];
+		[nextButton setImage: [NSImage imageNamed: @"next.png"]];
+		[v addSubview: nextButton];
 		
 		
 		[playbackMenuItem setView: v];
@@ -599,14 +599,27 @@
 	if (!copyToClipboardMenuItem)
 		copyToClipboardMenuItem = [statusBarMenu addItemWithTitle:@"Copy To Clip Board" action: @selector(copyCurrentTrackInfoToClipBoard:) keyEquivalent: [NSString string]];
 
+	if (nextButton) {
+		[nextButton setTarget: self];
+		[nextButton setAction: @selector(playbackNext:)];
+	}
+	
 	if (stopButton) {
 		if (isPlaying)
 			[stopButton setImage: [NSImage imageNamed: @"Pause.png"]];
 		else
 			[stopButton setImage: [NSImage imageNamed: @"Play.png"]];
+		
+		[stopButton setTarget: self];
+		[stopButton setAction: @selector(playbackPausePlay:)];
 	}
 	
-	//transformer for hidden = !xxxEnabled
+	 if (prevButton) {
+		 [prevButton setTarget: self];
+		 [prevButton setAction: @selector(playbackPrevious:)];
+	 }
+
+		 //transformer for hidden = !xxxEnabled
 	NSValueTransformer *tran = [NSValueTransformer valueTransformerForName: NSNegateBooleanTransformerName];
 	NSDictionary *opts = [NSDictionary dictionaryWithObject: tran forKey: @"NSValueTransformer"];
 
@@ -1416,6 +1429,9 @@
 {
 //	BOOL smallScreenModeEnabled = [[NSUserDefaults standardUserDefaults] boolForKey: @"smallScreenModeEnabled"];
 	isPlaying = [[infoDict objectForKey: @"isPlaying"] boolValue];
+	if (isPlaying) {
+		[self setActiveBridgeOperation: [infoDict objectForKey: @"sender"]];
+	}
 #ifdef MAS_VERSION
 	[self setLongDisplayString: [infoDict objectForKey: @"displayString"]];
 	[self setPlayStatus: [infoDict objectForKey: @"displayStatus"]];
@@ -1496,12 +1512,12 @@
 	if ([self isExpired] && ![self isRegistered])
 		return;
 #endif
-	
-	if ([[infoDict objectForKey: @"isPlaying"] boolValue]) {
+	isPlaying = [[infoDict objectForKey: @"isPlaying"] boolValue];
+	if (isPlaying) {
 		if ([[self longDisplayString] isEqualToString: [infoDict objectForKey: @"displayString"]]) {
 			return;
 		}
-
+		[self setActiveBridgeOperation: [infoDict objectForKey: @"sender"]];
 		[self setLongDisplayString: [infoDict objectForKey: @"displayString"]];
 		[self setPlayStatus: [infoDict objectForKey: @"displayStatus"]];
 		
@@ -1512,9 +1528,7 @@
 		[self setTrackRating: [infoDict objectForKey: @"trackRating"]];
 		[self setTrackPlayCount: [infoDict objectForKey: @"trackPlayCount"]];
 		[self createStatusItem];
-		
-	} else {
-		//[self setLongDisplayString: @"x"];
+
 	}
 }
 
@@ -1581,6 +1595,23 @@
 {
 	NSLog(@"OMG WERE auth failed!");
 	facebookAuthFailCount = 0;
+}
+
+
+#pragma mark - playback controls
+- (void) playbackPausePlay: (id) sender 
+{
+	[activeBridgeOperation playpause];	
+}
+
+- (void) playbackNext: (id) sender 
+{
+	[activeBridgeOperation next];		
+}
+
+- (void) playbackPrevious: (id) sender 
+{
+	[activeBridgeOperation previous];	
 }
 
 

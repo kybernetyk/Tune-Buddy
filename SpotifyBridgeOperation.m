@@ -389,9 +389,9 @@
 				[self setAlbumName: @""];
 			
 			NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithObjectsAndKeys: 
+		 								  self, @"sender",
 										 [NSString stringWithString: currentDisplayString], @"displayString",
 										 [NSString stringWithString: playStatus], @"displayStatus", 
-										 
 										 [NSString stringWithString: [self artistName]], @"artistName",
 										 [NSString stringWithString: [self trackName]], @"trackName",
 										 [NSString stringWithString: [self albumName]], @"albumName",
@@ -448,9 +448,9 @@
 			
 			
 			NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys: 
+ 								  self, @"sender",
 								  [NSString stringWithString: currentDisplayString], @"displayString",
 								  [NSString stringWithString: playStatus], @"displayStatus", 
-								  
 								  [NSString stringWithString: [self artistName]], @"artistName",
 								  [NSString stringWithString: [self trackName]], @"trackName",
 								  [NSString stringWithString: [self albumName]], @"albumName",
@@ -475,6 +475,7 @@
 		usleep(kRefreshFrequencyInMicroseconds/2.0);
 		if ([[self isPlaying] boolValue]) {
 			NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys: 
+  								  self, @"sender",
 								  [NSString stringWithString: currentDisplayString], @"displayString",
 								  [NSString stringWithString: playStatus], @"displayStatus", 
 								  
@@ -522,5 +523,21 @@
 	//	iTunes = nil;
 	
 }
+
+- (void) playpause 
+{
+	[spotify playpause];	
+}
+
+- (void) next
+{
+	[spotify nextTrack];
+}
+
+- (void) previous
+{
+	[spotify previousTrack];
+}
+
 
 @end
