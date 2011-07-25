@@ -60,8 +60,6 @@
 
 - (void)enableLoginItemWithLoginItemsReference:(LSSharedFileListRef )theLoginItemsRefs ForPath:(CFURLRef)thePath 
 {
-	NSLog(@"enable login item!");
-	
 	// We call LSSharedFileListInsertItemURL to insert the item at the bottom of Login Items list.
 	LSSharedFileListItemRef item = LSSharedFileListInsertItemURL(theLoginItemsRefs, kLSSharedFileListItemLast, NULL, NULL, thePath, NULL, NULL);		
 	if (item)
@@ -70,8 +68,6 @@
 
 - (void)disableLoginItemWithLoginItemsReference:(LSSharedFileListRef )theLoginItemsRefs ForPath:(CFURLRef)thePath 
 {
-	NSLog(@"disable login item!");
-	
 	UInt32 seedValue;
 	
 	// We're going to grab the contents of the shared file list (LSSharedFileListItemRef objects)
@@ -100,9 +96,6 @@
 	if (loginItems) 
 	{
 		NSURL *bundleURL = [NSURL fileURLWithPath: [[NSBundle mainBundle] bundlePath]];
-		
-		NSLog(@"my bundle path: %@", bundleURL);
-		
 		BOOL addToLogin = [[NSUserDefaults standardUserDefaults] boolForKey: @"startAtLogin"];
 		
 		if (addToLogin)
@@ -148,7 +141,6 @@
 
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	NSString *selectedClient = [defaults valueForKey: @"selectedClient"];
-	NSLog(@"Selected Client: %@", selectedClient);
 	if ([selectedClient isEqualToString: @"Automatic"]) {
 		id bridgeOperation = [[SpotifyBridgeOperation alloc] init];
 		[bridgeOperation setDelegate: self];	
@@ -185,15 +177,6 @@
 // called by cocoa when our app is loaded and ready to run
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-/*	CFStringRef ref = SecCopyErrorMessageString (-25299, NULL);
-	
-	NSLog(@"%@",ref);
-*/	
-	
-//	[EMGenericKeychainItem addGenericKeychainItemForService: @"lalalala" withUsername: @"peniskopf" password: @"fisckendich"];
-	
-	//[EMGenericKeychainItem addGenericKeychainItemForService:@"SomeAppService" withUsername:@"Joe" password:@"supersecure!"];
-	
 #ifdef MAS_VERSION
 	[self setIsExpired: NO];
 #else
@@ -214,33 +197,13 @@
 		NSDate *date = [NSDate date];
 		NSTimeInterval now = [date timeIntervalSinceReferenceDate];
 		NSTimeInterval secondsrun = now - firstRun;
-		if (secondsrun >= 2592000.0)
-		{
-			NSLog(@"expired!");
+		if (secondsrun >= 2592001.0) {
 			[self setIsExpired: YES];
-
 		}
 	}
 #endif
 	
-//	EMInternetKeychainItem *keychainItem = [[EMKeychainProxy sharedProxy] internetKeychainItemForServer:@"apple.com" withUsername:@"sjobs" path:@"/httpdocs" port:21 protocol:kSecProtocolTypeFTP];
-
-/*	[[EMKeychainProxy sharedProxy] setLogsErrors: YES];
-
-	EMInternetKeychainItem *keyChainItem = [[EMKeychainProxy sharedProxy] internetKeychainItemForServer: @"http://twitter.com"
-																						   withUsername: @"fettemama"
-																								   path: nil
-																								   port: 80 
-																							   protocol: kSecProtocolTypeHTTP];
-	
-	NSLog(@"keychian: %@", keyChainItem);*/
-	
-	
-	//NSScreen *screen = [[NSScreen screens] objectAtIndex: 0];
-	
 	BOOL shallEnableSmallScreenMode = NO;
-	
-//	NSLog(@"screen width: %f", [screen frame].size.width);
 	
 #ifdef SMALL_SCREENMODE_INSTEAD_OF_SCROLLING
 	if ([screen frame].size.width < 1300.0)
@@ -248,10 +211,6 @@
 #endif
 	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	
-	//	[defaults setObject:[NSArchiver archivedDataWithRootObject:myColor
-	//														forKey:@"myColor"]];
-
 	NSData *fontData = [NSArchiver archivedDataWithRootObject: [NSColor blackColor]];
 	
 	NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -278,18 +237,13 @@
 	smallScreenModeEnabled = [[NSUserDefaults standardUserDefaults] boolForKey: @"smallScreenModeEnabled"];
 	
 	NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
-	if (IsInApplicationsFolder(bundlePath)) 
-	{
-		NSLog(@"app is in app folder. adding myself to autostart ...");
+	if (IsInApplicationsFolder(bundlePath))	{
 		[self addLoginItem: self];	
 	}
 	
-	
-	
 	[self checkRegistration];
 	
-	if ([self isExpired] && ![self isRegistered])
-	{
+	if ([self isExpired] && ![self isRegistered]) {
 		NSAlert *al = [NSAlert alertWithMessageText: @"Tune Buddy: Trial Time Expired" 
 									  defaultButton: @"Ok" 
 									alternateButton: @"Buy" 
@@ -359,8 +313,6 @@
                        context:(void *)context
 {
 	NSString *contextString = (NSString *)context;
-	NSLog(@"context string: %@", contextString);
-	
 	if ([contextString isEqualToString: @"smallScreenModeEnabled"])
 	{
 		smallScreenModeEnabled = [[NSUserDefaults standardUserDefaults] boolForKey: @"smallScreenModeEnabled"];
@@ -377,7 +329,6 @@
 	
 	if ([contextString isEqualToString: @"lastFMUsername"])
 	{
-		NSLog(@"last fm username changed biatch!");
 		[[LastFMAuth sharedLastFMAuth] reset];
 		return;
 	}
@@ -695,8 +646,7 @@
 #endif
 
 	
-	if (!contactSupportMenuItem)
-	{
+	if (!contactSupportMenuItem) {
 		contactSupportMenuItem = [statusBarMenu addItemWithTitle:@"Contact Support" action:@selector(contactSupport:) keyEquivalent: [NSString string]];
 	}
 
@@ -707,8 +657,7 @@
 		[statusBarMenu addItem:[NSMenuItem separatorItem]];		
 	}
 	
-	if (!quitMenuItem)
-	{	
+	if (!quitMenuItem)	{	
 		quitMenuItem = [statusBarMenu addItemWithTitle:@"Quit" action:@selector(quitAppByMenu:) keyEquivalent:[NSString string]];
 	}
 	
@@ -796,7 +745,6 @@
 #pragma mark MGTwitterEngineDelegate methods
 - (void)requestSucceeded:(NSString *)connectionIdentifier
 {
-	  NSLog(@"Request succeeded for connectionIdentifier = %@", connectionIdentifier);
 	lastConnectionIdentifier = nil;
 	
 	[twitterEngine autorelease];
@@ -806,14 +754,14 @@
 
 - (void)requestFailed:(NSString *)connectionIdentifier withError:(NSError *)error
 {
-    NSLog(@"Request failed for connectionIdentifier = %@, error = %@ (%@)", 
-	 connectionIdentifier, 
-	 [error localizedDescription], 
-	 [error userInfo]);
+//    NSLog(@"Request failed for connectionIdentifier = %@, error = %@ (%@)", 
+//	 connectionIdentifier, 
+//	 [error localizedDescription], 
+//	 [error userInfo]);
 	
 	if ([[error localizedDescription] containsString: @"401"])
 	{
-		NSLog (@"wrong username!");
+		NSLog (@"twitter: wrong username!");
 		
 		
 /*		NSAlert *al = [NSAlert alertWithMessageText:@"Tune Buddy: Twitter Error" defaultButton:@"Ok" alternateButton: nil otherButton: nil informativeTextWithFormat:@"Twitter returned the error code 401. This usually means that your username and password don't match."];
@@ -897,10 +845,7 @@
 #pragma mark public IB accessable methods
 - (IBAction) sendCurrentTrackToTwitter: (id) sender
 {
-	if (lastConnectionIdentifier)
-	{
-		NSLog(@"won't send as we're sending already!");
-		
+	if (lastConnectionIdentifier) {
 		return;
 	}
 	
@@ -919,17 +864,12 @@
 	
 	
 	OAToken *token = [[OAToken alloc] initWithUserDefaultsUsingServiceProviderName: @"twitter" prefix:@"fx"];
-	if (!token)
-	{
-		NSLog(@"no twitter token found ... let's authorize!");
+	if (!token) {
 		[self authTwitterAndPostTweetAfterwards: YES];
 		return;
 	}
 	
 	OAConsumer *consumer = [[OAConsumer alloc] initWithKey: TWITTER_API_KEY secret: TWITTER_API_SECRET];
-	
-	
-	NSLog(@"init twitter with token: %@",token);
 	[twitterEngine setUseOAuth: YES];
 	[twitterEngine setConsumer: consumer];
 	[twitterEngine setAccessToken: token];
@@ -970,10 +910,8 @@
 		tstr = [NSString stringWithFormat: @"%@%@",dispString,appendString];
 	else
 		tstr = [NSString stringWithFormat: @"%@",dispString];
-	
 
 	lastConnectionIdentifier = [twitterEngine sendUpdate: tstr];	
-	NSLog(@"sending string %@ with id %@",tstr, lastConnectionIdentifier);
 }
 
 - (IBAction) openPreferencesWindow: (id) sender
@@ -1066,15 +1004,11 @@
 - (void) facebookShareOperationDidSucceed: (FacebookShareOperation *) operation
 {
 	facebookAuthFailCount = 0;
-	NSLog(@"fb share was cool!");
 }
 
 - (void) facebookShareOperationDidFail: (FacebookShareOperation *) operation
 {
 	facebookAuthFailCount ++;
-	NSLog(@"auth fail count: %i", facebookAuthFailCount);
-
-	NSLog(@"fb share was not cool!");
 	[self deauthFacebook];
 
 	if (facebookAuthFailCount < 3)
@@ -1155,12 +1089,8 @@
 	if (!registeredTo || !serial)
 		return NO;
 	
-	if ([[self serialForName: registeredTo] isEqualToString: serial])
-	{	
-		NSLog(@"we're registered!");
-		
+	if ([[self serialForName: registeredTo] isEqualToString: serial]) {	
 		return YES;
-		
 	}
 	
 	return NO;
@@ -1343,8 +1273,7 @@
 	  priority:(signed int)priority
 	  isSticky:(BOOL)isSticky
 	  clickContext:(id)clickContext]*/
-	NSLog(@"notfieng growl ...");
-	
+
 	BOOL shouldNotify = [[NSUserDefaults standardUserDefaults] boolForKey: @"growlEnabled"];
 	if (!shouldNotify)
 		return;
@@ -1447,7 +1376,7 @@
 		if (doScrobble)
 		{
 			[scrobbleQueue addObject: [NSDictionary dictionaryWithDictionary: infoDict]];
-			NSLog(@"added %@ - %@ to submission queue (count) = %i",[infoDict objectForKey: @"artistName"],[infoDict objectForKey:@"trackName"], [scrobbleQueue count]);
+//			NSLog(@"added %@ - %@ to submission queue (count) = %i",[infoDict objectForKey: @"artistName"],[infoDict objectForKey:@"trackName"], [scrobbleQueue count]);
 			LastFMNotificationOperation *notificationScrobbler = [self notificationOperationWithDictionary: [NSDictionary dictionaryWithDictionary: infoDict]];
 			if (notificationScrobbler)
 				[backgroundOperationQueue addOperation: notificationScrobbler];
@@ -1593,7 +1522,6 @@
 
 - (void) authFacebookAndPostAfterwars: (BOOL) postAfterwards
 {
-	NSLog(@"auth and post afterwards ... %i", postAfterwards);
 	[NSApp activateIgnoringOtherApps: YES];
 	
 	FacebookAuthWindowController *fwc = [[FacebookAuthWindowController alloc] initWithWindowNibName: @"FacebookAuthWindow"];
@@ -1622,13 +1550,11 @@
 
 - (void) facebookWindowControllerDidSucceed
 {
-	NSLog(@"OMG WERE AUTHED WITH THE FACEBOOKS!");
 	[self sendCurrentTrackToFacebook: self];
 }
 
 - (void) facebookWindowControllerDidFail
 {
-	NSLog(@"OMG WERE auth failed!");
 	facebookAuthFailCount = 0;
 }
 
