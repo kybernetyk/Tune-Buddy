@@ -573,21 +573,26 @@
 
 	if (!playbackMenuItem) {
 		playbackMenuItem = [[NSMenuItem alloc] init];
-		
-		NSView *v = [[NSView alloc] initWithFrame: NSMakeRect(0, 0, 220, 20)];
+		NSBezelStyle style = NSShadowlessSquareBezelStyle;
+		double h = 20.0;
+		double w = 60.0;
+		NSView *v = [[NSView alloc] initWithFrame: NSMakeRect(0, 0, 3*(w+10.0)+20.0, h)];
 		
 		double x = 0.0 + 20.0;//[[smallScreenModeMenuItem view] frame].size.width/2.0 - 40.0/2.0 + 20;
-		prevButton = [[NSButton alloc] initWithFrame: NSMakeRect(x, 0, 40, 20)];
+		prevButton = [[NSButton alloc] initWithFrame: NSMakeRect(x, 0, w, h)];
+		[prevButton setBezelStyle: style];
 		[prevButton setImage: [NSImage imageNamed: @"prev.png"]];
 		[v addSubview: prevButton];
 		
-		x += 50.0;
-		stopButton = [[NSButton alloc] initWithFrame: NSMakeRect(x, 0, 40, 20)];
+		x += (w + 10.0);
+		stopButton = [[NSButton alloc] initWithFrame: NSMakeRect(x, 0, w, h)];
+		[stopButton setBezelStyle: style];
 		[v addSubview: stopButton];
 		
-		x += 50.0;
-		nextButton = [[NSButton alloc] initWithFrame: NSMakeRect(x, 0, 40, 20)];
+		x += (w + 10.0);
+		nextButton = [[NSButton alloc] initWithFrame: NSMakeRect(x, 0, w, h)];
 		[nextButton setImage: [NSImage imageNamed: @"next.png"]];
+		[nextButton setBezelStyle: style];
 		[v addSubview: nextButton];
 		
 		
