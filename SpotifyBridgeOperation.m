@@ -472,7 +472,7 @@
 		
 		
 		
-		usleep(kRefreshFrequencyInMicroseconds/2.0);
+//		usleep(kRefreshFrequencyInMicroseconds/2.0);
 		if ([[self isPlaying] boolValue]) {
 			NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys: 
   								  self, @"sender",
@@ -490,7 +490,7 @@
 			[delegate performSelectorOnMainThread:@selector(bridgePing:) withObject: dict waitUntilDone: YES];
 			[dict release];
 		}
-		usleep(kRefreshFrequencyInMicroseconds/2.0);
+//		usleep(kRefreshFrequencyInMicroseconds/2.0);
 		//	NSLog(@"tick");
 		
 		poolKillCounter ++;

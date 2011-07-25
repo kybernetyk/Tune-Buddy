@@ -1434,9 +1434,9 @@
 {
 //	BOOL smallScreenModeEnabled = [[NSUserDefaults standardUserDefaults] boolForKey: @"smallScreenModeEnabled"];
 	isPlaying = [[infoDict objectForKey: @"isPlaying"] boolValue];
-	if (isPlaying) {
+	//if (isPlaying) {
 		[self setActiveBridgeOperation: [infoDict objectForKey: @"sender"]];
-	}
+	//}
 #ifdef MAS_VERSION
 	[self setLongDisplayString: [infoDict objectForKey: @"displayString"]];
 	[self setPlayStatus: [infoDict objectForKey: @"displayStatus"]];
