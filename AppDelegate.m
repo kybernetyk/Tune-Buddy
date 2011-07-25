@@ -571,18 +571,40 @@
 		[smallScreenMenuSeperator setHidden: YES];
 	}*/
 
-#ifdef LITE_VERSION
-	if (!fullVersionMenuItem)
-	{
-		fullVersionMenuItem = [statusBarMenu addItemWithTitle: @"Get Tune Buddy Full Version" action:@selector(openBuyPage:) keyEquivalent: [NSString string]];
-		//		[statusBarMenu addItem:[NSMenuItem separatorItem]];
+	if (!playbackMenuItem) {
+		playbackMenuItem = [[NSMenuItem alloc] init];
 		
+		NSView *v = [[NSView alloc] initWithFrame: NSMakeRect(0, 0, 220, 20)];
+		
+		double x = 0.0 + 20.0;//[[smallScreenModeMenuItem view] frame].size.width/2.0 - 40.0/2.0 + 20;
+		NSButton *back = [[NSButton alloc] initWithFrame: NSMakeRect(x, 0, 40, 20)];
+		[back setImage: [NSImage imageNamed: @"prev.png"]];
+		[v addSubview: back];
+		
+		x += 50.0;
+		stopButton = [[NSButton alloc] initWithFrame: NSMakeRect(x, 0, 40, 20)];
+		[v addSubview: stopButton];
+		
+		x += 50.0;
+		NSButton *next = [[NSButton alloc] initWithFrame: NSMakeRect(x, 0, 40, 20)];
+		[next setImage: [NSImage imageNamed: @"next.png"]];
+		[v addSubview: next];
+		
+		
+		[playbackMenuItem setView: v];
+		[statusBarMenu addItem: playbackMenuItem];
+		[statusBarMenu addItem:[NSMenuItem separatorItem]];
 	}
-#endif
 
 	if (!copyToClipboardMenuItem)
 		copyToClipboardMenuItem = [statusBarMenu addItemWithTitle:@"Copy To Clip Board" action: @selector(copyCurrentTrackInfoToClipBoard:) keyEquivalent: [NSString string]];
-	
+
+	if (stopButton) {
+		if (isPlaying)
+			[stopButton setImage: [NSImage imageNamed: @"Pause.png"]];
+		else
+			[stopButton setImage: [NSImage imageNamed: @"Play.png"]];
+	}
 	
 	//transformer for hidden = !xxxEnabled
 	NSValueTransformer *tran = [NSValueTransformer valueTransformerForName: NSNegateBooleanTransformerName];
@@ -609,16 +631,28 @@
 		
 	}	
 #endif
+
+#ifdef LITE_VERSION
+	if (!fullVersionMenuItem)
+	{
+		[statusBarMenu addItem:[NSMenuItem separatorItem]];
+		fullVersionMenuItem = [statusBarMenu addItemWithTitle: @"Get Tune Buddy Full Version" action:@selector(openBuyPage:) keyEquivalent: [NSString string]];
+	}
+#endif
+#ifndef MAS_VERSION
+	if (![self isRegistered]) {
+		if (!fullVersionMenuItem) { 
+			fullVersionMenuItem = [statusBarMenu addItemWithTitle: @"Purchase Tune Buddy" action:@selector(openBuyPage:) keyEquivalent: [NSString string]];
+		}
+	}
+#endif
+
+	
 	if (!contactSupportMenuItem)
 	{
-#ifdef LITE_VERSION
-		[statusBarMenu addItem:[NSMenuItem separatorItem]];
-#endif
 		contactSupportMenuItem = [statusBarMenu addItemWithTitle:@"Contact Support" action:@selector(contactSupport:) keyEquivalent: [NSString string]];
-		
-
 	}
-	
+
 	if (!preferencesMenuItem)
 	{	
 		preferencesMenuItem = [statusBarMenu addItemWithTitle:@"Preferences" action:@selector(openPreferencesWindow:) keyEquivalent: [NSString string]];
@@ -1381,7 +1415,7 @@
 - (void) iTunesTrackDidChangeTo: (NSDictionary *) infoDict
 {
 //	BOOL smallScreenModeEnabled = [[NSUserDefaults standardUserDefaults] boolForKey: @"smallScreenModeEnabled"];
-
+	isPlaying = [[infoDict objectForKey: @"isPlaying"] boolValue];
 #ifdef MAS_VERSION
 	[self setLongDisplayString: [infoDict objectForKey: @"displayString"]];
 	[self setPlayStatus: [infoDict objectForKey: @"displayStatus"]];

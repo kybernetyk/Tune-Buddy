@@ -144,7 +144,7 @@
 -(IBAction) mercantilismNow: (id) sender
 {
 #ifdef MAS_VERSION
-	[[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: @"http://mas"]];
+	[[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: @"macappstore://itunes.apple.com/us/app/tune-buddy/id402489864?mt=12"]];
 #else
 	[[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: @"http://www.fluxforge.com/tune-buddy/buy/"]];
 #endif

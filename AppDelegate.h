@@ -40,10 +40,11 @@
 	NSMenuItem *facebookMenuItem;
 	NSMenuItem *smallScreenModeMenuItem;
 	NSMenuItem *quitMenuItem;
-#ifdef LITE_VERSION
 	NSMenuItem *fullVersionMenuItem;
-#endif
+
 	NSMenuItem *contactSupportMenuItem;
+	NSMenuItem *playbackMenuItem;
+	
 	NSMenu *statusBarMenu;
 	
 	
@@ -74,6 +75,10 @@
 	FXScrollingView *statusView;
 	
 	id bridgeOperation;
+	
+	BOOL isPlaying;
+	
+	NSButton *stopButton;
 }
 
 #pragma mark -
