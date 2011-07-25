@@ -9,7 +9,7 @@
 #import "iTunesBridgeOperation.h"
 #import "NSString+Search.h"
 
-#define kRefreshFrequencyInMicroseconds 500000
+#define kRefreshFrequencyInMicroseconds 250000
 
 @implementation iTunesBridgeOperation
 @synthesize delegate;

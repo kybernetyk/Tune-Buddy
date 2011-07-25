@@ -9,7 +9,7 @@
 #import "SpotifyBridgeOperation.h"
 #import "NSString+Search.h"
 
-#define kRefreshFrequencyInMicroseconds 500000
+#define kRefreshFrequencyInMicroseconds 250000
 
 @implementation SpotifyBridgeOperation
 @synthesize delegate;
