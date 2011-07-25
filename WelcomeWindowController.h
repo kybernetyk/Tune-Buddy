@@ -13,7 +13,8 @@
 @interface WelcomeWindowController : NSWindowController {
 	IBOutlet WebView *webView;
 	IBOutlet WebView *bottomWebView;
-	IBOutlet NSButton *buyButton;    
+	IBOutlet NSButton *buyButton;   
+	IBOutlet NSButton *checkBox;
 }
 
 -(IBAction) closeMe: (id) sender;

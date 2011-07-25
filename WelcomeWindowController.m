@@ -49,11 +49,13 @@
 	#ifdef LITE_VERSION
 	subdir = @"welcome_lite";
 	[buyButton setHidden: NO];
+	[buyButton becomeFirstResponder];
 	[[self window] setTitle: @"Welcome to Tune Buddy Lite"];
 	NSRect f = [[self window] frame];
 	f.size.width = 960;
 	[[self window] setFrame: f display: NO animate: NO];
 	[[self window] center];
+	[checkBox setHidden: YES];
 	#else
 	subdir = @"welcome";
 	[[self window] setTitle: @"Welcome to Tune Buddy"];
@@ -68,6 +70,8 @@
 		
 		[buyButton setHidden: NO];
 		[buyButton setTitle: @"Purchase Tune Buddy"];
+		[buyButton becomeFirstResponder];
+		[checkBox setEnabled: NO];
 		NSRect f = [[self window] frame];
 		f.size.width = 960;
 		[[self window] setFrame: f display: NO animate: NO];
@@ -86,11 +90,23 @@
 
 #ifdef MAS_VERSION
 	#ifdef LITE_VERSION
-		//[self checkMASPromotion];
+	dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+	dispatch_async(queue, ^{
+		dispatch_queue_t q = dispatch_get_main_queue();
+		dispatch_async(q, ^{
+			NSString *prom = [NSString stringWithContentsOfURL: [NSURL URLWithString: @"http://www.fluxforge.com/tune-buddy/promo_lite.txt"]
+													  encoding: NSUTF8StringEncoding
+														 error: NULL];
+			NSLog(@"prom: %@", prom);
+			if (prom && [prom length] > 0 && [prom containsString: @"yes" ignoringCase: YES])
+				[self loadLitePromotion];
+			else
+				NSLog(@"no promo for lite found!");
+		});
+	});
 	#endif
 #else
 	if (![[NSApp delegate] isRegistered]) {
-//		[self checkTrialPromotion];
 		dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
 		dispatch_async(queue, ^{
 			dispatch_queue_t q = dispatch_get_main_queue();
@@ -116,7 +132,7 @@
 
 - (void) loadLitePromotion
 {
-	
+	[[webView mainFrame] loadRequest:[NSURLRequest requestWithURL: [NSURL URLWithString: @"http://www.fluxforge.com/tune-buddy/promo_lite/"]]];	
 }
 
 -(IBAction) closeMe: (id) sender
