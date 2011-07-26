@@ -100,12 +100,15 @@
 	
 	frame = self.frame;
 	frame.size.width = artworkView.frame.size.width + titleFieldClippingView.frame.size.width + durationField.frame.size.width;
-	
-	/*CABasicAnimation *resizeAnimation = [CABasicAnimation animationWithKeyPath:@"frameSize"];
+//#define DO_SCROLL_IN
+#ifdef DO_SCROLL_IN
+	CABasicAnimation *resizeAnimation = [CABasicAnimation animationWithKeyPath:@"frameSize"];
 	resizeAnimation.duration = fabs(frame.size.width - self.frame.size.width) / RESIZE_SPEED;
 	resizeAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
 	self.animations = [NSDictionary dictionaryWithObject:resizeAnimation forKey:@"frameSize"];
-	[[self animator] setFrame:frame];*/
+	[[self animator] setFrame:frame];
+#endif
+
 	[self setFrame: frame];
 	
 	if (fabs(titleFieldClippingView.frame.size.width - titleField.frame.size.width) > 5) {
