@@ -51,7 +51,7 @@
 					<object class="NSTextField" id="277485511">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{97, 55}, {66, 17}}</string>
+						<string key="NSFrame">{{74, 55}, {89, 17}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="170624692"/>
@@ -59,7 +59,7 @@
 						<object class="NSTextFieldCell" key="NSCell" id="449135822">
 							<int key="NSCellFlags">68288064</int>
 							<int key="NSCellFlags2">272630784</int>
-							<string key="NSContents">Attach to:</string>
+							<string key="NSContents">Player to use:</string>
 							<object class="NSFont" key="NSSupport" id="752347840">
 								<string key="NSName">LucidaGrande</string>
 								<double key="NSSize">13</double>
@@ -92,7 +92,6 @@
 						<string key="NSFrame">{{168, 49}, {185, 26}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSComboBoxCell" key="NSCell" id="159974944">
 							<int key="NSCellFlags">74579521</int>
@@ -123,7 +122,7 @@
 							<object class="NSComboTableView" key="NSTableView" id="167332280">
 								<reference key="NSNextResponder"/>
 								<int key="NSvFlags">274</int>
-								<string key="NSFrameSize">{13, 42}</string>
+								<string key="NSFrameSize">{13, 63}</string>
 								<reference key="NSSuperview"/>
 								<reference key="NSWindow"/>
 								<bool key="NSEnabled">YES</bool>
