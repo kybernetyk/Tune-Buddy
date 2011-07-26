@@ -269,15 +269,9 @@
 		}
 		
 	}
-	
 	[GrowlApplicationBridge setGrowlDelegate: self];
 	
-	//[self registerForName:@"Jaroslaw Szpilewski" andSerial: @"lolfail"];
-	//isRegistered = [self isRegistrationValid];
-	//NSLog(@"is this app registered? %i",isRegistered);
-
 	//auth with last fm to get shit going
-	
 	BOOL lfm = [defaults boolForKey: @"lastFMEnabled"];
 	if (lfm)
 		[[LastFMAuth sharedLastFMAuth] password];
@@ -396,86 +390,6 @@
 	
 	
 }
-
-// creates a menu item in the status menu
-/*- (void) createStatusItem
-{
-	BOOL smallScreenModeEnabled = [[NSUserDefaults standardUserDefaults] boolForKey: @"smallScreenModeEnabled"];
-	
-	NSStatusBar *statusBar = [NSStatusBar systemStatusBar];
-	
-	if (statusItem)
-	{	
-		[statusBar removeStatusItem: statusItem];
-		[statusItem release];
-		statusItem = nil;
-	}
-	
-	NSString *title = @"♫";
-	
-	if (!smallScreenModeEnabled)
-		title = [self displayString];
-	
-	
-	NSMenu *menu = [[[NSMenu alloc] initWithTitle:@"menu title"] autorelease];
-	statusBarMenu = menu;
-	[menu setDelegate: self];
-	[menu setAutoenablesItems: NO];
-	//	NSMenuItem *menuItem = [[[NSMenuItem alloc] initWithTitle:@"Preferences" action:@selector(openPreferences:) keyEquivalent:[NSString string]] autorelease];
-	//	[menu addItem: menuItem];
-
-	
-	if (smallScreenModeEnabled)
-	{
-		smallScreenModeMenuItem = [menu addItemWithTitle: [self displayString] action: @selector(copyCurrentTrackInfoToClipBoard:) keyEquivalent: [NSString string]];	
-		[menu addItem:[NSMenuItem separatorItem]];
-	}
-	
-	[menu addItemWithTitle:@"Copy To Clip Board" action: @selector(copyCurrentTrackInfoToClipBoard:) keyEquivalent: [NSString string]];
-	
-	
-	//transformer for hidden = !xxxEnabled
-	NSValueTransformer *tran = [NSValueTransformer valueTransformerForName: NSNegateBooleanTransformerName];
-	NSDictionary *opts = [NSDictionary dictionaryWithObject: tran forKey: @"NSValueTransformer"];
-	
-	
-	adiumMenuItem = [menu addItemWithTitle:@"Send To Active Adium Chat" action:@selector(sendCurrentTrackToAdium:) keyEquivalent: [NSString string]];
-	[twitterMenuItem bind: @"hidden" toObject: [NSUserDefaultsController sharedUserDefaultsController] withKeyPath:@"values.adiumEnabled" options:opts];
-	
-	
-	twitterMenuItem = [menu addItemWithTitle:@"Send To Twitter" action:@selector(sendCurrentTrackToTwitter:) keyEquivalent: [NSString string]];
-	[twitterMenuItem bind: @"hidden" toObject: [NSUserDefaultsController sharedUserDefaultsController] withKeyPath:@"values.twitterEnabled" options:opts];
-	
-	
-	[menu addItem:[NSMenuItem separatorItem]];
-	
-	[menu addItemWithTitle:@"Preferences" action:@selector(openPreferencesWindow:) keyEquivalent: [NSString string]];
-	
-	//[menu addItemWithTitle:@"Check For Updates" action:@selector(checkForUpdates:) keyEquivalent: [NSString string]];
-	
-	
-	//	[menu addItemWithTitle:@"Registration" action:@selector(openRegistrationWindow:) keyEquivalent:[NSString string]];
-	
-	[menu addItem:[NSMenuItem separatorItem]];
-	[menu addItemWithTitle:@"Quit" action:@selector(quitAppByMenu:) keyEquivalent:[NSString string]];
-	
-	
-	NSFont *font = [NSFont fontWithName:@"Verdana" size: 11.0f];
-	//NSLog(@"%@",font);
-	NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys: font,@"NSFont",nil];
-	NSAttributedString *attributedTitle = [[[NSAttributedString alloc] initWithString: title attributes: attributes] autorelease];
-	
-	
-	statusItem = [statusBar statusItemWithLength: NSVariableStatusItemLength];
-	//[statusItem setTitle: title];
-	[statusItem setAttributedTitle: attributedTitle];
-	[statusItem setEnabled: YES];
-	[statusItem setHighlightMode: YES];
-	[statusItem setMenu: menu];
-	
-	[statusItem retain];
-	
-}*/
 
 
 // creates a menu item in the status menu
@@ -637,36 +551,17 @@
 		contactSupportMenuItem = [statusBarMenu addItemWithTitle:@"Contact Support" action:@selector(contactSupport:) keyEquivalent: [NSString string]];
 	}
 
-	if (!preferencesMenuItem)
-	{	
+	if (!preferencesMenuItem) {	
 		preferencesMenuItem = [statusBarMenu addItemWithTitle:@"Preferences" action:@selector(openPreferencesWindow:) keyEquivalent: [NSString string]];
 		
 		[statusBarMenu addItem:[NSMenuItem separatorItem]];		
 	}
 	
-	if (!quitMenuItem)	{	
+	if (!quitMenuItem) {	
 		quitMenuItem = [statusBarMenu addItemWithTitle:@"Quit" action:@selector(quitAppByMenu:) keyEquivalent:[NSString string]];
 	}
 	
-	
-//	NSData *fontData = [defs objectForKey: @"statusItemForegroundColor"];
-//	NSColor *fontColor = [NSUnarchiver unarchiveObjectWithData: fontData];
-	
-	
-	
-	
-//	NSFont *font = [NSFont fontWithName:@"Verdana" size: 11.0f];
-	//NSLog(@"%@",font);
-//	NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys: font,@"NSFont",fontColor,NSForegroundColorAttributeName,  nil];
-	//NSAttributedString *attributedTitle = [[[NSAttributedString alloc] initWithString: title attributes: attributes] autorelease];
-	
-//	[defaults setObject:[NSArchiver archivedDataWithRootObject:myColor
-//														forKey:@"myColor"]];
-
-
-	
-	if (!statusItem)
-	{	
+	if (!statusItem) {	
 
 		if ([defs boolForKey: @"keepAlwaysLeft"] && [statusBar respondsToSelector:@selector(_statusItemWithLength:withPriority:)])
 		{
@@ -691,24 +586,15 @@
 
 		[statusItem retain];
 	}
-	
-//	[statusItem setAttributedTitle: attributedTitle];
-	#define SYSTEM_STATUS_BAR_HEIGHT ([[NSStatusBar systemStatusBar] thickness])
+
+#define SYSTEM_STATUS_BAR_HEIGHT ([[NSStatusBar systemStatusBar] thickness])
 	statusView = [[FXScrollingView alloc] initWithFrame:NSMakeRect(0, 0, SYSTEM_STATUS_BAR_HEIGHT, SYSTEM_STATUS_BAR_HEIGHT)];
 
-
 	statusView.maximumWidth = [[[NSScreen screens] objectAtIndex: 0] frame].size.width/6.4;
-	//self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
 	statusItem.view = statusView;
-			statusItem.menu.delegate = statusView;
-//	[statusItem menu = mainMenu;
-//	statusItem.menu.delegate = trackInfoView;
-	
-	//trackInfoView.menu = mainMenu;
+	statusItem.menu.delegate = statusView;
 	statusView.statusItem = statusItem;
-	//trackInfoView.artworkView.image = [NSImage imageNamed: @"icon.icns"];
 	[statusView.titleField setStringValue: title];
-//	[trackInfoView.titleField setAttributedStringValue: attributedTitle];
 }
 
 
@@ -741,40 +627,18 @@
 
 - (void)requestFailed:(NSString *)connectionIdentifier withError:(NSError *)error
 {
-//    NSLog(@"Request failed for connectionIdentifier = %@, error = %@ (%@)", 
-//	 connectionIdentifier, 
-//	 [error localizedDescription], 
-//	 [error userInfo]);
-	
-	if ([[error localizedDescription] containsString: @"401"])
-	{
+	if ([[error localizedDescription] containsString: @"401"]) {
 		NSLog (@"twitter: wrong username!");
-		
-		
-/*		NSAlert *al = [NSAlert alertWithMessageText:@"Tune Buddy: Twitter Error" defaultButton:@"Ok" alternateButton: nil otherButton: nil informativeTextWithFormat:@"Twitter returned the error code 401. This usually means that your username and password don't match."];
-		[al setAlertStyle: NSCriticalAlertStyle];
-		
-		[al runModal];*/
 		lastConnectionIdentifier = nil;
-		
 		[twitterEngine autorelease];
 		twitterEngine = nil;
-		
 		[self authTwitterAndPostTweetAfterwards: YES];
-		
 		return;
-//		[[NSAlert alertWithError: error] runModal];
-
-	}
-	else
-	{
+	} else {
 		NSAlert *al = [NSAlert alertWithMessageText:@"Tune Buddy: Twitter Error" defaultButton:@"Ok" alternateButton: nil otherButton: nil informativeTextWithFormat:@"Twitter returned an error: %@", [error localizedDescription]];
 		[al setAlertStyle: NSCriticalAlertStyle];
-		
 		[al runModal];
-		
 	}
-	
 	lastConnectionIdentifier = nil;
 	
 	[twitterEngine autorelease];
