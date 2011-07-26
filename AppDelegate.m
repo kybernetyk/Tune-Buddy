@@ -219,7 +219,11 @@
 						  [NSNumber numberWithBool: NO], @"lastFMEnabled",
 						  [NSNumber numberWithBool: YES], @"enableMusicMonday",
 						  [NSNumber numberWithBool: YES], @"adiumEnabled",
+#ifdef MAS_VERSION
+						  [NSNumber numberWithBool: NO], @"startAtLogin",
+#else					  
 						  [NSNumber numberWithBool: YES], @"startAtLogin",
+#endif
 						  [NSNumber numberWithBool: YES], @"appendNowPlayingToTwitterPosts",
 						  [NSNumber numberWithBool: YES], @"keepAlwaysLeft",
 						  [NSNumber numberWithBool: NO], @"tagSongOnTwitter",
