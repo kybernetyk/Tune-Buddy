@@ -235,6 +235,7 @@
 						  [NSNumber numberWithBool: YES], @"showWelcome",
 						  [NSNumber numberWithBool: YES], @"scrollingEnabled",
 						  @"Automatic", @"selectedClient",
+						  [NSNumber numberWithBool: YES], @"showNoteOnStop",
 						  nil];
 	
 	[defaults registerDefaults: dict];
@@ -295,7 +296,7 @@
 	[defc addObserver: self forKeyPath: @"values.lastFMUsername" options: NSKeyValueObservingOptionNew context: @"lastFMUsername"];
 	[defc addObserver: self forKeyPath: @"values.scrollingEnabled" options: NSKeyValueObservingOptionNew context: @"scrollingEnabled"];
 	[defc addObserver: self forKeyPath: @"values.selectedClient" options: NSKeyValueObservingOptionNew context: @"selectedClient"];
-	
+	[defc addObserver: self forKeyPath: @"values.showNoteOnStop" options: NSKeyValueObservingOptionNew context: @"showNoteOnStop"];
 	
 	
 	if ([[NSUserDefaults standardUserDefaults] boolForKey: @"showWelcome"]) {
@@ -341,43 +342,22 @@
 		[self createStatusItem];
 		return;
 	}
+
+	if ([contextString isEqualToString: @"showNoteOnStop"]) {
+		[self createStatusItem];
+		return;
+	}
 	
 	if ([contextString isEqualToString: @"selectedClient"]) {
 		[self createBridgeOperation];
-//		[self setLongDisplayString: @"..."];
-//		[self setDisplayString: @"..."];
-//		[self createStatusItem];
 		return;
 	}
-
-
 
 	if ([contextString isEqualToString: @"keepAlwaysLeft"])
 	{
-		//smallScreenModeEnabled = [[NSUserDefaults standardUserDefaults] boolForKey: @"smallScreenModeEnabled"];
 		[self reorderIcon: self];
-		
-//		[self createStatusItem];
 		return;
 	}
-	
-	
-/*	if ([contextString isEqualToString: @"twitterUsername"])
-	{
-		NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
-		NSLog(@"new username for twitter: %@", [defs objectForKey: @"twitterUsername"] );
-								[defs setObject: @"yadayada" forKey: @"twitterUsername"];
-								
-								
-		return;
-	}
-
-	if ([contextString isEqualToString: @"twitterPassword"])
-	{
-		NSLog(@"new pass for twitter: %@", [[NSUserDefaults standardUserDefaults] objectForKey: @"twitterPassword"] );
-		
-		return;
-	}*/
 	
 	if ([contextString isEqualToString: @"statusItemForegroundColor"])
 	{
@@ -504,12 +484,15 @@
 	//BOOL smallScreenModeEnabled = [[NSUserDefaults standardUserDefaults] boolForKey: @"smallScreenModeEnabled"];
 	
 	NSStatusBar *statusBar = [NSStatusBar systemStatusBar];
-	
+	NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
 	
 	NSString *title = [[self playStatus] stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]];
-	
 	if (!smallScreenModeEnabled)
 		title = [self displayString];
+	
+	if (!isPlaying && [defs boolForKey: @"showNoteOnStop"]) {
+		title = @"♫";
+	}
 	
 	
 	if (!statusBarMenu)
@@ -665,7 +648,7 @@
 		quitMenuItem = [statusBarMenu addItemWithTitle:@"Quit" action:@selector(quitAppByMenu:) keyEquivalent:[NSString string]];
 	}
 	
-	NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+	
 //	NSData *fontData = [defs objectForKey: @"statusItemForegroundColor"];
 //	NSColor *fontColor = [NSUnarchiver unarchiveObjectWithData: fontData];
 	
@@ -1406,8 +1389,13 @@
 		[self setActiveBridgeOperation: [infoDict objectForKey: @"sender"]];
 	//}
 #ifdef MAS_VERSION
-	[self setLongDisplayString: [infoDict objectForKey: @"displayString"]];
-	[self setPlayStatus: [infoDict objectForKey: @"displayStatus"]];
+//	if (isPlaying) {
+		[self setLongDisplayString: [infoDict objectForKey: @"displayString"]];
+		[self setPlayStatus: [infoDict objectForKey: @"displayStatus"]];
+//	} else {
+//		[self setLongDisplayString: @"Long Disp"];
+//		[self setPlayStatus: @"Disp Stat"];
+//	}
 	
 	[self setAlbumArt: [infoDict objectForKey: @"albumArt"]];
 	[self setAlbumName: [infoDict objectForKey:@"albumName"]];
