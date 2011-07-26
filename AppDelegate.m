@@ -1090,8 +1090,13 @@
 	NSString *registeredTo = [defaults stringForKey: @"registeredTo"];
 	NSString *serial = [defaults stringForKey: @"serial"];
 	
-	if (!registeredTo || !serial)
+	if (!registeredTo || !serial) {
 		return NO;
+	}
+	
+	if ([serial containsString: @"0244-S34N-P485-1QO9-6NQR"]) {
+		return NO;
+	}
 	
 	if ([[self serialForName: registeredTo] isEqualToString: serial]) {	
 		return YES;
