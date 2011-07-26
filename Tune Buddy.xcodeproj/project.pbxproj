@@ -308,9 +308,6 @@
 		03EAFBCE10D8074300B715D0 /* Twitter_Prefs.png in Resources */ = {isa = PBXBuildFile; fileRef = 03EAFBCD10D8074300B715D0 /* Twitter_Prefs.png */; };
 		03EAFBDC10D809A800B715D0 /* Registration_Prefs.png in Resources */ = {isa = PBXBuildFile; fileRef = 03EAFBDB10D809A800B715D0 /* Registration_Prefs.png */; };
 		03ECAFB813DD6DD2005DAC57 /* welcome_trial in Resources */ = {isa = PBXBuildFile; fileRef = 03ECAFB713DD6DD2005DAC57 /* welcome_trial */; };
-		03ECAFBB13DD6F37005DAC57 /* purchase_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ECAFBA13DD6F37005DAC57 /* purchase_button.png */; };
-		03ECAFBC13DD6F37005DAC57 /* purchase_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ECAFBA13DD6F37005DAC57 /* purchase_button.png */; };
-		03ECAFBD13DD6F37005DAC57 /* purchase_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ECAFBA13DD6F37005DAC57 /* purchase_button.png */; };
 		03ECAFC013DD7F7A005DAC57 /* 16-play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ECAFBE13DD7F7A005DAC57 /* 16-play@2x.png */; };
 		03ECAFC113DD7F7B005DAC57 /* 16-play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ECAFBE13DD7F7A005DAC57 /* 16-play@2x.png */; };
 		03ECAFC213DD7F7B005DAC57 /* 16-play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ECAFBE13DD7F7A005DAC57 /* 16-play@2x.png */; };
@@ -672,7 +669,6 @@
 		03EAFBCD10D8074300B715D0 /* Twitter_Prefs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Twitter_Prefs.png; sourceTree = "<group>"; };
 		03EAFBDB10D809A800B715D0 /* Registration_Prefs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Registration_Prefs.png; sourceTree = "<group>"; };
 		03ECAFB713DD6DD2005DAC57 /* welcome_trial */ = {isa = PBXFileReference; lastKnownFileType = folder; path = welcome_trial; sourceTree = "<group>"; };
-		03ECAFBA13DD6F37005DAC57 /* purchase_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = purchase_button.png; path = welcome/purchase_button.png; sourceTree = "<group>"; };
 		03ECAFBE13DD7F7A005DAC57 /* 16-play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "16-play@2x.png"; sourceTree = "<group>"; };
 		03ECAFBF13DD7F7A005DAC57 /* 17-pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "17-pause@2x.png"; sourceTree = "<group>"; };
 		03ECAFC613DD80C6005DAC57 /* next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = next.png; sourceTree = "<group>"; };
@@ -1275,7 +1271,6 @@
 			children = (
 				03ECAFBE13DD7F7A005DAC57 /* 16-play@2x.png */,
 				03ECAFBF13DD7F7A005DAC57 /* 17-pause@2x.png */,
-				03ECAFBA13DD6F37005DAC57 /* purchase_button.png */,
 				03ECAFB713DD6DD2005DAC57 /* welcome_trial */,
 				037A65C913D6FA80001C01A8 /* welcome */,
 				03C6050E10EFD54000BDC333 /* seria.php */,
@@ -1558,7 +1553,6 @@
 				0314E9D613D72E8600F1A08E /* FacebookAuthWindow.xib in Resources */,
 				0314E9D813D72E8600F1A08E /* WelcomeWindow.xib in Resources */,
 				0314E9D913D72E8600F1A08E /* welcome_lite in Resources */,
-				03ECAFBD13DD6F37005DAC57 /* purchase_button.png in Resources */,
 				03ECAFC213DD7F7B005DAC57 /* 16-play@2x.png in Resources */,
 				03ECAFC513DD7F7B005DAC57 /* 17-pause@2x.png in Resources */,
 				03ECAFC913DD80C6005DAC57 /* next.png in Resources */,
@@ -1643,7 +1637,6 @@
 				03DAA00E13D6C433006D4AF4 /* FacebookAuthWindow.xib in Resources */,
 				037A65CB13D6FA80001C01A8 /* welcome in Resources */,
 				037A65D413D6FBBF001C01A8 /* WelcomeWindow.xib in Resources */,
-				03ECAFBC13DD6F37005DAC57 /* purchase_button.png in Resources */,
 				03ECAFC113DD7F7B005DAC57 /* 16-play@2x.png in Resources */,
 				03ECAFC413DD7F7B005DAC57 /* 17-pause@2x.png in Resources */,
 				03ECAFC813DD80C6005DAC57 /* next.png in Resources */,
@@ -1673,7 +1666,6 @@
 				037A65CA13D6FA80001C01A8 /* welcome in Resources */,
 				037A65D313D6FBBF001C01A8 /* WelcomeWindow.xib in Resources */,
 				03ECAFB813DD6DD2005DAC57 /* welcome_trial in Resources */,
-				03ECAFBB13DD6F37005DAC57 /* purchase_button.png in Resources */,
 				03ECAFC013DD7F7A005DAC57 /* 16-play@2x.png in Resources */,
 				03ECAFC313DD7F7B005DAC57 /* 17-pause@2x.png in Resources */,
 				03ECAFC713DD80C6005DAC57 /* next.png in Resources */,
@@ -2142,7 +2134,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Jaroslaw Szpilewski";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2177,7 +2169,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Jaroslaw Szpilewski";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2210,7 +2202,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Jaroslaw Szpilewski";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2263,7 +2255,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2793,7 +2785,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Jaroslaw Szpilewski";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2824,7 +2816,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Jaroslaw Szpilewski";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2853,7 +2845,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Jaroslaw Szpilewski";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2882,7 +2874,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2910,7 +2902,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
