@@ -234,7 +234,12 @@
 						  fontData, @"statusItemForegroundColor",
 						  [NSNumber numberWithBool: YES], @"showWelcome",
 						  [NSNumber numberWithBool: YES], @"scrollingEnabled",
-						  @"Automatic", @"selectedClient",
+
+#ifdef LITE_VERSION
+						  @"iTunes", @"selectedClient",
+#else
+						    @"Automatic", @"selectedClient",
+#endif
 						  [NSNumber numberWithBool: YES], @"showNoteOnStop",
 						  nil];
 	
