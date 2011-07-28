@@ -112,7 +112,6 @@
 		032DAC0513DB1B46005CC704 /* ClientPreferencePane-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 032DAC0013DB1B46005CC704 /* ClientPreferencePane-Info.plist */; };
 		032DAC0613DB1B46005CC704 /* ClientPreferencePaneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 032DAC0213DB1B46005CC704 /* ClientPreferencePaneController.m */; };
 		032DAC0713DB1B46005CC704 /* ClientPreferencePaneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 032DAC0313DB1B46005CC704 /* ClientPreferencePaneView.xib */; };
-		032DAC0813DB1E97005CC704 /* GeneralPreferencePane-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03BDFC7210D6BA5D00487180 /* GeneralPreferencePane-Info.plist */; };
 		034DF9A9119ABF1400680CA6 /* LastFMSubmissionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 034DF9A8119ABF1400680CA6 /* LastFMSubmissionOperation.m */; };
 		0357E852117720840082AB8F /* LastFMScrobbler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E851117720840082AB8F /* LastFMScrobbler.m */; };
 		0357E86A117723580082AB8F /* FMCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357E863117723580082AB8F /* FMCallback.m */; };
@@ -1585,7 +1584,6 @@
 			files = (
 				03BDFC6C10D6BA1900487180 /* General_Prefs.tiff in Resources */,
 				03BDFC6F10D6BA1900487180 /* GeneralPreferencePaneView.xib in Resources */,
-				032DAC0813DB1E97005CC704 /* GeneralPreferencePane-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
